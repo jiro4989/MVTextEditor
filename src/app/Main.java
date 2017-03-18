@@ -41,13 +41,17 @@ public class Main {
       String text = br.lines().collect(Collectors.joining());
       text = text.replaceAll(SEP, "");
 
-      String formedText = createFormedText(text, MAX);
-      System.out.println("折り返し後のテキスト = " + SEP + formedText);
-
+      text = createFormedText(text, MAX);
+      System.out.println("折り返し後のテキスト = " + SEP + text);
       System.out.println("");
 
-      String addedText = createAddedActorNameText(formedText, ACTOR);
-      System.out.println("アクター名追加後のテキスト = " + SEP + addedText);
+      text = createIndentedText(text, 4);
+      System.out.println("インデント後のテキスト = " + SEP + text);
+      System.out.println("");
+
+      text = createAddedActorNameText(text, ACTOR);
+      System.out.println("アクター名追加後のテキスト = " + SEP + text);
+      System.out.println("");
 
     } catch (IOException e) {
       e.printStackTrace();
@@ -85,6 +89,18 @@ public class Main {
       return 1;
     else
       return 2;
+
+  }//}}}
+
+  private static String createIndentedText(String text, int count) {//{{{
+
+    StringBuilder sb = new StringBuilder(count);
+    for (int i=0; i<count; i++) {
+      sb.append(" ");
+    }
+    String indent = sb.toString();
+
+    return indent + text.replaceAll(SEP, SEP + indent);
 
   }//}}}
 
