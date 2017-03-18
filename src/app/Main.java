@@ -13,13 +13,14 @@ public class Main {
 
   // 全角27文字で折り返し
   private static final int MAX = 27 * 2;
-  private static final String ACTOR = "Actor";
+  private static final String ACTOR = "【ハロルド】";
 
   private static final String SEP = System.lineSeparator();
   private static final char ALPHANUMERIC_CHARACTER = '\u007e';
   private static final char BACK_SLASH_CHARACTER   = '\u00a5';
   private static final char TILDA_CHARACTER        = '\u203e';
 
+  // TEST CODE
   public static void main(String... args) {//{{{
 
     File test1 = new File("./input/test1.txt");
@@ -76,7 +77,7 @@ public class Main {
   private static int charLength(char ch) {//{{{
 
     if (
-        ( ch <= ALPHANUMERIC_CHARACTER     )
+           ( ch <= ALPHANUMERIC_CHARACTER     )
         || ( ch == BACK_SLASH_CHARACTER       )
         || ( ch == TILDA_CHARACTER            )
         || ( '\uff61' <= ch && ch <= '\uff9f' ) // 半角カナ
@@ -87,7 +88,7 @@ public class Main {
 
   }//}}}
 
-  private static String createAddedActorNameText(String text, String actor) {
+  private static String createAddedActorNameText(String text, String actor) {//{{{
 
     String[] array = text.split(SEP);
     int lineCount = 0;
@@ -108,6 +109,6 @@ public class Main {
 
     return sb.toString();
 
-  }
+  }//}}}
 
 }
