@@ -33,7 +33,7 @@ public class FormattableString {
 
   // 括弧で囲む
   private final boolean bracketsOption;
-  private final Brackets brackets;
+  private final Brackets bracketsType;
 
   // アクター名を表示
   private final boolean actorNameOption;
@@ -62,7 +62,7 @@ public class FormattableString {
     private int indentSize = 0;
 
     private boolean bracketsOption = false;
-    private Brackets brackets;
+    private Brackets bracketsType;
 
     private boolean actorNameOption = false;
     private String actorName = null;
@@ -84,39 +84,54 @@ public class FormattableString {
       indentOption    = fs.indentOption;
       indentSize      = fs.indentSize;
       bracketsOption  = fs.bracketsOption;
-      brackets        = fs.brackets;
+      bracketsType    = fs.bracketsType;
       actorNameOption = fs.actorNameOption;
       actorName       = fs.actorName;
       actorNameType   = fs.actorNameType;
 
     }//}}}
 
-    public Builder returnSize(int size) {//{{{
-      this.returnOption = true;
-      this.returnSize = size;
+    public Builder returnOption(boolean returnOption) {//{{{
+      this.returnOption = returnOption;
       return this;
     }//}}}
 
-    public Builder indent(int indentSize) {//{{{
-      this.indentOption = true;
+    public Builder returnSize(int returnSize) {//{{{
+      this.returnSize = returnSize;
+      return this;
+    }//}}}
+
+    public Builder indentOption(boolean indentOption) {//{{{
+      this.indentOption = indentOption;
+      return this;
+    }//}}}
+
+    public Builder indentSize(int indentSize) {//{{{
       this.indentSize = indentSize;
       return this;
     }//}}}
 
-    public Builder brackets(Brackets b) {//{{{
-      this.bracketsOption = true;
-      this.brackets = b;
+    public Builder bracketsOption(boolean bracketsOption) {//{{{
+      this.bracketsOption = bracketsOption;
       return this;
     }//}}}
 
-    public Builder actorName(String name) {//{{{
-      this.actorNameOption = true;
-      this.actorName = name;
+    public Builder bracketsType(Brackets bracketsType) {//{{{
+      this.bracketsType = bracketsType;
+      return this;
+    }//}}}
+
+    public Builder actorNameOption(boolean actorNameOption) {//{{{
+      this.actorNameOption = actorNameOption;
+      return this;
+    }//}}}
+
+    public Builder actorName(String actorName) {//{{{
+      this.actorName = actorName;
       return this;
     }//}}}
 
     public Builder actorNameType(ActorNameType type) {//{{{
-      this.actorNameOption = true;
       this.actorNameType = type;
       return this;
     }//}}}
@@ -154,7 +169,7 @@ public class FormattableString {
     this.indentOption    = builder.indentOption;
     this.indentSize      = builder.indentSize;
     this.bracketsOption  = builder.bracketsOption;
-    this.brackets        = builder.brackets;
+    this.bracketsType    = builder.bracketsType;
     this.actorNameOption = builder.actorNameOption;
     this.actorName       = builder.actorName;
     this.actorNameType   = builder.actorNameType;
@@ -170,12 +185,10 @@ public class FormattableString {
   // methods
 
   public FormattableString format() {//{{{
-
     return formatCarriageReturn().formatActorName();
-
   }//}}}
 
-  private FormattableString formatCarriageReturn() {//{{{
+  public FormattableString formatCarriageReturn() {//{{{
 
     StringBuilder sb = new StringBuilder();
     if (returnOption) {
@@ -225,7 +238,7 @@ public class FormattableString {
 
   }//}}}
 
-  private FormattableString formatActorName() {//{{{
+  public FormattableString formatActorName() {//{{{
 
     if (actorNameOption) {
 
@@ -243,7 +256,9 @@ public class FormattableString {
 
         String line = array[i];
         sb.append(line);
-        sb.append(SEP);
+
+        if (i != array.length - 1)
+          sb.append(SEP);
 
       }
 
@@ -255,18 +270,6 @@ public class FormattableString {
 
     }
 
-  }//}}}
-
-  private int insertActorName(StringBuilder sb, int count) {//{{{
-
-    if (actorNameType == ActorNameType.TOP_ONLY) {
-      if (0 < count) return ++count;
-    }
-
-    sb.append(actorName);
-    sb.append(SEP);
-
-    return ++count;
   }//}}}
 
   public static Optional<String> readTextFrom(File file) {//{{{
@@ -290,7 +293,51 @@ public class FormattableString {
 
   }//}}}
 
+  public List<String> toList() {//{{{
+
+    String str = toString();
+    int count = 0;
+
+    String[] array = str.split(SEP);
+    int arraySize = array.length;
+    StringBuilder sb = new StringBuilder();
+    List<String> list = new ArrayList<>(arraySize / 4);
+    for (String line : array) {
+
+      if (2 < count) {
+        sb.append(line);
+        list.add(sb.toString());
+        sb.setLength(0);
+        count = 0;
+        continue;
+      }
+
+      sb.append(line);
+      sb.append(SEP);
+      count++;
+
+    }
+
+    if (0 < sb.length())
+      list.add(sb.toString());
+
+    return list;
+
+  }//}}}
+
   // private methods
+
+  private int insertActorName(StringBuilder sb, int count) {//{{{
+
+    if (actorNameType == ActorNameType.TOP_ONLY) {
+      if (0 < count) return ++count;
+    }
+
+    sb.append(actorName);
+    sb.append(SEP);
+
+    return ++count;
+  }//}}}
 
   private void putStartBrackets() {//{{{
 
@@ -298,9 +345,9 @@ public class FormattableString {
       if (bracketsOption) {
 
         StringBuilder indentSb = new StringBuilder(indent);
-        int len = stringLength(brackets.START);
+        int len = stringLength(bracketsType.START);
         indentSb.delete(0, len);
-        indentSb.insert(0, brackets.START);
+        indentSb.insert(0, bracketsType.START);
         String newIndent = indentSb.toString();
         wordList.set(0, newIndent + wordList.get(0));
 
@@ -320,13 +367,13 @@ public class FormattableString {
       String lastLine = array[array.length-1];
 
       int len    =       stringLength(lastLine);
-      int newLen = len + stringLength(brackets.END);
+      int newLen = len + stringLength(bracketsType.END);
 
       if (returnSize < newLen) {
         sb.append(SEP);
       }
 
-      sb.append(brackets.END);
+      sb.append(bracketsType.END);
 
     }
 

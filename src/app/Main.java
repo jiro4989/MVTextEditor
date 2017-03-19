@@ -33,9 +33,13 @@ public class Main {
     FormattableString.readTextFrom(file).ifPresent(text -> {
 
       FormattableString fs = new FormattableString.Builder(text)
+        .returnOption(true)
         .returnSize(RETURN_SIZE)
-        .indent(INDENT_SIZE)
-        .brackets(BRACKETS)
+        .indentOption(true)
+        .indentSize(INDENT_SIZE)
+        .bracketsOption(true)
+        .bracketsType(BRACKETS)
+        .actorNameOption(true)
         .actorName(ACTOR)
         .actorNameType(ActorNameType.ALL_WINDOW)
         .build();
