@@ -37,7 +37,7 @@ public class Main {
         .indent(INDENT_SIZE)
         .brackets(BRACKETS)
         .actorName(ACTOR)
-        .actorNameType(ActorNameType.TOP_ONLY)
+        .actorNameType(ActorNameType.ALL_WINDOW)
         .build();
       showText(fs);
 

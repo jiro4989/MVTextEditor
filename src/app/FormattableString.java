@@ -122,6 +122,7 @@ public class FormattableString {
     }//}}}
 
     public FormattableString build() {//{{{
+
       if (actorNameOption && actorName == null)
         throw new NullPointerException(
             String.format(
@@ -129,6 +130,15 @@ public class FormattableString {
               + "- actorNameOption = %s, actorName = %s, ActorNameType = %s"
               , actorNameOption, actorName, actorNameType)
             );
+
+      if (actorNameOption && actorNameType == null)
+        throw new NullPointerException(
+            String.format(
+              "actorNameOptionを有効にしている時はactorNameTypeを設定しなければなりません。"
+              + "- actorNameOption = %s, actorName = %s, ActorNameType = %s"
+              , actorNameOption, actorName, actorNameType)
+            );
+
       return new FormattableString(this);
     }//}}}
 
@@ -217,25 +227,33 @@ public class FormattableString {
 
   private FormattableString formatActorName() {//{{{
 
-    String text = toString();
-    String[] array = text.split(SEP);
-    int lineCount = 0;
-    int actorNameCount = 0;
+    if (actorNameOption) {
 
-    StringBuilder sb = new StringBuilder(text.toCharArray().length);
-    for (int i=0; i<array.length; i++) {
+      String text = toString();
+      String[] array = text.split(SEP);
+      int lineCount = 0;
+      int actorNameCount = 0;
 
-      if (i % 3 == 0) {
-        actorNameCount = insertActorName(sb, actorNameCount);
+      StringBuilder sb = new StringBuilder(text.toCharArray().length);
+      for (int i=0; i<array.length; i++) {
+
+        if (i % 3 == 0) {
+          actorNameCount = insertActorName(sb, actorNameCount);
+        }
+
+        String line = array[i];
+        sb.append(line);
+        sb.append(SEP);
+
       }
 
-      String line = array[i];
-      sb.append(line);
-      sb.append(SEP);
+      return new FormattableString.Builder(this, sb).build();
+
+    } else {
+
+      return new FormattableString.Builder(this, toString()).build();
 
     }
-
-    return new FormattableString.Builder(this, sb).build();
 
   }//}}}
 
