@@ -24,7 +24,7 @@ public class FormattableString {
   private static final boolean indentOption = true;
 
   private static final String INDENT = "    ";
-  private static final String SEP = System.lineSeparator();
+  private static final String SEP    = System.lineSeparator();
   private static final char ALPHANUMERIC_CHARACTER = '\u007e';
   private static final char BACK_SLASH_CHARACTER   = '\u00a5';
   private static final char TILDA_CHARACTER        = '\u203e';
@@ -45,7 +45,10 @@ public class FormattableString {
     String str = "Couldn't read text file.";
     Path path = file.toPath();
     try (BufferedReader br = Files.newBufferedReader(path, Charset.forName("UTF-8"))) {
-      str = br.lines().collect(Collectors.joining());
+      List<String> list = br.lines().collect(Collectors.toList());
+      str = String.join(" ", list);
+
+      //str = br.lines().collect(Collectors.joining());
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -95,30 +98,6 @@ public class FormattableString {
 
   }//}}}
 
-  private int charLength(char ch) {//{{{
-
-    if (
-        ( ch <= ALPHANUMERIC_CHARACTER        )
-        || ( ch == BACK_SLASH_CHARACTER       )
-        || ( ch == TILDA_CHARACTER            )
-        || ( '\uff61' <= ch && ch <= '\uff9f' ) // 半角カナ
-       )
-      return 1;
-    else
-      return 2;
-
-  }//}}}
-
-  private int stringLength(String str) {//{{{
-
-    int count = 0;
-    for (char ch : str.toCharArray()) {
-      count += charLength(ch);
-    }
-    return count;
-
-  }//}}}
-
   private List<String> splitToWord(String text) {//{{{
 
     char[] chars = text.toCharArray();
@@ -147,6 +126,30 @@ public class FormattableString {
     }
 
     return list;
+
+  }//}}}
+
+  private int charLength(char ch) {//{{{
+
+    if (
+        ( ch <= ALPHANUMERIC_CHARACTER        )
+        || ( ch == BACK_SLASH_CHARACTER       )
+        || ( ch == TILDA_CHARACTER            )
+        || ( '\uff61' <= ch && ch <= '\uff9f' ) // 半角カナ
+       )
+      return 1;
+    else
+      return 2;
+
+  }//}}}
+
+  private int stringLength(String str) {//{{{
+
+    int count = 0;
+    for (char ch : str.toCharArray()) {
+      count += charLength(ch);
+    }
+    return count;
 
   }//}}}
 
