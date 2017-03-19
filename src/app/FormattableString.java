@@ -19,35 +19,77 @@ import java.util.stream.Collectors;
  */
 public class FormattableString {
 
+  // 単語単位で区切られた整形対象の文字列リスト
   private final List<String> wordList;
+
+  // 改行
   private final boolean returnOption;
   private final int returnSize;
+
+  // インデント
   private final boolean indentOption;
   private final int indentSize;
+  private final String indent;
+
+  // 括弧で囲む
   private final boolean bracketsOption;
   private final Brackets brackets;
-  private final String indent;
+
+  // アクター名を表示
+  private final boolean actorNameOption;
+  private final String actorName;
+  private final ActorNameType actorNameType;
+
+  // 定数//{{{
 
   private static final String SEP = System.lineSeparator();
   private static final char ALPHANUMERIC_CHARACTER = '\u007e';
   private static final char BACK_SLASH_CHARACTER   = '\u00a5';
   private static final char TILDA_CHARACTER        = '\u203e';
 
-  // Builder
+  //}}}
+
+  // builder
 
   public static class Builder {//{{{
 
     private final List<String> wordList;
+
     private boolean returnOption = false;
-    private int returnSize = 54;
+    private int returnSize = 27 * 2;
+
     private boolean indentOption = false;
     private int indentSize = 0;
+
     private boolean bracketsOption = false;
     private Brackets brackets;
+
+    private boolean actorNameOption = false;
+    private String actorName = null;
+    private ActorNameType actorNameType;
 
     public Builder(String str)        { wordList = splitToWord(str); }
     public Builder(StringBuilder sb)  { this(sb.toString());         }
     public Builder(List<String> list) { wordList = list;             }
+
+    public Builder(FormattableString fs, StringBuilder sb) {
+      this(fs, sb.toString());
+    }
+
+    public Builder(FormattableString fs, String str) {//{{{
+
+      wordList        = splitToWord(str);
+      returnOption    = fs.returnOption;
+      returnSize      = fs.returnSize;
+      indentOption    = fs.indentOption;
+      indentSize      = fs.indentSize;
+      bracketsOption  = fs.bracketsOption;
+      brackets        = fs.brackets;
+      actorNameOption = fs.actorNameOption;
+      actorName       = fs.actorName;
+      actorNameType   = fs.actorNameType;
+
+    }//}}}
 
     public Builder returnSize(int size) {//{{{
       this.returnOption = true;
@@ -67,23 +109,45 @@ public class FormattableString {
       return this;
     }//}}}
 
+    public Builder actorName(String name) {//{{{
+      this.actorNameOption = true;
+      this.actorName = name;
+      return this;
+    }//}}}
+
+    public Builder actorNameType(ActorNameType type) {//{{{
+      this.actorNameOption = true;
+      this.actorNameType = type;
+      return this;
+    }//}}}
+
     public FormattableString build() {//{{{
+      if (actorNameOption && actorName == null)
+        throw new NullPointerException(
+            String.format(
+              "actorNameOptionを有効にしている時はactorNameを設定しなければなりません。"
+              + "- actorNameOption = %s, actorName = %s, ActorNameType = %s"
+              , actorNameOption, actorName, actorNameType)
+            );
       return new FormattableString(this);
     }//}}}
 
   }//}}}
 
-  // Constructors
+  // constructors
 
   private FormattableString(Builder builder) {//{{{
 
-    this.wordList       = builder.wordList;
-    this.returnOption   = builder.returnOption;
-    this.returnSize     = builder.returnSize;
-    this.indentOption   = builder.indentOption;
-    this.indentSize     = builder.indentSize;
-    this.bracketsOption = builder.bracketsOption;
-    this.brackets       = builder.brackets;
+    this.wordList        = builder.wordList;
+    this.returnOption    = builder.returnOption;
+    this.returnSize      = builder.returnSize;
+    this.indentOption    = builder.indentOption;
+    this.indentSize      = builder.indentSize;
+    this.bracketsOption  = builder.bracketsOption;
+    this.brackets        = builder.brackets;
+    this.actorNameOption = builder.actorNameOption;
+    this.actorName       = builder.actorName;
+    this.actorNameType   = builder.actorNameType;
 
     StringBuilder sb = new StringBuilder(indentSize);
     for (int i=0; i<indentSize; i++) {
@@ -93,46 +157,27 @@ public class FormattableString {
 
   }//}}}
 
-  private FormattableString(FormattableString fs) {//{{{
+  // methods
 
-    this.wordList       = fs.wordList;
-    this.returnOption   = fs.returnOption;
-    this.returnSize     = fs.returnSize;
-    this.indentOption   = fs.indentOption;
-    this.indentSize     = fs.indentSize;
-    this.bracketsOption = fs.bracketsOption;
-    this.brackets       = fs.brackets;
-    this.indent         = fs.indent;
+  public FormattableString format() {//{{{
+
+    return formatCarriageReturn().formatActorName();
 
   }//}}}
 
-  // Methods
+  private FormattableString formatCarriageReturn() {//{{{
 
-  public FormattableString carriageReturn() {//{{{
-
+    StringBuilder sb = new StringBuilder();
     if (returnOption) {
 
-      if (indentOption) {
-        if (bracketsOption) {
-
-          StringBuilder indentSb = new StringBuilder(indent);
-          int len = stringLength(brackets.START);
-          indentSb.delete(0, len);
-          indentSb.insert(0, brackets.START);
-          String newIndent = indentSb.toString();
-          wordList.set(0, newIndent + wordList.get(0));
-
-        } else {
-          wordList.set(0, indent + wordList.get(0));
-        }
-      }
+      putStartBrackets();
 
       int count = 0;
-      StringBuilder sb = new StringBuilder();
       for (String word : wordList) {
 
         int length = stringLength(word);
         count += length;
+
         if (returnSize < count) {
 
           sb.append(SEP);
@@ -158,87 +203,30 @@ public class FormattableString {
 
       }
 
-      if (bracketsOption) {
-        int len = stringLength(sb.toString());
-        int newLen = len + stringLength(brackets.END);
-        if (returnSize < newLen) {
-          sb.append(SEP);
-        }
-        sb.append(brackets.END);
-      }
+      putEndBrackets(sb);
 
-      return new FormattableString.Builder(sb)
-        .indent(indentSize)
-        .brackets(brackets)
-        .build();
+      return new FormattableString.Builder(this, sb).build();
 
     } else {
 
-      return new FormattableString.Builder(toString())
-        .indent(indentSize)
-        .brackets(brackets)
-        .build();
+      return new FormattableString.Builder(this, toString()).build();
 
     }
 
   }//}}}
 
-  public FormattableString brackets() {//{{{
+  private FormattableString formatActorName() {//{{{
 
-    if (indentOption) {
-      wordList.set(0, indent + wordList.get(0));
-    }
-
-    int count = 0;
-    StringBuilder sb = new StringBuilder();
-    for (String word : wordList) {
-
-      int length = stringLength(word);
-      count += length;
-      if (returnSize < count) {
-
-        sb.append(SEP);
-        count = 0;
-
-        if (word.startsWith(" ") || word.startsWith("　")) {
-          word = (new StringBuilder(word)).deleteCharAt(0).toString();
-          length = stringLength(word);
-        }
-
-        if (indentOption) {
-          sb.append(indent);
-          count += stringLength(indent);
-        }
-
-        sb.append(word);
-        count += length;
-        continue;
-
-      }
-
-      sb.append(word);
-
-    }
-
-    return new FormattableString.Builder(sb)
-      .indent(indentSize)
-      .brackets(brackets)
-      .build();
-
-  }//}}}
-
-  public FormattableString actorName(String actorName) {//{{{
-
-    String text = wordList.stream().collect(Collectors.joining());
+    String text = toString();
     String[] array = text.split(SEP);
     int lineCount = 0;
+    int actorNameCount = 0;
 
     StringBuilder sb = new StringBuilder(text.toCharArray().length);
     for (int i=0; i<array.length; i++) {
 
       if (i % 3 == 0) {
-        sb.append(actorName);
-        sb.append(SEP);
+        actorNameCount = insertActorName(sb, actorNameCount);
       }
 
       String line = array[i];
@@ -247,11 +235,20 @@ public class FormattableString {
 
     }
 
-    return new FormattableString.Builder(sb)
-      .indent(indentSize)
-      .brackets(brackets)
-      .build();
+    return new FormattableString.Builder(this, sb).build();
 
+  }//}}}
+
+  private int insertActorName(StringBuilder sb, int count) {//{{{
+
+    if (actorNameType == ActorNameType.TOP_ONLY) {
+      if (0 < count) return ++count;
+    }
+
+    sb.append(actorName);
+    sb.append(SEP);
+
+    return ++count;
   }//}}}
 
   public static Optional<String> readTextFrom(File file) {//{{{
@@ -276,6 +273,70 @@ public class FormattableString {
   }//}}}
 
   // private methods
+
+  private void putStartBrackets() {//{{{
+
+    if (indentOption) {
+      if (bracketsOption) {
+
+        StringBuilder indentSb = new StringBuilder(indent);
+        int len = stringLength(brackets.START);
+        indentSb.delete(0, len);
+        indentSb.insert(0, brackets.START);
+        String newIndent = indentSb.toString();
+        wordList.set(0, newIndent + wordList.get(0));
+
+      } else {
+        wordList.set(0, indent + wordList.get(0));
+      }
+    }
+
+  }//}}}
+
+  private void putEndBrackets(StringBuilder sb) {//{{{
+
+    if (bracketsOption) {
+
+      String str      = sb.toString();
+      String[] array  = str.split(SEP);
+      String lastLine = array[array.length-1];
+
+      int len    =       stringLength(lastLine);
+      int newLen = len + stringLength(brackets.END);
+
+      if (returnSize < newLen) {
+        sb.append(SEP);
+      }
+
+      sb.append(brackets.END);
+
+    }
+
+  }//}}}
+
+  private int charLength(char ch) {//{{{
+
+    if (
+        ( ch <= ALPHANUMERIC_CHARACTER        )
+        || ( ch == BACK_SLASH_CHARACTER       )
+        || ( ch == TILDA_CHARACTER            )
+        || ( '\uff61' <= ch && ch <= '\uff9f' ) // 半角カナ
+       )
+      return 1;
+    else
+      return 2;
+
+  }//}}}
+
+  private int stringLength(String str) {//{{{
+
+    int count = 0;
+    for (char ch : str.toCharArray()) {
+      count += charLength(ch);
+    }
+    return count;
+
+  }//}}}
 
   private static List<String> splitToWord(String text) {//{{{
 
@@ -324,31 +385,9 @@ public class FormattableString {
 
   }//}}}
 
-  private int charLength(char ch) {//{{{
-
-    if (
-        ( ch <= ALPHANUMERIC_CHARACTER        )
-        || ( ch == BACK_SLASH_CHARACTER       )
-        || ( ch == TILDA_CHARACTER            )
-        || ( '\uff61' <= ch && ch <= '\uff9f' ) // 半角カナ
-       )
-      return 1;
-    else
-      return 2;
-
-  }//}}}
-
-  private int stringLength(String str) {//{{{
-
-    int count = 0;
-    for (char ch : str.toCharArray()) {
-      count += charLength(ch);
-    }
-    return count;
-
-  }//}}}
-
   @Override
-  public String toString() { return wordList.stream().collect(Collectors.joining()); }
+  public String toString() {//{{{
+    return wordList.stream().collect(Collectors.joining());
+  }//}}}
 
 }

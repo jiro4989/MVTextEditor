@@ -17,13 +17,16 @@ public class Main {
   private static final Brackets BRACKETS = Brackets.TYPE1;
   private static final String ACTOR      = "【ハロルド】";
 
-  // TEST CODE
+  // test code
+
   public static void main(String... args) {//{{{
 
     show(new File("./input/test1.txt"));
     show(new File("./input/test2.txt"));
 
   }//}}}
+
+  // test methods
 
   private static void show(File file) {//{{{
 
@@ -33,6 +36,8 @@ public class Main {
         .returnSize(RETURN_SIZE)
         .indent(INDENT_SIZE)
         .brackets(BRACKETS)
+        .actorName(ACTOR)
+        .actorNameType(ActorNameType.TOP_ONLY)
         .build();
       showText(fs);
 
@@ -42,23 +47,36 @@ public class Main {
 
   private static void showText(FormattableString fs) {//{{{
 
-    System.out.println("************************************************************");
+    showLine();
     System.out.println("変換前のテキスト");
-    System.out.println("************************************************************");
+    showLine();
+
     String newString = fs
       .toString();
+
     System.out.println(newString);
     System.out.println("");
 
-    System.out.println("************************************************************");
+    showLine();
     System.out.println("変換後のテキスト");
-    System.out.println("************************************************************");
+    showLine();
+
     newString = fs
-      .carriageReturn()
-      .actorName(ACTOR)
+      .format()
       .toString();
+
     System.out.println(newString);
     System.out.println("");
+
+  }//}}}
+
+  private static void showLine() {//{{{
+
+    StringBuilder sb = new StringBuilder();
+    for (int i=0; i<RETURN_SIZE; i++) {
+      sb.append('*');
+    }
+    System.out.println(sb.toString());
 
   }//}}}
 
