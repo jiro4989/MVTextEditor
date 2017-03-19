@@ -1,9 +1,10 @@
-１２３４５６７８９０１２３４５６７８９０１２３４５６７Sample text is here.  1192
-作ろう鎌倉幕府。１９９９年恐怖の大王が空から舞い降りる。Foo-bar2000. iTunes.
-MusicPlayer, and MP3. Foo_bar_2000. 20xx 3214 世界は核の炎に包まれた。Hogehoge
-foo bar 2000 sample. apple grape mac linux windows java python ruby peal c cpp
-cs js cobol html css xml javafxscript scala golang elang swift objective-c a b c
-d e f g h a b c d e f g h a b c d e f g h a b c d e f g h a b c d e f g h a b c
-d e f g h a b c d e f g h a b c d e f g h a b c d e f g h a b c d e f g h
+１２３４５６７８９０１２３４５６７８９０１２３４５６７Thie is Sample text. java
+javascript css html xml fxml c cpp cs bash bat cobol fortran ruby python peal
+scala objective-c swift a b c d e f g h i j k l m n o p q r s t u v w x y z a b
+c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f g h i j k l m n o p
+q r s t u v w x y z objective-c objective-c objective-c objective-c objective-c
 objective-c objective-c objective-c objective-c objective-c objective-c
-objective-c
+objective-c objective-c objective-c objective-c objective-c objective-c
+objective-c objective-c objective-c objective-c objective-c objective-c
+objective-c objective-c objective-c objective-c objective-c objective-c
+objective-c objective-c

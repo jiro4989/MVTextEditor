@@ -4,8 +4,9 @@ import java.util.regex.*;
 
 public final class CharUtils {
 
-  private static final Pattern PATTERN_ALPHABET         = Pattern.compile("[a-zA-Z0-9_\\-]");
-  private static final Pattern PATTERN_WHITE_SPACE      = Pattern.compile("\\s");
+  private static final Pattern PATTERN_ALPHABET    = Pattern.compile("[a-zA-Z0-9_\\-]");
+  private static final Pattern PATTERN_WHITE_SPACE = Pattern.compile("\\s");
+  private static final String SEP = System.lineSeparator();
 
   private CharUtils() {}
 
@@ -24,6 +25,7 @@ public final class CharUtils {
         || ch == '?'
         || ch == ','
         || ch == '.'
+        || String.valueOf(ch).equals(SEP)
         );
 
   }//}}}
