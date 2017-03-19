@@ -12,8 +12,11 @@ import java.util.stream.Collectors;
 public class Main {
 
   // 全角27文字で折り返し
-  private static final int MAX = 27 * 2;
-  private static final String ACTOR = "【ハロルド】";
+  private static final int MAX              = 27 * 2;
+  private static final int INDENT_COUNT     = 4;
+  private static final String ACTOR         = "【ハロルド】";
+  private static final boolean indentOption = true;
+  private static final String INDENT        = "    ";
 
   private static final String SEP = System.lineSeparator();
   private static final char ALPHANUMERIC_CHARACTER = '\u007e';
@@ -23,39 +26,18 @@ public class Main {
   // TEST CODE
   public static void main(String... args) {//{{{
 
-    File test1 = new File("./input/test1.txt");
-    showFormedText(test1);
+    File file1 = new File("./input/test1.txt");
+    File file2 = new File("./input/test2.txt");
 
+    //FormattableString fs1 = new FormattableString(file1);
+    //System.out.println("変換後のテキスト: ");
+    //System.out.println(fs1.carriageReturn(MAX));
+    //System.out.println("");
+
+    FormattableString fs2 = new FormattableString(file2);
+    System.out.println("変換後のテキスト: ");
+    System.out.println(fs2.carriageReturn(MAX));
     System.out.println("");
-
-    File test2 = new File("./input/test2.txt");
-    showFormedText(test2);
-
-  }//}}}
-
-  private static void showFormedText(File file) {//{{{
-
-    Path path = file.toPath();
-    try (BufferedReader br = Files.newBufferedReader(path, Charset.forName("UTF-8"))) {
-
-      String text = br.lines().collect(Collectors.joining());
-      text = text.replaceAll(SEP, "");
-
-      text = createFormedText(text, MAX);
-      System.out.println("折り返し後のテキスト = " + SEP + text);
-      System.out.println("");
-
-      text = createIndentedText(text, 4);
-      System.out.println("インデント後のテキスト = " + SEP + text);
-      System.out.println("");
-
-      text = createAddedActorNameText(text, ACTOR);
-      System.out.println("アクター名追加後のテキスト = " + SEP + text);
-      System.out.println("");
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
 
   }//}}}
 
@@ -81,7 +63,7 @@ public class Main {
   private static int charLength(char ch) {//{{{
 
     if (
-           ( ch <= ALPHANUMERIC_CHARACTER     )
+        ( ch <= ALPHANUMERIC_CHARACTER     )
         || ( ch == BACK_SLASH_CHARACTER       )
         || ( ch == TILDA_CHARACTER            )
         || ( '\uff61' <= ch && ch <= '\uff9f' ) // 半角カナ
@@ -120,6 +102,37 @@ public class Main {
       String line = array[i];
       sb.append(line);
       sb.append(SEP);
+
+    }
+
+    return sb.toString();
+
+  }//}}}
+
+  private static String createFinalFormedText(String text) {//{{{
+
+    char[] chars = (INDENT + text).toCharArray();
+
+    int count = 0;
+    StringBuilder sb = new StringBuilder(chars.length);
+    for (char ch : chars) {
+
+      int length = charLength(ch);
+      count += length;
+      sb.append(ch);
+
+      int rest = count % MAX;
+      if (rest == 0 || rest == MAX - 1) {
+
+        sb.append(SEP);
+        if (indentOption) {
+
+          sb.append(INDENT);
+          count += INDENT.length();
+
+        }
+
+      }
 
     }
 
