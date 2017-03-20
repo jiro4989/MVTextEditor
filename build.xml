@@ -118,7 +118,7 @@
 
     <!-- jarの生成 --><!--{{{-->
 
-    <jar destfile="${build.dist.dir}/${jar.name}" basedir="classes">
+    <jar destfile="${jar.name}" basedir="classes">
 
       <manifest>
 
