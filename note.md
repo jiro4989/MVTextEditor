@@ -33,8 +33,8 @@
 \}    : {@sizeDown n target text}
 \\    : {@backslash}
 \$    : {@showGoldWindow}
-\.    : {@wait 1/4}
-\|    : {@wait 4/4}
+\.    : {@wait n/4}
+\|    : {@wait n}
 \!    : {@waitInput}
 \>    : {@showAll}
 \<    : {@showOff}

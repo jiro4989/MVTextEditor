@@ -28,9 +28,9 @@ public class Main extends Application {
     FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
 
     try {
-      VBox root = (VBox) loader.load();
+      BorderPane root = (BorderPane) loader.load();
       controller = (MainController) loader.getController();
-      Scene scene = new Scene(root, 350, 140);
+      Scene scene = new Scene(root, 800, 600);
       scene.getStylesheets().add(BASIC_CSS);
 
       primaryStage.setScene(scene);
