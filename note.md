@@ -17,3 +17,26 @@
     *「ほげほげふがふが
        ほげほげふがふが
        ほげほげふがふが
+
+デフォルトのテキストの処理の記述の仕方はわかりにくいので、タグでテキストを編集す
+る。
+
+# コンバートするテキスト
+
+\v[n] : {@val n}
+\n[n] : {@actor n}
+\p[n] : {@party n}
+\g    : {@gold}
+\c[n] : {@color n target text}
+\i[n] : {@icon n}
+\{    : {@sizeUp n target text}
+\}    : {@sizeDown n target text}
+\\    : {@backslash}
+\$    : {@showGoldWindow}
+\.    : {@wait 1/4}
+\|    : {@wait 4/4}
+\!    : {@waitInput}
+\>    : {@showAll}
+\<    : {@showOff}
+\^    : {@nonWait}
+
