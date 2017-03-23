@@ -9,7 +9,7 @@
 <?import app.viewer.TextViewer?>
 <?import app.manager.TextManager?>
 
-<BorderPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="app.MainController" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <top>
     <!-- menubar -->
     <MenuBar BorderPane.alignment="CENTER">
@@ -42,12 +42,12 @@
           <children>
             <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <center>
-                <TextTable BorderPane.alignment="CENTER" />
+                <TextTable fx:id="textTable" BorderPane.alignment="CENTER" />
               </center>
               <bottom>
                 <AnchorPane BorderPane.alignment="CENTER" >
                   <children>
-                    <TextViewer AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0" />
+                    <TextViewer fx:id="textViewer" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0" />
                   </children>
                 </AnchorPane>
               </bottom>
@@ -57,7 +57,7 @@
 
         <AnchorPane minHeight="0.0" minWidth="0.0">
           <children>
-            <TextManager AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <TextManager fx:id="textManager" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
           </children>
         </AnchorPane>
 

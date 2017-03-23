@@ -1,11 +1,12 @@
 package app;
 
-import jiro.java.util.MyProperties;
-
 import static util.Texts.*;
 
-import java.io.*;
+import jiro.java.util.MyProperties;
 
+import util.InitUtils;
+
+import java.io.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,11 +17,13 @@ import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
-  static MyProperties mainMp = new MyProperties(PROP_DIR + "/main.xml");
+  static MyProperties mainMp;
   private MainController controller;
 
   @Override
   public void start(Stage primaryStage) {//{{{
+    mainMp = new MyProperties(MAIN_PROPERTIES);
+    InitUtils.mkPropDirs();
     //changeLanguages();
     //PresetsUtils.mkInitDirs();
     //PresetsUtils.mkInitPresets();
@@ -38,6 +41,11 @@ public class Main extends Application {
       primaryStage.getIcons().add(new Image(APP_ICON));
       primaryStage.setMinWidth(80.0);
       primaryStage.setMinHeight(140.0);
+
+      primaryStage.setOnCloseRequest(e -> controller.closeRequest());
+
+      if (mainMp.load())
+        mainMp.customStage(primaryStage);
 
       //
       //      // TODO 過去のソースの名残//{{{
