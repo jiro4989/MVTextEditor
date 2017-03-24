@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 
 public class MainController {
   private MyProperties formatProperties;
@@ -24,6 +25,25 @@ public class MainController {
   private static final int RETURN_SIZE = 27 * 2;
   private static final int INDENT_SIZE = 2;
   private static final Brackets BRACKETS = Brackets.TYPE1;
+
+  // fxml component
+
+  // ファイル
+  @FXML private Menu     fileMenu;
+  @FXML private MenuItem openCharaChipMenuItem;
+  @FXML private MenuItem openSideViewMenuItem;
+  @FXML private Menu     openWalkRecentMenu;
+  @FXML private Menu     openSideViewRecentMenu;
+  @FXML private MenuItem closeMenuItem;
+  @FXML private MenuItem currentWalkPresetMenuItem;
+  @FXML private MenuItem currentSideViewPresetMenuItem;
+  @FXML private MenuItem walkPresetMenuItem;
+  @FXML private MenuItem sideViewPresetMenuItem;
+  @FXML private MenuItem editWalkPresetMenuItem;
+  @FXML private MenuItem editSideViewPresetMenuItem;
+  @FXML private MenuItem preferencesMenuItem;
+  @FXML private MenuItem quitMenuItem;
+  @FXML private MenuItem forcedTerminateMenuItem;
 
   @FXML private TextTable   textTable;
   @FXML private TextViewer  textViewer;
@@ -54,7 +74,7 @@ public class MainController {
     }
   }//}}}
 
-  void closeRequest() {//{{{
+  public void closeRequest() {//{{{
     Main.mainMp.setProperty(textTable);
     Main.mainMp.store();
     formatProperties.store();
