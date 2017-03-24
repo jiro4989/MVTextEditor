@@ -36,7 +36,7 @@ public class TextDB {
       boolean position
       )
   {
-    this(icon, "a", String.join(SEP, textList), background, position);
+    this(icon, getActorName(textList), String.join(SEP, textList), background, position);
   }
 
   public TextDB(TextDB textDB) {
@@ -48,6 +48,7 @@ public class TextDB {
     this.position   = new SimpleBooleanProperty(textDB.positionProperty().get());
 
   }
+
   // **************************************************
   // Getter
   // **************************************************
@@ -85,4 +86,14 @@ public class TextDB {
   public void setPosition(boolean position) {
     positionProperty().set(position);
   }
+
+  private static String getActorName(List<String> list) {//{{{
+    if (0 < list.size()) {
+      String actor = list.get(0);
+      actor = actor.startsWith("#") ? actor.replaceAll("^# *", "") : "";
+      return actor;
+    }
+    return "";
+  }//}}}
+
 }

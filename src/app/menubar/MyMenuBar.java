@@ -92,6 +92,7 @@ public class MyMenuBar extends VBox {
       // TODO test code
       try {
         FormattableText ft = new FormattableText.Builder(file)
+          .actorNameOption(true)
           .returnOption(true)
           .returnSize(RETURN_SIZE)
           .indentOption(true)
@@ -100,7 +101,6 @@ public class MyMenuBar extends VBox {
           .brackets(BRACKETS)
           .joiningOption(false)
           .build();
-        ft.format().show();
         mainController.setTextList(ft.format().getTextList());
       } catch (IOException e) {
         e.printStackTrace();
