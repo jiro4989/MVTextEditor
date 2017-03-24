@@ -3,9 +3,11 @@ package app.table;
 import static util.Texts.SEP;
 
 import java.util.List;
+import java.util.ArrayList;
 import javafx.beans.property.*;
 
 public class TextDB {
+
   private final StringProperty icon;
   private final StringProperty actorName;
   private final StringProperty text;
@@ -36,10 +38,10 @@ public class TextDB {
       boolean position
       )
   {
-    this(icon, getActorName(textList), String.join(SEP, textList), background, position);
+    this(icon, getActorNameFromList(textList), getTextFromList(textList), background, position);
   }
 
-  public TextDB(TextDB textDB) {
+  public TextDB(TextDB textDB) {//{{{
 
     this.icon       = new SimpleStringProperty(textDB.iconProperty().get());
     this.actorName  = new SimpleStringProperty(textDB.actorNameProperty().get());
@@ -47,11 +49,10 @@ public class TextDB {
     this.background = new SimpleBooleanProperty(textDB.backgroundProperty().get());
     this.position   = new SimpleBooleanProperty(textDB.positionProperty().get());
 
-  }
+  }//}}}
 
-  // **************************************************
-  // Getter
-  // **************************************************
+  // Getter//{{{
+
   public StringProperty iconProperty() {
     return icon;
   }
@@ -68,9 +69,10 @@ public class TextDB {
     return position;
   }
 
-  // **************************************************
-  // Setter
-  // **************************************************
+  //}}}
+
+  // Setter//{{{
+
   public void setIcon(String icon) {
     iconProperty().set(icon);
   }
@@ -87,11 +89,24 @@ public class TextDB {
     positionProperty().set(position);
   }
 
-  private static String getActorName(List<String> list) {//{{{
+  //}}}
+
+  private static String getActorNameFromList(List<String> list) {//{{{
     if (0 < list.size()) {
       String actor = list.get(0);
       actor = actor.startsWith("#") ? actor.replaceAll("^# *", "") : "";
       return actor;
+    }
+    return "";
+  }//}}}
+
+  private static String getTextFromList(List<String> list) {//{{{
+    int size = list.size();
+    if (0 < size) {
+      String actor = list.get(0);
+      int fromIndex = actor.startsWith("#") ? 1 : 0;
+      List<String> subList = new ArrayList<>(list.subList(fromIndex, size));
+      return String.join(SEP, subList);
     }
     return "";
   }//}}}
