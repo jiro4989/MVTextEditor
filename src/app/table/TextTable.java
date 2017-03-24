@@ -31,6 +31,9 @@ public class TextTable extends AnchorPane {
       textColumn.setCellValueFactory(new PropertyValueFactory<TextDB, String>("text"));
       backgroundColumn.setCellValueFactory(new PropertyValueFactory<TextDB, Boolean>("background"));
       positionColumn.setCellValueFactory(new PropertyValueFactory<TextDB, Boolean>("position"));
+
+      backgroundColumn.setCellFactory(CheckBoxTableCell.forTableColumn(backgroundColumn));
+      positionColumn.setCellFactory(CheckBoxTableCell.forTableColumn(positionColumn));
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -38,7 +41,7 @@ public class TextTable extends AnchorPane {
 
   public void setTextList(List<List<String>> listList) {//{{{
     listList.stream().forEach(list -> {
-      tableView.getItems().add(new TextDB("actor01:0", list, false, false));
+      tableView.getItems().add(new TextDB("actor01:0", list, true, false));
     });
   }//}}}
 

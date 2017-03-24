@@ -1,0 +1,98 @@
+paragraph 001 : # アクちゃん
+paragraph 001 : 「やぁみんな。私、アクちゃん！
+paragraph 001 :   みんなにこのアプリケーションの使い方を教えるナビゲー
+paragraph 001 :   タなんだ！」
+paragraph 002 : # アクちゃん
+paragraph 002 : 「今、私の名前を上の#で始まる行に書いたよね。
+paragraph 002 :   あれは、私の発言にアクター名を表示するっていう意味な
+paragraph 002 :   んだ。」
+paragraph 003 : # アクちゃん
+paragraph 003 : 「それで、新しく#で始まる行にアクター名を記述しなかっ
+paragraph 003 :   たら、
+paragraph 003 :   改行だけの行を挟んださきもすべて私の名前が自動で追加
+paragraph 004 :   されるようになるんだ！」
+paragraph 005 : # アクちゃん
+paragraph 005 : 「ちなみに、このサンプルテキストの１行目にある数字は
+paragraph 005 :   文字を折り返すときの目安なんだ。」
+paragraph 006 : # アクちゃん
+paragraph 006 : 「「折り返す」っていうのは、あの数字よりも長く文章を書
+paragraph 006 :   いた時に、
+paragraph 006 :   画面に表示しきれなくなっちゃうといけないから、ちゃん
+paragraph 007 :   と画面内に
+paragraph 007 :   収まるように、文章の長さを整えるっていうことなんだ！
+paragraph 007 :   」
+paragraph 008 : # アクちゃん
+paragraph 008 : 「例えば、私のこの文章なんだけど、このソフトを使ったら
+paragraph 008 :   、
+paragraph 008 :   こんな感じに文章が折り返すよ！」
+paragraph 009 : # 変換前！
+paragraph 009 : 「あいうえおかきくけこさしすせそたちつてとなにぬねのは
+paragraph 009 :   ひふへほまみむめもやゆよらりるれろわをん」
+paragraph 010 : # 変換後！
+paragraph 010 : 「あいうえおかきくけこさしすせそたちつてとなにぬねのは
+paragraph 010 :   ひ
+paragraph 010 :   ふへほまみむめもやゆよらりるれろわをん」
+paragraph 011 : # アクちゃん
+paragraph 011 : 「どうかな？
+paragraph 011 :   ツクール内で全く同じ文章になってたかな？
+paragraph 011 :   きちんと折り返せていたらアクちゃん感激！」
+paragraph 012 : # アクちゃん
+paragraph 012 : 「あ、ちなみに、このアクちゃんっていうのはウィンドウの
+paragraph 012 :   先頭に
+paragraph 012 :   表示している発言者の名前だよ！」
+paragraph 013 : # アクちゃん
+paragraph 013 : 「アクちゃんってテキストファイルに書いておくと、変換す
+paragraph 013 :   る時に
+paragraph 013 :   ウィンドウ上の名前に置換してくれるんだ！」
+paragraph 014 : # アクちゃん
+paragraph 014 : 「もちろん、ツクールの\n[1]っていう書き方で書いてもい
+paragraph 014 :   いんだけど、
+paragraph 014 :   それだとわかりにくくないかな？
+paragraph 015 :   アクちゃんだと、これが名前だって一目瞭然でしょ！」
+paragraph 016 : # アクちゃん
+paragraph 016 : 「それに、発言者は場面によって切り替わったりするけど、
+paragraph 016 :   そのたびに文章を書き換えないといけないのは、面倒だと
+paragraph 016 :   思うし、
+paragraph 017 :   何より、書き換え忘れもきっとでちゃうよ！」
+paragraph 018 : # アクちゃん
+paragraph 018 : 「あ、いい忘れてたけど、@はアットマークって読むんだよ
+paragraph 018 :   ！
+paragraph 018 :   エンターキーの左２つとなりくらいの場所にある記号なん
+paragraph 019 :   だ！」
+paragraph 020 : # アクちゃん
+paragraph 020 : 「それと、アクちゃんは全部半角小文字で入力しないとダメ
+paragraph 020 :   だよ？
+paragraph 020 :   一文字でも違ってたら、＠ｎａｍｅがそのまま表示されち
+paragraph 021 :   ゃうからね！」
+paragraph 022 : # アクちゃん
+paragraph 022 : 「そういえば、もしこのテキストを読んでる時に、折り返し
+paragraph 022 :   の表示がずれてるように見えたら、フォントを変更してみ
+paragraph 022 :   てね！」
+paragraph 023 : # アクちゃん
+paragraph 023 : 「MSゴシックっていうフォントに変更すると、綺麗に揃った
+paragraph 023 :   テキストになるはずだよ！
+paragraph 023 :   MSゴシックPじゃなくて、MSゴシックね！」
+paragraph 024 : # アクちゃん
+paragraph 024 : 「それとそれと！文章は段落単位で処理されるんだ！
+paragraph 024 :   一つの文章のまとまりは、改行だけの文字によって区切ら
+paragraph 024 :   れるんだ！
+paragraph 025 :   一つの文章のまとまりは、改行だけの文字によって区切ら
+paragraph 025 :   れるんだ！
+paragraph 025 :   一つの文章のまとまりは、改行だけの文字によって区切ら
+paragraph 025 :   れるんだ！」
+paragraph 027 : # テキちゃん
+paragraph 027 : 「どうでもいい話が長すぎやしないかしら？」
+paragraph 028 : # アクちゃん
+paragraph 028 : 「お、おまえはテキちゃん！？
+paragraph 028 :   なんで私のテキストファイルの中に！？」
+paragraph 029 : # テキちゃん
+paragraph 029 : 「あなたが話を脱線させてばかりで説明が進まないから私が
+paragraph 029 :   代行しに来たのよ。」
+paragraph 030 : # テキちゃん
+paragraph 030 : 「あ、私はテキちゃんよ。そこのアクちゃんとは犬猿の仲、
+paragraph 030 :   いうなれば永遠の好敵手(ライバル)といったところかしら
+paragraph 030 :   …。」
+paragraph 031 : # アクちゃん
+paragraph 031 : 「あなたが勝手に私を目の敵にしてるだけでしょ！？
+paragraph 031 :   なんでこんな私の晴れ舞台の中にまで邪魔しに来るのよ！
+paragraph 031 :   ！」

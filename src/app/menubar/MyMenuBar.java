@@ -100,6 +100,7 @@ public class MyMenuBar extends VBox {
           .brackets(BRACKETS)
           .joiningOption(false)
           .build();
+        ft.format().show();
         mainController.setTextList(ft.format().getTextList());
       } catch (IOException e) {
         e.printStackTrace();

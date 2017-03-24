@@ -1,5 +1,6 @@
 .root {
-  -fx-font-size: 11.0pt;
+  -fx-font-size: 10.0pt;
+  -fx-font-family: "Meiryo";
 }
 
 /* 操作モード変更ラジオボタン {{{*/
@@ -68,7 +69,9 @@
 
 /*}}}*/
 
-.list-view .list-cell:filled:hover {
+.list-view .list-cell:filled:hover,
+.table-view .table-cell:filled:hover
+{
   -fx-background-color: -fx-cell-focus-inner-border, -fx-selection-bar  ;
   -fx-background-insets: 0, 0 0 1 0 ;
   -fx-background: -fx-selection-bar ;
