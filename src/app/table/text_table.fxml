@@ -5,15 +5,15 @@
 <?import javafx.scene.layout.*?>
 
 
-<fx:root type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <TableView AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="アイコン" />
-          <TableColumn prefWidth="321.0" text="文章" />
-            <TableColumn minWidth="0.0" prefWidth="71.0" text="背景" />
-            <TableColumn prefWidth="116.0" text="ウィンドウの位置" />
-        </columns>
-      </TableView>
-   </children>
+<fx:root type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+  <children>
+    <TableView fx:id="tableView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <columns>
+        <TableColumn fx:id="iconColumn" prefWidth="75.0" text="アイコン" />
+        <TableColumn fx:id="textColumn" prefWidth="321.0" text="文章" />
+        <TableColumn fx:id="backgroundColumn" minWidth="0.0" prefWidth="71.0" text="背景" />
+        <TableColumn fx:id="positionColumn" prefWidth="116.0" text="ウィンドウの位置" />
+      </columns>
+    </TableView>
+  </children>
 </fx:root>

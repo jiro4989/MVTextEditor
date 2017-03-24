@@ -24,6 +24,7 @@ public class Main extends Application {
   public void start(Stage primaryStage) {//{{{
     mainMp = new MyProperties(MAIN_PROPERTIES);
     InitUtils.mkPropDirs();
+
     //changeLanguages();
     //PresetsUtils.mkInitDirs();
     //PresetsUtils.mkInitPresets();

@@ -14,22 +14,28 @@ import app.viewer.TextViewer;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 import javafx.fxml.FXML;
 
 public class MainController {
   private MyProperties formatProperties;
+  private MyProperties preferencesProperties;
 
   private static final int RETURN_SIZE = 27 * 2;
   private static final int INDENT_SIZE = 2;
   private static final Brackets BRACKETS = Brackets.TYPE1;
 
   @FXML private TextTable   textTable;
-  @FXML private TextManager textManager;
   @FXML private TextViewer  textViewer;
+  @FXML private TextManager textManager;
 
   @FXML private void initialize() {//{{{
     formatProperties = new MyProperties(FORMAT_PROPERTIES);
     formatProperties.load();
+
+    preferencesProperties = new MyProperties(PREFERENCES_PROPERTIES);
+    preferencesProperties.load();
+    preferencesProperties.changeLanguages();
 
     // TODO test code
     try {
@@ -51,8 +57,13 @@ public class MainController {
   void closeRequest() {//{{{
     Main.mainMp.setProperty(textTable);
     Main.mainMp.store();
-
     formatProperties.store();
+
+    // TODO 一時的な設定
+    String langs = Locale.getDefault().getLanguage();
+    preferencesProperties.setProperty("langs", langs);
+
+    preferencesProperties.store();
   }//}}}
 
 }
