@@ -10,7 +10,8 @@
     <TableView fx:id="tableView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <columns>
         <TableColumn fx:id="iconColumn" prefWidth="75.0" text="アイコン" />
-        <TableColumn fx:id="textColumn" prefWidth="321.0" text="文章" />
+        <TableColumn fx:id="actorNameColumn" prefWidth="75.0" text="キャラ名" />
+        <TableColumn fx:id="textColumn" prefWidth="450.0" text="文章" />
         <TableColumn fx:id="backgroundColumn" minWidth="0.0" prefWidth="71.0" text="背景" />
         <TableColumn fx:id="positionColumn" prefWidth="116.0" text="ウィンドウの位置" />
       </columns>

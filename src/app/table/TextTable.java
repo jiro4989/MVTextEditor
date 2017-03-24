@@ -13,6 +13,7 @@ public class TextTable extends AnchorPane {
   @FXML private TableView<TextDB> tableView;
 
   @FXML private TableColumn<TextDB, String> iconColumn;
+  @FXML private TableColumn<TextDB, String> actorNameColumn;
   @FXML private TableColumn<TextDB, String> textColumn;
   @FXML private TableColumn<TextDB, Boolean> backgroundColumn;
   @FXML private TableColumn<TextDB, Boolean> positionColumn;
@@ -26,6 +27,7 @@ public class TextTable extends AnchorPane {
       loader.load();
 
       iconColumn.setCellValueFactory(new PropertyValueFactory<TextDB, String>("icon"));
+      actorNameColumn.setCellValueFactory(new PropertyValueFactory<TextDB, String>("actorName"));
       textColumn.setCellValueFactory(new PropertyValueFactory<TextDB, String>("text"));
       backgroundColumn.setCellValueFactory(new PropertyValueFactory<TextDB, Boolean>("background"));
       positionColumn.setCellValueFactory(new PropertyValueFactory<TextDB, Boolean>("position"));
