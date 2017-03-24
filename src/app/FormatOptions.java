@@ -30,7 +30,6 @@ public class FormatOptions {
     String bracketsStr = mp.getProperty("brackets").orElse("TYPE1");
     brackets           = Brackets. fromString(bracketsStr).orElse(Brackets . TYPE1);
     joiningOption      = mp.getBooleanValue("joiningOption"  , "false");
-
   }//}}}
 
 }

@@ -2,6 +2,8 @@ package app.menubar;
 
 import static util.Texts.*;
 
+import jiro.java.lang.Brackets;
+import jiro.java.lang.FormattableText;
 import jiro.javafx.scene.control.DialogUtils;
 import jiro.javafx.stage.AboutStage;
 import jiro.javafx.stage.MyFileChooser;
@@ -23,13 +25,13 @@ import javafx.scene.layout.VBox;
 public class MyMenuBar extends VBox {
 
   private MainController mainController;
-  private final MyFileChooser mfc;
+  private final MyFileChooser textFileManager;
 
   // FXMLコンポーネント{{{
 
   // ファイル
   @FXML private Menu     fileMenu;
-  @FXML private MenuItem openCharaChipMenuItem;
+  @FXML private MenuItem openTextFileMenuItem;
   @FXML private MenuItem openSideViewMenuItem;
   @FXML private Menu     openWalkRecentMenu;
   @FXML private Menu     openSideViewRecentMenu;
@@ -50,11 +52,12 @@ public class MyMenuBar extends VBox {
 
   //}}}
 
-  // コンストラクタ
+  // constructor
 
   public MyMenuBar() {//{{{
 
-    mfc  = new MyFileChooser.Builder("Text Files", "*.txt").build();
+    textFileManager  = new MyFileChooser.Builder("Text Files", "*.txt")
+      .initDir("./input").build();
 
     URL location = getClass().getResource("my_menu_bar.fxml");
     ResourceBundle resources = ResourceBundle.getBundle(
@@ -75,11 +78,33 @@ public class MyMenuBar extends VBox {
     }
   }//}}}
 
-  // FXMLイベント
+  // fxml event
 
-  // ファイルメニュー
+  // file menu
 
-  @FXML private void openCharaChipMenuItemOnAction() {//{{{
+  @FXML private void openTextFileMenuItemOnAction() {//{{{
+    textFileManager.openFile().ifPresent(file -> {
+      // TODO 一時変数
+      final int RETURN_SIZE = 27 * 2;
+      final int INDENT_SIZE = 2;
+      final Brackets BRACKETS = Brackets.TYPE1;
+
+      // TODO test code
+      try {
+        FormattableText ft = new FormattableText.Builder(file)
+          .returnOption(true)
+          .returnSize(RETURN_SIZE)
+          .indentOption(true)
+          .indentSize(INDENT_SIZE)
+          .bracketsOption(true)
+          .brackets(BRACKETS)
+          .joiningOption(false)
+          .build();
+        mainController.setTextList(ft.getTextList());
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    });
   }//}}}
 
   @FXML private void openSideViewMenuItemOnAction() {//{{{
@@ -116,6 +141,19 @@ public class MyMenuBar extends VBox {
 
   @FXML private void forcedTerminateMenuItemOnAction() {//{{{
     DialogUtils.showForcedTerminationDialog();
+  }//}}}
+
+  // help menu
+
+  @FXML private void aboutMenuItemOnAction() {//{{{
+    AboutStage about = new AboutStage.Builder(TITLE, VERSION)
+      .author("次郎 (Jiro)")
+      .blog("次ログ")
+      .blogUrl("http://jiroron666.hatenablog.com/")
+      .css(BASIC_CSS)
+      .appIcon(APP_ICON)
+      .build();
+    about.showAndWait();
   }//}}}
 
   // Setter

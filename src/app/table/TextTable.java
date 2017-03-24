@@ -1,6 +1,7 @@
 package app.table;
 
 import java.io.IOException;
+import java.util.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -31,6 +32,12 @@ public class TextTable extends AnchorPane {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }//}}}
+
+  public void setTextList(List<List<String>> listList) {//{{{
+    listList.stream().forEach(list -> {
+      tableView.getItems().add(new TextDB("actor01:0", list, false, false));
+    });
   }//}}}
 
 }
