@@ -8,6 +8,7 @@ import jiro.javafx.stage.MyFileChooser;
 
 import app.manager.TextManager;
 import app.menubar.MyMenuBar;
+import app.table.TextDB;
 import app.table.TextTable;
 import app.viewer.TextViewer;
 
@@ -30,6 +31,7 @@ public class MainController {
 
   @FXML private void initialize() {//{{{
     myMenuBar.setMainController(this);
+    textTable.setMainController(this);
 
     formatProperties = new MyProperties(FORMAT_PROPERTIES);
     formatProperties.load();
@@ -56,6 +58,10 @@ public class MainController {
     preferencesProperties.setProperty("langs", langs);
 
     preferencesProperties.store();
+  }//}}}
+
+  public void updateTextViewer(TextDB db) {//{{{
+    textViewer.update(db);
   }//}}}
 
 }

@@ -1,5 +1,7 @@
 package app.table;
 
+import app.MainController;
+
 import java.io.IOException;
 import java.util.*;
 import javafx.fxml.FXML;
@@ -10,13 +12,14 @@ import javafx.scene.layout.*;
 
 public class TextTable extends AnchorPane {
 
-  @FXML private TableView<TextDB> tableView;
+  private Optional<MainController> mainControllerOpt = Optional.empty();
 
+  @FXML private TableView<TextDB> tableView;
   @FXML private TableColumn<TextDB, String> iconColumn;
   @FXML private TableColumn<TextDB, String> actorNameColumn;
   @FXML private TableColumn<TextDB, String> textColumn;
-  @FXML private TableColumn<TextDB, Boolean> backgroundColumn;
-  @FXML private TableColumn<TextDB, Boolean> positionColumn;
+  @FXML private TableColumn<TextDB, String> backgroundColumn;
+  @FXML private TableColumn<TextDB, String> positionColumn;
 
   public TextTable() {//{{{
     FXMLLoader loader = new FXMLLoader(getClass().getResource("text_table.fxml"));
@@ -26,14 +29,24 @@ public class TextTable extends AnchorPane {
     try {
       loader.load();
 
-      iconColumn.setCellValueFactory(new PropertyValueFactory<TextDB, String>("icon"));
-      actorNameColumn.setCellValueFactory(new PropertyValueFactory<TextDB, String>("actorName"));
-      textColumn.setCellValueFactory(new PropertyValueFactory<TextDB, String>("text"));
-      backgroundColumn.setCellValueFactory(new PropertyValueFactory<TextDB, Boolean>("background"));
-      positionColumn.setCellValueFactory(new PropertyValueFactory<TextDB, Boolean>("position"));
+      iconColumn       . setCellValueFactory(new PropertyValueFactory<TextDB, String>("icon"));
+      actorNameColumn  . setCellValueFactory(new PropertyValueFactory<TextDB, String>("actorName"));
+      textColumn       . setCellValueFactory(new PropertyValueFactory<TextDB, String>("text"));
+      backgroundColumn . setCellValueFactory(new PropertyValueFactory<TextDB, String>("background"));
+      positionColumn   . setCellValueFactory(new PropertyValueFactory<TextDB, String>("position"));
 
-      backgroundColumn.setCellFactory(CheckBoxTableCell.forTableColumn(backgroundColumn));
-      positionColumn.setCellFactory(CheckBoxTableCell.forTableColumn(positionColumn));
+      tableView.getFocusModel().focusedCellProperty().addListener((obs, oldVal, newVal) -> {
+        mainControllerOpt.ifPresent(mc -> {
+          SelectionModel<TextDB> model = tableView.getSelectionModel();
+          if (!model.isEmpty()) {
+            TextDB db = model.getSelectedItem();
+            mc.updateTextViewer(db);
+          }
+        });
+      });
+      tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+      tableView.getSelectionModel().setCellSelectionEnabled(true);
+
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -41,8 +54,12 @@ public class TextTable extends AnchorPane {
 
   public void setTextList(List<List<String>> listList) {//{{{
     listList.stream().forEach(list -> {
-      tableView.getItems().add(new TextDB("actor01:0", list, true, false));
+      tableView.getItems().add(new TextDB("C:/RPG/Project1/img/faces/actor01:0", list, "ウィンドウ", "下"));
     });
+  }//}}}
+
+  public void setMainController(MainController mc) {//{{{
+    mainControllerOpt = Optional.ofNullable(mc);
   }//}}}
 
 }

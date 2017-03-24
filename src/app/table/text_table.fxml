@@ -7,7 +7,7 @@
 
 <fx:root type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
   <children>
-    <TableView fx:id="tableView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <TableView fx:id="tableView" editable="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <columns>
         <TableColumn fx:id="iconColumn" prefWidth="75.0" text="アイコン" />
         <TableColumn fx:id="actorNameColumn" prefWidth="75.0" text="キャラ名" />

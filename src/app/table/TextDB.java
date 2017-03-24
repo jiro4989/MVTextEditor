@@ -11,31 +11,31 @@ public class TextDB {
   private final StringProperty icon;
   private final StringProperty actorName;
   private final StringProperty text;
-  private final BooleanProperty background;
-  private final BooleanProperty position;
+  private final StringProperty background;
+  private final StringProperty position;
 
   public TextDB(
       String icon,
       String actorName,
       String text,
-      boolean background,
-      boolean position
+      String background,
+      String position
       )
   {
 
     this.icon       = new SimpleStringProperty(icon);
     this.actorName  = new SimpleStringProperty(actorName);
     this.text       = new SimpleStringProperty(text);
-    this.background = new SimpleBooleanProperty(background);
-    this.position   = new SimpleBooleanProperty(position);
+    this.background = new SimpleStringProperty(background);
+    this.position   = new SimpleStringProperty(position);
 
   }
 
   public TextDB(
       String icon,
       List<String> textList,
-      boolean background,
-      boolean position
+      String background,
+      String position
       )
   {
     this(icon, getActorNameFromList(textList), getTextFromList(textList), background, position);
@@ -43,11 +43,11 @@ public class TextDB {
 
   public TextDB(TextDB textDB) {//{{{
 
-    this.icon       = new SimpleStringProperty(textDB.iconProperty().get());
-    this.actorName  = new SimpleStringProperty(textDB.actorNameProperty().get());
-    this.text       = new SimpleStringProperty(textDB.textProperty().get());
-    this.background = new SimpleBooleanProperty(textDB.backgroundProperty().get());
-    this.position   = new SimpleBooleanProperty(textDB.positionProperty().get());
+    this . icon       = new SimpleStringProperty(textDB . iconProperty()       . get());
+    this . actorName  = new SimpleStringProperty(textDB . actorNameProperty()  . get());
+    this . text       = new SimpleStringProperty(textDB . textProperty()       . get());
+    this . background = new SimpleStringProperty(textDB . backgroundProperty() . get());
+    this . position   = new SimpleStringProperty(textDB . positionProperty()   . get());
 
   }//}}}
 
@@ -62,10 +62,10 @@ public class TextDB {
   public StringProperty textProperty() {
     return text;
   }
-  public BooleanProperty backgroundProperty() {
+  public StringProperty backgroundProperty() {
     return background;
   }
-  public BooleanProperty positionProperty() {
+  public StringProperty positionProperty() {
     return position;
   }
 
@@ -82,10 +82,10 @@ public class TextDB {
   public void setText(String text) {
     textProperty().set(text);
   }
-  public void setBackground(boolean background) {
+  public void setBackground(String background) {
     backgroundProperty().set(background);
   }
-  public void setPosition(boolean position) {
+  public void setPosition(String position) {
     positionProperty().set(position);
   }
 
@@ -109,6 +109,12 @@ public class TextDB {
       return String.join(SEP, subList);
     }
     return "";
+  }//}}}
+
+  @Override
+  public String toString() {//{{{
+    return String.format("TextDB: {icon: %s, actorName: %s, text: %s, background: %s, position: %s}",
+        icon.get(), actorName.get(), text.get(), background.get(), position.get());
   }//}}}
 
 }
