@@ -37,6 +37,8 @@ public class TextTable extends AnchorPane {
       backgroundColumn . setCellValueFactory(new PropertyValueFactory<TextDB, String>("background"));
       positionColumn   . setCellValueFactory(new PropertyValueFactory<TextDB, String>("position"));
 
+      iconColumn.setCellFactory(col -> new ImageTableCell());
+
       tableView.getFocusModel().focusedCellProperty().addListener((obs, oldVal, newVal) -> {
         mainControllerOpt.ifPresent(mc -> {
           SelectionModel<TextDB> model = tableView.getSelectionModel();
@@ -56,7 +58,7 @@ public class TextTable extends AnchorPane {
 
   public void setTextList(List<List<String>> listList) {//{{{
     listList.stream().forEach(list -> {
-      tableView.getItems().add(new TextDB("C:/RPG/Project1/img/faces/Actor1.png", 1, list, "ウィンドウ", "下"));
+      tableView.getItems().add(new TextDB("C:/RPG/Project1/img/faces/Actor1.png", 0, list, "ウィンドウ", "下"));
     });
   }//}}}
 
