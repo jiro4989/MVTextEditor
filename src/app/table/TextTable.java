@@ -16,6 +16,7 @@ public class TextTable extends AnchorPane {
 
   @FXML private TableView<TextDB> tableView;
   @FXML private TableColumn<TextDB, String> iconColumn;
+  @FXML private TableColumn<TextDB, Integer> iconIndexColumn;
   @FXML private TableColumn<TextDB, String> actorNameColumn;
   @FXML private TableColumn<TextDB, String> textColumn;
   @FXML private TableColumn<TextDB, String> backgroundColumn;
@@ -30,6 +31,7 @@ public class TextTable extends AnchorPane {
       loader.load();
 
       iconColumn       . setCellValueFactory(new PropertyValueFactory<TextDB, String>("icon"));
+      iconIndexColumn  . setCellValueFactory(new PropertyValueFactory<TextDB, Integer>("iconIndex"));
       actorNameColumn  . setCellValueFactory(new PropertyValueFactory<TextDB, String>("actorName"));
       textColumn       . setCellValueFactory(new PropertyValueFactory<TextDB, String>("text"));
       backgroundColumn . setCellValueFactory(new PropertyValueFactory<TextDB, String>("background"));
@@ -54,7 +56,7 @@ public class TextTable extends AnchorPane {
 
   public void setTextList(List<List<String>> listList) {//{{{
     listList.stream().forEach(list -> {
-      tableView.getItems().add(new TextDB("C:/RPG/Project1/img/faces/actor01:0", list, "ウィンドウ", "下"));
+      tableView.getItems().add(new TextDB("C:/RPG/Project1/img/faces/Actor1.png", 1, list, "ウィンドウ", "下"));
     });
   }//}}}
 

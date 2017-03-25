@@ -1,5 +1,8 @@
 package util;
 
+import java.nio.IntBuffer;
+import javafx.scene.image.WritablePixelFormat;
+
 public class Texts {
 
   private static final String JAR_NAME = "mvte";
@@ -17,5 +20,11 @@ public class Texts {
   public static final String PREFERENCES_PROPERTIES = PROP_DIR + "/preferences.xml";
 
   public static final String SEP = System.lineSeparator();
+
+  public static final int WIDTH  = 144;
+  public static final int HEIGHT = 144;
+
+  // 画像処理の書式(ARGB)
+  public static final WritablePixelFormat<IntBuffer> FORMAT = WritablePixelFormat.getIntArgbInstance();
 
 }

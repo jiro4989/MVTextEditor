@@ -1,15 +1,18 @@
 package app.viewer;
 
+import static util.Texts.*;
+
 import app.table.TextDB;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.image.*;
 import javafx.scene.layout.*;
 
 public class TextViewer extends VBox {
-
+  @FXML private ImageView imageView;
   @FXML private TextArea textArea;
   @FXML private ComboBox<String> windowComboBox;
   @FXML private ComboBox<String> positionComboBox;
@@ -28,6 +31,16 @@ public class TextViewer extends VBox {
 
   public void update(TextDB db) {//{{{
     textArea.setText(db.textProperty().get());
+    String path = db.iconProperty().get();
+    int index = db.iconIndexProperty().get();
+
+    Image img = new Image("file:" + path);
+    int x = index % 4 * WIDTH;
+    int y = index / 4 * HEIGHT;
+
+    PixelReader reader = img.getPixelReader();
+    Image newImage = new WritableImage(reader, x, y, WIDTH, HEIGHT);
+    imageView.setImage(newImage);
   }//}}}
 
 }

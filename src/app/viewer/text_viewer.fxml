@@ -28,7 +28,7 @@
                     <Font size="20.0" />
                   </font>
                 </Label>
-                <ImageView fitHeight="144.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <ImageView fx:id="imageView" fitHeight="144.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
                 <Button mnemonicParsing="false" opacity="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
               </children>
             </AnchorPane>
