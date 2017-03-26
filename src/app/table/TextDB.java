@@ -9,7 +9,6 @@ import javafx.beans.property.*;
 public class TextDB {
 
   private final StringProperty icon;
-  private final IntegerProperty iconIndex;
   private final StringProperty actorName;
   private final StringProperty text;
   private final StringProperty background;
@@ -17,7 +16,6 @@ public class TextDB {
 
   public TextDB(
       String icon,
-      int iconIndex,
       String actorName,
       String text,
       String background,
@@ -26,7 +24,6 @@ public class TextDB {
   {
 
     this.icon       = new SimpleStringProperty(icon);
-    this.iconIndex  = new SimpleIntegerProperty(iconIndex);
     this.actorName  = new SimpleStringProperty(actorName);
     this.text       = new SimpleStringProperty(text);
     this.background = new SimpleStringProperty(background);
@@ -36,19 +33,17 @@ public class TextDB {
 
   public TextDB(
       String icon,
-      int iconIndex,
       List<String> textList,
       String background,
       String position
       )
   {
-    this(icon, iconIndex, getActorNameFromList(textList), getTextFromList(textList), background, position);
+    this(icon, getActorNameFromList(textList), getTextFromList(textList), background, position);
   }
 
   public TextDB(TextDB textDB) {//{{{
 
     this . icon       = new SimpleStringProperty(textDB  . iconProperty()       . get());
-    this . iconIndex  = new SimpleIntegerProperty(textDB . iconIndexProperty()  . get());
     this . actorName  = new SimpleStringProperty(textDB  . actorNameProperty()  . get());
     this . text       = new SimpleStringProperty(textDB  . textProperty()       . get());
     this . background = new SimpleStringProperty(textDB  . backgroundProperty() . get());
@@ -60,9 +55,6 @@ public class TextDB {
 
   public StringProperty iconProperty() {
     return icon;
-  }
-  public IntegerProperty iconIndexProperty() {
-    return iconIndex;
   }
   public StringProperty actorNameProperty() {
     return actorName;
@@ -83,9 +75,6 @@ public class TextDB {
 
   public void setIcon(String icon) {
     iconProperty().set(icon);
-  }
-  public void setIconIndex(int iconIndex) {
-    iconIndexProperty().set(iconIndex);
   }
   public void setActorName(String actorName) {
     actorNameProperty().set(actorName);

@@ -32,8 +32,10 @@ public class TextViewer extends VBox {
   public void update(TextDB db) {//{{{
     textArea.setText(db.textProperty().get());
     String path = db.iconProperty().get();
-    int index = db.iconIndexProperty().get();
+    String[] strs = path.split(":");
+    path = createFilePath(strs);
 
+    int index = Integer.parseInt(strs[strs.length - 1]);
     Image img = new Image("file:" + path);
     int x = index % 4 * WIDTH;
     int y = index / 4 * HEIGHT;

@@ -27,4 +27,12 @@ public class Texts {
   // 画像処理の書式(ARGB)
   public static final WritablePixelFormat<IntBuffer> FORMAT = WritablePixelFormat.getIntArgbInstance();
 
+  public static String createFilePath(String[] array) {//{{{
+    String[] newArray = new String[array.length-1];
+    for (int i=0; i<array.length-1; i++) {
+      newArray[i] = array[i];
+    }
+    return String.join(":", newArray);
+  }//}}}
+
 }

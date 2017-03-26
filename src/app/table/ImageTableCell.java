@@ -10,13 +10,11 @@ import javafx.scene.layout.*;
 class ImageTableCell extends TableCell<TextDB, String> {
   private final VBox vBox;
   private final ImageView imageView;
-  //private final Label label;
   private static Map<String, Image[]> imageMap;
 
   ImageTableCell() {//{{{
     super();
     imageView = new ImageView();
-    //label     = new Label();
     vBox      = new VBox();
     imageMap  = new HashMap<>();
 
@@ -25,7 +23,6 @@ class ImageTableCell extends TableCell<TextDB, String> {
     imageView.setFitHeight(s);
     vBox.setSpacing(10);
     vBox.getChildren().add(imageView);
-    //vBox.getChildren().add(label);
   }//}}}
 
   @Override
@@ -34,15 +31,17 @@ class ImageTableCell extends TableCell<TextDB, String> {
     if (item != null) {
       Image[] imgs = imageMap.get(item);
       if (imgs == null) {
-        imgs = createTrimmedImages(item);
+        String[] strs = item.split(":");
+        String path = createFilePath(strs);
+        imgs = createTrimmedImages(path);
         imageMap.put(item, imgs);
       }
 
-      int index = 0;
+      String[] strs = item.split(":");
+      int index = Integer.parseInt(strs[strs.length - 1]);
       Image img = imgs[index];
 
       imageView.setImage(img);
-      //label.setText(item);
       setGraphic(vBox);
       return;
     }

@@ -10,7 +10,6 @@
     <TableView fx:id="tableView" editable="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <columns>
         <TableColumn fx:id="iconColumn" prefWidth="75.0" text="Icon" />
-        <TableColumn fx:id="iconIndexColumn" prefWidth="75.0" text="IconIndex" />
         <TableColumn fx:id="actorNameColumn" prefWidth="75.0" text="Name" />
         <TableColumn fx:id="textColumn" prefWidth="450.0" text="Text" />
         <TableColumn fx:id="backgroundColumn" minWidth="0.0" prefWidth="71.0" text="Background" />
