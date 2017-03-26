@@ -1,11 +1,17 @@
 package app.table;
 
+import static util.Texts.*;
+
+import util.ResourceBundleWithUtf8;
+
 import app.MainController;
+import app.selector.ImageSelector;
 
 import java.io.IOException;
 import java.util.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
 import javafx.scene.layout.*;
@@ -39,16 +45,26 @@ public class TextTable extends AnchorPane {
 
       tableView.getFocusModel().focusedCellProperty().addListener((obs, oldVal, newVal) -> {
         mainControllerOpt.ifPresent(mc -> {
-          SelectionModel<TextDB> model = tableView.getSelectionModel();
-          if (!model.isEmpty()) {
-            TextDB db = model.getSelectedItem();
-            mc.updateTextViewer(db);
-          }
+          getSelectedItem().ifPresent(item -> {
+            mc.updateTextViewer(item);
+          });
         });
       });
+
+      tableView.setOnMouseClicked(e -> {
+        if (e.getClickCount() == 2) {
+          getSelectedItem().ifPresent(item -> {
+            String icon = item.iconProperty().get();
+            String path = createFilePath(icon.split(":"));
+
+            ImageSelector selector = new ImageSelector(path);
+            selector.showAndWait();
+          });
+        }
+      });
+
       tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
       tableView.getSelectionModel().setCellSelectionEnabled(true);
-
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -62,6 +78,14 @@ public class TextTable extends AnchorPane {
 
   public void setMainController(MainController mc) {//{{{
     mainControllerOpt = Optional.ofNullable(mc);
+  }//}}}
+
+  private Optional<TextDB> getSelectedItem() {//{{{
+    SelectionModel<TextDB> model = tableView.getSelectionModel();
+    if (!model.isEmpty()) {
+      return Optional.ofNullable(model.getSelectedItem());
+    }
+    return Optional.empty();
   }//}}}
 
 }
