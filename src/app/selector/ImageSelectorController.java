@@ -2,6 +2,7 @@ package app.selector;
 
 import java.io.IOException;
 import java.nio.file.*;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
@@ -32,6 +33,11 @@ public class ImageSelectorController {
     } catch (IOException e) {
       e.printStackTrace();
     }
+
+    listView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+      Path newPath = Paths.get(path.toString(), newVal);
+      setImage(newPath.toString());
+    });
   }
 
   void setImage(String path) {//{{{
@@ -42,6 +48,8 @@ public class ImageSelectorController {
     imageView.setImage(img);
     imageView.setFitWidth(width);
     imageView.setFitHeight(height);
+    parentGridPane.setPrefWidth(width);
+    parentGridPane.setPrefHeight(height);
   }//}}}
 
   void setFilePath(String path) {//{{{

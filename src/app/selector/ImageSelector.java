@@ -26,7 +26,7 @@ public class ImageSelector extends Stage {
     try {
       BorderPane root = (BorderPane) loader.load();
       ImageSelectorController controller = (ImageSelectorController) loader.getController();
-      Scene scene = new Scene(root);
+      Scene scene = new Scene(root, 800, 500);
       scene.getStylesheets().add(getClass().getResource(BASIC_CSS).toExternalForm());
       setScene(scene);
 
