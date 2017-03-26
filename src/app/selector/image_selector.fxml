@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
+<?import jiro.javafx.scene.layout.ImageSelectorPane?>
 
 <BorderPane fx:controller="app.selector.ImageSelectorController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
   <center>
@@ -35,40 +36,9 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
-                    <GridPane fx:id="parentGridPane" gridLinesVisible="true" prefHeight="288.0" prefWidth="576.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      </columnConstraints>
-                      <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      </rowConstraints>
-                      <children>
-                        <AnchorPane>
-                          <children>
-                            <ImageView fx:id="imageView" onMouseMoved="#imageViewOnMouseMoved" fitHeight="144.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
 
-                            <GridPane fx:id="focusGridPane" onMouseClicked="#focusGridPaneOnMouseClicked" gridLinesVisible="true" opacity="0.25" prefHeight="144.0" prefWidth="144.0" style="-fx-background-color: rgb(0, 255, 25);">
-                              <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              </columnConstraints>
-                              <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              </rowConstraints>
-                            </GridPane>
+                    <ImageSelectorPane fx:id="imageSelectorPane" />
 
-                            <GridPane fx:id="selectedGridPane" onMouseClicked="#selectedGridPaneOnMouseClicked" onMouseMoved="#selectedGridPaneOnMouseMoved" gridLinesVisible="true" opacity="0.25" prefHeight="144.0" prefWidth="144.0" style="-fx-background-color: rgb(0, 25, 225);">
-                              <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              </columnConstraints>
-                              <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              </rowConstraints>
-                            </GridPane>
-
-                          </children>
-                        </AnchorPane>
-                      </children>
-                    </GridPane>
                   </children>
                 </AnchorPane>
               </content>
