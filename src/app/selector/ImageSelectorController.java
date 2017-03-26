@@ -65,14 +65,6 @@ public class ImageSelectorController {
   // fxml event
 
   @FXML private void okButtonOnAction() {//{{{
-    //baseX = (int) selectedGridPane.getLayoutX();
-    //baseY = (int) selectedGridPane.getLayoutY();
-    //int col = baseX / WIDTH;
-    //int row = baseY / HEIGHT;
-    //selectedIndex = col + row * 4;
-    int index = imageSelectorPane.getSelectedIndex();
-    System.out.println("index: " + index);
-
     getStage().hide();
   }//}}}
 
@@ -84,7 +76,7 @@ public class ImageSelectorController {
 
   // Getter
 
-  public int getSelectedIndex() { return 255; }
+  public int getSelectedIndex() { return imageSelectorPane.getSelectedIndex(); }
 
 }
 
