@@ -1,3 +1,5 @@
+- [ ] 設定ファイルにプロジェクトルートをセットする
+
 - [ ] Enter, Ctrl+Enterでフォーカスの相互移動
 - [ ] File関連のAPIは古すぎるので、java.nio.fileクラスで書き直す。
 - [ ] TextManagerのカーソル位置の背景色の変更

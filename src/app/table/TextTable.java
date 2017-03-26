@@ -59,6 +59,8 @@ public class TextTable extends AnchorPane {
 
             ImageSelector selector = new ImageSelector(path);
             selector.showAndWait();
+            int index = selector.getSelectedIndex();
+            System.out.println(index);
           });
         }
       });

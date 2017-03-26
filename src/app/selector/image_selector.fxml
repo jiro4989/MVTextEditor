@@ -17,70 +17,81 @@
 
 
 <BorderPane fx:controller="app.selector.ImageSelectorController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <SplitPane fx:id="splitPane" dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0">
-               <children>
-                  <TitledPane fx:id="listViewTitledPane" animated="false" collapsible="false" text="Files" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <content>
-                        <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" />
-                     </content>
-                  </TitledPane>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <TitledPane fx:id="imageViewTitledPane" animated="false" collapsible="false" text="Selector" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <GridPane fx:id="parentGridPane" gridLinesVisible="true" prefHeight="288.0" prefWidth="576.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <AnchorPane>
-                                       <children>
-                                          <ImageView fx:id="imageView" fitHeight="144.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                          <GridPane fx:id="focusGridPane" gridLinesVisible="true" opacity="0.25" prefHeight="144.0" prefWidth="144.0" style="-fx-background-color: rgb(0, 255, 25);;">
-                                            <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                          </GridPane>
-                                       </children>
-                                    </AnchorPane>
-                                 </children>
-                              </GridPane>
-                           </children>
+  <center>
+    <SplitPane fx:id="splitPane" dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0">
+          <children>
+            <TitledPane fx:id="listViewTitledPane" animated="false" collapsible="false" text="Files" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <content>
+                <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <TitledPane fx:id="imageViewTitledPane" animated="false" collapsible="false" text="Selector" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <GridPane fx:id="parentGridPane" gridLinesVisible="true" prefHeight="288.0" prefWidth="576.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                      <children>
+                        <AnchorPane>
+                          <children>
+                            <ImageView fx:id="imageView" onMouseMoved="#imageViewOnMouseMoved" fitHeight="144.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+
+                            <GridPane fx:id="focusGridPane" onMouseClicked="#focusGridPaneOnMouseClicked" gridLinesVisible="true" opacity="0.25" prefHeight="144.0" prefWidth="144.0" style="-fx-background-color: rgb(0, 255, 25);">
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+
+                            <GridPane fx:id="selectedGridPane" onMouseClicked="#selectedGridPaneOnMouseClicked" onMouseMoved="#selectedGridPaneOnMouseMoved" gridLinesVisible="true" opacity="0.25" prefHeight="144.0" prefWidth="144.0" style="-fx-background-color: rgb(0, 25, 225);">
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+
+                          </children>
                         </AnchorPane>
-                    </content>
-                  </TitledPane>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-   </center>
-   <bottom>
-      <VBox spacing="5.0" BorderPane.alignment="CENTER">
-         <children>
-            <Separator />
-            <HBox alignment="CENTER_RIGHT" spacing="10.0">
-               <children>
-                  <Button mnemonicParsing="false" prefWidth="100.0" text="Button" />
-                  <Button mnemonicParsing="false" prefWidth="100.0" text="Button" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </bottom>
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
+                      </children>
+                    </GridPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </TitledPane>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </center>
+  <bottom>
+    <VBox spacing="5.0" BorderPane.alignment="CENTER">
+      <children>
+        <Separator />
+        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+          <children>
+            <Button fx:id="okButton" onAction="#okButtonOnAction" mnemonicParsing="false" prefWidth="100.0" text="OK" />
+            <Button fx:id="cancelButton" onAction="#cancelButtonOnAction" mnemonicParsing="false" prefWidth="100.0" text="CANCEL" />
+          </children>
+        </HBox>
+      </children>
+    </VBox>
+  </bottom>
+  <padding>
+    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+  </padding>
 </BorderPane>
