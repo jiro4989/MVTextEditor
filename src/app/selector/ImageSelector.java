@@ -24,7 +24,6 @@ public class ImageSelector extends Stage {
     FXMLLoader loader = new FXMLLoader(location, resources);
 
     try {
-
       BorderPane root = (BorderPane) loader.load();
       ImageSelectorController controller = (ImageSelectorController) loader.getController();
       Scene scene = new Scene(root);
@@ -34,6 +33,8 @@ public class ImageSelector extends Stage {
       initStyle(StageStyle.UTILITY);
       initModality(Modality.APPLICATION_MODAL);
       setTitle(resources.getString("stage.title"));
+
+      controller.setImage(path);
     } catch (IOException e) {
       e.printStackTrace();
     }
