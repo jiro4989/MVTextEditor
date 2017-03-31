@@ -6,11 +6,8 @@ import jiro.java.util.MyProperties;
 import jiro.javafx.stage.AboutStage;
 import jiro.javafx.stage.MyFileChooser;
 
-import app.manager.TextManager;
-import app.menubar.MyMenuBar;
 import app.table.TextDB;
 import app.table.TextTable;
-import app.viewer.TextViewer;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,18 +18,27 @@ import javafx.scene.control.*;
 public class MainController {
   private MyProperties formatProperties;
   private MyProperties preferencesProperties;
+  private MyMenuBar myMenubar;
+  private TextTable textTable;
 
-  // fxml component
+  // fxml component//{{{
 
-  @FXML private MyMenuBar   myMenuBar;
-  @FXML private TextTable   textTable;
-  @FXML private TextViewer  textViewer;
-  @FXML private TextManager textManager;
+  // menubar
+
+  @FXML private MenuItem openTextFileMenuItem;
+
+  // table
+
+  @FXML private TableView<TextDB> tableView;
+  @FXML private TableColumn<TextDB, String> iconColumn;
+  @FXML private TableColumn<TextDB, String> nameColumn;
+  @FXML private TableColumn<TextDB, String> textColumn;
+  @FXML private TableColumn<TextDB, String> backgroundColumn;
+  @FXML private TableColumn<TextDB, String> positionColumn;
+
+//}}}
 
   @FXML private void initialize() {//{{{
-    myMenuBar.setMainController(this);
-    textTable.setMainController(this);
-
     formatProperties = new MyProperties(FORMAT_PROPERTIES);
     formatProperties.load();
 
@@ -40,16 +46,14 @@ public class MainController {
     preferencesProperties.load();
     preferencesProperties.changeLanguages();
 
+    myMenubar = new MyMenuBar(this, openTextFileMenuItem);
+    textTable = new TextTable(tableView, iconColumn, nameColumn, textColumn, backgroundColumn, positionColumn);
   }//}}}
 
   // public methods
 
-  public void setTextList(List<List<String>> listList) {//{{{
-    textTable.setTextList(listList);
-  }//}}}
-
   public void closeRequest() {//{{{
-    Main.mainMp.setProperty(textTable);
+    Main.mainMp.setProperty(tableView);
     Main.mainMp.store();
     formatProperties.store();
 
@@ -60,8 +64,14 @@ public class MainController {
     preferencesProperties.store();
   }//}}}
 
-  public void updateTextViewer(TextDB db) {//{{{
-    textViewer.update(db);
-  }//}}}
+  // fxml event
+
+  public void updateTextViewer(TextDB db) {
+
+  }
+
+  public void setTextList(List<List<String>> listList) {
+    textTable.setTextList(listList);
+  }
 
 }

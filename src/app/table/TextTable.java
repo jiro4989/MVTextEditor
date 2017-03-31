@@ -2,74 +2,75 @@ package app.table;
 
 import static util.Texts.*;
 
-import util.ResourceBundleWithUtf8;
-
-import app.MainController;
 import app.selector.ImageSelector;
 
-import java.io.IOException;
+import app.MainController;
+
 import java.util.*;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
-import javafx.scene.layout.*;
 
-public class TextTable extends AnchorPane {
+public class TextTable {
 
   private Optional<MainController> mainControllerOpt = Optional.empty();
 
-  @FXML private TableView<TextDB> tableView;
-  @FXML private TableColumn<TextDB, String> iconColumn;
-  @FXML private TableColumn<TextDB, String> actorNameColumn;
-  @FXML private TableColumn<TextDB, String> textColumn;
-  @FXML private TableColumn<TextDB, String> backgroundColumn;
-  @FXML private TableColumn<TextDB, String> positionColumn;
+  private final TableView<TextDB>           tableView;
+  private final TableColumn<TextDB, String> iconColumn;
+  private final TableColumn<TextDB, String> actorNameColumn;
+  private final TableColumn<TextDB, String> textColumn;
+  private final TableColumn<TextDB, String> backgroundColumn;
+  private final TableColumn<TextDB, String> positionColumn;
 
-  public TextTable() {//{{{
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("text_table.fxml"));
-    loader.setRoot(this);
-    loader.setController(this);
+  public TextTable(
+      TableView<TextDB> tv
+      , TableColumn<TextDB, String> ic
+      , TableColumn<TextDB, String> anc
+      , TableColumn<TextDB, String> tc
+      , TableColumn<TextDB, String> bgc
+      , TableColumn<TextDB, String> pc
+      )
+  {//{{{
 
-    try {
-      loader.load();
+    tableView        = tv;
+    iconColumn       = ic;
+    actorNameColumn  = anc;
+    textColumn       = tc;
+    backgroundColumn = bgc;
+    positionColumn   = pc;
 
-      iconColumn       . setCellValueFactory(new PropertyValueFactory<TextDB, String>("icon"));
-      actorNameColumn  . setCellValueFactory(new PropertyValueFactory<TextDB, String>("actorName"));
-      textColumn       . setCellValueFactory(new PropertyValueFactory<TextDB, String>("text"));
-      backgroundColumn . setCellValueFactory(new PropertyValueFactory<TextDB, String>("background"));
-      positionColumn   . setCellValueFactory(new PropertyValueFactory<TextDB, String>("position"));
+    iconColumn       . setCellValueFactory(new PropertyValueFactory<TextDB, String>("icon"));
+    actorNameColumn  . setCellValueFactory(new PropertyValueFactory<TextDB, String>("actorName"));
+    textColumn       . setCellValueFactory(new PropertyValueFactory<TextDB, String>("text"));
+    backgroundColumn . setCellValueFactory(new PropertyValueFactory<TextDB, String>("background"));
+    positionColumn   . setCellValueFactory(new PropertyValueFactory<TextDB, String>("position"));
 
-      iconColumn.setCellFactory(col -> new ImageTableCell());
+    iconColumn.setCellFactory(col -> new ImageTableCell());
 
-      tableView.getFocusModel().focusedCellProperty().addListener((obs, oldVal, newVal) -> {
-        mainControllerOpt.ifPresent(mc -> {
-          getSelectedItem().ifPresent(item -> {
-            mc.updateTextViewer(item);
-          });
+    tableView.getFocusModel().focusedCellProperty().addListener((obs, oldVal, newVal) -> {
+      mainControllerOpt.ifPresent(mc -> {
+        getSelectedItem().ifPresent(item -> {
+          mc.updateTextViewer(item);
         });
       });
+    });
 
-      tableView.setOnMouseClicked(e -> {
-        if (e.getClickCount() == 2) {
-          getSelectedItem().ifPresent(item -> {
-            String icon = item.iconProperty().get();
-            String path = createFilePath(icon.split(":"));
+    tableView.setOnMouseClicked(e -> {
+      if (e.getClickCount() == 2) {
+        getSelectedItem().ifPresent(item -> {
+          String icon = item.iconProperty().get();
+          String path = createFilePath(icon.split(":"));
 
-            ImageSelector selector = new ImageSelector(path);
-            selector.showAndWait();
-            int index = selector.getSelectedIndex();
-            System.out.println(index);
-          });
-        }
-      });
+          ImageSelector selector = new ImageSelector(path);
+          selector.showAndWait();
+          int index = selector.getSelectedIndex();
+          System.out.println(index);
+        });
+      }
+    });
 
-      tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-      tableView.getSelectionModel().setCellSelectionEnabled(true);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    tableView.getSelectionModel().setCellSelectionEnabled(true);
+
   }//}}}
 
   public void setTextList(List<List<String>> listList) {//{{{

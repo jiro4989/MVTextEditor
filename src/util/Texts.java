@@ -19,6 +19,8 @@ public class Texts {
   public static final String MAIN_PROPERTIES        = PROP_DIR + "/main.xml";
   public static final String PREFERENCES_PROPERTIES = PROP_DIR + "/preferences.xml";
 
+  public static final String KEY_PROJECT = "project";
+
   public static final String SEP = System.lineSeparator();
 
   public static final int WIDTH  = 144;

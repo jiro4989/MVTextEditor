@@ -32,7 +32,7 @@ public class Main extends Application {
     FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
 
     try {
-      BorderPane root = (BorderPane) loader.load();
+      VBox root = (VBox) loader.load();
       controller = (MainController) loader.getController();
       Scene scene = new Scene(root, 800, 600);
       scene.getStylesheets().add(BASIC_CSS);
