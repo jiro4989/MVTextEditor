@@ -60,15 +60,18 @@ public class TextTable {
         getSelectedItems().ifPresent(items -> {
           TextDB db = items.get(0);
           String icon = db.iconProperty().get();
-          String path = createFilePath(icon.split(":"));
-          ImageSelector selector = new ImageSelector(path);
-          selector.showAndWait();
-          int index = selector.getSelectedIndex();
+          if (icon != null || icon.length() == 0) {
+            String path = createFilePath(icon.split(":"));
+            ImageSelector selector = new ImageSelector(path);
+            selector.showAndWait();
 
-          items.stream().forEach(item -> {
-            item.setIconIndex(index);
-            updateTextView();
-          });
+            selector.getSelectedTileString().ifPresent(s -> {
+              items.stream().forEach(item -> {
+                item.setIcon(s);
+                updateTextView();
+              });
+            });
+          }
         });
       }
     });
@@ -80,7 +83,7 @@ public class TextTable {
 
   public void setTextList(List<List<String>> listList) {//{{{
     listList.stream().forEach(list -> {
-      tableView.getItems().add(new TextDB("C:/RPG/Project1/img/faces/Actor1.png:0", list, "ウィンドウ", "下"));
+      tableView.getItems().add(new TextDB("", list, "ウィンドウ", "下"));
     });
   }//}}}
 

@@ -7,6 +7,8 @@ public class Texts {
 
   private static final String JAR_NAME = "mvte";
 
+  public static final String SEP = System.lineSeparator();
+
   public static final String PROP_DIR      = "properties/" + JAR_NAME;
   public static final String TITLE         = "MV Text Editor";
   public static final String VERSION       = " ver 1.0.0";
@@ -20,8 +22,7 @@ public class Texts {
   public static final String PREFERENCES_PROPERTIES = PROP_DIR + "/preferences.xml";
 
   public static final String KEY_PROJECT = "project";
-
-  public static final String SEP = System.lineSeparator();
+  public static final String IMG_DIR_PATH = "img/faces";
 
   public static final int COLUMN = 4;
   public static final int WIDTH  = 144;

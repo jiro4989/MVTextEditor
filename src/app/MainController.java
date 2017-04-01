@@ -18,8 +18,10 @@ import javafx.scene.image.*;
 import javafx.scene.layout.*;
 
 public class MainController {
-  private MyProperties formatProperties;
-  private MyProperties preferencesProperties;
+
+  public static MyProperties formatProperties;
+  public static MyProperties preferencesProperties;
+
   private MyMenuBar myMenubar;
   private TextTable textTable;
   private TextView textView;

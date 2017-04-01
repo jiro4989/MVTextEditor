@@ -43,6 +43,6 @@ public class ImageSelector extends Stage {
 
   }//}}}
 
-  public int getSelectedIndex() { return controller.getSelectedIndex(); }
+  public Optional<String> getSelectedTileString() { return controller.getSelectedTileString(); }
 
 }

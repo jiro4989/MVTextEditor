@@ -28,7 +28,7 @@ class ImageTableCell extends TableCell<TextDB, String> {
   @Override
   protected void updateItem(String item, boolean empty) {//{{{
     super.updateItem(item, empty);
-    if (item != null) {
+    if (item != null && item.length() != 0) {
       Image[] imgs = imageMap.get(item);
       if (imgs == null) {
         String[] strs = item.split(":");

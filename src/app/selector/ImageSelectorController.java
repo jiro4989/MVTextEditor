@@ -5,6 +5,9 @@ import static util.Texts.*;
 import jiro.javafx.scene.layout.ImageSelectorPane;
 import jiro.javafx.scene.layout.DoubleClickInterface;
 
+import app.MainController;
+
+import java.util.Optional;
 import java.io.IOException;
 import java.nio.file.*;
 import javafx.beans.value.ObservableValue;
@@ -16,6 +19,8 @@ import javafx.scene.input.*;
 import javafx.stage.Stage;
 
 public class ImageSelectorController {
+
+  private Optional<String> pathOpt = Optional.empty();
 
   // fxml component//{{{
 
@@ -35,19 +40,26 @@ public class ImageSelectorController {
   // initialize
 
   @FXML private void initialize() {//{{{
-    // TODO 一時的な設定
-    Path path = Paths.get("c:", "rpg", "Project1", "img", "faces");
-    FileVisitor<Path> visitor = new MyFileVisitor(this);
-    try {
-      Files.walkFileTree(path, visitor);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    // 設定ファイル内にプロジェクトルートパスが設定されていたら
+    MainController.preferencesProperties
+      .getProperty(KEY_PROJECT).ifPresent(proj -> {
+        Path path = Paths.get(proj, IMG_DIR_PATH);
+        if (Files.exists(path)) {
+          try {
+            FileVisitor<Path> visitor = new MyFileVisitor(this);
+            Files.walkFileTree(path, visitor);
+          } catch (IOException e) {
+            e.printStackTrace();
+          }
 
-    listView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-      Path newPath = Paths.get(path.toString(), newVal);
-      setImage(newPath.toString());
-    });
+          listView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            Path newPath = Paths.get(path.toString(), newVal);
+            setImage(newPath.toString());
+          });
+
+          listView.getSelectionModel().selectFirst();
+        }
+      });
 
     imageSelectorPane.setWidth(WIDTH);
     imageSelectorPane.setHeight(HEIGHT);
@@ -55,7 +67,21 @@ public class ImageSelectorController {
   }//}}}
 
   void setImage(String path) {//{{{
-    imageSelectorPane.setImage(path);
+    Path p = Paths.get(path);
+    if (Files.exists(p)) {
+      imageSelectorPane.setImage(path);
+      pathOpt = Optional.ofNullable(path);
+
+      int index = 0;
+      String fileName = p.getFileName().toString();
+      for (String name : listView.getItems()) {
+        if (name.equals(fileName)) {
+          listView.getSelectionModel().select(index);
+          break;
+        }
+        index++;
+      }
+    }
   }//}}}
 
   void setFilePath(String path) {//{{{
@@ -76,7 +102,13 @@ public class ImageSelectorController {
 
   // Getter
 
-  public int getSelectedIndex() { return imageSelectorPane.getSelectedIndex(); }
+  public Optional<String> getSelectedTileString() {//{{{
+    if (pathOpt.isPresent()) {
+      int index = imageSelectorPane.getSelectedIndex();
+      return pathOpt.map(path -> path + ":" + index);
+    }
+    return Optional.empty();
+  }//}}}
 
 }
 

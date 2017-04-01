@@ -5,6 +5,7 @@ import static util.Texts.*;
 import app.MainController;
 import app.table.TextDB;
 
+import java.nio.file.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
@@ -44,16 +45,22 @@ class TextView {
     String bg   = db.backgroundProperty().get();
     String pos  = db.positionProperty().get();
 
-    String[] array      = icon.split(":");
-    String path         = createFilePath(array);
-    Image originalImage = new Image("file:" + path);
-    int index           = Integer.parseInt(array[array.length - 1]);
-    Image newImage      = createTrimmedImage(originalImage, index);
-
-    faceImageView.setImage(newImage);
     editorTextArea.setText(text);
     backgroundComboBox.setValue(bg);
     positionComboBox.setValue(pos);
+
+    if (icon != null && icon.length() != 0) {
+      String[] array      = icon.split(":");
+      String path         = createFilePath(array);
+
+      if (Files.exists(Paths.get(path))) {
+        Image originalImage = new Image("file:" + path);
+        int index           = Integer.parseInt(array[array.length - 1]);
+        Image newImage      = createTrimmedImage(originalImage, index);
+        faceImageView.setImage(newImage);
+        return;
+      }
+    }
   }//}}}
 
   /**
