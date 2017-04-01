@@ -14,12 +14,15 @@ import java.io.IOException;
 import java.util.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.layout.*;
 
 public class MainController {
   private MyProperties formatProperties;
   private MyProperties preferencesProperties;
   private MyMenuBar myMenubar;
   private TextTable textTable;
+  private TextView textView;
 
   // fxml component//{{{
 
@@ -36,7 +39,18 @@ public class MainController {
   @FXML private TableColumn<TextDB, String> backgroundColumn;
   @FXML private TableColumn<TextDB, String> positionColumn;
 
-//}}}
+  // textview
+
+  @FXML private ImageView faceImageView;
+  @FXML private GridPane colorPickerGridPane;
+  @FXML private ImageView colorPickerImageView;
+  @FXML private TextArea editorTextArea;
+  @FXML private ComboBox<String> backgroundComboBox;
+  @FXML private ComboBox<String> positionComboBox;
+
+  //}}}
+
+  // initialize
 
   @FXML private void initialize() {//{{{
     formatProperties = new MyProperties(FORMAT_PROPERTIES);
@@ -47,7 +61,8 @@ public class MainController {
     preferencesProperties.changeLanguages();
 
     myMenubar = new MyMenuBar(this, openTextFileMenuItem);
-    textTable = new TextTable(tableView, iconColumn, nameColumn, textColumn, backgroundColumn, positionColumn);
+    textTable = new TextTable(this, tableView, iconColumn, nameColumn, textColumn, backgroundColumn, positionColumn);
+    textView  = new TextView(this, faceImageView ,colorPickerGridPane ,colorPickerImageView ,editorTextArea ,backgroundComboBox ,positionComboBox);
   }//}}}
 
   // public methods
@@ -66,8 +81,8 @@ public class MainController {
 
   // fxml event
 
-  public void updateTextViewer(TextDB db) {
-
+  public void updateTextView(TextDB db) {
+    textView.update(db);
   }
 
   public void setTextList(List<List<String>> listList) {

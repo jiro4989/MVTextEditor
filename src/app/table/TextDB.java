@@ -1,6 +1,6 @@
 package app.table;
 
-import static util.Texts.SEP;
+import static util.Texts.*;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -14,7 +14,9 @@ public class TextDB {
   private final StringProperty background;
   private final StringProperty position;
 
-  public TextDB(
+  // constructor
+
+  public TextDB(//{{{
       String icon,
       String actorName,
       String text,
@@ -29,9 +31,9 @@ public class TextDB {
     this.background = new SimpleStringProperty(background);
     this.position   = new SimpleStringProperty(position);
 
-  }
+  }//}}}
 
-  public TextDB(
+  public TextDB(//{{{
       String icon,
       List<String> textList,
       String background,
@@ -39,7 +41,7 @@ public class TextDB {
       )
   {
     this(icon, getActorNameFromList(textList), getTextFromList(textList), background, position);
-  }
+  }//}}}
 
   public TextDB(TextDB textDB) {//{{{
 
@@ -50,6 +52,30 @@ public class TextDB {
     this . position   = new SimpleStringProperty(textDB  . positionProperty()   . get());
 
   }//}}}
+
+  // private methods
+
+  private static String getActorNameFromList(List<String> list) {//{{{
+    if (0 < list.size()) {
+      String actor = list.get(0);
+      actor = actor.startsWith("#") ? actor.replaceAll("^# *", "") : "";
+      return actor;
+    }
+    return "";
+  }//}}}
+
+  private static String getTextFromList(List<String> list) {//{{{
+    int size = list.size();
+    if (0 < size) {
+      String actor = list.get(0);
+      int fromIndex = actor.startsWith("#") ? 1 : 0;
+      List<String> subList = new ArrayList<>(list.subList(fromIndex, size));
+      return String.join(SEP, subList);
+    }
+    return "";
+  }//}}}
+
+  // Getter and Setter
 
   // Getter//{{{
 
@@ -73,6 +99,14 @@ public class TextDB {
 
   // Setter//{{{
 
+  public void setIconIndex(int index) {//{{{
+    String str           = iconProperty().get();
+    String[] array       = str.split(":");
+    String path          = createFilePath(array);
+    String newIconString = path + ":" + index;
+    setIcon(newIconString);
+  }//}}}
+
   public void setIcon(String icon) {
     iconProperty().set(icon);
   }
@@ -90,26 +124,6 @@ public class TextDB {
   }
 
   //}}}
-
-  private static String getActorNameFromList(List<String> list) {//{{{
-    if (0 < list.size()) {
-      String actor = list.get(0);
-      actor = actor.startsWith("#") ? actor.replaceAll("^# *", "") : "";
-      return actor;
-    }
-    return "";
-  }//}}}
-
-  private static String getTextFromList(List<String> list) {//{{{
-    int size = list.size();
-    if (0 < size) {
-      String actor = list.get(0);
-      int fromIndex = actor.startsWith("#") ? 1 : 0;
-      List<String> subList = new ArrayList<>(list.subList(fromIndex, size));
-      return String.join(SEP, subList);
-    }
-    return "";
-  }//}}}
 
   @Override
   public String toString() {//{{{

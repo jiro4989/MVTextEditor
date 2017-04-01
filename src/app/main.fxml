@@ -92,14 +92,14 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       </rowConstraints>
                       <children>
-                        <ImageView fitHeight="144.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="faceImageView" fitHeight="144.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true" />
                       </children>
                     </GridPane>
                   </left>
                   <center>
                     <VBox spacing="5.0" BorderPane.alignment="CENTER">
                       <children>
-                        <GridPane gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="192.0">
+                        <GridPane fx:id="colorPickerGridPane" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="192.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" />
                           </columnConstraints>
@@ -107,16 +107,16 @@
                             <RowConstraints vgrow="SOMETIMES" />
                           </rowConstraints>
                           <children>
-                            <ImageView fitHeight="24.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true" />
+                            <ImageView fx:id="colorPickerImageView" fitHeight="24.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true" />
                           </children>
                         </GridPane>
-                        <TextArea />
+                        <TextArea fx:id="editorTextArea" />
                         <HBox alignment="CENTER_RIGHT" spacing="5.0">
                           <children>
                             <Label text="Win:" />
-                            <ComboBox prefWidth="150.0" />
+                            <ComboBox fx:id="backgroundComboBox" prefWidth="150.0" />
                             <Label text="Pos:" />
-                            <ComboBox prefWidth="150.0" />
+                            <ComboBox fx:id="positionComboBox" prefWidth="150.0" />
                           </children>
                         </HBox>
                       </children>

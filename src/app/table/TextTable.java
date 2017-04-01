@@ -7,12 +7,15 @@ import app.selector.ImageSelector;
 import app.MainController;
 
 import java.util.*;
+import java.util.stream.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
 
 public class TextTable {
 
-  private Optional<MainController> mainControllerOpt = Optional.empty();
+  private final MainController mainController;
 
   private final TableView<TextDB>           tableView;
   private final TableColumn<TextDB, String> iconColumn;
@@ -22,7 +25,8 @@ public class TextTable {
   private final TableColumn<TextDB, String> positionColumn;
 
   public TextTable(
-      TableView<TextDB> tv
+      MainController mc
+      , TableView<TextDB> tv
       , TableColumn<TextDB, String> ic
       , TableColumn<TextDB, String> anc
       , TableColumn<TextDB, String> tc
@@ -31,6 +35,7 @@ public class TextTable {
       )
   {//{{{
 
+    mainController   = mc;
     tableView        = tv;
     iconColumn       = ic;
     actorNameColumn  = anc;
@@ -47,23 +52,23 @@ public class TextTable {
     iconColumn.setCellFactory(col -> new ImageTableCell());
 
     tableView.getFocusModel().focusedCellProperty().addListener((obs, oldVal, newVal) -> {
-      mainControllerOpt.ifPresent(mc -> {
-        getSelectedItem().ifPresent(item -> {
-          mc.updateTextViewer(item);
-        });
-      });
+      updateTextView();
     });
 
     tableView.setOnMouseClicked(e -> {
       if (e.getClickCount() == 2) {
-        getSelectedItem().ifPresent(item -> {
-          String icon = item.iconProperty().get();
+        getSelectedItems().ifPresent(items -> {
+          TextDB db = items.get(0);
+          String icon = db.iconProperty().get();
           String path = createFilePath(icon.split(":"));
-
           ImageSelector selector = new ImageSelector(path);
           selector.showAndWait();
           int index = selector.getSelectedIndex();
-          System.out.println(index);
+
+          items.stream().forEach(item -> {
+            item.setIconIndex(index);
+            updateTextView();
+          });
         });
       }
     });
@@ -79,9 +84,7 @@ public class TextTable {
     });
   }//}}}
 
-  public void setMainController(MainController mc) {//{{{
-    mainControllerOpt = Optional.ofNullable(mc);
-  }//}}}
+  // private methods
 
   private Optional<TextDB> getSelectedItem() {//{{{
     SelectionModel<TextDB> model = tableView.getSelectionModel();
@@ -91,4 +94,21 @@ public class TextTable {
     return Optional.empty();
   }//}}}
 
+  private Optional<ObservableList<TextDB>> getSelectedItems() {//{{{
+    MultipleSelectionModel<TextDB> model = tableView.getSelectionModel();
+    if (!model.isEmpty()) {
+      List<TextDB> list = model.getSelectedItems().stream().collect(Collectors.toList());
+      ObservableList<TextDB> selectedItems = FXCollections.observableArrayList(list);
+      return Optional.ofNullable(selectedItems);
+    }
+    return Optional.empty();
+  }//}}}
+
+  private void updateTextView() {//{{{
+    getSelectedItem().ifPresent(item -> {
+      mainController.updateTextView(item);
+    });
+  }//}}}
+
 }
+

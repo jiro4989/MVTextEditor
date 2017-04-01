@@ -23,6 +23,7 @@ public class Texts {
 
   public static final String SEP = System.lineSeparator();
 
+  public static final int COLUMN = 4;
   public static final int WIDTH  = 144;
   public static final int HEIGHT = 144;
 
