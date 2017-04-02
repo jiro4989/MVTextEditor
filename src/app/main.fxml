@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
@@ -24,7 +29,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainController" stylesheets="@/app/res/css/basic.css" >
+<VBox prefHeight="650.0" prefWidth="800.0" stylesheets="@/app/res/css/basic.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -82,7 +87,7 @@
                 </TableView>
               </center>
               <bottom>
-                <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                <BorderPane prefHeight="220.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                   <left>
                     <GridPane gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="144.0" BorderPane.alignment="TOP_LEFT">
                       <columnConstraints>
@@ -99,18 +104,23 @@
                   <center>
                     <VBox spacing="5.0" BorderPane.alignment="CENTER">
                       <children>
-                        <GridPane fx:id="colorPickerGridPane" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="192.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints vgrow="SOMETIMES" />
-                          </rowConstraints>
+                        <HBox alignment="BOTTOM_LEFT" spacing="5.0">
                           <children>
-                            <ImageView fx:id="colorPickerImageView" fitHeight="24.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true" />
+                            <TextField fx:id="actorNameTextField" minWidth="-Infinity" prefWidth="250.0" promptText="actor name" />
+                            <GridPane fx:id="colorPickerGridPane" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="384.0">
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints vgrow="SOMETIMES" />
+                              </rowConstraints>
+                              <children>
+                                <ImageView fx:id="colorPickerImageView" fitHeight="48.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
+                              </children>
+                            </GridPane>
                           </children>
-                        </GridPane>
-                        <TextArea fx:id="editorTextArea" />
+                        </HBox>
+                        <TextArea fx:id="editorTextArea" promptText="show sentences here" />
                         <HBox alignment="CENTER_RIGHT" spacing="5.0">
                           <children>
                             <Label text="Win:" />
@@ -133,10 +143,21 @@
             </BorderPane>
             <Accordion>
               <panes>
-                <TitledPane text="var">
+                <TitledPane contentDisplay="RIGHT" graphicTextGap="15.0" text="var">
                   <content>
-                    <ListView />
+                    <TableView fx:id="varTableView" prefHeight="200.0" prefWidth="200.0">
+                      <columns>
+                        <TableColumn fx:id="varIdColumn" prefWidth="75.0" text="var id" />
+                        <TableColumn fx:id="varNameColumn" prefWidth="175.0" text="var name" />
+                      </columns>
+                    </TableView>
                   </content>
+                  <graphic>
+                    <TextField fx:id="searchTextField" promptText="search" />
+                  </graphic>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                 </TitledPane>
                 <TitledPane text="actor">
                   <content>

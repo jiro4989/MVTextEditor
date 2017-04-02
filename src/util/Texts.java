@@ -25,9 +25,16 @@ public class Texts {
   public static final String IMG_DIR_PATH    = "img/faces";
   public static final String IMG_WINDOW_PATH = "img/system/Window.png";
 
+  public static final String VAR_FILE_PATH = "data/System.json";
+  public static final String KEY_VAR       = "variables";
+
   public static final int COLUMN = 4;
   public static final int WIDTH  = 144;
   public static final int HEIGHT = 144;
+  public static final int COLOR_TILE_SIZE = 192 / 16 * 2;
+  public static final int COLOR_PICKER_COLUMN_SIZE = 16;
+
+  public static final String DEFAULT_COLOR = "\\c[0]";
 
   // 画像処理の書式(ARGB)
   public static final WritablePixelFormat<IntBuffer> FORMAT = WritablePixelFormat.getIntArgbInstance();

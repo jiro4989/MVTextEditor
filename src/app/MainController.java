@@ -6,6 +6,8 @@ import jiro.java.util.MyProperties;
 import jiro.javafx.stage.AboutStage;
 import jiro.javafx.stage.MyFileChooser;
 
+import app.manager.VarDB;
+import app.manager.EditManager;
 import app.table.TextDB;
 import app.table.TextTable;
 
@@ -25,6 +27,7 @@ public class MainController {
   private MyMenuBar myMenubar;
   private TextTable textTable;
   private TextView textView;
+  private EditManager editManager;
 
   // fxml component//{{{
 
@@ -44,11 +47,19 @@ public class MainController {
   // textview
 
   @FXML private ImageView faceImageView;
+  @FXML private TextField actorNameTextField;
   @FXML private GridPane colorPickerGridPane;
   @FXML private ImageView colorPickerImageView;
   @FXML private TextArea editorTextArea;
   @FXML private ComboBox<String> backgroundComboBox;
   @FXML private ComboBox<String> positionComboBox;
+
+  // edit manager
+
+  @FXML private TextField searchTextField;
+  @FXML private TableView<VarDB>            varTableView;
+  @FXML private TableColumn<VarDB, Integer> varIdColumn;
+  @FXML private TableColumn<VarDB, String>  varNameColumn;
 
   //}}}
 
@@ -64,10 +75,15 @@ public class MainController {
 
     myMenubar = new MyMenuBar(this, openTextFileMenuItem);
     textTable = new TextTable(this, tableView, iconColumn, nameColumn, textColumn, backgroundColumn, positionColumn);
-    textView  = new TextView(this, faceImageView ,colorPickerGridPane ,colorPickerImageView ,editorTextArea ,backgroundComboBox ,positionComboBox);
+    textView  = new TextView(this, faceImageView, actorNameTextField ,colorPickerGridPane ,colorPickerImageView ,editorTextArea ,backgroundComboBox ,positionComboBox);
+    editManager = new EditManager(this, searchTextField, varTableView, varIdColumn, varNameColumn);
+
     // TODO
     preferencesProperties.getProperty(KEY_PROJECT).ifPresent(proj -> {
+      // ColorPickerのシステム画像を一時的に読み込み
       textView.setColorPickerImage(proj + "/" + IMG_WINDOW_PATH);
+      // 変数一覧の一時読み込み
+      editManager.setVariables(proj + "/" + VAR_FILE_PATH);
     });
   }//}}}
 
@@ -85,14 +101,16 @@ public class MainController {
     preferencesProperties.store();
   }//}}}
 
-  // fxml event
-
-  public void updateTextView(TextDB db) {
+  public void updateTextView(TextDB db) {//{{{
     textView.update(db);
-  }
+  }//}}}
 
-  public void setTextList(List<List<String>> listList) {
+  public void setTextList(List<List<String>> listList) {//{{{
     textTable.setTextList(listList);
-  }
+  }//}}}
+
+  public void insertVarId(int id) {//{{{
+    textView.insertVarId(id);
+  }//}}}
 
 }

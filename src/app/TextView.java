@@ -9,12 +9,14 @@ import app.table.TextDB;
 import java.nio.file.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
+import javafx.scene.input.*;
 import javafx.scene.layout.*;
 
 class TextView {
 
   private final MainController mainController;
   private final ImageView faceImageView;
+  private final TextField actorNameTextField;
   private final GridPane colorPickerGridPane;
   private final ImageView colorPickerImageView;
   private final TextArea editorTextArea;
@@ -24,6 +26,7 @@ class TextView {
   TextView(
       MainController mainController
       , ImageView faceImageView
+      , TextField actorNameTextField
       , GridPane colorPickerGridPane
       , ImageView colorPickerImageView
       , TextArea editorTextArea
@@ -33,19 +36,48 @@ class TextView {
   {//{{{
     this.mainController       = mainController;
     this.faceImageView        = faceImageView;
+    this.actorNameTextField   = actorNameTextField;
     this.colorPickerGridPane  = colorPickerGridPane;
     this.colorPickerImageView = colorPickerImageView;
     this.editorTextArea       = editorTextArea;
     this.backgroundComboBox   = backgroundComboBox;
     this.positionComboBox     = positionComboBox;
+
+    // カラーピッカーをダブルクリックして選択範囲を色文字列でくくる
+    colorPickerImageView.setOnMouseClicked(e -> {
+      final String FORM = "\\c[%d]";
+      if (e.getClickCount() == 2) {
+        IndexRange range = editorTextArea.getSelection();
+        int start = range.getStart();
+        int end   = range.getEnd();
+
+        int colorIndex = calcColorIndex(e);
+        if (start != end) {
+          editorTextArea.insertText(end, DEFAULT_COLOR);
+          editorTextArea.insertText(start, String.format(FORM, colorIndex));
+          return;
+        }
+        editorTextArea.insertText(start, String.format(FORM, colorIndex));
+      }
+    });
+  }//}}}
+
+  private int calcColorIndex(MouseEvent e) {//{{{
+    int x  = (int) e.getX();
+    int y  = (int) e.getY();
+    int xx = x / COLOR_TILE_SIZE;
+    int yy = y / COLOR_TILE_SIZE;
+    return xx + yy * COLOR_PICKER_COLUMN_SIZE;
   }//}}}
 
   void update(TextDB db) {//{{{
-    String icon = db.iconProperty().get();
-    String text = db.textProperty().get();
-    String bg   = db.backgroundProperty().get();
-    String pos  = db.positionProperty().get();
+    String icon      = db.iconProperty().get();
+    String actorName = db.actorNameProperty().get();
+    String text      = db.textProperty().get();
+    String bg        = db.backgroundProperty().get();
+    String pos       = db.positionProperty().get();
 
+    actorNameTextField.setText(actorName);
     editorTextArea.setText(text);
     backgroundComboBox.setValue(bg);
     positionComboBox.setValue(pos);
@@ -89,6 +121,12 @@ class TextView {
     });
 
     colorPickerImageView.setImage(wImage);
+  }//}}}
+
+  void insertVarId(int id) {//{{{
+    IndexRange range = editorTextArea.getSelection();
+    int start = range.getStart();
+    editorTextArea.insertText(start, String.format("\\v[%d]", id));
   }//}}}
 
   private int[] getTrimmedPixels(Image src, int x, int y , int w, int h) {//{{{
