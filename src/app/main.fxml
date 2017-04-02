@@ -143,7 +143,7 @@
             </BorderPane>
             <Accordion>
               <panes>
-                <TitledPane text="var">
+                <TitledPane contentDisplay="RIGHT" graphicTextGap="15.0" text="var">
                   <content>
                     <TableView fx:id="varTableView" prefHeight="200.0" prefWidth="200.0">
                       <columns>
@@ -152,6 +152,12 @@
                       </columns>
                     </TableView>
                   </content>
+                  <graphic>
+                    <TextField fx:id="searchTextField" promptText="search" />
+                  </graphic>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                 </TitledPane>
                 <TitledPane text="actor">
                   <content>

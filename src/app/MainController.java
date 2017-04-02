@@ -56,6 +56,7 @@ public class MainController {
 
   // edit manager
 
+  @FXML private TextField searchTextField;
   @FXML private TableView<VarDB>            varTableView;
   @FXML private TableColumn<VarDB, Integer> varIdColumn;
   @FXML private TableColumn<VarDB, String>  varNameColumn;
@@ -75,7 +76,7 @@ public class MainController {
     myMenubar = new MyMenuBar(this, openTextFileMenuItem);
     textTable = new TextTable(this, tableView, iconColumn, nameColumn, textColumn, backgroundColumn, positionColumn);
     textView  = new TextView(this, faceImageView, actorNameTextField ,colorPickerGridPane ,colorPickerImageView ,editorTextArea ,backgroundComboBox ,positionComboBox);
-    editManager = new EditManager(this, varTableView, varIdColumn, varNameColumn);
+    editManager = new EditManager(this, searchTextField, varTableView, varIdColumn, varNameColumn);
 
     // TODO
     preferencesProperties.getProperty(KEY_PROJECT).ifPresent(proj -> {

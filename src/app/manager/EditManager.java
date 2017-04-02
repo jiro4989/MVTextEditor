@@ -20,21 +20,24 @@ public class EditManager {
 
   private final MainController mainController;
 
+  private final TextField searchTextField;
   private final TableView<VarDB>            varTableView;
   private final TableColumn<VarDB, Integer> varIdColumn;
   private final TableColumn<VarDB, String>  varNameColumn;
 
   public EditManager(
       MainController mainController
+      , TextField searchTextField
       , TableView<VarDB> varTableView
       , TableColumn<VarDB, Integer> varIdColumn
       , TableColumn<VarDB, String> varNameColumn
       )
   {//{{{
-    this.mainController = mainController;
-    this.varTableView   = varTableView;
-    this.varIdColumn    = varIdColumn;
-    this.varNameColumn  = varNameColumn;
+    this.mainController  = mainController;
+    this.searchTextField = searchTextField;
+    this.varTableView    = varTableView;
+    this.varIdColumn     = varIdColumn;
+    this.varNameColumn   = varNameColumn;
 
     this.varIdColumn  .setCellValueFactory(new PropertyValueFactory<VarDB, Integer>("id"));
     this.varNameColumn.setCellValueFactory(new PropertyValueFactory<VarDB, String>("name"));
