@@ -57,6 +57,14 @@ public class ImageSelectorController {
             setImage(newPath.toString());
           });
 
+          listView.setOnMouseClicked(e -> {
+            if (!listView.getSelectionModel().isEmpty()) {
+              String newVal = listView.getSelectionModel().getSelectedItem();
+              Path newPath = Paths.get(path.toString(), newVal);
+              setImage(newPath.toString());
+            }
+          });
+
           listView.getSelectionModel().selectFirst();
         }
       });

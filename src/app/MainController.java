@@ -44,6 +44,7 @@ public class MainController {
   // textview
 
   @FXML private ImageView faceImageView;
+  @FXML private TextField actorNameTextField;
   @FXML private GridPane colorPickerGridPane;
   @FXML private ImageView colorPickerImageView;
   @FXML private TextArea editorTextArea;
@@ -64,7 +65,7 @@ public class MainController {
 
     myMenubar = new MyMenuBar(this, openTextFileMenuItem);
     textTable = new TextTable(this, tableView, iconColumn, nameColumn, textColumn, backgroundColumn, positionColumn);
-    textView  = new TextView(this, faceImageView ,colorPickerGridPane ,colorPickerImageView ,editorTextArea ,backgroundComboBox ,positionComboBox);
+    textView  = new TextView(this, faceImageView, actorNameTextField ,colorPickerGridPane ,colorPickerImageView ,editorTextArea ,backgroundComboBox ,positionComboBox);
     // TODO
     preferencesProperties.getProperty(KEY_PROJECT).ifPresent(proj -> {
       textView.setColorPickerImage(proj + "/" + IMG_WINDOW_PATH);

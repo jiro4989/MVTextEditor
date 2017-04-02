@@ -15,6 +15,7 @@ class TextView {
 
   private final MainController mainController;
   private final ImageView faceImageView;
+  private final TextField actorNameTextField;
   private final GridPane colorPickerGridPane;
   private final ImageView colorPickerImageView;
   private final TextArea editorTextArea;
@@ -24,6 +25,7 @@ class TextView {
   TextView(
       MainController mainController
       , ImageView faceImageView
+      , TextField actorNameTextField
       , GridPane colorPickerGridPane
       , ImageView colorPickerImageView
       , TextArea editorTextArea
@@ -33,19 +35,28 @@ class TextView {
   {//{{{
     this.mainController       = mainController;
     this.faceImageView        = faceImageView;
+    this.actorNameTextField   = actorNameTextField;
     this.colorPickerGridPane  = colorPickerGridPane;
     this.colorPickerImageView = colorPickerImageView;
     this.editorTextArea       = editorTextArea;
     this.backgroundComboBox   = backgroundComboBox;
     this.positionComboBox     = positionComboBox;
+
+    colorPickerImageView.setOnMouseClicked(e -> {
+      if (e.getClickCount() == 2) {
+        System.out.println("click");
+      }
+    });
   }//}}}
 
   void update(TextDB db) {//{{{
-    String icon = db.iconProperty().get();
-    String text = db.textProperty().get();
-    String bg   = db.backgroundProperty().get();
-    String pos  = db.positionProperty().get();
+    String icon      = db.iconProperty().get();
+    String actorName = db.actorNameProperty().get();
+    String text      = db.textProperty().get();
+    String bg        = db.backgroundProperty().get();
+    String pos       = db.positionProperty().get();
 
+    actorNameTextField.setText(actorName);
     editorTextArea.setText(text);
     backgroundComboBox.setValue(bg);
     positionComboBox.setValue(pos);

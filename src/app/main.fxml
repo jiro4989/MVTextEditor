@@ -104,18 +104,23 @@
                   <center>
                     <VBox spacing="5.0" BorderPane.alignment="CENTER">
                       <children>
-                        <GridPane fx:id="colorPickerGridPane" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="384.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints vgrow="SOMETIMES" />
-                          </rowConstraints>
+                        <HBox alignment="BOTTOM_LEFT" spacing="5.0">
                           <children>
-                            <ImageView fx:id="colorPickerImageView" fitHeight="48.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
+                            <TextField fx:id="actorNameTextField" minWidth="-Infinity" prefWidth="250.0" promptText="actor name" />
+                            <GridPane fx:id="colorPickerGridPane" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="384.0">
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints vgrow="SOMETIMES" />
+                              </rowConstraints>
+                              <children>
+                                <ImageView fx:id="colorPickerImageView" fitHeight="48.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
+                              </children>
+                            </GridPane>
                           </children>
-                        </GridPane>
-                        <TextArea fx:id="editorTextArea" />
+                        </HBox>
+                        <TextArea fx:id="editorTextArea" promptText="show sentences here" />
                         <HBox alignment="CENTER_RIGHT" spacing="5.0">
                           <children>
                             <Label text="Win:" />
