@@ -1,3 +1,5 @@
+- [ ] ColorPickerペインのサイズ調整
+
 - [ ] Enter, Ctrl+Enterでフォーカスの相互移動
 - [ ] TextManagerのカーソル位置の背景色の変更
 - [ ] imgフォルダが空だった場合の例外処理を追加
