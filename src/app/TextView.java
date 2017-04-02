@@ -9,6 +9,7 @@ import app.table.TextDB;
 import java.nio.file.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
+import javafx.scene.input.*;
 import javafx.scene.layout.*;
 
 class TextView {
@@ -42,11 +43,30 @@ class TextView {
     this.backgroundComboBox   = backgroundComboBox;
     this.positionComboBox     = positionComboBox;
 
+    // カラーピッカーをダブルクリックして選択範囲を色文字列でくくる
     colorPickerImageView.setOnMouseClicked(e -> {
       if (e.getClickCount() == 2) {
-        System.out.println("click");
+        IndexRange range = editorTextArea.getSelection();
+        int start = range.getStart();
+        int end   = range.getEnd();
+
+        int colorIndex = calcColorIndex(e);
+        if (start != end) {
+          editorTextArea.insertText(end, DEFAULT_COLOR);
+          editorTextArea.insertText(start, String.format("\\c[%d]", colorIndex));
+          return;
+        }
+        editorTextArea.insertText(start, String.format("\\c[%d]", colorIndex));
       }
     });
+  }//}}}
+
+  private int calcColorIndex(MouseEvent e) {//{{{
+    int x  = (int) e.getX();
+    int y  = (int) e.getY();
+    int xx = x / COLOR_TILE_SIZE;
+    int yy = y / COLOR_TILE_SIZE;
+    return xx + yy * COLOR_PICKER_COLUMN_SIZE;
   }//}}}
 
   void update(TextDB db) {//{{{

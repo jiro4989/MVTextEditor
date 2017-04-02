@@ -28,6 +28,10 @@ public class Texts {
   public static final int COLUMN = 4;
   public static final int WIDTH  = 144;
   public static final int HEIGHT = 144;
+  public static final int COLOR_TILE_SIZE = 192 / 16 * 2;
+  public static final int COLOR_PICKER_COLUMN_SIZE = 16;
+
+  public static final String DEFAULT_COLOR = "\\c[0]";
 
   // 画像処理の書式(ARGB)
   public static final WritablePixelFormat<IntBuffer> FORMAT = WritablePixelFormat.getIntArgbInstance();
