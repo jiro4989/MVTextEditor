@@ -101,14 +101,16 @@ public class MainController {
     preferencesProperties.store();
   }//}}}
 
-  // fxml event
-
-  public void updateTextView(TextDB db) {
+  public void updateTextView(TextDB db) {//{{{
     textView.update(db);
-  }
+  }//}}}
 
-  public void setTextList(List<List<String>> listList) {
+  public void setTextList(List<List<String>> listList) {//{{{
     textTable.setTextList(listList);
-  }
+  }//}}}
+
+  public void insertVarId(int id) {//{{{
+    textView.insertVarId(id);
+  }//}}}
 
 }

@@ -26,6 +26,8 @@ public class EditManager {
   private final TableView<VarDB>            varTableView;
   private final TableColumn<VarDB, Integer> varIdColumn;
   private final TableColumn<VarDB, String>  varNameColumn;
+
+  // 検索される元のデータベース
   private final ObservableList<VarDB> masterData = FXCollections.observableArrayList();
 
   public EditManager(
@@ -45,25 +47,16 @@ public class EditManager {
     this.varIdColumn  .setCellValueFactory(new PropertyValueFactory<VarDB, Integer>("id"));
     this.varNameColumn.setCellValueFactory(new PropertyValueFactory<VarDB, String>("name"));
 
+    // フィルタリング
     FilteredList<VarDB> filteredData = new FilteredList<>(masterData, p -> true);
     this.searchTextField.textProperty().addListener((obs, oldVal, newVal) -> {
-      filteredData.setPredicate(varDb -> {
-        if (newVal == null || newVal.isEmpty()) {
-          return true;
-        }
+      filteredData.setPredicate(varDb -> existsMatchedText(varDb, newVal));
+    });
 
-        String lowerCaseFilter = newVal.toLowerCase();
-        int vi         = varDb.idProperty().get();
-        String varId   = String.valueOf(vi);
-        String varName = varDb.nameProperty().get();
-
-        if (varId.contains(lowerCaseFilter)) {
-          return true;
-        } else if (varName.toLowerCase().contains(lowerCaseFilter)) {
-          return true;
-        }
-        return false; // Does not match.
-      });
+    varTableView.setOnMouseClicked(e -> {
+      if (e.getClickCount() == 2) {
+        insertVarId();
+      }
     });
 
     varTableView.setItems(filteredData);
@@ -88,6 +81,39 @@ public class EditManager {
       });
     } catch (IOException e) {
       e.printStackTrace();
+    }
+  }//}}}
+
+  /**
+   * newValがvarDbの中から検索し、マッチするものが有るかどうかの結果を返却する。
+   * @param varDb 対象データベース
+   * @param newVal 検索文字列
+   * @return マッチしたか否か
+   */
+  private boolean existsMatchedText(VarDB varDb, String newVal) {//{{{
+    if (newVal == null || newVal.isEmpty()) {
+      return true;
+    }
+
+    String lowerCaseFilter = newVal.toLowerCase();
+    int vi         = varDb.idProperty().get();
+    String varId   = String.valueOf(vi);
+    String varName = varDb.nameProperty().get();
+
+    if (varId.contains(lowerCaseFilter)) {
+      return true;
+    } else if (varName.toLowerCase().contains(lowerCaseFilter)) {
+      return true;
+    }
+    return false;
+  }//}}}
+
+  private void insertVarId() {//{{{
+    SelectionModel<VarDB> model = varTableView.getSelectionModel();
+    if (!model.isEmpty()) {
+      VarDB selectedItem = model.getSelectedItem();
+      int varId = selectedItem.idProperty().get();
+      mainController.insertVarId(varId);
     }
   }//}}}
 

@@ -123,6 +123,12 @@ class TextView {
     colorPickerImageView.setImage(wImage);
   }//}}}
 
+  void insertVarId(int id) {//{{{
+    IndexRange range = editorTextArea.getSelection();
+    int start = range.getStart();
+    editorTextArea.insertText(start, String.format("\\v[%d]", id));
+  }//}}}
+
   private int[] getTrimmedPixels(Image src, int x, int y , int w, int h) {//{{{
     PixelReader r = src.getPixelReader();
     Image newImg = new WritableImage(r, x, y, w, h);
