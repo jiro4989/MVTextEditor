@@ -10,6 +10,8 @@ import app.MainController;
 
 import java.io.*;
 import java.util.*;
+import javafx.collections.*;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
@@ -24,6 +26,7 @@ public class EditManager {
   private final TableView<VarDB>            varTableView;
   private final TableColumn<VarDB, Integer> varIdColumn;
   private final TableColumn<VarDB, String>  varNameColumn;
+  private final ObservableList<VarDB> masterData = FXCollections.observableArrayList();
 
   public EditManager(
       MainController mainController
@@ -41,6 +44,29 @@ public class EditManager {
 
     this.varIdColumn  .setCellValueFactory(new PropertyValueFactory<VarDB, Integer>("id"));
     this.varNameColumn.setCellValueFactory(new PropertyValueFactory<VarDB, String>("name"));
+
+    FilteredList<VarDB> filteredData = new FilteredList<>(masterData, p -> true);
+    this.searchTextField.textProperty().addListener((obs, oldVal, newVal) -> {
+      filteredData.setPredicate(varDb -> {
+        if (newVal == null || newVal.isEmpty()) {
+          return true;
+        }
+
+        String lowerCaseFilter = newVal.toLowerCase();
+        int vi         = varDb.idProperty().get();
+        String varId   = String.valueOf(vi);
+        String varName = varDb.nameProperty().get();
+
+        if (varId.contains(lowerCaseFilter)) {
+          return true;
+        } else if (varName.toLowerCase().contains(lowerCaseFilter)) {
+          return true;
+        }
+        return false; // Does not match.
+      });
+    });
+
+    varTableView.setItems(filteredData);
   }//}}}
 
   /**
@@ -58,7 +84,7 @@ public class EditManager {
       List<String> list = new ArrayList<>(size);
       range(1, size).forEach(i -> {
         String name = child.get(i).asText();
-        varTableView.getItems().add(new VarDB(i, name));
+        masterData.add(new VarDB(i, name));
       });
     } catch (IOException e) {
       e.printStackTrace();
