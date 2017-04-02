@@ -65,6 +65,10 @@ public class MainController {
     myMenubar = new MyMenuBar(this, openTextFileMenuItem);
     textTable = new TextTable(this, tableView, iconColumn, nameColumn, textColumn, backgroundColumn, positionColumn);
     textView  = new TextView(this, faceImageView ,colorPickerGridPane ,colorPickerImageView ,editorTextArea ,backgroundComboBox ,positionComboBox);
+    // TODO
+    preferencesProperties.getProperty(KEY_PROJECT).ifPresent(proj -> {
+      textView.setColorPickerImage(proj + "/" + IMG_WINDOW_PATH);
+    });
   }//}}}
 
   // public methods

@@ -1,6 +1,7 @@
 package app;
 
 import static util.Texts.*;
+import static java.util.stream.IntStream.range;
 
 import app.MainController;
 import app.table.TextDB;
@@ -61,6 +62,43 @@ class TextView {
         return;
       }
     }
+  }//}}}
+
+  void setColorPickerImage(String path) {//{{{
+    Image src = new Image("file:" + path);
+    PixelReader r = src.getPixelReader();
+    int std = (int) src.getWidth();
+    int x = std / 2;
+    int y = std - std / 4;
+    int w = std / 2;
+    int h = std / 4;
+    Image trimmedImg = new WritableImage(r, x, y, w, h);
+
+    int w2 = w * 2;
+    int h2 = h / 2;
+    WritableImage wImage = new WritableImage(w2, h2);
+    PixelWriter writer = wImage.getPixelWriter();
+
+    final int H = std / 16;
+    range(0, 4).forEach(i -> {
+      int y2 = i * H;
+      int[] pixels = getTrimmedPixels(trimmedImg, 0, y2, w, H);
+      int tmpX = i % 2 * w;
+      int tmpY = i / 2 * H;
+      writer.setPixels(tmpX, tmpY, w, H, FORMAT, pixels, 0, w);
+    });
+
+    colorPickerImageView.setImage(wImage);
+  }//}}}
+
+  private int[] getTrimmedPixels(Image src, int x, int y , int w, int h) {//{{{
+    PixelReader r = src.getPixelReader();
+    Image newImg = new WritableImage(r, x, y, w, h);
+
+    int[] pixels = new int[w * h];
+    PixelReader rr = newImg.getPixelReader();
+    rr.getPixels(0, 0, w, h , FORMAT, pixels, 0, w);
+    return pixels;
   }//}}}
 
   /**
