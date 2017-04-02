@@ -145,7 +145,12 @@
               <panes>
                 <TitledPane text="var">
                   <content>
-                    <ListView />
+                    <TableView fx:id="varTableView" prefHeight="200.0" prefWidth="200.0">
+                      <columns>
+                        <TableColumn fx:id="varIdColumn" prefWidth="75.0" text="var id" />
+                        <TableColumn fx:id="varNameColumn" prefWidth="175.0" text="var name" />
+                      </columns>
+                    </TableView>
                   </content>
                 </TitledPane>
                 <TitledPane text="actor">
