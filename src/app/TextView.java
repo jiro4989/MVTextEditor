@@ -45,6 +45,7 @@ class TextView {
 
     // カラーピッカーをダブルクリックして選択範囲を色文字列でくくる
     colorPickerImageView.setOnMouseClicked(e -> {
+      final String FORM = "\\c[%d]";
       if (e.getClickCount() == 2) {
         IndexRange range = editorTextArea.getSelection();
         int start = range.getStart();
@@ -53,10 +54,10 @@ class TextView {
         int colorIndex = calcColorIndex(e);
         if (start != end) {
           editorTextArea.insertText(end, DEFAULT_COLOR);
-          editorTextArea.insertText(start, String.format("\\c[%d]", colorIndex));
+          editorTextArea.insertText(start, String.format(FORM, colorIndex));
           return;
         }
-        editorTextArea.insertText(start, String.format("\\c[%d]", colorIndex));
+        editorTextArea.insertText(start, String.format(FORM, colorIndex));
       }
     });
   }//}}}
