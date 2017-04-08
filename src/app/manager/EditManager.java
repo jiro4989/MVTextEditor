@@ -15,6 +15,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
+import javafx.scene.image.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 
@@ -22,7 +23,7 @@ public class EditManager {
 
   private final MainController mainController;
 
-  private final TextField searchTextField;
+  private final TextField varSearchTextField;
   private final TableView<VarDB>            varTableView;
   private final TableColumn<VarDB, Integer> varIdColumn;
   private final TableColumn<VarDB, String>  varNameColumn;
@@ -32,14 +33,26 @@ public class EditManager {
 
   public EditManager(
       MainController mainController
-      , TextField searchTextField
-      , TableView<VarDB> varTableView
+
+      , TextField                   varSearchTextField
+      , TableView<  VarDB>          varTableView
       , TableColumn<VarDB, Integer> varIdColumn
-      , TableColumn<VarDB, String> varNameColumn
+      , TableColumn<VarDB, String>  varNameColumn
+
+      , TextField                     actorSearchTextField
+      , TableView<  ActorDB>          actorTableView
+      , TableColumn<ActorDB, Integer> actorIdColumn
+      , TableColumn<ActorDB, String>  actorNameColumn
+
+      , GridPane  iconGridPane
+      , ImageView iconImageView
+      , Label     iconFocusLabel
+      , Label     iconSelectedLabel
+
       )
   {//{{{
     this.mainController  = mainController;
-    this.searchTextField = searchTextField;
+    this.varSearchTextField = varSearchTextField;
     this.varTableView    = varTableView;
     this.varIdColumn     = varIdColumn;
     this.varNameColumn   = varNameColumn;
@@ -49,7 +62,7 @@ public class EditManager {
 
     // フィルタリング
     FilteredList<VarDB> filteredData = new FilteredList<>(masterData, p -> true);
-    this.searchTextField.textProperty().addListener((obs, oldVal, newVal) -> {
+    this.varSearchTextField.textProperty().addListener((obs, oldVal, newVal) -> {
       filteredData.setPredicate(varDb -> existsMatchedText(varDb, newVal));
     });
 

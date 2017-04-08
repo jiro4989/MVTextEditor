@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -19,6 +12,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -29,7 +23,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="650.0" prefWidth="800.0" stylesheets="@/app/res/css/basic.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainController">
+<VBox prefHeight="650.0" prefWidth="800.0" stylesheets="@/app/res/css/basic.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -153,28 +147,45 @@
                     </TableView>
                   </content>
                   <graphic>
-                    <TextField fx:id="searchTextField" promptText="search" />
+                    <TextField fx:id="varSearchTextField" promptText="search" />
                   </graphic>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
+                  <opaqueInsets>
+                    <Insets />
+                  </opaqueInsets>
                 </TitledPane>
-                <TitledPane text="actor">
+                <TitledPane contentDisplay="RIGHT" graphicTextGap="15.0" text="actor">
                   <content>
-                    <ListView prefHeight="200.0" prefWidth="200.0" />
+                    <TableView fx:id="actorTableView" prefHeight="200.0" prefWidth="200.0">
+                      <columns>
+                        <TableColumn fx:id="actorIdColumn" prefWidth="75.0" text="id" />
+                        <TableColumn fx:id="actorNameColumn" prefWidth="75.0" text="name" />
+                      </columns>
+                    </TableView>
                   </content>
+                  <graphic>
+                    <TextField fx:id="actorSearchTextField" promptText="search" />
+                  </graphic>
                 </TitledPane>
                 <TitledPane text="icons">
                   <content>
                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                       <children>
-                        <GridPane gridLinesVisible="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <GridPane fx:id="iconGridPane" gridLinesVisible="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
+                          <children>
+                            <AnchorPane>
+                              <children>
+                                <ImageView fx:id="iconImageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                <Label fx:id="iconSelectedLabel" layoutX="10.0" layoutY="10.0" opacity="0.25" prefHeight="16.0" prefWidth="16.0" style="-fx-background-color: -fx-cell-focus-inner-border, -fx-selection-bar;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                <Label fx:id="iconFocusLabel" opacity="0.25" prefHeight="16.0" prefWidth="16.0" style="rgb(0, 225, 25);" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              </children>
+                            </AnchorPane>
+                          </children>
                         </GridPane>
                       </children>
                     </AnchorPane>

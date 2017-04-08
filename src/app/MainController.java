@@ -6,6 +6,7 @@ import jiro.java.util.MyProperties;
 import jiro.javafx.stage.AboutStage;
 import jiro.javafx.stage.MyFileChooser;
 
+import app.manager.ActorDB;
 import app.manager.VarDB;
 import app.manager.EditManager;
 import app.table.TextDB;
@@ -56,10 +57,20 @@ public class MainController {
 
   // edit manager
 
-  @FXML private TextField searchTextField;
-  @FXML private TableView<VarDB>            varTableView;
+  @FXML private TextField                   varSearchTextField;
+  @FXML private TableView<  VarDB>          varTableView;
   @FXML private TableColumn<VarDB, Integer> varIdColumn;
   @FXML private TableColumn<VarDB, String>  varNameColumn;
+
+  @FXML private TextField                     actorSearchTextField;
+  @FXML private TableView<  ActorDB>          actorTableView;
+  @FXML private TableColumn<ActorDB, Integer> actorIdColumn;
+  @FXML private TableColumn<ActorDB, String>  actorNameColumn;
+
+  @FXML private GridPane  iconGridPane;
+  @FXML private ImageView iconImageView;
+  @FXML private Label     iconFocusLabel;
+  @FXML private Label     iconSelectedLabel;
 
   //}}}
 
@@ -76,7 +87,12 @@ public class MainController {
     myMenubar = new MyMenuBar(this, openTextFileMenuItem);
     textTable = new TextTable(this, tableView, iconColumn, nameColumn, textColumn, backgroundColumn, positionColumn);
     textView  = new TextView(this, faceImageView, actorNameTextField ,colorPickerGridPane ,colorPickerImageView ,editorTextArea ,backgroundComboBox ,positionComboBox);
-    editManager = new EditManager(this, searchTextField, varTableView, varIdColumn, varNameColumn);
+    editManager = new EditManager(
+        this
+        , varSearchTextField   , varTableView   , varIdColumn    , varNameColumn
+        , actorSearchTextField , actorTableView , actorIdColumn  , actorNameColumn
+        , iconGridPane         , iconImageView  , iconFocusLabel , iconSelectedLabel
+        );
 
     // TODO
     preferencesProperties.getProperty(KEY_PROJECT).ifPresent(proj -> {
