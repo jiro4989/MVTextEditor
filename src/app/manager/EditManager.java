@@ -28,7 +28,7 @@ public class EditManager {
   private final TableColumn<VarDB, Integer> varIdColumn;
   private final TableColumn<VarDB, String>  varNameColumn;
 
-  // 検索される元のデータベース
+  // 変数パネルの検索される元のデータベース
   private final ObservableList<VarDB> masterData = FXCollections.observableArrayList();
 
   public EditManager(
@@ -76,28 +76,6 @@ public class EditManager {
   }//}}}
 
   /**
-   * System.jsonファイルから変数のデータを読み取る。
-   * @param path System.jsonのパス
-   */
-  public void setVariables(String path) {//{{{
-    try {
-      File file = new File(path);
-      ObjectMapper mapper = new ObjectMapper();
-      JsonNode root = mapper.readTree(file);
-      JsonNode child = root.get(KEY_VAR);
-      int size = child.size();
-
-      List<String> list = new ArrayList<>(size);
-      range(1, size).forEach(i -> {
-        String name = child.get(i).asText();
-        masterData.add(new VarDB(i, name));
-      });
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }//}}}
-
-  /**
    * newValがvarDbの中から検索し、マッチするものが有るかどうかの結果を返却する。
    * @param varDb 対象データベース
    * @param newVal 検索文字列
@@ -127,6 +105,51 @@ public class EditManager {
       VarDB selectedItem = model.getSelectedItem();
       int varId = selectedItem.idProperty().get();
       mainController.insertVarId(varId);
+    }
+  }//}}}
+
+  // setter
+
+  /**
+   * System.jsonファイルから変数のデータを読み取る。
+   * @param path System.jsonのパス
+   */
+  public void setVariables(String path) {//{{{
+    try {
+      File file           = new File(path);
+      ObjectMapper mapper = new ObjectMapper();
+      JsonNode root       = mapper.readTree(file);
+      JsonNode child      = root.get(KEY_VAR);
+      int size = child.size();
+
+      range(1, size).forEach(i -> {
+        String name = child.get(i).asText();
+        masterData.add(new VarDB(i, name));
+      });
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }//}}}
+
+  /**
+   * Actors.jsonファイルからアクターのデータを読み取る。
+   * @param path Actors.jsonのパス
+   */
+  public void setActors(String path) {//{{{
+    try {
+      File file           = new File(path);
+      ObjectMapper mapper = new ObjectMapper();
+      JsonNode root       = mapper.readTree(file);
+      int size = root.size();
+
+      range(1, size).forEach(i -> {
+        JsonNode child = root.get(i);
+        int id      = child.get("id")  .asInt();
+        String name = child.get("name").asText();
+        //masterData.add(new ActorDB(i, name));
+      });
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }//}}}
 

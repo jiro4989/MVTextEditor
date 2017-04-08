@@ -100,6 +100,8 @@ public class MainController {
       textView.setColorPickerImage(proj + "/" + IMG_WINDOW_PATH);
       // 変数一覧の一時読み込み
       editManager.setVariables(proj + "/" + VAR_FILE_PATH);
+      // アクター一覧の一時読み込み
+      editManager.setActors(proj + "/" + ACTORS_FILE_PATH);
     });
   }//}}}
 
