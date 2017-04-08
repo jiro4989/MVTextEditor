@@ -44,7 +44,7 @@ class TextView {
     this.positionComboBox     = positionComboBox;
 
     // カラーピッカーをダブルクリックして選択範囲を色文字列でくくる
-    colorPickerImageView.setOnMouseClicked(e -> {
+    colorPickerImageView.setOnMouseClicked(e -> {//{{{
       final String FORM = "\\c[%d]";
       if (e.getClickCount() == 2) {
         IndexRange range = editorTextArea.getSelection();
@@ -59,15 +59,7 @@ class TextView {
         }
         editorTextArea.insertText(start, String.format(FORM, colorIndex));
       }
-    });
-  }//}}}
-
-  private int calcColorIndex(MouseEvent e) {//{{{
-    int x  = (int) e.getX();
-    int y  = (int) e.getY();
-    int xx = x / COLOR_TILE_SIZE;
-    int yy = y / COLOR_TILE_SIZE;
-    return xx + yy * COLOR_PICKER_COLUMN_SIZE;
+    });//}}}
   }//}}}
 
   void update(TextDB db) {//{{{
@@ -82,7 +74,7 @@ class TextView {
     backgroundComboBox.setValue(bg);
     positionComboBox.setValue(pos);
 
-    if (icon != null && icon.length() != 0) {
+    if (icon != null && icon.length() != 0) {//{{{
       String[] array      = icon.split(":");
       String path         = createFilePath(array);
 
@@ -93,7 +85,7 @@ class TextView {
         faceImageView.setImage(newImage);
         return;
       }
-    }
+    }//}}}
   }//}}}
 
   void setColorPickerImage(String path) {//{{{
@@ -123,11 +115,14 @@ class TextView {
     colorPickerImageView.setImage(wImage);
   }//}}}
 
-  void insertVarId(int id) {//{{{
+  private void insertId(String form, int id) {//{{{
     IndexRange range = editorTextArea.getSelection();
     int start = range.getStart();
-    editorTextArea.insertText(start, String.format("\\v[%d]", id));
+    editorTextArea.insertText(start, String.format(form, id));
   }//}}}
+
+  void insertVarId(int id)   { insertId("\\v[%d]", id); }
+  void insertActorId(int id) { insertId("\\n[%d]", id); }
 
   private int[] getTrimmedPixels(Image src, int x, int y , int w, int h) {//{{{
     PixelReader r = src.getPixelReader();
@@ -137,6 +132,14 @@ class TextView {
     PixelReader rr = newImg.getPixelReader();
     rr.getPixels(0, 0, w, h , FORMAT, pixels, 0, w);
     return pixels;
+  }//}}}
+
+  private int calcColorIndex(MouseEvent e) {//{{{
+    int x  = (int) e.getX();
+    int y  = (int) e.getY();
+    int xx = x / COLOR_TILE_SIZE;
+    int yy = y / COLOR_TILE_SIZE;
+    return xx + yy * COLOR_PICKER_COLUMN_SIZE;
   }//}}}
 
   /**

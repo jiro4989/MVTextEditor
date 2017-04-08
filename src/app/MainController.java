@@ -131,4 +131,8 @@ public class MainController {
     textView.insertVarId(id);
   }//}}}
 
+  public void insertActorId(int id) {//{{{
+    textView.insertActorId(id);
+  }//}}}
+
 }
