@@ -25,19 +25,14 @@ class TextView {
 
   private final Button partyButton;
   private final Button backslashButton;
-
   private final Button goldButton;
   private final Button showGoldButton;
-
   private final Button fontUpButton;
   private final Button fontDownButton;
-
   private final Button wait1_4Button;
   private final Button wait1Button;
-
   private final Button showAllButton;
   private final Button showStopButton;
-
   private final Button waitInputButton;
   private final Button nonWaitButton;
 
@@ -83,21 +78,27 @@ class TextView {
 
     // カラーピッカーをダブルクリックして選択範囲を色文字列でくくる
     colorPickerImageView.setOnMouseClicked(e -> {//{{{
-      final String FORM = "\\c[%d]";
       if (e.getClickCount() == 2) {
-        IndexRange range = editorTextArea.getSelection();
-        int start = range.getStart();
-        int end   = range.getEnd();
-
         int colorIndex = calcColorIndex(e);
-        if (start != end) {
-          editorTextArea.insertText(end, DEFAULT_COLOR);
-          editorTextArea.insertText(start, String.format(FORM, colorIndex));
-          return;
-        }
-        editorTextArea.insertText(start, String.format(FORM, colorIndex));
+        String startText = String.format("\\c[%d]", colorIndex);
+        insertWrappingText(startText, DEFAULT_COLOR);
       }
     });//}}}
+
+    //partyButton     . setOnAction(e -> insertText("\\"));
+
+    backslashButton . setOnAction(e -> insertText("\\\\"               ) ) ;
+    goldButton      . setOnAction(e -> insertText("\\G"                ) ) ;
+    showGoldButton  . setOnAction(e -> insertText("\\$"                ) ) ;
+    fontUpButton    . setOnAction(e -> insertWrappingText("\\{", "\\}" ) ) ;
+    fontDownButton  . setOnAction(e -> insertText("\\}"                ) ) ;
+    wait1_4Button   . setOnAction(e -> insertText("\\."                ) ) ;
+    wait1Button     . setOnAction(e -> insertText("\\|"                ) ) ;
+    showAllButton   . setOnAction(e -> insertWrappingText("\\>", "\\<" ) ) ;
+    showStopButton  . setOnAction(e -> insertText("\\<"                ) ) ;
+    waitInputButton . setOnAction(e -> insertText("\\!"                ) ) ;
+    nonWaitButton   . setOnAction(e -> insertText("\\^"                ) ) ;
+
   }//}}}
 
   void update(TextDB db) {//{{{
@@ -153,15 +154,28 @@ class TextView {
     colorPickerImageView.setImage(wImage);
   }//}}}
 
-  private void insertId(String form, int id) {//{{{
+  private void insertWrappingText(String startText, String endText) {//{{{
     IndexRange range = editorTextArea.getSelection();
     int start = range.getStart();
-    editorTextArea.insertText(start, String.format(form, id));
+    int end   = range.getEnd();
+
+    if (start != end) {
+      editorTextArea.insertText(end, endText);
+      editorTextArea.insertText(start, startText);
+      return;
+    }
+    editorTextArea.insertText(start, startText);
   }//}}}
 
-  void insertVarId(    int id) { insertId("\\v[%d]", id); }
-  void insertActorId(  int id) { insertId("\\n[%d]", id); }
-  void insertIconSetId(int id) { insertId("\\i[%d]", id); }
+  private void insertText(String text) {//{{{
+    IndexRange range = editorTextArea.getSelection();
+    int start = range.getStart();
+    editorTextArea.insertText(start, text);
+  }//}}}
+
+  void insertVarId(    int id) { insertText(String.format("\\v[%d]", id)); }
+  void insertActorId(  int id) { insertText(String.format("\\n[%d]", id)); }
+  void insertIconSetId(int id) { insertText(String.format("\\i[%d]", id)); }
 
   private int[] getTrimmedPixels(Image src, int x, int y , int w, int h) {//{{{
     PixelReader r = src.getPixelReader();
