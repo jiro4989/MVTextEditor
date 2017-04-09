@@ -2,6 +2,8 @@ package app.manager;
 
 import static util.Texts.*;
 
+import app.MainController;
+
 import java.util.Optional;
 import javafx.collections.*;
 import javafx.collections.transformation.FilteredList;
@@ -11,6 +13,8 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 
 class IconSetManager {
+
+  private final MainController mainController;
 
   // component
   private final GridPane  iconGridPane;
@@ -23,7 +27,8 @@ class IconSetManager {
   private Optional<Integer> iconWidthOpt  = Optional.empty();
   private Optional<Integer> iconHeightOpt = Optional.empty();
 
-  IconSetManager(GridPane igp, ImageView iiv, Label ifl, Label isl) {//{{{
+  IconSetManager(MainController mc, GridPane igp, ImageView iiv, Label ifl, Label isl) {//{{{
+    mainController    = mc;
     iconGridPane      = igp;
     iconImageView     = iiv;
     iconFocusLabel    = ifl;;
@@ -34,6 +39,8 @@ class IconSetManager {
     iconSelectedLabel.setOnMouseClicked ( e -> { iconSelectedLabelOnMouseClicked ( e ) ; } ) ;
 
   }//}}}
+
+  // private methods
 
   private void iconImageViewOnMouseMoved(MouseEvent e) {//{{{
     iconWidthOpt.ifPresent(iconWidth -> {
@@ -57,9 +64,15 @@ class IconSetManager {
   private void iconFocusLabelOnMouseClicked(MouseEvent e) {//{{{
     int x = (int) iconFocusLabel.getLayoutX();
     int y = (int) iconFocusLabel.getLayoutY();
-
     iconSelectedLabel.setLayoutX(x);
     iconSelectedLabel.setLayoutY(y);
+
+    if (e.getClickCount() == 2) {
+      int column = x / ICONSET_SIZE;
+      int row    = y / ICONSET_SIZE;
+      int index  = column + row * ICONSET_COLUMN;
+      mainController.insertIconSetId(index);
+    }
   }//}}}
 
   private void iconSelectedLabelOnMouseClicked(MouseEvent e) {//{{{

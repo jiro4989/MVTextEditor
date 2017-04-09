@@ -76,7 +76,7 @@ public class EditManager {
     this.actorIdColumn        = actorIdColumn;
     this.actorNameColumn      = actorNameColumn;
 
-    iconSetManager = new IconSetManager(iconGridPane, iconImageView, iconFocusLabel, iconSelectedLabel);
+    iconSetManager = new IconSetManager(mainController, iconGridPane, iconImageView, iconFocusLabel, iconSelectedLabel);
 
     this . varIdColumn     . setCellValueFactory(new PropertyValueFactory<VarDB, Integer>("id"));
     this . varNameColumn   . setCellValueFactory(new PropertyValueFactory<VarDB, String>("name"));

@@ -121,8 +121,9 @@ class TextView {
     editorTextArea.insertText(start, String.format(form, id));
   }//}}}
 
-  void insertVarId(int id)   { insertId("\\v[%d]", id); }
-  void insertActorId(int id) { insertId("\\n[%d]", id); }
+  void insertVarId(    int id) { insertId("\\v[%d]", id); }
+  void insertActorId(  int id) { insertId("\\n[%d]", id); }
+  void insertIconSetId(int id) { insertId("\\i[%d]", id); }
 
   private int[] getTrimmedPixels(Image src, int x, int y , int w, int h) {//{{{
     PixelReader r = src.getPixelReader();

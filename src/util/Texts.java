@@ -35,7 +35,8 @@ public class Texts {
   public static final int HEIGHT = 144;
   public static final int COLOR_TILE_SIZE = 192 / 16 * 2;
   public static final int COLOR_PICKER_COLUMN_SIZE = 16;
-  public static final int ICONSET_SIZE = 32;
+  public static final int ICONSET_SIZE   = 32;
+  public static final int ICONSET_COLUMN = 16;
 
   public static final String DEFAULT_COLOR = "\\c[0]";
 
