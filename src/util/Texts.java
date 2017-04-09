@@ -21,9 +21,10 @@ public class Texts {
   public static final String MAIN_PROPERTIES        = PROP_DIR + "/main.xml";
   public static final String PREFERENCES_PROPERTIES = PROP_DIR + "/preferences.xml";
 
-  public static final String KEY_PROJECT     = "project";
-  public static final String IMG_DIR_PATH    = "img/faces";
-  public static final String IMG_WINDOW_PATH = "img/system/Window.png";
+  public static final String KEY_PROJECT      = "project";
+  public static final String IMG_DIR_PATH     = "img/faces";
+  public static final String IMG_WINDOW_PATH  = "img/system/Window.png";
+  public static final String IMG_ICONSET_PATH = "img/system/IconSet.png";
 
   public static final String VAR_FILE_PATH    = "data/System.json";
   public static final String ACTORS_FILE_PATH = "data/Actors.json";
@@ -34,6 +35,7 @@ public class Texts {
   public static final int HEIGHT = 144;
   public static final int COLOR_TILE_SIZE = 192 / 16 * 2;
   public static final int COLOR_PICKER_COLUMN_SIZE = 16;
+  public static final int ICONSET_SIZE = 32;
 
   public static final String DEFAULT_COLOR = "\\c[0]";
 

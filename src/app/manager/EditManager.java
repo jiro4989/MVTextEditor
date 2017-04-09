@@ -23,15 +23,19 @@ public class EditManager {
 
   private final MainController mainController;
 
+  // 変数
   private final TextField varSearchTextField;
   private final TableView<  VarDB>          varTableView;
   private final TableColumn<VarDB, Integer> varIdColumn;
   private final TableColumn<VarDB, String>  varNameColumn;
 
+  // アクター
   private final TextField actorSearchTextField;
   private final TableView<  ActorDB>          actorTableView;
   private final TableColumn<ActorDB, Integer> actorIdColumn;
   private final TableColumn<ActorDB, String>  actorNameColumn;
+
+  private final IconSetManager iconSetManager;
 
   // 変数パネルの検索される元のデータベース
   private final ObservableList<VarDB> masterVarDBs = FXCollections.observableArrayList();
@@ -71,6 +75,8 @@ public class EditManager {
     this.actorTableView       = actorTableView;
     this.actorIdColumn        = actorIdColumn;
     this.actorNameColumn      = actorNameColumn;
+
+    iconSetManager = new IconSetManager(iconGridPane, iconImageView, iconFocusLabel, iconSelectedLabel);
 
     this . varIdColumn     . setCellValueFactory(new PropertyValueFactory<VarDB, Integer>("id"));
     this . varNameColumn   . setCellValueFactory(new PropertyValueFactory<VarDB, String>("name"));
@@ -173,10 +179,6 @@ public class EditManager {
 
   // setter
 
-  /**
-   * System.jsonファイルから変数のデータを読み取る。
-   * @param path System.jsonのパス
-   */
   public void setVariables(String path) {//{{{
     try {
       File file           = new File(path);
@@ -194,10 +196,6 @@ public class EditManager {
     }
   }//}}}
 
-  /**
-   * Actors.jsonファイルからアクターのデータを読み取る。
-   * @param path Actors.jsonのパス
-   */
   public void setActors(String path) {//{{{
     try {
       File file           = new File(path);
@@ -215,5 +213,7 @@ public class EditManager {
       e.printStackTrace();
     }
   }//}}}
+
+  public void setIconset(String path) { iconSetManager.setImage(path); }
 
 }

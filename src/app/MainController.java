@@ -85,8 +85,12 @@ public class MainController {
     preferencesProperties.changeLanguages();
 
     myMenubar = new MyMenuBar(this, openTextFileMenuItem);
-    textTable = new TextTable(this, tableView, iconColumn, nameColumn, textColumn, backgroundColumn, positionColumn);
-    textView  = new TextView(this, faceImageView, actorNameTextField ,colorPickerGridPane ,colorPickerImageView ,editorTextArea ,backgroundComboBox ,positionComboBox);
+    textTable = new TextTable(this
+        , tableView        , iconColumn       , nameColumn , textColumn
+        , backgroundColumn , positionColumn);
+    textView  = new TextView(this
+        , faceImageView  , actorNameTextField , colorPickerGridPane , colorPickerImageView
+        , editorTextArea , backgroundComboBox , positionComboBox);
     editManager = new EditManager(
         this
         , varSearchTextField   , varTableView   , varIdColumn    , varNameColumn
@@ -102,6 +106,8 @@ public class MainController {
       editManager.setVariables(proj + "/" + VAR_FILE_PATH);
       // アクター一覧の一時読み込み
       editManager.setActors(proj + "/" + ACTORS_FILE_PATH);
+      // アイコンセット一覧の一時読み込み
+      editManager.setIconset(proj + "/" + IMG_ICONSET_PATH);
     });
   }//}}}
 

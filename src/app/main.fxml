@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -168,27 +169,31 @@
                 </TitledPane>
                 <TitledPane text="icons">
                   <content>
-                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                      <children>
-                        <GridPane fx:id="iconGridPane" gridLinesVisible="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                          <children>
-                            <AnchorPane>
-                              <children>
-                                <ImageView fx:id="iconImageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                <Label fx:id="iconSelectedLabel" layoutX="10.0" layoutY="10.0" opacity="0.25" prefHeight="16.0" prefWidth="16.0" style="-fx-background-color: -fx-cell-focus-inner-border, -fx-selection-bar;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                <Label fx:id="iconFocusLabel" opacity="0.25" prefHeight="16.0" prefWidth="16.0" style="rgb(0, 225, 25);" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                              </children>
-                            </AnchorPane>
-                          </children>
-                        </GridPane>
-                      </children>
-                    </AnchorPane>
+                              <ScrollPane>
+                                 <content>
+                                    <AnchorPane>
+                                       <children>
+                              <GridPane fx:id="iconGridPane" gridLinesVisible="true" layoutX="0.5" layoutY="85.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                <children>
+                                  <AnchorPane>
+                                    <children>
+                                      <ImageView fx:id="iconImageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                      <Label fx:id="iconSelectedLabel" opacity="0.25" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: -fx-cell-focus-inner-border, -fx-selection-bar;" />
+                                      <Label fx:id="iconFocusLabel" opacity="0.25" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: rgb(0, 225, 25);" />
+                                    </children>
+                                  </AnchorPane>
+                                </children>
+                              </GridPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
                   </content>
                 </TitledPane>
                 <TitledPane text="others">
