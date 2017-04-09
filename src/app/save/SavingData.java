@@ -1,6 +1,9 @@
 package app.save;
 
+import app.table.TextDB;
+
 import java.io.*;
+import java.util.*;
 import java.nio.file.*;
 import javax.xml.parsers.*;
 import javax.xml.transform.*;
@@ -14,16 +17,23 @@ public class SavingData {
   private final Element root;
 
   private static final String ROOT = "root";
+  private static final String NODE = "node";
   private static final String ICON = "icon";
   private static final String NAME = "name";
   private static final String TEXT = "text";
   private static final String BG   = "background";
   private static final String POS  = "position";
 
-  public SavingData() throws ParserConfigurationException {//{{{
+  public SavingData(List<TextDB> dbList) throws ParserConfigurationException {//{{{
     doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
     root = doc.createElement(ROOT);
     doc.appendChild(root);
+
+    dbList.stream().forEach(db -> {
+      Element node = doc.createElement(NODE);
+      node.setAttribute(ICON, db.iconProperty().get());
+      root.appendChild(node);
+    });
   }//}}}
 
   public void write(Path path) {//{{{
