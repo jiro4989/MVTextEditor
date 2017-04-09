@@ -2,6 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -15,6 +17,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -116,6 +119,118 @@
                           </children>
                         </HBox>
                         <TextArea fx:id="editorTextArea" promptText="show sentences here" />
+                        <ButtonBar buttonMinWidth="26.0">
+                          <buttons>
+                            <Button fx:id="partyButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;">
+                              <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                    <Image url="@res/img/back.png" />
+                                  </image>
+                                </ImageView>
+                              </graphic>
+                            </Button>
+                            <Button fx:id="goldButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;">
+                              <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                    <Image url="@res/img/back.png" />
+                                  </image>
+                                </ImageView>
+                              </graphic>
+                            </Button>
+                            <Button fx:id="fontUpButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;">
+                              <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                    <Image url="@res/img/back.png" />
+                                  </image>
+                                </ImageView>
+                              </graphic>
+                            </Button>
+                            <Button fx:id="fontDownButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;">
+                              <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                    <Image url="@res/img/back.png" />
+                                  </image>
+                                </ImageView>
+                              </graphic>
+                            </Button>
+                            <Button fx:id="backslashButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;">
+                              <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                    <Image url="@res/img/back.png" />
+                                  </image>
+                                </ImageView>
+                              </graphic>
+                            </Button>
+                            <Button fx:id="showGoldButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;">
+                              <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                    <Image url="@res/img/back.png" />
+                                  </image>
+                                </ImageView>
+                              </graphic>
+                            </Button>
+                            <Button fx:id="wait1_4Button" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;">
+                              <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                    <Image url="@res/img/back.png" />
+                                  </image>
+                                </ImageView>
+                              </graphic>
+                            </Button>
+                            <Button fx:id="wait1Button" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;">
+                              <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                    <Image url="@res/img/back.png" />
+                                  </image>
+                                </ImageView>
+                              </graphic>
+                            </Button>
+                            <Button fx:id="waitInputButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;">
+                              <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                    <Image url="@res/img/back.png" />
+                                  </image>
+                                </ImageView>
+                              </graphic>
+                            </Button>
+                            <Button fx:id="showAllButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;">
+                              <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                    <Image url="@res/img/back.png" />
+                                  </image>
+                                </ImageView>
+                              </graphic>
+                            </Button>
+                            <Button fx:id="showStopButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;">
+                              <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                    <Image url="@res/img/back.png" />
+                                  </image>
+                                </ImageView>
+                              </graphic>
+                            </Button>
+                            <Button fx:id="nonWaitButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;">
+                              <graphic>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                    <Image url="@res/img/back.png" />
+                                  </image>
+                                </ImageView>
+                              </graphic>
+                            </Button>
+                          </buttons>
+                        </ButtonBar>
                         <HBox alignment="CENTER_RIGHT" spacing="5.0">
                           <children>
                             <Label text="Win:" />
@@ -169,36 +284,31 @@
                 </TitledPane>
                 <TitledPane text="icons">
                   <content>
-                              <ScrollPane>
-                                 <content>
-                                    <AnchorPane>
-                                       <children>
-                              <GridPane fx:id="iconGridPane" gridLinesVisible="true" layoutX="0.5" layoutY="85.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                <children>
-                                  <AnchorPane>
-                                    <children>
-                                      <ImageView fx:id="iconImageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                      <Label fx:id="iconSelectedLabel" opacity="0.25" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: -fx-cell-focus-inner-border, -fx-selection-bar;" />
-                                      <Label fx:id="iconFocusLabel" opacity="0.25" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: rgb(0, 225, 25);" />
-                                    </children>
-                                  </AnchorPane>
-                                </children>
-                              </GridPane>
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </ScrollPane>
-                  </content>
-                </TitledPane>
-                <TitledPane text="others">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <ScrollPane>
+                      <content>
+                        <AnchorPane>
+                          <children>
+                            <GridPane fx:id="iconGridPane" gridLinesVisible="true" layoutX="0.5" layoutY="85.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                              <children>
+                                <AnchorPane>
+                                  <children>
+                                    <ImageView fx:id="iconImageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <Label fx:id="iconSelectedLabel" opacity="0.25" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: -fx-cell-focus-inner-border, -fx-selection-bar;" />
+                                    <Label fx:id="iconFocusLabel" opacity="0.25" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: rgb(0, 225, 25);" />
+                                  </children>
+                                </AnchorPane>
+                              </children>
+                            </GridPane>
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </ScrollPane>
                   </content>
                 </TitledPane>
               </panes>

@@ -72,6 +72,20 @@ public class MainController {
   @FXML private Label     iconFocusLabel;
   @FXML private Label     iconSelectedLabel;
 
+  // Button Bar
+  @FXML private Button partyButton;
+  @FXML private Button goldButton;
+  @FXML private Button fontUpButton;
+  @FXML private Button fontDownButton;
+  @FXML private Button backslashButton;
+  @FXML private Button showGoldButton;
+  @FXML private Button wait1_4Button;
+  @FXML private Button wait1Button;
+  @FXML private Button waitInputButton;
+  @FXML private Button showAllButton;
+  @FXML private Button showStopButton;
+  @FXML private Button nonWaitButton;
+
   //}}}
 
   // initialize

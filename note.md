@@ -1,4 +1,4 @@
-- 折り返しは27.5文字。全角27文字と半角１文字を意味する。
+G- 折り返しは27.5文字。全角27文字と半角１文字を意味する。
 
     バッツ
     「適当なテキスト。
@@ -23,12 +23,13 @@
 
 # コンバートするテキスト
 
-\v[n] : {@val n}
-\n[n] : {@actor n}
-\p[n] : {@party n}
-\g    : {@gold}
 \c[n] : {@color n target text}
 \i[n] : {@icon n}
+\n[n] : {@actor n}
+\v[n] : {@val n}
+
+\p[n] : {@party n}
+\g    : {@gold}
 \{    : {@sizeUp n target text}
 \}    : {@sizeDown n target text}
 \\    : {@backslash}
