@@ -3,10 +3,13 @@ package app;
 import static util.Texts.*;
 
 import jiro.java.util.MyProperties;
+import util.ResourceBundleWithUtf8;
 
 import util.InitUtils;
 
 import java.io.*;
+import java.util.*;
+import java.net.URL;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -29,7 +32,13 @@ public class Main extends Application {
     // PresetsUtils.mkInitDirs();
     // PresetsUtils.mkInitPresets();
 
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+    URL location = getClass().getResource("main.fxml");
+    ResourceBundle resources = ResourceBundle.getBundle(
+        "app.dict"
+        , Locale.getDefault()
+        , ResourceBundleWithUtf8.UTF8_ENCODING_CONTROL
+        );
+    FXMLLoader loader = new FXMLLoader(location, resources);
 
     try {
       VBox root = (VBox) loader.load();

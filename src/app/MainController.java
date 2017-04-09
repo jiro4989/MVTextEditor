@@ -74,16 +74,21 @@ public class MainController {
 
   // Button Bar
   @FXML private Button partyButton;
+  @FXML private Button backslashButton;
+
   @FXML private Button goldButton;
+  @FXML private Button showGoldButton;
+
   @FXML private Button fontUpButton;
   @FXML private Button fontDownButton;
-  @FXML private Button backslashButton;
-  @FXML private Button showGoldButton;
+
   @FXML private Button wait1_4Button;
   @FXML private Button wait1Button;
-  @FXML private Button waitInputButton;
+
   @FXML private Button showAllButton;
   @FXML private Button showStopButton;
+
+  @FXML private Button waitInputButton;
   @FXML private Button nonWaitButton;
 
   //}}}
@@ -103,8 +108,15 @@ public class MainController {
         , tableView        , iconColumn       , nameColumn , textColumn
         , backgroundColumn , positionColumn);
     textView  = new TextView(this
-        , faceImageView  , actorNameTextField , colorPickerGridPane , colorPickerImageView
-        , editorTextArea , backgroundComboBox , positionComboBox);
+        , faceImageView   , actorNameTextField , colorPickerGridPane , colorPickerImageView
+        , editorTextArea  , backgroundComboBox , positionComboBox
+        , partyButton     , backslashButton
+        , goldButton      , showGoldButton
+        , fontUpButton    , fontDownButton
+        , wait1_4Button   , wait1Button
+        , showAllButton   , showStopButton
+        , waitInputButton , nonWaitButton
+        );
     editManager = new EditManager(
         this
         , varSearchTextField   , varTableView   , varIdColumn    , varNameColumn

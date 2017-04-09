@@ -23,6 +23,24 @@ class TextView {
   private final ComboBox<String> backgroundComboBox;
   private final ComboBox<String> positionComboBox;
 
+  private final Button partyButton;
+  private final Button backslashButton;
+
+  private final Button goldButton;
+  private final Button showGoldButton;
+
+  private final Button fontUpButton;
+  private final Button fontDownButton;
+
+  private final Button wait1_4Button;
+  private final Button wait1Button;
+
+  private final Button showAllButton;
+  private final Button showStopButton;
+
+  private final Button waitInputButton;
+  private final Button nonWaitButton;
+
   TextView(
       MainController mainController
       , ImageView faceImageView
@@ -32,16 +50,36 @@ class TextView {
       , TextArea editorTextArea
       , ComboBox<String> backgroundComboBox
       , ComboBox<String> positionComboBox
+      , Button partyButton     , Button backslashButton
+      , Button goldButton      , Button showGoldButton
+      , Button fontUpButton    , Button fontDownButton
+      , Button wait1_4Button   , Button wait1Button
+      , Button showAllButton   , Button showStopButton
+      , Button waitInputButton , Button nonWaitButton
       )
   {//{{{
-    this.mainController       = mainController;
-    this.faceImageView        = faceImageView;
-    this.actorNameTextField   = actorNameTextField;
-    this.colorPickerGridPane  = colorPickerGridPane;
-    this.colorPickerImageView = colorPickerImageView;
-    this.editorTextArea       = editorTextArea;
-    this.backgroundComboBox   = backgroundComboBox;
-    this.positionComboBox     = positionComboBox;
+
+    this.mainController       = mainController       ;
+    this.faceImageView        = faceImageView        ;
+    this.actorNameTextField   = actorNameTextField   ;
+    this.colorPickerGridPane  = colorPickerGridPane  ;
+    this.colorPickerImageView = colorPickerImageView ;
+    this.editorTextArea       = editorTextArea       ;
+    this.backgroundComboBox   = backgroundComboBox   ;
+    this.positionComboBox     = positionComboBox     ;
+
+    this.partyButton     = partyButton     ;
+    this.backslashButton = backslashButton ;
+    this.goldButton      = goldButton      ;
+    this.showGoldButton  = showGoldButton  ;
+    this.fontUpButton    = fontUpButton    ;
+    this.fontDownButton  = fontDownButton  ;
+    this.wait1_4Button   = wait1_4Button   ;
+    this.wait1Button     = wait1Button     ;
+    this.showAllButton   = showAllButton   ;
+    this.showStopButton  = showStopButton  ;
+    this.waitInputButton = waitInputButton ;
+    this.nonWaitButton   = nonWaitButton   ;
 
     // カラーピッカーをダブルクリックして選択範囲を色文字列でくくる
     colorPickerImageView.setOnMouseClicked(e -> {//{{{
