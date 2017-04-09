@@ -125,24 +125,11 @@ public class MainController {
     preferencesProperties.store();
   }//}}}
 
-  public void updateTextView(TextDB db) {//{{{
-    textView.update(db);
-  }//}}}
+  public void updateTextView(TextDB db) { textView.update(db); }
+  public void setTextList(List<List<String>> listList) { textTable.setTextList(listList); }
 
-  public void setTextList(List<List<String>> listList) {//{{{
-    textTable.setTextList(listList);
-  }//}}}
-
-  public void insertVarId(int id) {//{{{
-    textView.insertVarId(id);
-  }//}}}
-
-  public void insertActorId(int id) {//{{{
-    textView.insertActorId(id);
-  }//}}}
-
-  public void insertIconSetId(int id) {//{{{
-    textView.insertIconSetId(id);
-  }//}}}
+  public void insertVarId(     int id) { textView.insertVarId(     id) ; }
+  public void insertActorId(   int id) { textView.insertActorId(   id) ; }
+  public void insertIconSetId( int id) { textView.insertIconSetId( id) ; }
 
 }
