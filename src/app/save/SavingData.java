@@ -41,9 +41,9 @@ public class SavingData {
       DOMSource src = new DOMSource(root);
 
       Transformer transformer = TransformerFactory.newInstance().newTransformer();
-      transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-      transformer.setOutputProperty(OutputKeys.INDENT, "UTF-8");
-      transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+      transformer.setOutputProperty(OutputKeys.ENCODING , "UTF-8");
+      transformer.setOutputProperty(OutputKeys.INDENT   , "UTF-8");
+      transformer.setOutputProperty(OutputKeys.METHOD   , "xml");
 
       FileOutputStream fos = new FileOutputStream(path.toFile());
       StreamResult result  = new StreamResult(fos);
