@@ -34,18 +34,20 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem fx:id="openTextFileMenuItem" mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
+            <MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="New" />
+            <MenuItem fx:id="openMenuItem" mnemonicParsing="false" text="Open…" />
+            <Menu fx:id="recentMenu" mnemonicParsing="false" text="Open Recent" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
+            <MenuItem fx:id="closeMenu" mnemonicParsing="false" text="Close" />
+            <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" text="Save" />
+            <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" text="Save As…" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <MenuItem fx:id="importMenuItem" mnemonicParsing="false" text="Import" />
+            <MenuItem fx:id="exportMenuItem" mnemonicParsing="false" text="Export" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
+            <MenuItem fx:id="preferencesMenuItem" mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem fx:id="quitMenuItem" mnemonicParsing="false" text="Quit" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">

@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
+import javax.xml.parsers.ParserConfigurationException;
 
 public class MainController {
 
@@ -34,7 +35,16 @@ public class MainController {
 
   // menubar
 
-  @FXML private MenuItem openTextFileMenuItem;
+  @FXML private MenuItem newMenuItem;
+  @FXML private MenuItem openMenuItem;
+  @FXML private Menu     recentMenu;
+  @FXML private MenuItem closeMenu;
+  @FXML private MenuItem saveMenuItem;
+  @FXML private MenuItem saveAsMenuItem;
+  @FXML private MenuItem importMenuItem;
+  @FXML private MenuItem exportMenuItem;
+  @FXML private MenuItem preferencesMenuItem;
+  @FXML private MenuItem quitMenuItem;
 
   // table
 
@@ -103,7 +113,19 @@ public class MainController {
     preferencesProperties.load();
     preferencesProperties.changeLanguages();
 
-    myMenubar = new MyMenuBar(this, openTextFileMenuItem);
+    myMenubar = new MyMenuBar(
+        this
+        , newMenuItem
+        , openMenuItem
+        , recentMenu
+        , closeMenu
+        , saveMenuItem
+        , saveAsMenuItem
+        , importMenuItem
+        , exportMenuItem
+        , preferencesMenuItem
+        , quitMenuItem
+        );
     textTable = new TextTable(this
         , tableView        , iconColumn       , nameColumn , textColumn
         , backgroundColumn , positionColumn);
@@ -152,7 +174,11 @@ public class MainController {
   }//}}}
 
   public void updateTextView(TextDB db) { textView.update(db); }
-  public void setTextList(List<List<String>> listList) { textTable.setTextList(listList); }
+  public void saveXml(File file) { textTable.saveXml(file); }
+
+  public void setTextList(List<List<String>> listList) throws ParserConfigurationException {//{{{
+    textTable.setTextList(listList);
+  }//}}}
 
   public void insertVarId(     int id) { textView.insertVarId(     id) ; }
   public void insertActorId(   int id) { textView.insertActorId(   id) ; }

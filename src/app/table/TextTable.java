@@ -6,16 +6,19 @@ import app.selector.ImageSelector;
 
 import app.MainController;
 
+import java.io.*;
 import java.util.*;
 import java.util.stream.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
+import javax.xml.parsers.ParserConfigurationException;
 
 public class TextTable {
 
   private final MainController mainController;
+  private Optional<SavingData> dataOpt = Optional.empty();
 
   private final TableView<TextDB>           tableView;
   private final TableColumn<TextDB, String> iconColumn;
@@ -81,9 +84,16 @@ public class TextTable {
 
   }//}}}
 
-  public void setTextList(List<List<String>> listList) {//{{{
+  public void setTextList(List<List<String>> listList) throws ParserConfigurationException {//{{{
     listList.stream().forEach(list -> {
       tableView.getItems().add(new TextDB("", list, "ウィンドウ", "下"));
+    });
+    dataOpt = Optional.ofNullable(new SavingData(tableView.getItems()));
+  }//}}}
+
+  public void saveXml(File file) {//{{{
+    dataOpt.ifPresent(data -> {
+      data.saveXml(file);
     });
   }//}}}
 
