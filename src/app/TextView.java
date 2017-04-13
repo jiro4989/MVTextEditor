@@ -93,12 +93,20 @@ class TextView {
       mainController.updateTextOfTable(newVal);
     });
 
-    editorTextArea.textProperty().addListener((obs, oldVal, newVal) -> {
-      mainController.updateTextOfTable(newVal);
+    backgroundComboBox.valueProperty().addListener((obs, oldVal, newVal) -> {
+      mainController.updateBackgroundOfTable(newVal);
     });
 
-    editorTextArea.textProperty().addListener((obs, oldVal, newVal) -> {
-      mainController.updateTextOfTable(newVal);
+    positionComboBox.valueProperty().addListener((obs, oldVal, newVal) -> {
+      mainController.updatePositionOfTable(newVal);
+    });
+
+    backgroundComboBox.setOnScroll(e -> {
+      changeComboBoxItemWithMouseScroll(e, backgroundComboBox);
+    });
+
+    positionComboBox.setOnScroll(e -> {
+      changeComboBoxItemWithMouseScroll(e, positionComboBox);
     });
 
     //partyButton     . setOnAction(e -> insertText("\\"));
@@ -115,6 +123,14 @@ class TextView {
     waitInputButton . setOnAction(e -> insertText("\\!"                ) ) ;
     nonWaitButton   . setOnAction(e -> insertText("\\^"                ) ) ;
 
+  }//}}}
+
+  private void changeComboBoxItemWithMouseScroll(ScrollEvent e, ComboBox<? extends Object> comboBox) {//{{{
+    if (0 < e.getDeltaY()) {
+      comboBox.getSelectionModel().selectPrevious();
+    } else {
+      comboBox.getSelectionModel().selectNext();
+    }
   }//}}}
 
   void update(TextDB db) {//{{{
