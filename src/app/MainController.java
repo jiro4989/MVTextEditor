@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
+import javafx.stage.Window;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class MainController {
@@ -188,6 +189,10 @@ public class MainController {
   public void insertVarId(     int id) { textView.insertVarId(     id) ; }
   public void insertActorId(   int id) { textView.insertActorId(   id) ; }
   public void insertIconSetId( int id) { textView.insertIconSetId( id) ; }
+
+  // getter
+
+  public Window getWindow() { return tableView.getScene().getWindow(); }
 
   // setter
 

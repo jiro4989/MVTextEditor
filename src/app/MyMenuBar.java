@@ -14,6 +14,7 @@ import javax.xml.parsers.ParserConfigurationException;
 class MyMenuBar {
 
   private Optional<File> saveFileOpt = Optional.empty();
+  private final Tooltip tooltip = new Tooltip();
 
   // fxml component//{{{
 
@@ -112,6 +113,13 @@ class MyMenuBar {
     try {
       saveFileOpt = Optional.ofNullable(file);
       mainController.saveXml(file);
+
+      // TODO 表示すると表示され続けてしまう。
+      //tooltip.setText("Data is saved !");
+      //if (tooltip.isShowing()) {
+      //  tooltip.hide();
+      //}
+      //tooltip.show(mainController.getWindow());
     } catch (ParserConfigurationException pce) {
       Alert alert = new Alert(AlertType.ERROR);
       alert.setHeaderText("一時データ保存時のXML変換に失敗しました。");
