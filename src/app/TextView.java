@@ -85,6 +85,22 @@ class TextView {
       }
     });//}}}
 
+    actorNameTextField.textProperty().addListener((obs, oldVal, newVal) -> {
+      mainController.updateActorNameOfTable(newVal);
+    });
+
+    editorTextArea.textProperty().addListener((obs, oldVal, newVal) -> {
+      mainController.updateTextOfTable(newVal);
+    });
+
+    editorTextArea.textProperty().addListener((obs, oldVal, newVal) -> {
+      mainController.updateTextOfTable(newVal);
+    });
+
+    editorTextArea.textProperty().addListener((obs, oldVal, newVal) -> {
+      mainController.updateTextOfTable(newVal);
+    });
+
     //partyButton     . setOnAction(e -> insertText("\\"));
 
     backslashButton . setOnAction(e -> insertText("\\\\"               ) ) ;

@@ -41,8 +41,8 @@ public class Main extends Application {
     FXMLLoader loader = new FXMLLoader(location, resources);
 
     try {
-      VBox root = (VBox) loader.load();
-      controller = (MainController) loader.getController();
+      VBox root   = (VBox) loader.load();
+      controller  = (MainController) loader.getController();
       Scene scene = new Scene(root, 800, 600);
 
       primaryStage.setScene(scene);
@@ -55,6 +55,12 @@ public class Main extends Application {
 
       if (mainMp.load())
         mainMp.customStage(primaryStage);
+
+      String backgroundItem = resources.getString("background");
+      controller.setBackgroundItem(backgroundItem);
+
+      String positionItem = resources.getString("position");
+      controller.setPositionItem(positionItem);
 
       /*
        * // TODO 過去のソースの名残//{{{

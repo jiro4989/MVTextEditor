@@ -173,6 +173,11 @@ public class MainController {
     preferencesProperties.store();
   }//}}}
 
+  public void updateActorNameOfTable(  String value) { textTable.setActorName(value);  }
+  public void updateTextOfTable(       String value) { textTable.setText(value);       }
+  public void updateBackgroundOfTable( String value) { textTable.setBackground(value); }
+  public void updatePositionOfTable(   String value) { textTable.setPosition(value);   }
+
   public void updateTextView(TextDB db) { textView.update(db); }
   public void saveXml(File file) { textTable.saveXml(file); }
 
@@ -183,5 +188,17 @@ public class MainController {
   public void insertVarId(     int id) { textView.insertVarId(     id) ; }
   public void insertActorId(   int id) { textView.insertActorId(   id) ; }
   public void insertIconSetId( int id) { textView.insertIconSetId( id) ; }
+
+  // setter
+
+  void setBackgroundItem(String item) {//{{{
+    String[] array = item.split(",");
+    backgroundComboBox.getItems().addAll(array);
+  }//}}}
+
+  void setPositionItem(String item) {//{{{
+    String[] array = item.split(",");
+    positionComboBox.getItems().addAll(array);
+  }//}}}
 
 }

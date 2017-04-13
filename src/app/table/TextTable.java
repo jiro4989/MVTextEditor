@@ -84,13 +84,6 @@ public class TextTable {
 
   }//}}}
 
-  public void setTextList(List<List<String>> listList) throws ParserConfigurationException {//{{{
-    listList.stream().forEach(list -> {
-      tableView.getItems().add(new TextDB("", list, "ウィンドウ", "下"));
-    });
-    dataOpt = Optional.ofNullable(new SavingData(tableView.getItems()));
-  }//}}}
-
   public void saveXml(File file) {//{{{
     dataOpt.ifPresent(data -> {
       data.saveXml(file);
@@ -120,6 +113,41 @@ public class TextTable {
   private void updateTextView() {//{{{
     getSelectedItem().ifPresent(item -> {
       mainController.updateTextView(item);
+    });
+  }//}}}
+
+  // setter
+
+  public void setTextList(List<List<String>> listList) throws ParserConfigurationException {//{{{
+    listList.stream().forEach(list -> {
+      tableView.getItems().add(new TextDB("", list, "ウィンドウ", "下"));
+    });
+    dataOpt = Optional.ofNullable(new SavingData(tableView.getItems()));
+  }//}}}
+
+  // データベースのsetter
+
+  public void setActorName(String actorName) {//{{{
+    getSelectedItem().ifPresent(selectedItem -> {
+      selectedItem.setActorName(actorName);
+    });
+  }//}}}
+
+  public void setText(String text) {//{{{
+    getSelectedItem().ifPresent(selectedItem -> {
+      selectedItem.setText(text);
+    });
+  }//}}}
+
+  public void setBackground(String value) {//{{{
+    getSelectedItem().ifPresent(selectedItem -> {
+      selectedItem.setBackground(value);
+    });
+  }//}}}
+
+  public void setPosition(String value) {//{{{
+    getSelectedItem().ifPresent(selectedItem -> {
+      selectedItem.setPosition(value);
     });
   }//}}}
 
