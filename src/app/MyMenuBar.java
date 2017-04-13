@@ -4,12 +4,19 @@ import jiro.java.lang.Brackets;
 import jiro.java.lang.FormattableText;
 import jiro.javafx.stage.MyFileChooser;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javax.xml.parsers.ParserConfigurationException;
 
 class MyMenuBar {
+
+  private Optional<File> saveFileOpt = Optional.empty();
+
+  // fxml component//{{{
+
   private final MainController mainController;
   private final MyFileChooser textFileManager;
   private final MyFileChooser xmlManager;
@@ -24,6 +31,7 @@ class MyMenuBar {
   private final MenuItem exportMenuItem;
   private final MenuItem preferencesMenuItem;
   private final MenuItem quitMenuItem;
+  //}}}
 
   MyMenuBar(
       MainController mainController
@@ -81,11 +89,7 @@ class MyMenuBar {
           .joiningOption(false)
           .build();
         mainController.setTextList(ft.format().getTextList());
-      } catch (ParserConfigurationException pce) {
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setHeaderText("一時データ保存時のXML変換に失敗しました。");
-        alert.setContentText("作者に報告してください。");
-        alert.showAndWait();
+
       } catch (IOException ioe) {
         ioe.printStackTrace();
       }
@@ -93,12 +97,27 @@ class MyMenuBar {
   }//}}}
 
   private void saveXml() {//{{{
+    saveFileOpt.ifPresent(file -> {
+      save(file);
+    });
   }//}}}
 
   private void saveAsXml() {//{{{
     xmlManager.saveFile().ifPresent(file -> {
-      mainController.saveXml(file);
+      save(file);
     });
+  }//}}}
+
+  private void save(File file) {//{{{
+    try {
+      saveFileOpt = Optional.ofNullable(file);
+      mainController.saveXml(file);
+    } catch (ParserConfigurationException pce) {
+      Alert alert = new Alert(AlertType.ERROR);
+      alert.setHeaderText("一時データ保存時のXML変換に失敗しました。");
+      alert.setContentText("作者に報告してください。");
+      alert.showAndWait();
+    }
   }//}}}
 
 }

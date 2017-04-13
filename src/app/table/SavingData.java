@@ -30,11 +30,11 @@ class SavingData {
 
     dbList.stream().forEach(db -> {
       Element node = doc.createElement(NODE);
-      node . setAttribute(ICON , db . iconProperty()       . get());
+      node . setAttribute(ICON       , db . iconProperty()       . get());
       node . setAttribute(ACTOR_NAME , db . actorNameProperty()  . get());
-      node . setAttribute(TEXT , db . textProperty()       . get());
-      node . setAttribute(BG   , db . backgroundProperty() . get());
-      node . setAttribute(POS  , db . positionProperty()   . get());
+      node . setAttribute(TEXT       , db . textProperty()       . get());
+      node . setAttribute(BG         , db . backgroundProperty() . get());
+      node . setAttribute(POS        , db . positionProperty()   . get());
       root.appendChild(node);
     });
   }//}}}

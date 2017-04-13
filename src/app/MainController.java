@@ -179,9 +179,9 @@ public class MainController {
   public void updatePositionOfTable(   String value) { textTable.setPosition(value);   }
 
   public void updateTextView(TextDB db) { textView.update(db); }
-  public void saveXml(File file) { textTable.saveXml(file); }
+  public void saveXml(File file) throws ParserConfigurationException { textTable.saveXml(file); }
 
-  public void setTextList(List<List<String>> listList) throws ParserConfigurationException {//{{{
+  public void setTextList(List<List<String>> listList) {//{{{
     textTable.setTextList(listList);
   }//}}}
 

@@ -18,7 +18,6 @@ import javax.xml.parsers.ParserConfigurationException;
 public class TextTable {
 
   private final MainController mainController;
-  private Optional<SavingData> dataOpt = Optional.empty();
 
   private final TableView<TextDB>           tableView;
   private final TableColumn<TextDB, String> iconColumn;
@@ -84,10 +83,9 @@ public class TextTable {
 
   }//}}}
 
-  public void saveXml(File file) {//{{{
-    dataOpt.ifPresent(data -> {
-      data.saveXml(file);
-    });
+  public void saveXml(File file) throws ParserConfigurationException {//{{{
+    SavingData data = new SavingData(tableView.getItems());
+    data.saveXml(file);
   }//}}}
 
   // private methods
@@ -118,11 +116,10 @@ public class TextTable {
 
   // setter
 
-  public void setTextList(List<List<String>> listList) throws ParserConfigurationException {//{{{
+  public void setTextList(List<List<String>> listList) {//{{{
     listList.stream().forEach(list -> {
       tableView.getItems().add(new TextDB("", list, "ウィンドウ", "下"));
     });
-    dataOpt = Optional.ofNullable(new SavingData(tableView.getItems()));
   }//}}}
 
   // データベースのsetter
