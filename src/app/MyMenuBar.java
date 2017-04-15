@@ -4,11 +4,14 @@ import jiro.java.lang.Brackets;
 import jiro.java.lang.FormattableText;
 import jiro.javafx.stage.MyFileChooser;
 
+import util.Texts;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
 
 class MyMenuBar {
@@ -70,6 +73,20 @@ class MyMenuBar {
 
   }//}}}
 
+  private void saveXml() {//{{{
+    saveFileOpt.ifPresent(file -> {
+      save(file);
+      Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
+    });
+  }//}}}
+
+  private void saveAsXml() {//{{{
+    xmlManager.saveFile().ifPresent(file -> {
+      save(file);
+      Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
+    });
+  }//}}}
+
   private void importTextFile() {//{{{
     textFileManager.openFile().ifPresent(file -> {
       // TODO 一時変数
@@ -91,21 +108,12 @@ class MyMenuBar {
           .build();
         mainController.setTextList(ft.format().getTextList());
 
+        Stage stage = (Stage) mainController.getWindow();
+        String fileName = file.getName();
+        stage.setTitle(fileName + " - " + Texts.TITLE_VERSION);
       } catch (IOException ioe) {
         ioe.printStackTrace();
       }
-    });
-  }//}}}
-
-  private void saveXml() {//{{{
-    saveFileOpt.ifPresent(file -> {
-      save(file);
-    });
-  }//}}}
-
-  private void saveAsXml() {//{{{
-    xmlManager.saveFile().ifPresent(file -> {
-      save(file);
     });
   }//}}}
 

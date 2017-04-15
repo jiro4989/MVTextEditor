@@ -20,11 +20,14 @@ import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
+  public static Stage mainStage;
   static MyProperties mainMp;
   private MainController controller;
+  public static ResourceBundle resources;
 
   @Override
   public void start(Stage primaryStage) {//{{{
+    mainStage = primaryStage;
     mainMp = new MyProperties(MAIN_PROPERTIES);
     InitUtils.mkPropDirs();
 
@@ -33,7 +36,7 @@ public class Main extends Application {
     // PresetsUtils.mkInitPresets();
 
     URL location = getClass().getResource("main.fxml");
-    ResourceBundle resources = ResourceBundle.getBundle(
+    resources = ResourceBundle.getBundle(
         "app.dict"
         , Locale.getDefault()
         , ResourceBundleWithUtf8.UTF8_ENCODING_CONTROL
@@ -45,8 +48,9 @@ public class Main extends Application {
       controller  = (MainController) loader.getController();
       Scene scene = new Scene(root, 800, 600);
 
+      String noname = resources.getString("noname");
       primaryStage.setScene(scene);
-      primaryStage.setTitle(TITLE_VERSION);
+      primaryStage.setTitle(noname + " - " +TITLE_VERSION);
       primaryStage.getIcons().add(new Image(APP_ICON));
       primaryStage.setMinWidth(80.0);
       primaryStage.setMinHeight(140.0);

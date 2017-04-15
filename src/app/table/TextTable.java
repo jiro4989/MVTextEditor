@@ -4,6 +4,7 @@ import static util.Texts.*;
 
 import app.selector.ImageSelector;
 
+import app.Main;
 import app.MainController;
 
 import java.io.*;
@@ -80,6 +81,12 @@ public class TextTable {
 
     tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     tableView.getSelectionModel().setCellSelectionEnabled(true);
+
+    String background = Main.resources.getString("background");
+    background = background.split(",")[0];
+    String position = Main.resources.getString("position");
+    position = position.split(",")[0];
+    tableView.getItems().add(new TextDB("", "", "", background, position));
 
   }//}}}
 
