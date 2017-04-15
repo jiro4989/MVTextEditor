@@ -108,9 +108,9 @@ class MyMenuBar {
           .build();
         mainController.setTextList(ft.format().getTextList());
 
-        Stage stage = (Stage) mainController.getWindow();
-        String fileName = file.getName();
-        stage.setTitle(fileName + " - " + Texts.TITLE_VERSION);
+        // データの管理はxmlで行うため、
+        // importするtxtファイルをタイトルにセットするのは適当ではない？
+        //Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
       } catch (IOException ioe) {
         ioe.printStackTrace();
       }
