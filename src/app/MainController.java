@@ -46,6 +46,15 @@ public class MainController {
   @FXML private MenuItem preferencesMenuItem;
   @FXML private MenuItem quitMenuItem;
 
+  @FXML private MenuItem iconIndex1MenuItem;
+  @FXML private MenuItem iconIndex2MenuItem;
+  @FXML private MenuItem iconIndex3MenuItem;
+  @FXML private MenuItem iconIndex4MenuItem;
+  @FXML private MenuItem iconIndex5MenuItem;
+  @FXML private MenuItem iconIndex6MenuItem;
+  @FXML private MenuItem iconIndex7MenuItem;
+  @FXML private MenuItem iconIndex8MenuItem;
+
   // table
 
   @FXML private TextField tableFilterTextField;
@@ -159,6 +168,16 @@ public class MainController {
       // アイコンセット一覧の一時読み込み
       editManager.setIconset(proj + "/" + IMG_ICONSET_PATH);
     });
+
+    iconIndex1MenuItem.setOnAction(e -> textTable.changeIconIndex(0));
+    iconIndex2MenuItem.setOnAction(e -> textTable.changeIconIndex(1));
+    iconIndex3MenuItem.setOnAction(e -> textTable.changeIconIndex(2));
+    iconIndex4MenuItem.setOnAction(e -> textTable.changeIconIndex(3));
+    iconIndex5MenuItem.setOnAction(e -> textTable.changeIconIndex(4));
+    iconIndex6MenuItem.setOnAction(e -> textTable.changeIconIndex(5));
+    iconIndex7MenuItem.setOnAction(e -> textTable.changeIconIndex(6));
+    iconIndex8MenuItem.setOnAction(e -> textTable.changeIconIndex(7));
+
   }//}}}
 
   // public methods

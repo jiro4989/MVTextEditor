@@ -114,6 +114,15 @@ public class TextTable {
     JsonUtils.writeValue(file, data);
   }//}}}
 
+  public void changeIconIndex(int index) {//{{{
+    getSelectedItems().ifPresent(selectedItems -> {
+      selectedItems.stream().forEach(selectedItem -> {
+        selectedItem.setIconIndex(index);
+      });
+    });
+    updateTextView();
+  }//}}}
+
   // private methods
 
   private Optional<TextDB> getSelectedItem() {//{{{
