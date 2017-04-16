@@ -187,6 +187,9 @@ public class MainController {
   @FXML private void pasteRecordsMenuItemOnAction()  { textTable.pasteRecords(); }
   @FXML private void deleteRecordsMenuItemOnAction() { textTable.deleteRecords(); }
 
+  @FXML private void selectPreviousMenuItemOnAction() { textTable.selectPrevious(); }
+  @FXML private void selectNextMenuItemOnAction()     { textTable.selectNext(); }
+
   // public methods
 
   public void closeRequest() {//{{{

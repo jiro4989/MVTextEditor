@@ -19,6 +19,7 @@
 - [ ] 画像セレクターでキャンセル実行時はテーブルの画像を更新しない。
 - [ ] 画像セレクターを表示した時に、最初の画像をセットしておく。
 - [x] ColorPickerペインのサイズ調整
+- [x] Delete後は選択が下に移動する。
 - [x] File関連のAPIは古すぎるので、java.nio.fileクラスで書き直す。
 - [x] FormattableTextにactorNameオプションを付け忘れていた
 - [x] FormattableTextを修正して空リストが発生しないようにする。

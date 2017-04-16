@@ -149,15 +149,27 @@ public class TextTable {
   }//}}}
 
   public void deleteRecords() {//{{{
-    //int selectedIndex = 
-    //tableView.getSelectionModel().getSelectedIndices().get(0);
+    int index = tableView.getSelectionModel().getSelectedIndices().get(0);
     getSelectedItems().ifPresent(selectedItems -> {
       masterData.removeAll(selectedItems);
     });
+    if (0 < index) selectNext();
     if (masterData.size() < 1) {
       masterData.add(createInitTextDB());
     }
-    //tableView.getSelectionModel().select();
+  }//}}}
+
+  public void selectPrevious() {//{{{
+    int index = tableView.getSelectionModel().getSelectedIndex();
+    index = Math.max(0, --index);
+    tableView.getSelectionModel().clearAndSelect(index);
+  }//}}}
+
+  public void selectNext() {//{{{
+    int index = tableView.getSelectionModel().getSelectedIndex();
+    int max = tableView.getItems().size();
+    index = Math.min(++index, max);
+    tableView.getSelectionModel().clearAndSelect(index);
   }//}}}
 
   // private methods
