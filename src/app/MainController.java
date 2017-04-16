@@ -182,8 +182,10 @@ public class MainController {
 
   // fxml event
 
-  @FXML private void copyRecordsMenuItemOnAction()  { textTable.copyRecords(); }
-  @FXML private void pasteRecordsMenuItemOnAction() { textTable.pasteRecords(); }
+  @FXML private void cutRecordsMenuItemOnAction()    { textTable.cutRecords(); }
+  @FXML private void copyRecordsMenuItemOnAction()   { textTable.copyRecords(); }
+  @FXML private void pasteRecordsMenuItemOnAction()  { textTable.pasteRecords(); }
+  @FXML private void deleteRecordsMenuItemOnAction() { textTable.deleteRecords(); }
 
   // public methods
 

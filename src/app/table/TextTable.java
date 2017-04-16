@@ -94,9 +94,7 @@ public class TextTable {
     tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     tableView.getSelectionModel().setCellSelectionEnabled(true);
 
-    String bg  = getBackgroundInitText();
-    String pos = getPositionInitText();
-    masterData.add(new TextDB("", "", "", bg, pos));
+    masterData.add(createInitTextDB());
 
     // テーブルのフィルタリング
     FilteredList<TextDB> filteredData = new FilteredList<>(masterData, p -> true);
@@ -126,6 +124,11 @@ public class TextTable {
     updateTextView();
   }//}}}
 
+  public void cutRecords() {//{{{
+    copyRecords();
+    deleteRecords();
+  }//}}}
+
   public void copyRecords() {//{{{
     getSelectedItems().ifPresent(selectedItems -> {
       copyTextDBs = Optional.ofNullable(new ArrayList<>(selectedItems));
@@ -137,6 +140,18 @@ public class TextTable {
       int index = tableView.getSelectionModel().getSelectedIndices().get(0);
       masterData.addAll(index, records);
     });
+  }//}}}
+
+  public void deleteRecords() {//{{{
+    //int selectedIndex = 
+    //tableView.getSelectionModel().getSelectedIndices().get(0);
+    getSelectedItems().ifPresent(selectedItems -> {
+      masterData.removeAll(selectedItems);
+    });
+    if (masterData.size() < 1) {
+      masterData.add(createInitTextDB());
+    }
+    //tableView.getSelectionModel().select();
   }//}}}
 
   // private methods
@@ -234,6 +249,12 @@ public class TextTable {
       return true;
        }
     return false;
+  }//}}}
+
+  private TextDB createInitTextDB() {//{{{
+    String bg  = getBackgroundInitText();
+    String pos = getPositionInitText();
+    return new TextDB("", "", "", bg, pos);
   }//}}}
 
 }
