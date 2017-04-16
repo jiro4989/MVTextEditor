@@ -132,6 +132,8 @@ public class TextTable {
   }//}}}
 
   public void setTextList(List<List<String>> listList) {//{{{
+    tableView.getSelectionModel().clearSelection();
+    tableView.getItems().clear();
     listList.stream().forEach(list -> {
       tableView.getItems().add(new TextDB("", list, "ウィンドウ", "下"));
     });

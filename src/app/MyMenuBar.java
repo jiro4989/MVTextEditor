@@ -81,6 +81,7 @@ class MyMenuBar {
       try {
         List<TextDB> dbs = SavingData.convertTextDB(file);
         mainController.setTextDB(dbs);
+        Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
       } catch (SAXException e) {
         e.printStackTrace();
       } catch (ParserConfigurationException e) {
