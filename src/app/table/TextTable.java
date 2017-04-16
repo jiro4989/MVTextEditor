@@ -92,7 +92,7 @@ public class TextTable {
     });
 
     tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-    tableView.getSelectionModel().setCellSelectionEnabled(true);
+    //tableView.getSelectionModel().setCellSelectionEnabled(true);
 
     masterData.add(createInitTextDB());
 
@@ -137,10 +137,14 @@ public class TextTable {
 
   public void pasteRecords() {//{{{
     getSelectedItems().ifPresent(i -> {
-      copyTextDBs.ifPresent(records -> {
-        int index = tableView.getSelectionModel().getSelectedIndices().get(0);
-        masterData.addAll(index, records);
-      });
+      copyTextDBs.map(l -> l.stream()
+          .map(TextDB::new)
+          .collect(Collectors.toList())
+          )
+        .ifPresent(records -> {
+          int index = tableView.getSelectionModel().getSelectedIndices().get(0);
+          masterData.addAll(index, records);
+        });
     });
   }//}}}
 
