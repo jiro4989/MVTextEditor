@@ -220,15 +220,15 @@ public class TextTable {
 
   // データベースのsetter
 
-  public void setActorName(String actorName) {//{{{
+  public void setActorName(String value) {//{{{
     getSelectedItem().ifPresent(selectedItem -> {
-      selectedItem.setActorName(actorName);
+      selectedItem.setActorName(value);
     });
   }//}}}
 
-  public void setText(String text) {//{{{
+  public void setText(String value) {//{{{
     getSelectedItem().ifPresent(selectedItem -> {
-      selectedItem.setText(text);
+      selectedItem.setText(value);
     });
   }//}}}
 
