@@ -124,6 +124,7 @@ public class TextTable {
   // setter
 
   public void setTextDB(List<TextDB> dbs) {//{{{
+    tableView.getSelectionModel().clearSelection();
     tableView.getItems().clear();
     dbs.stream().forEach(db -> {
       tableView.getItems().add(db);
