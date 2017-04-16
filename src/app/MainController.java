@@ -182,9 +182,8 @@ public class MainController {
   public void updateTextView(TextDB db) { textView.update(db); }
   public void saveXml(File file) throws ParserConfigurationException { textTable.saveXml(file); }
 
-  public void setTextList(List<List<String>> listList) {//{{{
-    textTable.setTextList(listList);
-  }//}}}
+  public void setTextList(List<List<String>> listList) { textTable.setTextList(listList); }
+  public void setTextDB(List<TextDB> dbs) { textTable.setTextDB(dbs); }
 
   public void insertVarId(     int id) { textView.insertVarId(     id) ; }
   public void insertActorId(   int id) { textView.insertActorId(   id) ; }

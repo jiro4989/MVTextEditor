@@ -1,15 +1,16 @@
 package app.table;
 
 import java.io.*;
-import java.util.*;
 import java.nio.file.*;
+import java.util.*;
 import javax.xml.parsers.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.*;
 import javax.xml.transform.stream.*;
 import org.w3c.dom.*;
+import org.xml.sax.SAXException;
 
-class SavingData {
+public class SavingData {
 
   private final Document doc;
   private final Element root;
@@ -37,6 +38,35 @@ class SavingData {
       node . setAttribute(POS        , db . positionProperty()   . get());
       root.appendChild(node);
     });
+  }//}}}
+
+  /**
+   * xmlファイルからTextDBのリストを生成する。
+   * @param file xml file
+   * @return TextDBのデータリスト
+   */
+  public static List<TextDB> convertTextDB(File xmlFile) throws SAXException, ParserConfigurationException, IOException {//{{{
+    Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlFile);
+    Element root = document.getDocumentElement();
+    NodeList children = root.getChildNodes();
+
+    List<TextDB> dbList = new ArrayList<>();
+    for (int i=0; i<children.getLength(); i++) {
+      Node node = children.item(i);
+      if (node.getNodeType() == Node.ELEMENT_NODE) {
+        Element element = (Element) node;
+
+        String icon      = element.getAttribute(ICON);
+        String actorName = element.getAttribute(ACTOR_NAME);
+        String text      = element.getAttribute(TEXT);
+        String bg        = element.getAttribute(BG);
+        String pos       = element.getAttribute(POS);
+
+        dbList.add(new TextDB(icon, actorName, text, bg, pos));
+      }
+    }
+
+    return dbList;
   }//}}}
 
   void saveXml(File file) {//{{{

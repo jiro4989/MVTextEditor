@@ -4,15 +4,17 @@ import jiro.java.lang.Brackets;
 import jiro.java.lang.FormattableText;
 import jiro.javafx.stage.MyFileChooser;
 
+import app.table.SavingData;
+import app.table.TextDB;
 import util.Texts;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Optional;
+import java.io.*;
+import java.util.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 
 class MyMenuBar {
 
@@ -67,10 +69,26 @@ class MyMenuBar {
     this.preferencesMenuItem = preferencesMenuItem;
     this.quitMenuItem        = quitMenuItem;
 
+    openMenuItem   . setOnAction(e -> openXml());
     saveMenuItem   . setOnAction(e -> saveXml());
     saveAsMenuItem . setOnAction(e -> saveAsXml());
     importMenuItem . setOnAction(e -> importTextFile());
 
+  }//}}}
+
+  private void openXml() {//{{{
+    xmlManager.openFile().ifPresent(file -> {
+      try {
+        List<TextDB> dbs = SavingData.convertTextDB(file);
+        mainController.setTextDB(dbs);
+      } catch (SAXException e) {
+        e.printStackTrace();
+      } catch (ParserConfigurationException e) {
+        showParsingErrorDialog();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    });
   }//}}}
 
   private void saveXml() {//{{{
@@ -129,11 +147,15 @@ class MyMenuBar {
       //}
       //tooltip.show(mainController.getWindow());
     } catch (ParserConfigurationException pce) {
-      Alert alert = new Alert(AlertType.ERROR);
-      alert.setHeaderText("一時データ保存時のXML変換に失敗しました。");
-      alert.setContentText("作者に報告してください。");
-      alert.showAndWait();
+      showParsingErrorDialog();
     }
+  }//}}}
+
+  private static final void showParsingErrorDialog() {//{{{
+    Alert alert = new Alert(AlertType.ERROR);
+    alert.setHeaderText("一時データ保存時のXML変換に失敗しました。");
+    alert.setContentText("作者に報告してください。");
+    alert.showAndWait();
   }//}}}
 
 }

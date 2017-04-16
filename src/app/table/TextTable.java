@@ -123,6 +123,13 @@ public class TextTable {
 
   // setter
 
+  public void setTextDB(List<TextDB> dbs) {//{{{
+    tableView.getItems().clear();
+    dbs.stream().forEach(db -> {
+      tableView.getItems().add(db);
+    });
+  }//}}}
+
   public void setTextList(List<List<String>> listList) {//{{{
     listList.stream().forEach(list -> {
       tableView.getItems().add(new TextDB("", list, "ウィンドウ", "下"));
