@@ -21,7 +21,9 @@ import javax.xml.parsers.ParserConfigurationException;
 public class TextTable {
 
   private final MainController mainController;
+  private Optional<List<TextDB>> copyTextDBs = Optional.empty();
 
+  // fxml component {{{
   private final TextField tableFilterTextField;
   private final TableView<TextDB>           tableView;
   private final TableColumn<TextDB, String> iconColumn;
@@ -29,6 +31,7 @@ public class TextTable {
   private final TableColumn<TextDB, String> textColumn;
   private final TableColumn<TextDB, String> backgroundColumn;
   private final TableColumn<TextDB, String> positionColumn;
+  //}}}
 
   // 変数パネルの検索される元のデータベース
   private final ObservableList<TextDB> masterData;
@@ -121,6 +124,19 @@ public class TextTable {
       });
     });
     updateTextView();
+  }//}}}
+
+  public void copyRecords() {//{{{
+    getSelectedItems().ifPresent(selectedItems -> {
+      copyTextDBs = Optional.ofNullable(new ArrayList<>(selectedItems));
+    });
+  }//}}}
+
+  public void pasteRecords() {//{{{
+    copyTextDBs.ifPresent(records -> {
+      int index = tableView.getSelectionModel().getSelectedIndices().get(0);
+      masterData.addAll(index, records);
+    });
   }//}}}
 
   // private methods

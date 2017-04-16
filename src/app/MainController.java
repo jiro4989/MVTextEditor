@@ -180,6 +180,11 @@ public class MainController {
 
   }//}}}
 
+  // fxml event
+
+  @FXML private void copyRecordsMenuItemOnAction()  { textTable.copyRecords(); }
+  @FXML private void pasteRecordsMenuItemOnAction() { textTable.pasteRecords(); }
+
   // public methods
 
   public void closeRequest() {//{{{

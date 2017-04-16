@@ -34,8 +34,16 @@
             <MenuItem mnemonicParsing="false" text="Redo" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Copy Records" onAction="#copyRecordsMenuItemOnAction" >
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" text="Paste Records" onAction="#pasteRecordsMenuItemOnAction" >
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
             <MenuItem mnemonicParsing="false" text="Delete" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" text="Select All" />
