@@ -136,9 +136,11 @@ public class TextTable {
   }//}}}
 
   public void pasteRecords() {//{{{
-    copyTextDBs.ifPresent(records -> {
-      int index = tableView.getSelectionModel().getSelectedIndices().get(0);
-      masterData.addAll(index, records);
+    getSelectedItems().ifPresent(i -> {
+      copyTextDBs.ifPresent(records -> {
+        int index = tableView.getSelectionModel().getSelectedIndices().get(0);
+        masterData.addAll(index, records);
+      });
     });
   }//}}}
 

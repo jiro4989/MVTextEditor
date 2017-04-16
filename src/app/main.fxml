@@ -13,12 +13,24 @@
         <Menu mnemonicParsing="false" text="File">
           <items>
             <MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="New" />
-            <MenuItem fx:id="openMenuItem" mnemonicParsing="false" text="Open…" />
+            <MenuItem fx:id="openMenuItem" mnemonicParsing="false" text="Open…" >
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
             <Menu fx:id="recentMenu" mnemonicParsing="false" text="Open Recent" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem fx:id="closeMenu" mnemonicParsing="false" text="Close" />
-            <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" text="Save" />
-            <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" text="Save As…" />
+            <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" text="Save" >
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" text="Save As…" >
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem fx:id="importMenuItem" mnemonicParsing="false" text="Import" />
             <MenuItem fx:id="exportMenuItem" mnemonicParsing="false" text="Export" />
