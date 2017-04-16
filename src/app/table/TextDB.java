@@ -33,102 +33,104 @@ public class TextDB {
 
   }//}}}
 
-  public TextDB(//{{{
-      String icon,
-      List<String> textList,
-      String background,
-      String position
-      )
-  {
-    this(icon, getActorNameFromList(textList), getTextFromList(textList), background, position);
-  }//}}}
+public TextDB(//{{{
+    String icon,
+    List<String> textList,
+    String background,
+    String position
+    )
+{
+  this(icon, getActorNameFromList(textList), getTextFromList(textList), background, position);
+}//}}}
 
-  public TextDB(TextDB textDB) {//{{{
+public TextDB(TextDB textDB) {//{{{
 
-    this . icon       = new SimpleStringProperty(textDB  . iconProperty()       . get());
-    this . actorName  = new SimpleStringProperty(textDB  . actorNameProperty()  . get());
-    this . text       = new SimpleStringProperty(textDB  . textProperty()       . get());
-    this . background = new SimpleStringProperty(textDB  . backgroundProperty() . get());
-    this . position   = new SimpleStringProperty(textDB  . positionProperty()   . get());
+  this . icon       = new SimpleStringProperty(textDB  . iconProperty()       . get());
+  this . actorName  = new SimpleStringProperty(textDB  . actorNameProperty()  . get());
+  this . text       = new SimpleStringProperty(textDB  . textProperty()       . get());
+  this . background = new SimpleStringProperty(textDB  . backgroundProperty() . get());
+  this . position   = new SimpleStringProperty(textDB  . positionProperty()   . get());
 
-  }//}}}
+}//}}}
 
-  // private methods
+// private methods
 
-  private static String getActorNameFromList(List<String> list) {//{{{
-    if (0 < list.size()) {
-      String actor = list.get(0);
-      actor = actor.startsWith("#") ? actor.replaceAll("^# *", "") : "";
-      return actor;
-    }
-    return "";
-  }//}}}
-
-  private static String getTextFromList(List<String> list) {//{{{
-    int size = list.size();
-    if (0 < size) {
-      String actor = list.get(0);
-      int fromIndex = actor.startsWith("#") ? 1 : 0;
-      List<String> subList = new ArrayList<>(list.subList(fromIndex, size));
-      return String.join(SEP, subList);
-    }
-    return "";
-  }//}}}
-
-  // Getter and Setter
-
-  // Getter//{{{
-
-  public StringProperty iconProperty() {
-    return icon;
+private static String getActorNameFromList(List<String> list) {//{{{
+  if (0 < list.size()) {
+    String actor = list.get(0);
+    actor = actor.startsWith("#") ? actor.replaceAll("^# *", "") : "";
+    return actor;
   }
-  public StringProperty actorNameProperty() {
-    return actorName;
-  }
-  public StringProperty textProperty() {
-    return text;
-  }
-  public StringProperty backgroundProperty() {
-    return background;
-  }
-  public StringProperty positionProperty() {
-    return position;
-  }
+  return "";
+}//}}}
 
-  //}}}
+private static String getTextFromList(List<String> list) {//{{{
+  int size = list.size();
+  if (0 < size) {
+    String actor = list.get(0);
+    int fromIndex = actor.startsWith("#") ? 1 : 0;
+    List<String> subList = new ArrayList<>(list.subList(fromIndex, size));
+    return String.join(SEP, subList);
+  }
+  return "";
+}//}}}
 
-  // Setter//{{{
+// Getter and Setter
 
-  public void setIconIndex(int index) {//{{{
-    String str           = iconProperty().get();
-    String[] array       = str.split(":");
+// Getter//{{{
+
+public StringProperty iconProperty() {
+  return icon;
+}
+public StringProperty actorNameProperty() {
+  return actorName;
+}
+public StringProperty textProperty() {
+  return text;
+}
+public StringProperty backgroundProperty() {
+  return background;
+}
+public StringProperty positionProperty() {
+  return position;
+}
+
+//}}}
+
+// Setter//{{{
+
+public void setIconIndex(int index) {//{{{
+  String str           = iconProperty().get();
+  String[] array       = str.split(":");
+  if (1 < array.length) {
     String path          = createFilePath(array);
     String newIconString = path + ":" + index;
     setIcon(newIconString);
-  }//}}}
+  }
+}//}}}
 
-  public void setIcon(String icon) {
-    iconProperty().set(icon);
-  }
-  public void setActorName(String actorName) {
-    actorNameProperty().set(actorName);
-  }
-  public void setText(String text) {
-    textProperty().set(text);
-  }
-  public void setBackground(String background) {
-    backgroundProperty().set(background);
-  }
-  public void setPosition(String position) {
-    positionProperty().set(position);
-  }
+public void setIcon(String icon) {
+  iconProperty().set(icon);
+}
+public void setActorName(String actorName) {
+  actorNameProperty().set(actorName);
+}
+public void setText(String text) {
+  textProperty().set(text);
+}
+public void setBackground(String background) {
+  backgroundProperty().set(background);
+}
+public void setPosition(String position) {
+  positionProperty().set(position);
+}
 
-  //}}}
+//}}}
 
-  @Override
-  public String toString() {//{{{
-    return String.format("TextDB: {icon: %s, actorName: %s, text: %s, background: %s, position: %s}",
-        icon.get(), actorName.get(), text.get(), background.get(), position.get());
-  }//}}}
+@Override
+public String toString() {//{{{
+  return String.format("TextDB: {icon: %s, actorName: %s, text: %s, background: %s, position: %s}",
+      icon.get(), actorName.get(), text.get(), background.get(), position.get());
+}//}}}
 
 }
