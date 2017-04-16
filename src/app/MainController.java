@@ -49,6 +49,7 @@ public class MainController {
 
   // table
 
+  @FXML private TextField tableFilterTextField;
   @FXML private TableView<TextDB> tableView;
   @FXML private TableColumn<TextDB, String> iconColumn;
   @FXML private TableColumn<TextDB, String> nameColumn;
@@ -128,6 +129,7 @@ public class MainController {
         , quitMenuItem
         );
     textTable = new TextTable(this
+        , tableFilterTextField
         , tableView        , iconColumn       , nameColumn , textColumn
         , backgroundColumn , positionColumn);
     textView  = new TextView(this

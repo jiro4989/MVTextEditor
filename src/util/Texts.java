@@ -1,5 +1,7 @@
 package util;
 
+import app.Main;
+
 import java.nio.IntBuffer;
 import javafx.scene.image.WritablePixelFormat;
 
@@ -49,6 +51,14 @@ public class Texts {
       newArray[i] = array[i];
     }
     return String.join(":", newArray);
+  }//}}}
+
+  public static String getBackgroundInitText() {//{{{
+    return Main.resources.getString("background").split(",")[0];
+  }//}}}
+
+  public static String getPositionInitText() {//{{{
+    return Main.resources.getString("position").split(",")[2];
   }//}}}
 
 }

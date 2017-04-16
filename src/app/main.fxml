@@ -17,6 +17,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -76,6 +77,17 @@
         <SplitPane dividerPositions="0.6716791979949874" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <items>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
+              <top>
+                <ToolBar BorderPane.alignment="CENTER">
+                  <items>
+                    <Label text="%search" />
+                    <TextField fx:id="tableFilterTextField" prefWidth="500.0" promptText="%searchPromptText" />
+                  </items>
+                  <padding>
+                    <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
+                  </padding>
+                </ToolBar>
+              </top>
               <center>
                 <TableView fx:id="tableView" BorderPane.alignment="CENTER">
                   <columns>

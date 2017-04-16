@@ -12,6 +12,7 @@ import java.util.*;
 import java.util.stream.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,6 +21,7 @@ public class TextTable {
 
   private final MainController mainController;
 
+  private final TextField tableFilterTextField;
   private final TableView<TextDB>           tableView;
   private final TableColumn<TextDB, String> iconColumn;
   private final TableColumn<TextDB, String> actorNameColumn;
@@ -27,8 +29,12 @@ public class TextTable {
   private final TableColumn<TextDB, String> backgroundColumn;
   private final TableColumn<TextDB, String> positionColumn;
 
+  // 変数パネルの検索される元のデータベース
+  private final ObservableList<TextDB> masterData;
+
   public TextTable(
       MainController mc
+      , TextField tftf
       , TableView<TextDB> tv
       , TableColumn<TextDB, String> ic
       , TableColumn<TextDB, String> anc
@@ -38,13 +44,15 @@ public class TextTable {
       )
   {//{{{
 
-    mainController   = mc;
-    tableView        = tv;
-    iconColumn       = ic;
-    actorNameColumn  = anc;
-    textColumn       = tc;
-    backgroundColumn = bgc;
-    positionColumn   = pc;
+    mainController       = mc;
+    tableFilterTextField = tftf;
+    tableView            = tv;
+    iconColumn           = ic;
+    actorNameColumn      = anc;
+    textColumn           = tc;
+    backgroundColumn     = bgc;
+    positionColumn       = pc;
+    masterData = FXCollections.observableArrayList();
 
     iconColumn       . setCellValueFactory(new PropertyValueFactory<TextDB, String>("icon"));
     actorNameColumn  . setCellValueFactory(new PropertyValueFactory<TextDB, String>("actorName"));
@@ -82,11 +90,16 @@ public class TextTable {
     tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     tableView.getSelectionModel().setCellSelectionEnabled(true);
 
-    String background = Main.resources.getString("background");
-    background = background.split(",")[0];
-    String position = Main.resources.getString("position");
-    position = position.split(",")[0];
-    tableView.getItems().add(new TextDB("", "", "", background, position));
+    String bg  = getBackgroundInitText();
+    String pos = getPositionInitText();
+    masterData.add(new TextDB("", "", "", bg, pos));
+
+    // テーブルのフィルタリング
+    FilteredList<TextDB> filteredData = new FilteredList<>(masterData, p -> true);
+    tableFilterTextField.textProperty().addListener((obs, oldVal, newVal) -> {
+      filteredData.setPredicate(db -> existsMatchedText(db, newVal));
+    });
+    tableView.setItems(filteredData);
 
   }//}}}
 
@@ -125,17 +138,19 @@ public class TextTable {
 
   public void setTextDB(List<TextDB> dbs) {//{{{
     tableView.getSelectionModel().clearSelection();
-    tableView.getItems().clear();
+    masterData.clear();
     dbs.stream().forEach(db -> {
-      tableView.getItems().add(db);
+      masterData.add(db);
     });
   }//}}}
 
   public void setTextList(List<List<String>> listList) {//{{{
     tableView.getSelectionModel().clearSelection();
-    tableView.getItems().clear();
+    masterData.clear();
     listList.stream().forEach(list -> {
-      tableView.getItems().add(new TextDB("", list, "ウィンドウ", "下"));
+      String bg  = getBackgroundInitText();
+      String pos = getPositionInitText();
+      masterData.add(new TextDB("", list, bg, pos));
     });
   }//}}}
 
@@ -163,6 +178,31 @@ public class TextTable {
     getSelectedItem().ifPresent(selectedItem -> {
       selectedItem.setPosition(value);
     });
+  }//}}}
+
+  // private methods
+
+  private boolean existsMatchedText(TextDB db, String newVal) {//{{{
+    if (newVal == null || newVal.isEmpty()) {
+      return true;
+    }
+
+    String lowerCaseFilter = newVal.toLowerCase();
+
+    String actorName = db . actorNameProperty()  . get();
+    String text      = db . textProperty()       . get();
+    String bg        = db . backgroundProperty() . get();
+    String pos       = db . positionProperty()   . get();
+
+    if (
+        actorName. toLowerCase() . contains(lowerCaseFilter)
+        || text  . toLowerCase() . contains(lowerCaseFilter)
+        || bg    . toLowerCase() . contains(lowerCaseFilter)
+        || pos   . toLowerCase() . contains(lowerCaseFilter)
+        ) {
+      return true;
+    }
+    return false;
   }//}}}
 
 }

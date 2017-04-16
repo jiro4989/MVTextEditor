@@ -136,6 +136,9 @@ class MyMenuBar {
     });
   }//}}}
 
+  private void exportTextFile() {//{{{
+  }//}}}
+
   private void save(File file) {//{{{
     try {
       saveFileOpt = Optional.ofNullable(file);
