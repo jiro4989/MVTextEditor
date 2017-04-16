@@ -18,14 +18,15 @@ import org.xml.sax.SAXException;
 
 class MyMenuBar {
 
-  private Optional<File> saveFileOpt = Optional.empty();
+  private Optional<File> saveFileOpt   = Optional.empty();
   private final Tooltip tooltip = new Tooltip();
-
-  // fxml component//{{{
 
   private final MainController mainController;
   private final MyFileChooser textFileManager;
   private final MyFileChooser xmlManager;
+  private final MyFileChooser exportManager;
+
+  // fxml component//{{{
 
   private final MenuItem newMenuItem;
   private final MenuItem openMenuItem;
@@ -56,6 +57,7 @@ class MyMenuBar {
 
     textFileManager = new MyFileChooser.Builder("Text Files", "*.txt").build();
     xmlManager      = new MyFileChooser.Builder("Text Files", "*.xml").build();
+    exportManager   = new MyFileChooser.Builder("Text Files", "*.json").build();
 
     this.mainController      = mainController;
     this.newMenuItem         = newMenuItem;
@@ -73,6 +75,7 @@ class MyMenuBar {
     saveMenuItem   . setOnAction(e -> saveXml());
     saveAsMenuItem . setOnAction(e -> saveAsXml());
     importMenuItem . setOnAction(e -> importTextFile());
+    exportMenuItem . setOnAction(e -> exportJson());
 
   }//}}}
 
@@ -136,7 +139,24 @@ class MyMenuBar {
     });
   }//}}}
 
-  private void exportTextFile() {//{{{
+  private void exportJson() {//{{{
+    exportManager.saveFile().ifPresent(file -> {
+      try {
+        mainController.exportJson(file);
+      } catch (FileNotFoundException e) {
+        e.printStackTrace();
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setHeaderText("ファイルが見つかりませんでした。");
+        alert.setContentText("作者に報告してください。");
+        alert.showAndWait();
+      } catch (IOException e) {
+        e.printStackTrace();
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setHeaderText("ファイル出力エラー。");
+        alert.setContentText("ファイルを生成する権限があるか、あるいはファイル出力先を正常に指定できているか確認してください。");
+        alert.showAndWait();
+      }
+    });
   }//}}}
 
   private void save(File file) {//{{{

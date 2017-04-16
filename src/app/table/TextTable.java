@@ -6,6 +6,7 @@ import app.selector.ImageSelector;
 
 import app.Main;
 import app.MainController;
+import util.JsonUtils;
 
 import java.io.*;
 import java.util.*;
@@ -108,6 +109,11 @@ public class TextTable {
     data.saveXml(file);
   }//}}}
 
+  public void exportJson(File file) throws FileNotFoundException, IOException {//{{{
+    JsonMap data = new JsonMap(1, 5, 5, new ArrayList<>(masterData));
+    JsonUtils.writeValue(file, data);
+  }//}}}
+
   // private methods
 
   private Optional<TextDB> getSelectedItem() {//{{{
@@ -199,9 +205,9 @@ public class TextTable {
         || text  . toLowerCase() . contains(lowerCaseFilter)
         || bg    . toLowerCase() . contains(lowerCaseFilter)
         || pos   . toLowerCase() . contains(lowerCaseFilter)
-        ) {
+       ) {
       return true;
-    }
+       }
     return false;
   }//}}}
 

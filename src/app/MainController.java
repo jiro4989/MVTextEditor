@@ -12,8 +12,7 @@ import app.manager.EditManager;
 import app.table.TextDB;
 import app.table.TextTable;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -190,6 +189,10 @@ public class MainController {
   public void insertVarId(     int id) { textView.insertVarId(     id) ; }
   public void insertActorId(   int id) { textView.insertActorId(   id) ; }
   public void insertIconSetId( int id) { textView.insertIconSetId( id) ; }
+
+  public void exportJson(File file) throws FileNotFoundException, IOException {
+    textTable.exportJson(file);
+  }
 
   // getter
 
