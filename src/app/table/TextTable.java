@@ -172,6 +172,22 @@ public class TextTable {
     tableView.getSelectionModel().clearAndSelect(index);
   }//}}}
 
+  public void updateSelectedRecords() {//{{{
+    getSelectedItems().ifPresent(items -> {
+      getSelectedItem().ifPresent(si -> {
+        TextDB db = si;
+        items.stream().forEach(item -> {
+          TextDB newDb = new TextDB(db);
+          item . setIcon(newDb       . iconProperty()       . get());
+          item . setActorName(newDb  . actorNameProperty()  . get());
+          item . setText(newDb       . textProperty()       . get());
+          item . setBackground(newDb . backgroundProperty() . get());
+          item . setPosition(newDb   . positionProperty()   . get());
+        });
+      });
+    });
+  }//}}}
+
   // private methods
 
   private Optional<TextDB> getSelectedItem() {//{{{

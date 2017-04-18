@@ -69,11 +69,20 @@
 
             <SeparatorMenuItem mnemonicParsing="false" />
 
+            <MenuItem mnemonicParsing="false" text="Update Selected Records" onAction="#updateSelectedRecordsMenuItemOnAction" >
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="G" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+
+            <SeparatorMenuItem mnemonicParsing="false" />
+
             <MenuItem mnemonicParsing="false" text="Select Previous" onAction="#selectPreviousMenuItemOnAction" >
               <accelerator>
                 <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
+
             <MenuItem mnemonicParsing="false" text="Select Next" onAction="#selectNextMenuItemOnAction" >
               <accelerator>
                 <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />

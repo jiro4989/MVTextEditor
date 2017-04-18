@@ -193,6 +193,8 @@ public class MainController {
   @FXML private void selectPreviousMenuItemOnAction() { textTable.selectPrevious(); }
   @FXML private void selectNextMenuItemOnAction()     { textTable.selectNext(); }
 
+  @FXML private void updateSelectedRecordsMenuItemOnAction() { textTable.updateSelectedRecords(); }
+
   // public methods
 
   public void closeRequest() {//{{{
