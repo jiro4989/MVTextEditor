@@ -188,6 +188,13 @@ public class TextTable {
     });
   }//}}}
 
+  public void addNewRecord() {//{{{
+    getSelectedItem().ifPresent(si -> {
+      int index = tableView.getSelectionModel().getSelectedIndex();
+      masterData.add(index, new TextDB());
+    });
+  }//}}}
+
   // private methods
 
   private Optional<TextDB> getSelectedItem() {//{{{

@@ -16,6 +16,14 @@ public class TextDB {
 
   // constructor
 
+  public TextDB() {//{{{
+    this.icon       = new SimpleStringProperty("");
+    this.actorName  = new SimpleStringProperty("");
+    this.text       = new SimpleStringProperty("");
+    this.background = new SimpleStringProperty(getBackgroundInitText());
+    this.position   = new SimpleStringProperty(getPositionInitText());
+  }//}}}
+
   public TextDB(//{{{
       String icon,
       String actorName,

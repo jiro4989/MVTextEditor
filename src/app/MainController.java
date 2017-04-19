@@ -194,6 +194,7 @@ public class MainController {
   @FXML private void selectNextMenuItemOnAction()     { textTable.selectNext(); }
 
   @FXML private void updateSelectedRecordsMenuItemOnAction() { textTable.updateSelectedRecords(); }
+  @FXML private void addNewRecordMenuItemOnAction() { textTable.addNewRecord(); }
 
   // public methods
 
