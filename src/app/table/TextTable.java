@@ -267,6 +267,22 @@ public class TextTable {
     });
   }//}}}
 
+  public void setActorNames(String value) {//{{{
+    getSelectedItems().ifPresent(items -> {
+      items.stream().forEach(item -> {
+        item.setActorName(value);
+      });
+    });
+  }//}}}
+
+  public void setTexts(String value) {//{{{
+    getSelectedItems().ifPresent(items -> {
+      items.stream().forEach(item -> {
+        item.setText(value);
+      });
+    });
+  }//}}}
+
   // private methods
 
   private boolean existsMatchedText(TextDB db, String newVal) {//{{{

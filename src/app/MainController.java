@@ -182,8 +182,7 @@ public class MainController {
 
   // fxml event
 
-  //@FXML private void newDatabaseMenuItemOnAction()   { textTable.cutRecords(); 
-  //}
+  @FXML private void reloadMenuItemOnAction() { System.out.println("reload");}
 
   @FXML private void cutRecordsMenuItemOnAction()    { textTable.cutRecords(); }
   @FXML private void copyRecordsMenuItemOnAction()   { textTable.copyRecords(); }
@@ -195,6 +194,16 @@ public class MainController {
 
   @FXML private void updateSelectedRecordsMenuItemOnAction() { textTable.updateSelectedRecords(); }
   @FXML private void addNewRecordMenuItemOnAction() { textTable.addNewRecord(); }
+
+  @FXML private void updateActorNames() {//{{{
+    String actorName = textView.getActorName();
+    textTable.setActorNames(actorName);
+  }//}}}
+
+  @FXML private void updateTexts() {//{{{
+    String text = textView.getText();
+    textTable.setTexts(text);
+  }//}}}
 
   // public methods
 

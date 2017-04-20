@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.input.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
 <VBox prefHeight="650.0" prefWidth="800.0" stylesheets="@/app/res/css/basic.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainController">
   <children>
@@ -12,12 +36,12 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="New" >
+            <MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="New">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="openMenuItem" mnemonicParsing="false" text="Open…" >
+            <MenuItem fx:id="openMenuItem" mnemonicParsing="false" text="Open…">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
@@ -25,12 +49,12 @@
             <Menu fx:id="recentMenu" mnemonicParsing="false" text="Open Recent" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem fx:id="closeMenu" mnemonicParsing="false" text="Close" />
-            <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" text="Save" >
+            <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" text="Save">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" text="Save As…" >
+            <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" text="Save As…">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
               </accelerator>
@@ -46,22 +70,27 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
           <items>
-            <MenuItem mnemonicParsing="false" text="Cut Records" onAction="#cutRecordsMenuItemOnAction" >
+            <MenuItem mnemonicParsing="false" onAction="#reloadMenuItemOnAction" text="Reload Database">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="R" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#cutRecordsMenuItemOnAction" text="Cut Records">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem mnemonicParsing="false" text="Copy Records" onAction="#copyRecordsMenuItemOnAction" >
+            <MenuItem mnemonicParsing="false" onAction="#copyRecordsMenuItemOnAction" text="Copy Records">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem mnemonicParsing="false" text="Paste Records" onAction="#pasteRecordsMenuItemOnAction" >
+            <MenuItem mnemonicParsing="false" onAction="#pasteRecordsMenuItemOnAction" text="Paste Records">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem mnemonicParsing="false" text="Delete Records" onAction="#deleteRecordsMenuItemOnAction" >
+            <MenuItem mnemonicParsing="false" onAction="#deleteRecordsMenuItemOnAction" text="Delete Records">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="D" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
@@ -69,13 +98,13 @@
 
             <SeparatorMenuItem mnemonicParsing="false" />
 
-            <MenuItem mnemonicParsing="false" text="Update Selected Records" onAction="#updateSelectedRecordsMenuItemOnAction" >
+            <MenuItem mnemonicParsing="false" onAction="#updateSelectedRecordsMenuItemOnAction" text="Update Selected Records">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="G" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
 
-            <MenuItem mnemonicParsing="false" text="New Record" onAction="#addNewRecordMenuItemOnAction" >
+            <MenuItem mnemonicParsing="false" onAction="#addNewRecordMenuItemOnAction" text="New Record">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
@@ -83,13 +112,13 @@
 
             <SeparatorMenuItem mnemonicParsing="false" />
 
-            <MenuItem mnemonicParsing="false" text="Select Previous" onAction="#selectPreviousMenuItemOnAction" >
+            <MenuItem mnemonicParsing="false" onAction="#selectPreviousMenuItemOnAction" text="Select Previous">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
 
-            <MenuItem mnemonicParsing="false" text="Select Next" onAction="#selectNextMenuItemOnAction" >
+            <MenuItem mnemonicParsing="false" onAction="#selectNextMenuItemOnAction" text="Select Next">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
@@ -98,42 +127,42 @@
             <MenuItem mnemonicParsing="false" text="Select All" />
             <MenuItem mnemonicParsing="false" text="Unselect All" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="iconIndex1MenuItem" mnemonicParsing="false" text="1" >
+            <MenuItem fx:id="iconIndex1MenuItem" mnemonicParsing="false" text="1">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT1" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex2MenuItem" mnemonicParsing="false" text="2" >
+            <MenuItem fx:id="iconIndex2MenuItem" mnemonicParsing="false" text="2">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT2" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex3MenuItem" mnemonicParsing="false" text="3" >
+            <MenuItem fx:id="iconIndex3MenuItem" mnemonicParsing="false" text="3">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT3" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex4MenuItem" mnemonicParsing="false" text="4" >
+            <MenuItem fx:id="iconIndex4MenuItem" mnemonicParsing="false" text="4">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT4" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex5MenuItem" mnemonicParsing="false" text="5" >
+            <MenuItem fx:id="iconIndex5MenuItem" mnemonicParsing="false" text="5">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT5" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex6MenuItem" mnemonicParsing="false" text="6" >
+            <MenuItem fx:id="iconIndex6MenuItem" mnemonicParsing="false" text="6">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT6" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex7MenuItem" mnemonicParsing="false" text="7" >
+            <MenuItem fx:id="iconIndex7MenuItem" mnemonicParsing="false" text="7">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT7" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex8MenuItem" mnemonicParsing="false" text="8" >
+            <MenuItem fx:id="iconIndex8MenuItem" mnemonicParsing="false" text="8">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT8" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
@@ -194,7 +223,8 @@
                       <children>
                         <HBox alignment="BOTTOM_LEFT" spacing="5.0">
                           <children>
-                            <TextField fx:id="actorNameTextField" minWidth="-Infinity" prefWidth="250.0" promptText="actor name" />
+                            <TextField fx:id="actorNameTextField" minWidth="-Infinity" prefWidth="200.0" promptText="actor name" />
+                            <Button mnemonicParsing="false" text="update" onAction="#updateActorNames" />
                             <GridPane fx:id="colorPickerGridPane" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="384.0">
                               <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" />
@@ -211,6 +241,7 @@
                         <TextArea fx:id="editorTextArea" promptText="show sentences here" />
                         <ButtonBar buttonMinWidth="26.0">
                           <buttons>
+                            <Button mnemonicParsing="false" prefHeight="26.0" text="update" onAction="#updateTexts" />
                             <Button fx:id="partyButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;"> <!--{{{-->
                               <graphic>
                                 <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">

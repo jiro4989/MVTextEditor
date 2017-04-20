@@ -125,13 +125,7 @@ class TextView {
 
   }//}}}
 
-  private void changeComboBoxItemWithMouseScroll(ScrollEvent e, ComboBox<? extends Object> comboBox) {//{{{
-    if (0 < e.getDeltaY()) {
-      comboBox.getSelectionModel().selectPrevious();
-    } else {
-      comboBox.getSelectionModel().selectNext();
-    }
-  }//}}}
+  // package methods
 
   void update(TextDB db) {//{{{
     String icon      = db.iconProperty().get();
@@ -186,6 +180,20 @@ class TextView {
     colorPickerImageView.setImage(wImage);
   }//}}}
 
+  void insertVarId(    int id) { insertText(String.format("\\v[%d]", id)); }
+  void insertActorId(  int id) { insertText(String.format("\\n[%d]", id)); }
+  void insertIconSetId(int id) { insertText(String.format("\\i[%d]", id)); }
+
+  // private methods
+
+  private void changeComboBoxItemWithMouseScroll(ScrollEvent e, ComboBox<? extends Object> comboBox) {//{{{
+    if (0 < e.getDeltaY()) {
+      comboBox.getSelectionModel().selectPrevious();
+    } else {
+      comboBox.getSelectionModel().selectNext();
+    }
+  }//}}}
+
   private void insertWrappingText(String startText, String endText) {//{{{
     IndexRange range = editorTextArea.getSelection();
     int start = range.getStart();
@@ -205,10 +213,6 @@ class TextView {
     editorTextArea.insertText(start, text);
   }//}}}
 
-  void insertVarId(    int id) { insertText(String.format("\\v[%d]", id)); }
-  void insertActorId(  int id) { insertText(String.format("\\n[%d]", id)); }
-  void insertIconSetId(int id) { insertText(String.format("\\i[%d]", id)); }
-
   private int[] getTrimmedPixels(Image src, int x, int y , int w, int h) {//{{{
     PixelReader r = src.getPixelReader();
     Image newImg = new WritableImage(r, x, y, w, h);
@@ -226,6 +230,11 @@ class TextView {
     int yy = y / COLOR_TILE_SIZE;
     return xx + yy * COLOR_PICKER_COLUMN_SIZE;
   }//}}}
+  
+  // getter
+
+  String getActorName() { return actorNameTextField.getText(); }
+  String getText()      { return editorTextArea.getText(); }
 
   /**
    * 元になる画像から番号でトリミングした位置の画像を返す。
