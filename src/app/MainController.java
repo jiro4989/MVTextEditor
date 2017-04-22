@@ -182,7 +182,7 @@ public class MainController {
 
   // fxml event
 
-  @FXML private void reloadMenuItemOnAction() { System.out.println("reload");}
+  @FXML private void reloadMenuItemOnAction() { myMenubar.reloadXml(); }
 
   @FXML private void cutRecordsMenuItemOnAction()    { textTable.cutRecords(); }
   @FXML private void copyRecordsMenuItemOnAction()   { textTable.copyRecords(); }

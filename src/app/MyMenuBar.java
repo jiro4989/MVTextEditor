@@ -18,7 +18,7 @@ import org.xml.sax.SAXException;
 
 class MyMenuBar {
 
-  private Optional<File> saveFileOpt   = Optional.empty();
+  private Optional<File> saveFileOpt = Optional.empty();
   private final Tooltip tooltip = new Tooltip();
 
   private final MainController mainController;
@@ -78,6 +78,14 @@ class MyMenuBar {
     exportMenuItem . setOnAction(e -> exportJson());
 
   }//}}}
+
+  // package methods
+
+  void reloadXml() {
+    xmlManager.getOpenedFile().ifPresent(file -> {
+      System.out.println("reload");
+    });
+  }
 
   private void openXml() {//{{{
     xmlManager.openFile().ifPresent(file -> {
