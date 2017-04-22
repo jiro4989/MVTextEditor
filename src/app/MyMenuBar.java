@@ -81,11 +81,38 @@ class MyMenuBar {
 
   // package methods
 
-  void reloadXml() {
+  void reloadXml() {//{{{
     xmlManager.getOpenedFile().ifPresent(file -> {
-      System.out.println("reload");
+
+      Alert alert = new Alert(AlertType.CONFIRMATION);
+
+      Locale locale = Locale.getDefault();
+      String header = locale.equals(Locale.JAPAN)
+        ? "ファイルを開き直します。"
+        : "Should do this operation when you couldn't stop this application";
+      alert.setHeaderText(header);
+
+      String content = locale.equals(Locale.JAPAN)
+        ? "編集前のデータを保存していなかった場合、そのデータは失われます。本当によろしいですか？"
+        : "Really execute ?";
+      alert.setContentText(content);
+
+      alert.showAndWait()
+        .filter(r -> r == ButtonType.OK)
+        .ifPresent(r -> {
+          try {
+            List<TextDB> dbs = SavingData.convertTextDB(file);
+            mainController.setTextDB(dbs);
+          } catch (SAXException e) {
+            e.printStackTrace();
+          } catch (ParserConfigurationException e) {
+            showParsingErrorDialog();
+          } catch (IOException e) {
+            e.printStackTrace();
+          }
+        });
     });
-  }
+  }//}}}
 
   private void openXml() {//{{{
     xmlManager.openFile().ifPresent(file -> {

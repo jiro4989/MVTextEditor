@@ -105,6 +105,8 @@ public class TextTable {
 
   }//}}}
 
+  // public methods
+
   public void saveXml(File file) throws ParserConfigurationException {//{{{
     SavingData data = new SavingData(tableView.getItems());
     data.saveXml(file);
