@@ -7,8 +7,7 @@ import javafx.scene.image.WritablePixelFormat;
 
 public class Texts {
 
-  private static final String JAR_NAME = "mvte";
-
+  public static final String JAR_NAME = "mvte";
   public static final String SEP = System.lineSeparator();
 
   public static final String PROP_DIR      = "properties/" + JAR_NAME;
@@ -28,9 +27,10 @@ public class Texts {
   public static final String IMG_WINDOW_PATH  = "img/system/Window.png";
   public static final String IMG_ICONSET_PATH = "img/system/IconSet.png";
 
-  public static final String VAR_FILE_PATH    = "data/System.json";
-  public static final String ACTORS_FILE_PATH = "data/Actors.json";
-  public static final String KEY_VAR          = "variables";
+  public static final String VAR_FILE_PATH      = "data/System.json";
+  public static final String ACTORS_FILE_PATH   = "data/Actors.json";
+  public static final String MAPINFOS_FILE_PATH = "data/MapInfos.json";
+  public static final String KEY_VAR            = "variables";
 
   public static final int COLUMN = 4;
   public static final int WIDTH  = 144;

@@ -23,8 +23,8 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class MainController {
 
-  public static MyProperties formatProperties;
-  public static MyProperties preferencesProperties;
+  public static MyProperties formatProperties = new MyProperties(FORMAT_PROPERTIES);
+  public static MyProperties preferencesProperties = new MyProperties(PREFERENCES_PROPERTIES);
 
   private MyMenuBar myMenubar;
   private TextTable textTable;
@@ -116,10 +116,8 @@ public class MainController {
   // initialize
 
   @FXML private void initialize() {//{{{
-    formatProperties = new MyProperties(FORMAT_PROPERTIES);
     formatProperties.load();
 
-    preferencesProperties = new MyProperties(PREFERENCES_PROPERTIES);
     preferencesProperties.load();
     preferencesProperties.changeLanguages();
 

@@ -6,17 +6,18 @@ import jiro.java.util.MyProperties;
 import util.ResourceBundleWithUtf8;
 
 import util.InitUtils;
+import util.Utils;
 
 import java.io.*;
-import java.util.*;
 import java.net.URL;
+import java.nio.file.*;
+import java.util.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.stage.*;
 
 public class Main extends Application {
 
@@ -30,6 +31,17 @@ public class Main extends Application {
     mainStage = primaryStage;
     mainMp = new MyProperties(MAIN_PROPERTIES);
     InitUtils.mkPropDirs();
+
+    Path preferences = Paths.get(".", "properties", "mvte", "preferences.xml");
+    if (Files.notExists(preferences)) {
+      Utils.showSelectProjectDirDialog();
+      DirectoryChooser dc = new DirectoryChooser();
+      File file = dc.showDialog(primaryStage);
+      if (file != null) {
+        MainController.preferencesProperties.setProperty("project", file.getAbsolutePath());
+        MainController.preferencesProperties.store();
+      }
+    }
 
     // changeLanguages();
     // PresetsUtils.mkInitDirs();

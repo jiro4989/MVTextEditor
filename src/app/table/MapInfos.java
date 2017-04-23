@@ -15,11 +15,11 @@ public class MapInfos {
   public double scrollX = 977.3;
   public double scrollY = 641.3;
 
-  public MapInfos(int id, String name, int order) {
+  public MapInfos(int id, String name, int order) {//{{{
     this.id    = id;
     this.name  = name;
     this.order = order;
-  }
+  }//}}}
 
   public MapInfos(int id, boolean expanded, String name, int order, int parentId, double scrollX, double scrollY) {//{{{
     this.id       = id;
@@ -52,6 +52,12 @@ public class MapInfos {
       list.add(new MapInfos(anid, anExpanded, aName, anOrder, aParentId, aScrollX, aScrollY));
     }
     return list;
+  }//}}}
+
+  @Override
+  public String toString() {//{{{
+    return String.format("MapInfos: { id = %d, expanded = %s, name = %s, order = %d, parentId = %d, scrollX = %f, scrollY = %f };"
+        , id, expanded, name, order, parentId, scrollX, scrollY);
   }//}}}
 
 }
