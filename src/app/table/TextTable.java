@@ -23,6 +23,7 @@ public class TextTable {
 
   private final MainController mainController;
   private Optional<List<TextDB>> copyTextDBs = Optional.empty();
+  private static final String HALF_CHARS = "!\"#$%&'()*+,-./0123456789:;<=>? @ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 
   // fxml component {{{
   private final TextField tableFilterTextField;
@@ -217,6 +218,61 @@ public class TextTable {
     });
   }//}}}
 
+  public void format() {//{{{
+    getSelectedItems().ifPresent(items -> {
+      MainController.formatProperties.getProperty("textReturnSize").ifPresent(sizeStr -> {
+        int size = Integer.parseInt(sizeStr);
+        final String CR = System.lineSeparator();
+
+        items.stream().forEach(item -> {
+          String text = item.textProperty().get();
+          //int count = 0;
+
+          BufferedReader br = new BufferedReader(new StringReader(text));
+          //String joinedText = br.lines().collect(Collectors.joining());
+
+          StringBuilder sb = new StringBuilder();
+          br.lines().forEach(line -> {
+            if (length(line) < size) {
+              sb.append(line).append(CR);
+            } else {
+              int count = 0;
+              for (String str : line.split("")) {
+                count = HALF_CHARS.indexOf(str) != -1 ? ++count : count + 2;
+                sb.append(str);
+                if (CR.equals(str)) {
+                  count = 0;
+                  continue;
+                }
+
+                if (size <= count) {
+                  sb.append(CR);
+                  count = 0;
+                }
+              }
+            }
+          });
+
+          //for (String str : joinedText.split("")) {
+          //  count = HALF_CHARS.indexOf(str) != -1 ? ++count : count + 2;
+          //  sb.append(str);
+          //  if (CR.equals(str)) {
+          //    count = 0;
+          //    continue;
+          //  }
+
+          //  if (size <= count) {
+          //    sb.append(CR);
+          //    count = 0;
+          //  }
+          //}
+          item.setText(sb.toString());
+          updateTextView();
+        });
+      });
+    });
+  }//}}}
+
   // private methods
 
   private Optional<TextDB> getSelectedItem() {//{{{
@@ -335,6 +391,14 @@ public class TextTable {
     String pos = getPositionInitText();
     return new TextDB("", "", "", bg, pos);
   }//}}}
+
+  private int length(String line) {
+    int count = 0;
+    for (String text : line.split("")) {
+      count = HALF_CHARS.indexOf(text) != -1 ? ++count : count + 2;
+    }
+    return count;
+  }
 
 }
 

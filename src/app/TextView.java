@@ -183,6 +183,9 @@ class TextView {
   void insertVarId(    int id) { insertText(String.format("\\v[%d]", id)); }
   void insertActorId(  int id) { insertText(String.format("\\n[%d]", id)); }
   void insertIconSetId(int id) { insertText(String.format("\\i[%d]", id)); }
+  void format() {
+
+  }
 
   // private methods
 
