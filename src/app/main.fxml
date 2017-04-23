@@ -34,7 +34,7 @@
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="File">
+        <Menu mnemonicParsing="false" text="File(_F)">
           <items>
             <MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="New">
               <accelerator>
@@ -60,15 +60,27 @@
               </accelerator>
             </MenuItem>
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="importMenuItem" mnemonicParsing="false" text="Import" />
-            <MenuItem fx:id="exportMenuItem" mnemonicParsing="false" text="Export" />
+            <MenuItem fx:id="importMenuItem" mnemonicParsing="false" text="Import" >
+              <accelerator>
+                <KeyCodeCombination alt="DOWN" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+            <MenuItem fx:id="exportMenuItem" mnemonicParsing="false" text="Export" >
+              <accelerator>
+                <KeyCodeCombination alt="DOWN" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="preferencesMenuItem" mnemonicParsing="false" text="Preferences…" />
+            <MenuItem fx:id="preferencesMenuItem" mnemonicParsing="false" text="Preferences…" >
+              <accelerator>
+                <KeyCodeCombination alt="DOWN" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem fx:id="quitMenuItem" mnemonicParsing="false" text="Quit" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
+        <Menu mnemonicParsing="false" text="Edit(_E)">
           <items>
             <MenuItem mnemonicParsing="false" onAction="#reloadMenuItemOnAction" text="Reload Database">
               <accelerator>
@@ -169,7 +181,7 @@
             </MenuItem>
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Help">
+        <Menu mnemonicParsing="false" text="Help(_H)">
           <items>
             <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
           </items>

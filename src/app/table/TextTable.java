@@ -115,6 +115,15 @@ public class TextTable {
   public void exportJson(File file) throws FileNotFoundException, IOException {//{{{
     JsonMap data = new JsonMap(1, new ArrayList<>(masterData));
     JsonUtils.writeValue(file, data);
+
+    MainController.preferencesProperties.getProperty("project").ifPresent(dir -> {
+      try {
+        final String SP = File.separator;
+        JsonUtils.updateMapInfos(new File(dir + SP + "data" + SP + "MapInfos.json"), file.getName());
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    });
   }//}}}
 
   public void changeIconIndex(int index) {//{{{

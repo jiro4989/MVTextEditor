@@ -11,6 +11,7 @@ import app.manager.VarDB;
 import app.manager.EditManager;
 import app.table.TextDB;
 import app.table.TextTable;
+import app.table.MapInfos;
 
 import java.io.*;
 import java.util.*;

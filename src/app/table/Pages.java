@@ -2,6 +2,7 @@ package app.table;
 
 import static util.Texts.*;
 
+import java.io.*;
 import java.util.*;
 
 public class Pages {
@@ -50,11 +51,15 @@ public class Pages {
     dbList.stream().forEach(db -> {
       list.add(new EventList(101, 0, db));
 
+      String actorName = db.actorNameProperty().get();
+      if (actorName != null && actorName.length() != 0)
+        list.add(new EventList(401, 0, actorName));
+
       String text = db.textProperty().get();
-      String[] textArray = text.split(SEP);
-      for (String t : textArray) {
-        list.add(new EventList(401, 0, t));
-      }
+      BufferedReader br = new BufferedReader(new StringReader(text));
+      br.lines().forEach(line -> {
+        list.add(new EventList(401, 0, line));
+      });
     });
     list.add(new EventList(0, 0, ""));
 

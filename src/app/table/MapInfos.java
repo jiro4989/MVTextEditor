@@ -11,14 +11,15 @@ public class MapInfos {
   public boolean expanded = false;
   public final String name;
   public final int order;
-  public int parentId = 1;
+  public final int parentId;
   public double scrollX = 977.3;
   public double scrollY = 641.3;
 
-  public MapInfos(int id, String name, int order) {//{{{
+  public MapInfos(int id, String name, int order, int parentId) {//{{{
     this.id    = id;
     this.name  = name;
     this.order = order;
+    this.parentId = parentId;
   }//}}}
 
   public MapInfos(int id, boolean expanded, String name, int order, int parentId, double scrollX, double scrollY) {//{{{
@@ -37,7 +38,7 @@ public class MapInfos {
     List<MapInfos> list = new ArrayList<>();
     for (int i=0; i<root.size(); i++) {
       JsonNode child = root.get(i);
-      if (child == null) {
+      if (child == null || child.isNull()) {
         list.add(null);
         continue;
       }

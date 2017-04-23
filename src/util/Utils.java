@@ -7,6 +7,7 @@ import javafx.scene.control.Alert.AlertType;
 public final class Utils {
   private Utils() {}
 
+  // TODO
   public static void showSelectProjectDirDialog() {
     Alert alert = new Alert(AlertType.CONFIRMATION);
 

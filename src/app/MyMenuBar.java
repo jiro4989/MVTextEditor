@@ -7,12 +7,14 @@ import jiro.javafx.stage.MyFileChooser;
 import app.table.SavingData;
 import app.table.TextDB;
 import util.Texts;
+import util.Utils;
 
 import java.io.*;
 import java.util.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.stage.DirectoryChooser;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
@@ -175,7 +177,14 @@ class MyMenuBar {
   }//}}}
 
   private void exportJson() {//{{{
-    exportManager.saveFile().ifPresent(file -> {
+    MainController.preferencesProperties.getProperty("project").ifPresent(dir -> {
+      String fileName = dir + File.separator + "Map001.json";
+      File file = new File(fileName);
+      int count = 0;
+      while (true) {
+        if (!file.exists()) break;
+        file = new File(String.format(dir + File.separator + "data" + File.separator + "Map%03d.json", ++count));
+      }
       try {
         mainController.exportJson(file);
       } catch (FileNotFoundException e) {
