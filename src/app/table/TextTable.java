@@ -186,6 +186,7 @@ public class TextTable {
     int index = tableView.getSelectionModel().getSelectedIndex();
     index = Math.max(0, --index);
     tableView.getSelectionModel().clearAndSelect(index);
+    tableView.scrollTo(index);
   }//}}}
 
   public void selectNext() {//{{{
@@ -193,6 +194,7 @@ public class TextTable {
     int max = tableView.getItems().size();
     index = Math.min(++index, max);
     tableView.getSelectionModel().clearAndSelect(index);
+    tableView.scrollTo(index);
   }//}}}
 
   public void updateSelectedRecords() {//{{{
@@ -226,11 +228,8 @@ public class TextTable {
 
         items.stream().forEach(item -> {
           String text = item.textProperty().get();
-          //int count = 0;
 
           BufferedReader br = new BufferedReader(new StringReader(text));
-          //String joinedText = br.lines().collect(Collectors.joining());
-
           StringBuilder sb = new StringBuilder();
           br.lines().forEach(line -> {
             if (length(line) < size) {
@@ -253,19 +252,6 @@ public class TextTable {
             }
           });
 
-          //for (String str : joinedText.split("")) {
-          //  count = HALF_CHARS.indexOf(str) != -1 ? ++count : count + 2;
-          //  sb.append(str);
-          //  if (CR.equals(str)) {
-          //    count = 0;
-          //    continue;
-          //  }
-
-          //  if (size <= count) {
-          //    sb.append(CR);
-          //    count = 0;
-          //  }
-          //}
           item.setText(sb.toString());
           updateTextView();
         });

@@ -193,10 +193,7 @@ public class MainController {
 
   @FXML private void updateSelectedRecordsMenuItemOnAction() { textTable.updateSelectedRecords(); }
   @FXML private void addNewRecordMenuItemOnAction() { textTable.addNewRecord(); }
-  @FXML private void formatMenuItemOnAction() {
-    textView.format();
-    textTable.format();
-  }
+  @FXML private void formatMenuItemOnAction() { textTable.format(); }
 
   @FXML private void updateActorNames() {//{{{
     String actorName = textView.getActorName();
