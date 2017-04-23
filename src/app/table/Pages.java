@@ -1,6 +1,7 @@
 package app.table;
 
 import static util.Texts.*;
+import static app.MainController.formatProperties;
 
 import java.io.*;
 import java.util.*;
@@ -53,9 +54,25 @@ public class Pages {
       list.add(new EventList(101, 0, db));
 
       String actorName = db.actorNameProperty().get();
-      if (actorName != null && actorName.length() != 0)
-        list.add(new EventList(401, 0, actorName));
+      StringBuilder sb = new StringBuilder(actorName);
+      formatProperties.getProperty("actorBracket")
+        .map(Boolean::valueOf)
+        .filter(b -> b)
+        .ifPresent(b -> {
+          formatProperties.getProperty("actorBracketStart").ifPresent(start -> {
+            formatProperties.getProperty("actorBracketEnd").ifPresent(end -> {
+              // カッコで括る処理
+              sb.insert(0, start);
+              sb.append(end);
+            });
+          });
+        });
 
+      if (actorName != null && actorName.length() != 0) {
+        list.add(new EventList(401, 0, sb.toString()));
+      }
+
+      // 本文の追加
       String text = db.textProperty().get();
       BufferedReader br = new BufferedReader(new StringReader(text));
       br.lines().forEach(line -> {
