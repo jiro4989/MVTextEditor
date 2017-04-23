@@ -21,6 +21,7 @@ public class Pages {
   public final boolean walkAnime = true;
 
   public Pages(List<TextDB> dbList) {//{{{
+
     // conditions//{{{
     conditions = new HashMap<>();
     conditions.put ( "actorId"         , 1     ) ;

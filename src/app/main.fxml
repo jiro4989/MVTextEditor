@@ -126,13 +126,13 @@
 
             <MenuItem mnemonicParsing="false" onAction="#selectPreviousMenuItemOnAction" text="Select Previous">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="K" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
 
             <MenuItem mnemonicParsing="false" onAction="#selectNextMenuItemOnAction" text="Select Next">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="J" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
 

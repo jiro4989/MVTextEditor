@@ -16,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
+import javafx.scene.input.*;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class TextTable {
@@ -91,6 +92,14 @@ public class TextTable {
       }
     });
 
+    tableView.setOnKeyPressed(e -> {
+      if (KeyCode.J == e.getCode() && !e.isControlDown()) {
+        selectNext();
+      } else if (KeyCode.K == e.getCode() && !e.isControlDown()) {
+        selectPrevious();
+      }
+    });
+
     tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     //tableView.getSelectionModel().setCellSelectionEnabled(true);
 
@@ -103,6 +112,7 @@ public class TextTable {
     });
     tableView.setItems(filteredData);
 
+    tableView.getSelectionModel().selectFirst();
   }//}}}
 
   // public methods
@@ -154,7 +164,7 @@ public class TextTable {
           )
         .ifPresent(records -> {
           int index = tableView.getSelectionModel().getSelectedIndices().get(0);
-          masterData.addAll(index, records);
+          masterData.addAll(index+1, records);
         });
     });
   }//}}}
@@ -167,6 +177,7 @@ public class TextTable {
     if (0 < index) selectNext();
     if (masterData.size() < 1) {
       masterData.add(createInitTextDB());
+      tableView.getSelectionModel().selectFirst();
     }
   }//}}}
 
@@ -202,7 +213,7 @@ public class TextTable {
   public void addNewRecord() {//{{{
     getSelectedItem().ifPresent(si -> {
       int index = tableView.getSelectionModel().getSelectedIndex();
-      masterData.add(index, new TextDB());
+      masterData.add(index+1, new TextDB());
     });
   }//}}}
 
