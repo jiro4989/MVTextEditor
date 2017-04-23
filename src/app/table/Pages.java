@@ -7,8 +7,17 @@ import java.util.*;
 public class Pages {
   public final Map<String, Object> conditions;
   public final boolean directionFix = false;
-  public final Map<String, Object> images;
+  public final Map<String, Object> image;
   public final List<EventList> list;
+  public final int moveFrequency = 3;
+  public final MoveRoute moveRoute = new MoveRoute();
+  public final int moveSpeed = 3;
+  public final int moveType = 0;
+  public final int priorityType = 1;
+  public final boolean stepAnime = false;
+  public final boolean through = false;
+  public final int trigger = 0;
+  public final boolean walkAnime = true;
 
   public Pages(List<TextDB> dbList) {//{{{
     // conditions//{{{
@@ -28,13 +37,13 @@ public class Pages {
     conditions.put ( "variableValue"   , 0     ) ;
     //}}}
 
-    // images {{{
-    images = new HashMap<>();
-    images.put ( "characterIndex" , 0  ) ;
-    images.put ( "characterName"  , "" ) ;
-    images.put ( "direction"      , 2  ) ;
-    images.put ( "pattern"        , 0  ) ;
-    images.put ( "tileId"         , 0  ) ;
+    // image {{{
+    image = new HashMap<>();
+    image.put ( "characterIndex" , 0  ) ;
+    image.put ( "characterName"  , "" ) ;
+    image.put ( "direction"      , 2  ) ;
+    image.put ( "pattern"        , 0  ) ;
+    image.put ( "tileId"         , 0  ) ;
     //}}}
 
     list = new ArrayList<>();
@@ -47,6 +56,7 @@ public class Pages {
         list.add(new EventList(401, 0, t));
       }
     });
+    list.add(new EventList(0, 0, ""));
 
   }//}}}
 

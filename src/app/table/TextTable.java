@@ -113,7 +113,7 @@ public class TextTable {
   }//}}}
 
   public void exportJson(File file) throws FileNotFoundException, IOException {//{{{
-    JsonMap data = new JsonMap(1, 5, 5, new ArrayList<>(masterData));
+    JsonMap data = new JsonMap(1, new ArrayList<>(masterData));
     JsonUtils.writeValue(file, data);
   }//}}}
 

@@ -56,7 +56,7 @@
             </MenuItem>
             <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" text="Save As…">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
               </accelerator>
             </MenuItem>
             <SeparatorMenuItem mnemonicParsing="false" />
