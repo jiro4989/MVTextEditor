@@ -94,7 +94,8 @@ public class ImageSelectorController {
   }//}}}
 
   void setFilePath(Path path) {//{{{
-    if (path.toString().endsWith(".png"))
+    String p = path.toString();
+    if (p.endsWith(".png") || p.endsWith(".PNG"))
       listView.getItems().add(new ImgPath(path));
   }//}}}
 
