@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 public class ImageSelectorController {
 
   private Optional<String> pathOpt = Optional.empty();
+  private boolean isSelected = false;
 
   // fxml component//{{{
 
@@ -64,9 +65,9 @@ public class ImageSelectorController {
               setImage(newPath.toString());
             }
           });
-
-          listView.getSelectionModel().selectFirst();
         }
+
+        listView.getSelectionModel().selectFirst();
       });
 
     imageSelectorPane.setWidth(WIDTH);
@@ -76,7 +77,7 @@ public class ImageSelectorController {
 
   void setImage(String path) {//{{{
     Path p = Paths.get(path);
-    if (Files.exists(p)) {
+    if (Files.exists(p) && !Files.isDirectory(p)) {
       imageSelectorPane.setImage(path);
       pathOpt = Optional.ofNullable(path);
 
@@ -89,7 +90,9 @@ public class ImageSelectorController {
         }
         index++;
       }
+      return;
     }
+    listView.getSelectionModel().selectFirst();
   }//}}}
 
   void setFilePath(String path) {//{{{
@@ -99,6 +102,7 @@ public class ImageSelectorController {
   // fxml event
 
   @FXML private void okButtonOnAction() {//{{{
+    isSelected = true;
     getStage().hide();
   }//}}}
 
@@ -117,6 +121,8 @@ public class ImageSelectorController {
     }
     return Optional.empty();
   }//}}}
+
+  public boolean isSelected() { return isSelected; }
 
 }
 

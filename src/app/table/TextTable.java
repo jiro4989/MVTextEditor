@@ -81,13 +81,16 @@ public class TextTable {
             String path = createFilePath(icon.split(":"));
             ImageSelector selector = new ImageSelector(path);
             selector.showAndWait();
+            boolean selected = selector.isSelected();
 
-            selector.getSelectedTileString().ifPresent(s -> {
-              items.stream().forEach(item -> {
-                item.setIcon(s);
-                updateTextView();
+            if (selected) {
+              selector.getSelectedTileString().ifPresent(s -> {
+                items.stream().forEach(item -> {
+                  item.setIcon(s);
+                  updateTextView();
+                });
               });
-            });
+            }
           }
         });
       }

@@ -45,4 +45,6 @@ public class ImageSelector extends Stage {
 
   public Optional<String> getSelectedTileString() { return controller.getSelectedTileString(); }
 
+  public boolean isSelected() { return controller.isSelected(); }
+
 }
