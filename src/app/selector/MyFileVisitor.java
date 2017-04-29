@@ -19,7 +19,7 @@ class MyFileVisitor implements FileVisitor<Path> {
 
   @Override
   public FileVisitResult visitFile(Path dir, BasicFileAttributes attrs) throws IOException {
-    controller.setFilePath(dir.getFileName().toString());
+    controller.setFilePath(dir);
     return FileVisitResult.CONTINUE;
   }
 

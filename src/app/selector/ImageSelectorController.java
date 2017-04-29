@@ -28,7 +28,7 @@ public class ImageSelectorController {
   @FXML private SplitPane splitPane;
 
   @FXML private TitledPane listViewTitledPane;
-  @FXML private ListView<String> listView;
+  @FXML private ListView<ImgPath> listView;
 
   @FXML private TitledPane imageViewTitledPane;
   @FXML private ImageSelectorPane imageSelectorPane;
@@ -54,15 +54,13 @@ public class ImageSelectorController {
           }
 
           listView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-            Path newPath = Paths.get(path.toString(), newVal);
-            setImage(newPath.toString());
+            setImage(newVal.absPath);
           });
 
           listView.setOnMouseClicked(e -> {
             if (!listView.getSelectionModel().isEmpty()) {
-              String newVal = listView.getSelectionModel().getSelectedItem();
-              Path newPath = Paths.get(path.toString(), newVal);
-              setImage(newPath.toString());
+              String newVal = listView.getSelectionModel().getSelectedItem().absPath;
+              setImage(newVal);
             }
           });
         }
@@ -83,8 +81,8 @@ public class ImageSelectorController {
 
       int index = 0;
       String fileName = p.getFileName().toString();
-      for (String name : listView.getItems()) {
-        if (name.equals(fileName)) {
+      for (ImgPath ip : listView.getItems()) {
+        if (ip.fileName.equals(fileName)) {
           listView.getSelectionModel().select(index);
           break;
         }
@@ -95,8 +93,9 @@ public class ImageSelectorController {
     listView.getSelectionModel().selectFirst();
   }//}}}
 
-  void setFilePath(String path) {//{{{
-    listView.getItems().add(path);
+  void setFilePath(Path path) {//{{{
+    if (path.toString().endsWith(".png"))
+      listView.getItems().add(new ImgPath(path));
   }//}}}
 
   // fxml event
