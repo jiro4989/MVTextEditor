@@ -55,7 +55,7 @@
         <HBox alignment="CENTER_RIGHT" spacing="10.0">
           <children>
             <Button fx:id="okButton" onAction="#okButtonOnAction" mnemonicParsing="false" prefWidth="100.0" text="OK" />
-            <Button fx:id="cancelButton" onAction="#cancelButtonOnAction" mnemonicParsing="false" prefWidth="100.0" text="CANCEL" />
+            <Button fx:id="cancelButton" cancelButton="true" onAction="#cancelButtonOnAction" mnemonicParsing="false" prefWidth="100.0" text="CANCEL" />
           </children>
         </HBox>
       </children>
