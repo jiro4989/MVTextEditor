@@ -3,6 +3,7 @@ package app.table;
 import static util.Texts.*;
 
 import app.selector.ImageSelector;
+import jiro.java.util.MyProperties;
 
 import app.Main;
 import app.MainController;
@@ -24,6 +25,8 @@ public class TextTable {
   private final MainController mainController;
   private Optional<List<TextDB>> copyTextDBs = Optional.empty();
   private static final String HALF_CHARS = "!\"#$%&'()*+,-./0123456789:;<=>? @ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+
+  private static final String CR = System.lineSeparator();
 
   // fxml component {{{
   private final TextField tableFilterTextField;
@@ -207,39 +210,58 @@ public class TextTable {
     });
   }//}}}
 
+  private String mkReturnedString(int size, String text, boolean bra, String indent) {//{{{
+    int len = length(text);
+    if (len <= size) {
+      return text;
+    }
+
+    int cnt = 0;
+    StringBuilder sb = new StringBuilder();
+    for (String s : text.split("")) {
+      int a = length(s);
+      cnt += a;
+      sb.append(s);
+      if (size < cnt) {
+        sb.append(CR);
+        cnt = 0;
+
+        if (bra) {
+          sb.append(indent);
+          cnt += length(indent);
+        }
+      }
+    }
+    return sb.toString();
+  }//}}}
+
   public void format() {//{{{
     getSelectedItems().ifPresent(items -> {
-      MainController.formatProperties.getProperty("textReturnSize").ifPresent(sizeStr -> {
+      MyProperties mp = MainController.formatProperties;
+      mp.getProperty("textReturnSize").ifPresent(sizeStr -> {
         int size = Integer.parseInt(sizeStr);
-        final String CR = System.lineSeparator();
+
+        String braS     = mp.getProperty("textBracket").get();
+        String braStart = mp.getProperty("bracketStart").get();
+
+        boolean bra = braS     == null ? false : Boolean.valueOf(braS);
+        int braLen  = braStart == null ? 0     : length(braStart);
+        StringBuilder indentSb = new StringBuilder();
+        for (int i=0; i<braLen; i++) {
+          indentSb.append(" ");
+        }
+        String indent = indentSb.toString();
 
         items.stream().forEach(item -> {
           String text = item.textProperty().get();
 
           BufferedReader br = new BufferedReader(new StringReader(text));
-          StringBuilder sb = new StringBuilder();
-          br.lines().forEach(line -> {
-            if (length(line) < size) {
-              sb.append(line).append(CR);
-            } else {
-              int count = 0;
-              for (String str : line.split("")) {
-                count = HALF_CHARS.indexOf(str) != -1 ? ++count : count + 2;
-                sb.append(str);
-                if (CR.equals(str)) {
-                  count = 0;
-                  continue;
-                }
+          List<String> lines = br.lines()
+            .map(l -> mkReturnedString(size, l, bra, indent))
+            .collect(Collectors.toList());
 
-                if (size <= count) {
-                  sb.append(CR);
-                  count = 0;
-                }
-              }
-            }
-          });
-
-          item.setText(sb.toString());
+          String formattedText = String.join(CR, lines);
+          item.setText(formattedText);
           updateTextView();
         });
       });
