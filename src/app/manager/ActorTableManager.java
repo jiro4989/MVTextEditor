@@ -60,6 +60,11 @@ class ActorTableManager {
       }
     });
 
+    actorTableView.setOnKeyPressed(e -> {
+      if (KeyCode.ENTER == e.getCode()) {
+        insertActorId();
+      }
+    });
   }//}}}
 
   void focus() { actorTableView.requestFocus(); }

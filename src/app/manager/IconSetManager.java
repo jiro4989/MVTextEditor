@@ -38,11 +38,49 @@ class IconSetManager {
     iconFocusLabel.setOnMouseClicked    ( e -> { iconFocusLabelOnMouseClicked    ( e ) ; } ) ;
     iconSelectedLabel.setOnMouseClicked ( e -> { iconSelectedLabelOnMouseClicked ( e ) ; } ) ;
 
+    iconGridPane.setOnKeyPressed(e -> {
+      if (KeyCode.H == e.getCode()) {
+        moveFocusGridPane(0, -1);
+      } else if (KeyCode.J == e.getCode()) {
+        moveFocusGridPane(1, 0);
+      } else if (KeyCode.K == e.getCode()) {
+        moveFocusGridPane(-1, 0);
+      } else if (KeyCode.L == e.getCode()) {
+        moveFocusGridPane(0, 1);
+      } else if (KeyCode.ENTER == e.getCode()) {
+        int x = (int) iconFocusLabel.getLayoutX();
+        int y = (int) iconFocusLabel.getLayoutY();
+        int column = x / ICONSET_SIZE;
+        int row    = y / ICONSET_SIZE;
+        int index  = column + row * ICONSET_COLUMN;
+        mainController.insertIconSetId(index);
+      }
+    });
+
   }//}}}
 
   void focus() { iconGridPane.requestFocus(); }
 
   // private methods
+
+  private void moveFocusGridPane(int prow, int pcol) {//{{{
+    int x = (int) iconFocusLabel.getLayoutX();
+    int y = (int) iconFocusLabel.getLayoutY();
+    x += pcol * ICONSET_SIZE;
+    y += prow * ICONSET_SIZE;
+    x = Math.max(0, x);
+    y = Math.max(0, y);
+
+    int w = (int) iconImageView.getFitWidth();
+    int h = (int) iconImageView.getFitHeight();
+    x = Math.min(w - ICONSET_SIZE, x);
+    y = Math.min(h - ICONSET_SIZE, y);
+
+    iconSelectedLabel.setLayoutX(x);
+    iconSelectedLabel.setLayoutY(y);
+    iconFocusLabel.setLayoutX(x);
+    iconFocusLabel.setLayoutY(y);
+  }//}}}
 
   private void iconImageViewOnMouseMoved(MouseEvent e) {//{{{
     iconWidthOpt.ifPresent(iconWidth -> {
