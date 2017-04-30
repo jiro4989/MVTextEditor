@@ -210,11 +210,13 @@ public class TextTable {
     });
   }//}}}
 
-  private String mkReturnedString(int size, String text, boolean bra, String indent) {//{{{
+  private String mkReturnedString(int size, String text, boolean bra, String indent, boolean facePathExists) {//{{{
     int len = length(text);
     if (len <= size) {
       return text;
     }
+
+    if (facePathExists) size -= FACE_FONT_SIZE;
 
     int cnt = 0;
     StringBuilder sb = new StringBuilder();
@@ -253,11 +255,13 @@ public class TextTable {
         String indent = indentSb.toString();
 
         items.stream().forEach(item -> {
+          String icon = item.iconProperty().get().replaceAll("\\s", "");
+          boolean facePathExists = !Objects.equals(icon, "");
           String text = item.textProperty().get();
 
           BufferedReader br = new BufferedReader(new StringReader(text));
           List<String> lines = br.lines()
-            .map(l -> mkReturnedString(size, l, bra, indent))
+            .map(l -> mkReturnedString(size, l, bra, indent, facePathExists))
             .collect(Collectors.toList());
 
           String formattedText = String.join(CR, lines);
