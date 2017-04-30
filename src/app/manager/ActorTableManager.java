@@ -61,13 +61,22 @@ class ActorTableManager {
     });
 
     actorTableView.setOnKeyPressed(e -> {
-      if (KeyCode.ENTER == e.getCode()) {
+      if (KeyCode.J == e.getCode()) {
+        actorTableView.getSelectionModel().selectNext();
+      } else if (KeyCode.K == e.getCode()) {
+        actorTableView.getSelectionModel().selectPrevious();
+      } else if (KeyCode.ENTER == e.getCode()) {
         insertActorId();
       }
     });
   }//}}}
 
-  void focus() { actorTableView.requestFocus(); }
+  void focus() {//{{{
+    actorTableView.requestFocus();
+    if (actorTableView.getSelectionModel().isEmpty()) {
+      actorTableView.getSelectionModel().selectFirst();
+    }
+  }//}}}
 
   private boolean existsMatchedText(ActorDB actorDb, String newVal) {//{{{
     if (newVal == null || newVal.isEmpty()) {

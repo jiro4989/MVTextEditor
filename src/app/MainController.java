@@ -200,20 +200,20 @@ public class MainController {
   @FXML private void addNewRecordMenuItemOnAction() { textTable.addNewRecord(); }
   @FXML private void formatMenuItemOnAction() { textTable.format(); }
 
-  @FXML private void focusVarPane() {
+  @FXML private void focusVarPane() {//{{{
     accordion.setExpandedPane(accordion.getPanes().get(0));
     editManager.focusVarPane();
-  }
+  }//}}}
 
-  @FXML private void focusActorPane() {
+  @FXML private void focusActorPane() {//{{{
     accordion.setExpandedPane(accordion.getPanes().get(1));
     editManager.focusActorPane();
-  }
+  }//}}}
 
-  @FXML private void focusIconsetPane() {
+  @FXML private void focusIconsetPane() {//{{{
     accordion.setExpandedPane(accordion.getPanes().get(2));
     editManager.focusIconsetPane();
-  }
+  }//}}}
 
   @FXML private void updateActorNames() {//{{{
     String actorName = textView.getActorName();

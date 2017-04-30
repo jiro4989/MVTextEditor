@@ -210,7 +210,7 @@
 
             <MenuItem mnemonicParsing="false" text="Select Iconset" onAction="#focusIconsetPane" >
               <accelerator>
-                <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
 

@@ -61,13 +61,22 @@ class VarTableManager {
     });
 
     varTableView.setOnKeyPressed(e -> {
-      if (KeyCode.ENTER == e.getCode()) {
+      if (KeyCode.J == e.getCode()) {
+        varTableView.getSelectionModel().selectNext();
+      } else if (KeyCode.K == e.getCode()) {
+        varTableView.getSelectionModel().selectPrevious();
+      } else if (KeyCode.ENTER == e.getCode()) {
         insertVarId();
       }
     });
   }//}}}
 
-  void focus() { varTableView.requestFocus(); }
+  void focus() {//{{{
+    varTableView.requestFocus();
+    if (varTableView.getSelectionModel().isEmpty()) {
+      varTableView.getSelectionModel().selectFirst();
+    }
+  }//}}}
 
   private boolean existsMatchedText(VarDB varDb, String newVal) {//{{{
     if (newVal == null || newVal.isEmpty()) {

@@ -186,6 +186,10 @@ class TextView {
   void insertActorId(  int id) { insertText(String.format("\\n[%d]", id)); }
   void insertIconSetId(int id) { insertText(String.format("\\i[%d]", id)); }
 
+  void insertVarIdToActor(    int id) {}
+  void insertActorIdToActor(  int id) {}
+  void insertIconSetIdToActor(int id) {}
+
   // private methods
 
   private void changeComboBoxItemWithMouseScroll(ScrollEvent e, ComboBox<? extends Object> comboBox) {//{{{
@@ -232,7 +236,7 @@ class TextView {
     int yy = y / COLOR_TILE_SIZE;
     return xx + yy * COLOR_PICKER_COLUMN_SIZE;
   }//}}}
-  
+
   // getter
 
   String getActorName() { return actorNameTextField.getText(); }
