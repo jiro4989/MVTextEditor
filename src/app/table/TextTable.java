@@ -216,6 +216,13 @@ public class TextTable {
       return text;
     }
 
+    // FIXME
+    // 文章の折り返しが正常に行われない。
+    // 画像がない段階で折り返されていた時、
+    // 後から画像を追加してフォーマットしようとしても
+    // 折り返しが実行されない
+    // 後から文章を追加して上限を超えるようにすると
+    // 上限が減少して整形が実行される。
     if (facePathExists) size -= FACE_FONT_SIZE;
 
     int cnt = 0;
