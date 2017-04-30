@@ -74,25 +74,7 @@ public class TextTable {
 
     tableView.setOnMouseClicked(e -> {
       if (e.getClickCount() == 2) {
-        getSelectedItems().ifPresent(items -> {
-          TextDB db = items.get(0);
-          String icon = db.iconProperty().get();
-          if (icon != null || icon.length() == 0) {
-            String path = createFilePath(icon.split(":"));
-            ImageSelector selector = new ImageSelector(path);
-            selector.showAndWait();
-            boolean selected = selector.isSelected();
-
-            if (selected) {
-              selector.getSelectedTileString().ifPresent(s -> {
-                items.stream().forEach(item -> {
-                  item.setIcon(s);
-                  updateTextView();
-                });
-              });
-            }
-          }
-        });
+        openImageSelector();
       }
     });
 
@@ -101,6 +83,8 @@ public class TextTable {
         selectNext();
       } else if (KeyCode.K == e.getCode() && !e.isControlDown()) {
         selectPrevious();
+      } else if (KeyCode.ENTER == e.getCode()) {
+        openImageSelector();
       }
     });
 
@@ -381,13 +365,35 @@ public class TextTable {
     return new TextDB("", "", "", bg, pos);
   }//}}}
 
-  private int length(String line) {
+  private int length(String line) {//{{{
     int count = 0;
     for (String text : line.split("")) {
       count = HALF_CHARS.indexOf(text) != -1 ? ++count : count + 2;
     }
     return count;
-  }
+  }//}}}
+
+  private void openImageSelector() {//{{{
+    getSelectedItems().ifPresent(items -> {
+      TextDB db = items.get(0);
+      String icon = db.iconProperty().get();
+      if (icon != null || icon.length() == 0) {
+        String path = createFilePath(icon.split(":"));
+        ImageSelector selector = new ImageSelector(path);
+        selector.showAndWait();
+        boolean selected = selector.isSelected();
+
+        if (selected) {
+          selector.getSelectedTileString().ifPresent(s -> {
+            items.stream().forEach(item -> {
+              item.setIcon(s);
+              updateTextView();
+            });
+          });
+        }
+      }
+    });
+  }//}}}
 
 }
 

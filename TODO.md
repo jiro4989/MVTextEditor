@@ -7,7 +7,6 @@
 - [ ] Enter, Ctrl+Enterでフォーカスの相互移動
 - [ ] Enterキーで変数一覧のダブルクリックと同じ動作をする。
 - [ ] READMEに文字コードの変更方法について記載する。
-- [ ] Selectorにもスクロールペインの追加
 - [ ] TODO grep検索でやり残し作業の確認
 - [ ] インデント設定の追加
 - [ ] テキストファイルを開くときの設定画面を用意する。
@@ -27,6 +26,7 @@
 - [x] File関連のAPIは古すぎるので、java.nio.fileクラスで書き直す。
 - [x] FormattableTextにactorNameオプションを付け忘れていた
 - [x] FormattableTextを修正して空リストが発生しないようにする。
+- [x] Selectorにもスクロールペインの追加
 - [x] TextEditorからもアイコン画像を変更できるようにする。
 - [x] TextViewが編集されたタイミングでテーブルを更新する。
 - [x] TextViewにアクター名のみとテキストの更新ボタンを追加
