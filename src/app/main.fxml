@@ -187,6 +187,35 @@
             </MenuItem>
           </items>
         </Menu>
+        <Menu mnemonicParsing="false" text="Select(_S)">
+          <items>
+
+            <MenuItem mnemonicParsing="false" text="Select Var" onAction="#focusTextView" >
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="Y" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+
+            <MenuItem mnemonicParsing="false" text="Select Var" onAction="#focusVarPane" >
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="U" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+
+            <MenuItem mnemonicParsing="false" text="Select Actor" onAction="#focusActorPane" >
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+
+            <MenuItem mnemonicParsing="false" text="Select Iconset" onAction="#focusIconsetPane" >
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+
+          </items>
+        </Menu>
         <Menu mnemonicParsing="false" text="Help(_H)">
           <items>
             <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
@@ -433,9 +462,9 @@
                 </BorderPane>
               </bottom>
             </BorderPane>
-            <Accordion>
+            <Accordion fx:id="accordion">
               <panes>
-                <TitledPane contentDisplay="RIGHT" graphicTextGap="15.0" text="var">
+                <TitledPane fx:id="varTitledPane" contentDisplay="RIGHT" graphicTextGap="15.0" text="var">
                   <content>
                     <TableView fx:id="varTableView" prefHeight="200.0" prefWidth="200.0">
                       <columns>
@@ -451,7 +480,8 @@
                     <Insets />
                   </opaqueInsets>
                 </TitledPane>
-                <TitledPane contentDisplay="RIGHT" graphicTextGap="15.0" text="actor">
+
+                <TitledPane fx:id="actorTitledPane" contentDisplay="RIGHT" graphicTextGap="15.0" text="actor">
                   <content>
                     <TableView fx:id="actorTableView" prefHeight="200.0" prefWidth="200.0">
                       <columns>
@@ -464,7 +494,8 @@
                     <TextField fx:id="actorSearchTextField" promptText="search" />
                   </graphic>
                 </TitledPane>
-                <TitledPane text="icons">
+
+                <TitledPane fx:id="iconsetTitledPane" text="icons">
                   <content>
                     <ScrollPane>
                       <content>

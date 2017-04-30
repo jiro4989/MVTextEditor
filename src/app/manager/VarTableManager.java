@@ -60,7 +60,14 @@ class VarTableManager {
       }
     });
 
+    varTableView.setOnKeyPressed(e -> {
+      if (KeyCode.ENTER == e.getCode()) {
+        insertVarId();
+      }
+    });
   }//}}}
+
+  void focus() { varTableView.requestFocus(); }
 
   private boolean existsMatchedText(VarDB varDb, String newVal) {//{{{
     if (newVal == null || newVal.isEmpty()) {

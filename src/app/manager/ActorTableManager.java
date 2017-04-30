@@ -62,6 +62,8 @@ class ActorTableManager {
 
   }//}}}
 
+  void focus() { actorTableView.requestFocus(); }
+
   private boolean existsMatchedText(ActorDB actorDb, String newVal) {//{{{
     if (newVal == null || newVal.isEmpty()) {
       return true;

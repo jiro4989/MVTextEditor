@@ -39,6 +39,10 @@ public class EditManager {
 
   }//}}}
 
+  public void focusVarPane()     { varTableManager   . focus(); }
+  public void focusActorPane()   { actorTableManager . focus(); }
+  public void focusIconsetPane() { iconSetManager    . focus(); }
+
   // setter
 
   public void setVariables(String path) { varTableManager   . setVariables(path); }

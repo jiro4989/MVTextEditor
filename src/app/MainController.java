@@ -78,6 +78,11 @@ public class MainController {
 
   // edit manager
 
+  @FXML private Accordion  accordion;
+  @FXML private TitledPane varTitledPane;
+  @FXML private TitledPane actorTitledPane;
+  @FXML private TitledPane iconsetTitledPane;
+
   @FXML private TextField                   varSearchTextField;
   @FXML private TableView<  VarDB>          varTableView;
   @FXML private TableColumn<VarDB, Integer> varIdColumn;
@@ -195,6 +200,21 @@ public class MainController {
   @FXML private void addNewRecordMenuItemOnAction() { textTable.addNewRecord(); }
   @FXML private void formatMenuItemOnAction() { textTable.format(); }
 
+  @FXML private void focusVarPane() {
+    accordion.setExpandedPane(accordion.getPanes().get(0));
+    editManager.focusVarPane();
+  }
+
+  @FXML private void focusActorPane() {
+    accordion.setExpandedPane(accordion.getPanes().get(1));
+    editManager.focusActorPane();
+  }
+
+  @FXML private void focusIconsetPane() {
+    accordion.setExpandedPane(accordion.getPanes().get(2));
+    editManager.focusIconsetPane();
+  }
+
   @FXML private void updateActorNames() {//{{{
     String actorName = textView.getActorName();
     textTable.setActorNames(actorName);
@@ -237,6 +257,8 @@ public class MainController {
   public void exportJson(File file) throws FileNotFoundException, IOException {
     textTable.exportJson(file);
   }
+
+  public void focusTextView() { textView.focusEditor(); }
 
   // getter
 

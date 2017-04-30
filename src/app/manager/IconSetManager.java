@@ -40,6 +40,8 @@ class IconSetManager {
 
   }//}}}
 
+  void focus() { iconGridPane.requestFocus(); }
+
   // private methods
 
   private void iconImageViewOnMouseMoved(MouseEvent e) {//{{{

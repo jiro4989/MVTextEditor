@@ -127,6 +127,8 @@ class TextView {
 
   // package methods
 
+  void focusEditor() { editorTextArea.requestFocus(); }
+
   void update(TextDB db) {//{{{
     String icon      = db.iconProperty().get();
     String actorName = db.actorNameProperty().get();
