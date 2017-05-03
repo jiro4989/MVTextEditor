@@ -254,9 +254,9 @@ public class TextTable {
         String braS     = mp.getProperty("textBracket").get();
         String braStart = mp.getProperty("bracketStart").get();
 
-        boolean textIndent = textIndentStr == null ? true : Boolean.valueOf(textIndentStr);
-        boolean bra = braS     == null ? false : Boolean.valueOf(braS);
-        int braLen  = braStart == null ? 0     : length(braStart);
+        boolean textIndent = textIndentStr == null ? true  : Boolean.valueOf(textIndentStr);
+        boolean bra        = braS          == null ? false : Boolean.valueOf(braS);
+        int braLen         = braStart      == null ? 0     : length(braStart);
 
         StringBuilder indentSb = new StringBuilder();
         if (textIndent) {

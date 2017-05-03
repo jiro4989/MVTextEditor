@@ -164,7 +164,7 @@ class MyMenuBar {
           .returnSize(RETURN_SIZE)
           .indentOption(textIndent)
           .indentSize(INDENT_SIZE)
-          .bracketsOption(true)
+          .bracketsOption(false)
           .brackets(BRACKETS)
           .joiningOption(false)
           .build();
