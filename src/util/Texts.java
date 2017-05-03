@@ -46,6 +46,8 @@ public class Texts {
   // 画像処理の書式(ARGB)
   public static final WritablePixelFormat<IntBuffer> FORMAT = WritablePixelFormat.getIntArgbInstance();
 
+  private static final String HALF_CHARS = "!\"#$%&'()*+,-./0123456789:;<=>? @ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+
   public static String createFilePath(String[] array) {//{{{
     String[] newArray = new String[array.length-1];
     for (int i=0; i<array.length-1; i++) {
@@ -61,5 +63,13 @@ public class Texts {
   public static String getPositionInitText() {//{{{
     return Main.resources.getString("position").split(",")[2];
   }//}}}
+
+  public static int len(String line) {
+    int count = 0;
+    for (String text : line.split("")) {
+      count = HALF_CHARS.indexOf(text) != -1 ? ++count : count + 2;
+    }
+    return count;
+  }
 
 }

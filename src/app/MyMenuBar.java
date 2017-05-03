@@ -1,7 +1,10 @@
 package app;
 
+import static util.Texts.len;
+
 import jiro.java.lang.Brackets;
 import jiro.java.lang.FormattableText;
+import jiro.java.util.MyProperties;
 import jiro.javafx.stage.MyFileChooser;
 
 import app.table.SavingData;
@@ -148,24 +151,31 @@ class MyMenuBar {
 
   private void importTextFile() {//{{{
     textFileManager.openFile().ifPresent(file -> {
-      // TODO 一時変数
-      final int RETURN_SIZE = 27 * 2;
-      final int INDENT_SIZE = 2;
-      final Brackets BRACKETS = Brackets.TYPE1;
 
-      // TODO test code
-      String textIndentStr = MainController.formatProperties.getProperty("textIndent").get();
-      boolean textIndent = textIndentStr == null ? true : Boolean.valueOf(textIndentStr);
+      MyProperties mp = MainController.formatProperties;
+      String textReturnStr     = mp.getProperty("textReturn").get();
+      String textReturnSizeStr = mp.getProperty("textReturnSize").get();
+      String textIndentStr     = mp.getProperty("textIndent").get();
+      String bracketStartStr   = mp.getProperty("bracketStart").get();
+      String wrappingStr       = mp.getProperty("wrapping").get();
+
+      boolean textReturn = textReturnStr     == null ? true : Boolean.valueOf(textReturnStr);
+      int textReturnSize = textReturnSizeStr == null ? 54   : Integer.parseInt(textReturnSizeStr);
+      boolean textIndent = textIndentStr     == null ? true : Boolean.valueOf(textIndentStr);
+      int bracketsIndex  = bracketStartStr   == null ? 0    : Integer.parseInt(bracketStartStr);
+      boolean wrapping   = wrappingStr       == null ? true : Boolean.valueOf(wrappingStr);
+      Brackets brackets  = Brackets.values()[bracketsIndex];
+      int indentSize     = len(brackets.START);
 
       try {
         FormattableText ft = new FormattableText.Builder(file)
           .actorNameOption(true)
-          .returnOption(true)
-          .returnSize(RETURN_SIZE)
-          .indentOption(textIndent)
-          .indentSize(INDENT_SIZE)
-          .bracketsOption(false)
-          .brackets(BRACKETS)
+          .returnOption(textReturn)
+          .returnSize(textReturnSize)
+          .indentOption(true)
+          .indentSize(indentSize)
+          .bracketsOption(wrapping)
+          .brackets(brackets)
           .joiningOption(false)
           .build();
         mainController.setTextList(ft.format().getTextList());

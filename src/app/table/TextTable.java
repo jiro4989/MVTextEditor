@@ -24,7 +24,6 @@ public class TextTable {
 
   private final MainController mainController;
   private Optional<List<TextDB>> copyTextDBs = Optional.empty();
-  private static final String HALF_CHARS = "!\"#$%&'()*+,-./0123456789:;<=>? @ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 
   private static final String CR = System.lineSeparator();
 
@@ -211,7 +210,7 @@ public class TextTable {
   }//}}}
 
   private String mkReturnedString(int size, String text, boolean bra, String indent, boolean facePathExists) {//{{{
-    int len = length(text);
+    int len = len(text);
     if (len <= size) {
       return text;
     }
@@ -228,7 +227,7 @@ public class TextTable {
     int cnt = 0;
     StringBuilder sb = new StringBuilder();
     for (String s : text.split("")) {
-      int a = length(s);
+      int a = len(s);
       cnt += a;
       sb.append(s);
       if (size < cnt) {
@@ -237,7 +236,7 @@ public class TextTable {
 
         if (bra) {
           sb.append(indent);
-          cnt += length(indent);
+          cnt += len(indent);
         }
       }
     }
@@ -251,12 +250,12 @@ public class TextTable {
         int size = Integer.parseInt(sizeStr);
 
         String textIndentStr = mp.getProperty("textIndent").get();
-        String braS     = mp.getProperty("textBracket").get();
-        String braStart = mp.getProperty("bracketStart").get();
+        String braS          = mp.getProperty("textBracket").get();
+        String braStart      = mp.getProperty("bracketStart").get();
 
         boolean textIndent = textIndentStr == null ? true  : Boolean.valueOf(textIndentStr);
         boolean bra        = braS          == null ? false : Boolean.valueOf(braS);
-        int braLen         = braStart      == null ? 0     : length(braStart);
+        int braLen         = braStart      == null ? 0     : len(braStart);
 
         StringBuilder indentSb = new StringBuilder();
         if (textIndent) {
@@ -401,14 +400,6 @@ public class TextTable {
     String bg  = getBackgroundInitText();
     String pos = getPositionInitText();
     return new TextDB("", "", "", bg, pos);
-  }//}}}
-
-  private int length(String line) {//{{{
-    int count = 0;
-    for (String text : line.split("")) {
-      count = HALF_CHARS.indexOf(text) != -1 ? ++count : count + 2;
-    }
-    return count;
   }//}}}
 
   private void openImageSelector() {//{{{
