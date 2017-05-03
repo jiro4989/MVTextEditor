@@ -154,12 +154,15 @@ class MyMenuBar {
       final Brackets BRACKETS = Brackets.TYPE1;
 
       // TODO test code
+      String textIndentStr = MainController.formatProperties.getProperty("textIndent").get();
+      boolean textIndent = textIndentStr == null ? true : Boolean.valueOf(textIndentStr);
+
       try {
         FormattableText ft = new FormattableText.Builder(file)
           .actorNameOption(true)
           .returnOption(true)
           .returnSize(RETURN_SIZE)
-          .indentOption(true)
+          .indentOption(textIndent)
           .indentSize(INDENT_SIZE)
           .bracketsOption(true)
           .brackets(BRACKETS)

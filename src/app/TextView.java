@@ -153,6 +153,8 @@ class TextView {
         return;
       }
     }//}}}
+
+    faceImageView.setImage(null);
   }//}}}
 
   void setColorPickerImage(String path) {//{{{
