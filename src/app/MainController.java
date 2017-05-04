@@ -3,6 +3,7 @@ package app;
 import static util.Texts.*;
 
 import jiro.java.util.MyProperties;
+import jiro.javafx.scene.control.DialogUtils;
 import jiro.javafx.stage.AboutStage;
 import jiro.javafx.stage.MyFileChooser;
 
@@ -50,6 +51,7 @@ public class MainController {
   @FXML private MenuItem importConfigsMenuItem;
   @FXML private MenuItem selectProjectMenuItem;
   @FXML private MenuItem quitMenuItem;
+  @FXML private MenuItem forcedTerminateMenuItem;
 
   @FXML private MenuItem iconIndex1MenuItem;
   @FXML private MenuItem iconIndex2MenuItem;
@@ -121,6 +123,7 @@ public class MainController {
   @FXML private Label     iconSelectedLabel;
 
   // Button Bar
+
   @FXML private Button partyButton;
   @FXML private Button backslashButton;
 
@@ -254,6 +257,22 @@ public class MainController {
     formatProperties.load();
   }//}}}
 
+  @FXML private void jpRadioMenuItemOnAction() {//{{{
+    DialogUtils.showLanguageDialog();
+    String langs = Locale.JAPAN.getLanguage();
+    setLanguages(langs);
+  }//}}}
+
+  @FXML private void enRadioMenuItemOnAction() {//{{{
+    DialogUtils.showLanguageDialog();
+    String langs = Locale.ENGLISH.getLanguage();
+    setLanguages(langs);
+  }//}}}
+
+  @FXML private void forcedTerminateMenuItemOnAction() {//{{{
+    DialogUtils.showForcedTerminationDialog();
+  }//}}}
+
   // public methods
 
   public void closeRequest() {//{{{
@@ -263,7 +282,7 @@ public class MainController {
 
     // TODO 一時的な設定
     String langs = Locale.getDefault().getLanguage();
-    preferencesProperties.setProperty("langs", langs);
+    preferencesProperties.setProperty(KEY_LANGS, langs);
 
     preferencesProperties.store();
   }//}}}
@@ -312,6 +331,10 @@ public class MainController {
       editManager.setActors(proj + "/" + ACTORS_FILE_PATH);
       editManager.setIconset(proj + "/" + IMG_ICONSET_PATH);
     });
+  }//}}}
+
+  private void setLanguages(String langs) {//{{{
+    preferencesProperties.setProperty(KEY_LANGS, langs);
   }//}}}
 
 }
