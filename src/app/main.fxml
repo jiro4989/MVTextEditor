@@ -30,7 +30,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="650.0" prefWidth="800.0" stylesheets="@/app/res/css/basic.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainController">
+<VBox prefHeight="650.0" prefWidth="800.0" stylesheets="@/app/res/css/basic.css" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
