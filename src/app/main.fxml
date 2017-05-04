@@ -72,7 +72,8 @@
             </MenuItem>
             <SeparatorMenuItem mnemonicParsing="false" />
 
-            <MenuItem fx:id="importConfigsMenuItem" mnemonicParsing="false" text="Import Config…" onAction="#importConfigsMenuItemOnAction"/>
+            <MenuItem fx:id="importConfigsMenuItem" mnemonicParsing="false" text="Change Import Config..." onAction="#importConfigsMenuItemOnAction"/>
+            <MenuItem fx:id="selectProjectMenuItem" mnemonicParsing="false" text="Import Project" onAction="#selectProjectMenuItemOnAction"/>
 
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem fx:id="quitMenuItem" mnemonicParsing="false" text="Quit" />

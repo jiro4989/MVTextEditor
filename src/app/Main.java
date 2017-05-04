@@ -43,9 +43,7 @@ public class Main extends Application {
       }
     }
 
-    // changeLanguages();
-    // PresetsUtils.mkInitDirs();
-    // PresetsUtils.mkInitPresets();
+    changeLanguages();
 
     URL location = getClass().getResource("main.fxml");
     resources = ResourceBundle.getBundle(
@@ -81,37 +79,6 @@ public class Main extends Application {
       /*
        * // TODO 過去のソースの名残//{{{
 
-       * if (mainMp.load()) mainMp.customStage(primaryStage);
-
-       * // 設定ウィンドウの追従リスナー
-       * primaryStage.xProperty      ( ).addListener ( ( obs, o, n) -> controller.resizeConfigStage ( ) ) ;
-       * primaryStage.yProperty      ( ).addListener ( ( obs, o, n) -> controller.resizeConfigStage ( ) ) ;
-       * primaryStage.widthProperty  ( ).addListener ( ( obs, o, n) -> controller.resizeConfigStage ( ) ) ;
-       * primaryStage.heightProperty ( ).addListener ( ( obs, o, n) -> controller.resizeConfigStage ( ) ) ;
-
-       * primaryStage.setOnCloseRequest(e -> controller.closeRequest());
-
-       * // マウスドラッグでウィンドウの位置を変更//{{{
-
-       * final Delta delta = new Delta();
-
-       * root.setOnMousePressed(e -> {
-       *   delta.x = primaryStage.getX() - e.getScreenX();
-       *   delta.y = primaryStage.getY() - e.getScreenY();
-       * });
-
-       * root.setOnMouseDragged(e -> {
-       *   primaryStage.setX(e.getScreenX() + delta.x);
-       *   primaryStage.setY(e.getScreenY() + delta.y);
-       * });
-
-       * //}}}
-
-       * root.setOnScroll(e -> controller.updateZoomRate(e));
-
-       * controller.setConfigStageInstance();
-       * controller.setInitAlwaysOnTop();
-
        * // フォントサイズの変更
        * final MyProperties preferences = new MyProperties(PREFERENCES_FILE);
        * preferences.load();
@@ -139,33 +106,17 @@ public class Main extends Application {
     }
   }//}}}
 
-  public static void main(String... args) {//{{{
-    launch(args);
+  public static void main(String... args) { launch(args); }
+
+  private void changeLanguages() {//{{{
+    MyProperties preferences = new MyProperties(PREFERENCES_PROPERTIES);
+    if (preferences.load()) {
+      String ja = Locale.JAPAN.getLanguage();
+      String langs = preferences.getProperty("langs").orElse(ja);
+      if (!langs.equals(ja)) {
+        Locale.setDefault(Locale.ENGLISH);
+      }
+    }
   }//}}}
-
-
-  /*
-   * private void changeLanguages() {//{{{
-   *   MyProperties preferences = new MyProperties(PREFERENCES_FILE);
-   *   if (preferences.load()) {
-
-   *     String ja = Locale.JAPAN.getLanguage();
-   *     String langs = preferences.getProperty(KEY_LANGS).orElse(ja);
-   *     if (!langs.equals(ja)) {
-
-   *       Locale.setDefault(Locale.ENGLISH);
-
-   *     }
-
-   *   }
-   * }//}}}
-   */
-
-  /*
-   * private class Delta {//{{{
-   *   double x;
-   *   double y;
-   * }//}}}
-   */
 
 }

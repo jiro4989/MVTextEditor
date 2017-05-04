@@ -22,11 +22,13 @@ import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.stage.Window;
 import javax.xml.parsers.ParserConfigurationException;
+import javafx.stage.DirectoryChooser;
 
 public class MainController {
 
   public static MyProperties formatProperties = new MyProperties(FORMAT_PROPERTIES);
   public static MyProperties preferencesProperties = new MyProperties(PREFERENCES_PROPERTIES);
+  private DirectoryChooser dc;
 
   private MyMenuBar myMenubar;
   private TextTable textTable;
@@ -46,6 +48,7 @@ public class MainController {
   @FXML private MenuItem importMenuItem;
   @FXML private MenuItem exportMenuItem;
   @FXML private MenuItem importConfigsMenuItem;
+  @FXML private MenuItem selectProjectMenuItem;
   @FXML private MenuItem quitMenuItem;
 
   @FXML private MenuItem iconIndex1MenuItem;
@@ -123,6 +126,9 @@ public class MainController {
   // initialize
 
   @FXML private void initialize() {//{{{
+    dc = new DirectoryChooser();
+    dc.setInitialDirectory(new File("."));
+
     formatProperties.load();
 
     preferencesProperties.load();
@@ -162,18 +168,6 @@ public class MainController {
         , iconGridPane         , iconImageView  , iconFocusLabel , iconSelectedLabel
         );
 
-    // TODO
-    preferencesProperties.getProperty(KEY_PROJECT).ifPresent(proj -> {
-      // ColorPickerのシステム画像を一時的に読み込み
-      textView.setColorPickerImage(proj + "/" + IMG_WINDOW_PATH);
-      // 変数一覧の一時読み込み
-      editManager.setVariables(proj + "/" + VAR_FILE_PATH);
-      // アクター一覧の一時読み込み
-      editManager.setActors(proj + "/" + ACTORS_FILE_PATH);
-      // アイコンセット一覧の一時読み込み
-      editManager.setIconset(proj + "/" + IMG_ICONSET_PATH);
-    });
-
     iconIndex1MenuItem.setOnAction(e -> textTable.changeIconIndex(0));
     iconIndex2MenuItem.setOnAction(e -> textTable.changeIconIndex(1));
     iconIndex3MenuItem.setOnAction(e -> textTable.changeIconIndex(2));
@@ -182,6 +176,8 @@ public class MainController {
     iconIndex6MenuItem.setOnAction(e -> textTable.changeIconIndex(5));
     iconIndex7MenuItem.setOnAction(e -> textTable.changeIconIndex(6));
     iconIndex8MenuItem.setOnAction(e -> textTable.changeIconIndex(7));
+
+    loadPreference();
 
   }//}}}
 
@@ -200,6 +196,14 @@ public class MainController {
   @FXML private void updateSelectedRecordsMenuItemOnAction() { textTable.updateSelectedRecords(); }
   @FXML private void addNewRecordMenuItemOnAction() { textTable.addNewRecord(); }
   @FXML private void formatMenuItemOnAction() { textTable.format(); }
+
+  @FXML private void selectProjectMenuItemOnAction() {//{{{
+    File dir = dc.showDialog(getWindow());
+    if (dir != null) {
+      dc.setInitialDirectory(dir.getParentFile());
+      loadPreference();
+    }
+  }//}}}
 
   @FXML private void focusVarPane() {//{{{
     accordion.setExpandedPane(accordion.getPanes().get(0));
@@ -281,6 +285,15 @@ public class MainController {
   void setPositionItem(String item) {//{{{
     String[] array = item.split(",");
     positionComboBox.getItems().addAll(array);
+  }//}}}
+
+  private void loadPreference() {//{{{
+    preferencesProperties.getProperty(KEY_PROJECT).ifPresent(proj -> {
+      textView.setColorPickerImage(proj + "/" + IMG_WINDOW_PATH);
+      editManager.setVariables(proj + "/" + VAR_FILE_PATH);
+      editManager.setActors(proj + "/" + ACTORS_FILE_PATH);
+      editManager.setIconset(proj + "/" + IMG_ICONSET_PATH);
+    });
   }//}}}
 
 }
