@@ -229,6 +229,7 @@ public class MainController {
   @FXML private void importConfigsMenuItemOnAction() {//{{{
     ImportConfigStage ics = new ImportConfigStage();
     ics.showAndWait();
+    formatProperties.load();
   }//}}}
 
   // public methods

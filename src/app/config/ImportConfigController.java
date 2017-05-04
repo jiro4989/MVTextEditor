@@ -2,6 +2,10 @@ package app.config;
 
 import jiro.javafx.scene.control.JavaFXCustomizeUtils;
 
+import jiro.java.util.MyProperties;
+
+import app.MainController;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -22,12 +26,25 @@ public class ImportConfigController {
   }
 
   @FXML private void okButtonOnAction() {
-    //propWrite();
+    propWrite();
     okButton.getScene().getWindow().hide();
   }
 
   @FXML private void cancelButtonOnAction() {
     okButton.getScene().getWindow().hide();
   }
+
+  private void propWrite() {//{{{
+    MyProperties mp = MainController.formatProperties;
+    mp . setProperty("textReturn" , "" + crCheckBox       . isSelected());
+    mp . setProperty("wrapping"   , "" + wrappingCheckBox . isSelected());
+    mp . setProperty("textIndent" , "" + indentCheckBox   . isSelected());
+    mp . setProperty("textReturnSize" , "" + fontCountTextField.getText());
+
+    int selectedIndex = bracketsComboBox.getSelectionModel().getSelectedIndex();
+    mp . setProperty("bracketStart" , "" + selectedIndex);
+
+    mp.store();
+  }//}}}
 
 }
