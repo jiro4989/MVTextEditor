@@ -23,6 +23,12 @@ public class ImportConfigController {
   @FXML
   private void initialize() {
     JavaFXCustomizeUtils.setIntegerOnlyOption(fontCountTextField);
+    MyProperties mp = MainController.formatProperties;
+    mp.getProperty("textReturn").map(Boolean::valueOf).ifPresent(crCheckBox::setSelected);
+    mp.getProperty("wrapping")  .map(Boolean::valueOf).ifPresent(wrappingCheckBox::setSelected);
+    mp.getProperty("textIndent").map(Boolean::valueOf).ifPresent(indentCheckBox::setSelected);
+    mp.getProperty("textReturnSize").map(Integer::parseInt).ifPresent(f -> fontCountTextField.setText("" + f));
+    mp.getProperty("bracketStart").map(Integer::parseInt).ifPresent(i -> bracketsComboBox.getSelectionModel().select(i));
   }
 
   @FXML private void okButtonOnAction() {
