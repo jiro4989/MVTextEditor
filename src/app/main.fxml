@@ -292,11 +292,11 @@
               <center>
                 <TableView fx:id="tableView" BorderPane.alignment="CENTER">
                   <columns>
-                    <TableColumn fx:id="iconColumn" prefWidth="75.0" text="icon" />
-                    <TableColumn fx:id="nameColumn" prefWidth="75.0" text="name" />
-                    <TableColumn fx:id="textColumn" prefWidth="450.0" text="text" />
-                    <TableColumn fx:id="backgroundColumn" prefWidth="75.0" text="bg" />
-                    <TableColumn fx:id="positionColumn" prefWidth="75.0" text="pos" />
+                    <TableColumn fx:id="iconColumn" prefWidth="75.0" text="%iconColumn" />
+                    <TableColumn fx:id="nameColumn" prefWidth="75.0" text="%nameColumn" />
+                    <TableColumn fx:id="textColumn" prefWidth="450.0" text="%textColumn" />
+                    <TableColumn fx:id="backgroundColumn" prefWidth="75.0" text="%backgroundColumn" />
+                    <TableColumn fx:id="positionColumn" prefWidth="75.0" text="%positionColumn" />
                   </columns>
                 </TableView>
               </center>
@@ -514,38 +514,38 @@
             </BorderPane>
             <Accordion fx:id="accordion">
               <panes>
-                <TitledPane fx:id="varTitledPane" contentDisplay="RIGHT" graphicTextGap="15.0" text="var">
+                <TitledPane fx:id="varTitledPane" contentDisplay="RIGHT" graphicTextGap="15.0" text="%varPanel">
+                  <graphic>
+                    <TextField fx:id="varSearchTextField" promptText="%searchPromptText" prefWidth="200" />
+                  </graphic>
                   <content>
                     <TableView fx:id="varTableView" prefHeight="200.0" prefWidth="200.0">
                       <columns>
-                        <TableColumn fx:id="varIdColumn" prefWidth="75.0" text="var id" />
-                        <TableColumn fx:id="varNameColumn" prefWidth="175.0" text="var name" />
+                        <TableColumn fx:id="varIdColumn" prefWidth="75.0" text="ID" />
+                        <TableColumn fx:id="varNameColumn" prefWidth="175.0" text="%varName" />
                       </columns>
                     </TableView>
                   </content>
-                  <graphic>
-                    <TextField fx:id="varSearchTextField" promptText="search" />
-                  </graphic>
                   <opaqueInsets>
                     <Insets />
                   </opaqueInsets>
                 </TitledPane>
 
-                <TitledPane fx:id="actorTitledPane" contentDisplay="RIGHT" graphicTextGap="15.0" text="actor">
+                <TitledPane fx:id="actorTitledPane" contentDisplay="RIGHT" graphicTextGap="15.0" text="%actorPanel">
+                  <graphic>
+                    <TextField fx:id="actorSearchTextField" promptText="%searchPromptText" prefWidth="200" />
+                  </graphic>
                   <content>
                     <TableView fx:id="actorTableView" prefHeight="200.0" prefWidth="200.0">
                       <columns>
-                        <TableColumn fx:id="actorIdColumn" prefWidth="75.0" text="id" />
-                        <TableColumn fx:id="actorNameColumn" prefWidth="75.0" text="name" />
+                        <TableColumn fx:id="actorIdColumn" prefWidth="75.0" text="ID" />
+                        <TableColumn fx:id="actorNameColumn" prefWidth="75.0" text="%varName" />
                       </columns>
                     </TableView>
                   </content>
-                  <graphic>
-                    <TextField fx:id="actorSearchTextField" promptText="search" />
-                  </graphic>
                 </TitledPane>
 
-                <TitledPane fx:id="iconsetTitledPane" text="icons">
+                <TitledPane fx:id="iconsetTitledPane" text="%iconsetPanel">
                   <content>
                     <ScrollPane>
                       <content>
