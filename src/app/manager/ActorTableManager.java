@@ -121,7 +121,7 @@ class ActorTableManager {
         masterActorDBs.add(new ActorDB(i, name));
       });
     } catch (IOException e) {
-      e.printStackTrace();
+      util.MyLogger.log(e);
     }
   }//}}}
 

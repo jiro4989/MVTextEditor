@@ -109,11 +109,13 @@ class MyMenuBar {
             List<TextDB> dbs = SavingData.convertTextDB(file);
             mainController.setTextDB(dbs);
           } catch (SAXException e) {
-            e.printStackTrace();
+            util.MyLogger.log(e);
           } catch (ParserConfigurationException e) {
-            showParsingErrorDialog();
+            util.MyLogger.log("XMLパースできませんでしたエラー", e);
           } catch (IOException e) {
-            e.printStackTrace();
+            util.MyLogger.log("ファイル読み込みに失敗しましたエラー", e);
+          } catch (Exception e) {
+            util.MyLogger.log(e);
           }
         });
     });
@@ -126,11 +128,13 @@ class MyMenuBar {
         mainController.setTextDB(dbs);
         Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
       } catch (SAXException e) {
-        e.printStackTrace();
+        util.MyLogger.log(e);
       } catch (ParserConfigurationException e) {
-        showParsingErrorDialog();
+        util.MyLogger.log("XMLパースできませんでしたエラー", e);
       } catch (IOException e) {
-        e.printStackTrace();
+        util.MyLogger.log("ファイル読み込みに失敗しましたエラー", e);
+      } catch (Exception e) {
+        util.MyLogger.log(e);
       }
     });
   }//}}}
@@ -184,7 +188,9 @@ class MyMenuBar {
         // importするtxtファイルをタイトルにセットするのは適当ではない？
         //Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
       } catch (IOException ioe) {
-        ioe.printStackTrace();
+        util.MyLogger.log("ファイル読み込みに失敗しましたエラー", ioe);
+      } catch (Exception e) {
+        util.MyLogger.log(e);
       }
     });
   }//}}}
@@ -201,17 +207,21 @@ class MyMenuBar {
       try {
         mainController.exportJson(file);
       } catch (FileNotFoundException e) {
-        e.printStackTrace();
+        util.MyLogger.log("ファイルが見つかりませんでしたエラー", e);
+
         Alert alert = new Alert(AlertType.ERROR);
         alert.setHeaderText("ファイルが見つかりませんでした。");
         alert.setContentText("作者に報告してください。");
         alert.showAndWait();
       } catch (IOException e) {
-        e.printStackTrace();
+        util.MyLogger.log("ファイル出力に失敗しましたエラー", e);
+
         Alert alert = new Alert(AlertType.ERROR);
         alert.setHeaderText("ファイル出力エラー。");
         alert.setContentText("ファイルを生成する権限があるか、あるいはファイル出力先を正常に指定できているか確認してください。");
         alert.showAndWait();
+      } catch (Exception e) {
+        util.MyLogger.log(e);
       }
     });
   }//}}}
@@ -228,7 +238,10 @@ class MyMenuBar {
       //}
       //tooltip.show(mainController.getWindow());
     } catch (ParserConfigurationException pce) {
+      util.MyLogger.log("XMLパースできませんでしたエラー", pce);
       showParsingErrorDialog();
+    } catch (Exception e) {
+      util.MyLogger.log(e);
     }
   }//}}}
 

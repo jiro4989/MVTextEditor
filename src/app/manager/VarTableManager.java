@@ -120,7 +120,7 @@ class VarTableManager {
         masterVarDBs.add(new VarDB(i, name));
       });
     } catch (IOException e) {
-      e.printStackTrace();
+      util.MyLogger.log(e);
     }
   }//}}}
 

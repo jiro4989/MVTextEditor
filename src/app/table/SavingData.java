@@ -83,11 +83,13 @@ public class SavingData {
 
       transformer.transform(src, result);
     } catch (TransformerConfigurationException e) {
-      e.printStackTrace();
+      util.MyLogger.log(e);
     } catch (FileNotFoundException e) {
-      e.printStackTrace();
+      util.MyLogger.log("ファイルが見つかりませんでしたエラー", e);
     } catch (TransformerException e) {
-      e.printStackTrace();
+      util.MyLogger.log(e);
+    } catch (Exception e) {
+      util.MyLogger.log(e);
     }
   }//}}}
 

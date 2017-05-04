@@ -133,7 +133,9 @@ public class Main extends Application {
 
       primaryStage.show();
     } catch (IOException e) {
-      e.printStackTrace();
+      util.MyLogger.log("FXMLロードエラー", e);
+    } catch (Exception e) {
+      util.MyLogger.log(e);
     }
   }//}}}
 

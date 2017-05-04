@@ -121,7 +121,9 @@ public class TextTable {
         final String SP = File.separator;
         JsonUtils.updateMapInfos(new File(dir + SP + "data" + SP + "MapInfos.json"), file.getName());
       } catch (IOException e) {
-        e.printStackTrace();
+        util.MyLogger.log("ファイル出力に失敗しましたエラー", e);
+      } catch (Exception e) {
+        util.MyLogger.log(e);
       }
     });
   }//}}}

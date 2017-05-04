@@ -46,13 +46,6 @@ public class ImageSelectorController {
       .getProperty(KEY_PROJECT).ifPresent(proj -> {
         Path path = Paths.get(proj, IMG_DIR_PATH);
         if (Files.exists(path)) {
-          try {
-            FileVisitor<Path> visitor = new MyFileVisitor(this);
-            Files.walkFileTree(path, visitor);
-          } catch (IOException e) {
-            e.printStackTrace();
-          }
-
           listView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             setImage(newVal.absPath);
           });
@@ -63,6 +56,15 @@ public class ImageSelectorController {
               setImage(newVal);
             }
           });
+
+          try {
+            FileVisitor<Path> visitor = new MyFileVisitor(this);
+            Files.walkFileTree(path, visitor);
+          } catch (IOException e) {
+            util.MyLogger.log("画像ファイル読み込みエラー", e);
+          } catch (Exception e) {
+            util.MyLogger.log(e);
+          }
         }
 
         listView.getSelectionModel().selectFirst();

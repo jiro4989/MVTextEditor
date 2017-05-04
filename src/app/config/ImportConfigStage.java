@@ -39,7 +39,7 @@ public class ImportConfigStage extends Stage {
 
       sizeToScene();
     } catch (IOException e) {
-      e.printStackTrace();
+      util.MyLogger.log(e);
     }
 
   }//}}}
