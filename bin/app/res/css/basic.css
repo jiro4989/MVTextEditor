@@ -1,0 +1,81 @@
+.root {
+  -fx-font-size: 10.0pt;
+  -fx-font-family: "Meiryo";
+}
+
+/* 操作モード変更ラジオボタン {{{*/
+
+.radio-button {
+  -fx-background-radius: 4.0;
+}
+
+.radio-button:selected,
+.radio-button:hover {
+  -fx-background-color: -fx-cell-focus-inner-border;
+  -fx-text-fill: white;
+  -fx-font-weight: bold;
+}
+
+/*}}}*/
+
+/* 出力画像パネル *//*{{{*/
+
+/* レイヤー番号ラベル *//*{{{*/
+
+#number-label {
+  -fx-alignment: center;
+  -fx-font-size: 12.0;
+  -fx-font-weight: bold;
+}
+
+/*}}}*/
+
+/* レイヤー透明ボタン *//*{{{*/
+
+#opacity-button {
+  -fx-opacity: 0.0;
+}
+
+#opacity-button:hover {
+  -fx-background-color: -fx-cell-focus-inner-border;
+  -fx-opacity: 0.30;
+}
+
+/*}}}*/
+
+/* 選択状態ラベル *//*{{{*/
+
+#selected-label {
+  -fx-opacity: 0.0;
+  -fx-background-color: rgb(0, 255, 25);
+}
+
+/*}}}*/
+
+/*}}}*/
+
+/* プリセット編集画面 *//*{{{*/
+
+#rowTextField:hover,
+#columnTextField:hover,
+#widthTextField:hover,
+#heightTextField:hover,
+#frameCountTextField:hover,
+#sizeTextField:hover {
+  -fx-background-color: -fx-cell-focus-inner-border, -fx-selection-bar  ;
+  -fx-text-fill: white;
+  -fx-font-weight: bold;
+}
+
+/*}}}*/
+
+.list-view .list-cell:filled:hover,
+.table-view .table-cell:filled:hover {
+  -fx-background-color: -fx-cell-focus-inner-border, -fx-selection-bar  ;
+  -fx-background-insets: 0, 0 0 1 0 ;
+  -fx-background: -fx-selection-bar ;
+}
+
+.titled-pane .title {
+  -fx-font-weight: bold;
+}

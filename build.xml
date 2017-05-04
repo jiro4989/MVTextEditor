@@ -9,7 +9,7 @@
   <property name="env.JAVA_HOME"     value="${env.JAVA_HOME}"/>
   <property name="build.src.dir"     value="src"/>
   <property name="build.lib.dir"     value="lib"/>
-  <property name="build.classes.dir" value="classes"/>
+  <property name="build.classes.dir" value="bin"/>
   <property name="build.javadoc.dir" value="doc"/>
   <property name="build.dist.dir"    value="dist"/>
   <property name="build.main.class"  value="app.Main"/>
@@ -72,7 +72,7 @@
 
     <!-- リソースファイルのコピー --><!--{{{-->
 
-    <copy todir="classes">
+    <copy todir="${build.classes.dir}">
 
       <fileset dir="src">
 
@@ -118,7 +118,7 @@
 
     <!-- jarの生成 --><!--{{{-->
 
-    <jar destfile="${jar.name}" basedir="classes">
+    <jar destfile="${jar.name}" basedir="${build.classes.dir}">
 
       <manifest>
 
@@ -159,7 +159,7 @@
 
     <!-- リソースファイルのコピー --><!--{{{-->
 
-    <copy todir="classes">
+    <copy todir="${build.classes.dir}">
 
       <fileset dir="src">
 
@@ -210,7 +210,7 @@
 
     <!-- jarの生成 --><!--{{{-->
 
-    <jar destfile="${build.dist.dir}/${lib.name}" basedir="classes">
+    <jar destfile="${build.dist.dir}/${lib.name}" basedir="${build.classes.dir}">
 
       <!-- 
       <zipgroupfileset dir="lib" includes="*.jar"/>
