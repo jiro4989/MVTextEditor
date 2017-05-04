@@ -35,6 +35,9 @@ public class ImportConfigStage extends Stage {
       initStyle(StageStyle.UTILITY);
       initModality(Modality.APPLICATION_MODAL);
       setTitle(resources.getString("stage.title"));
+      setResizable(false);
+
+      sizeToScene();
     } catch (IOException e) {
       e.printStackTrace();
     }
