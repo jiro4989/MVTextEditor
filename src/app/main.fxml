@@ -71,11 +71,9 @@
               </accelerator>
             </MenuItem>
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="preferencesMenuItem" mnemonicParsing="false" text="Preferences…" >
-              <accelerator>
-                <KeyCodeCombination alt="DOWN" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-              </accelerator>
-            </MenuItem>
+
+            <MenuItem fx:id="importConfigsMenuItem" mnemonicParsing="false" text="Import Config…" onAction="#importConfigsMenuItemOnAction"/>
+
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem fx:id="quitMenuItem" mnemonicParsing="false" text="Quit" />
           </items>

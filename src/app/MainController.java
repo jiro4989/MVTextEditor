@@ -44,7 +44,7 @@ public class MainController {
   @FXML private MenuItem saveAsMenuItem;
   @FXML private MenuItem importMenuItem;
   @FXML private MenuItem exportMenuItem;
-  @FXML private MenuItem preferencesMenuItem;
+  @FXML private MenuItem importConfigsMenuItem;
   @FXML private MenuItem quitMenuItem;
 
   @FXML private MenuItem iconIndex1MenuItem;
@@ -137,7 +137,7 @@ public class MainController {
         , saveAsMenuItem
         , importMenuItem
         , exportMenuItem
-        , preferencesMenuItem
+        , importConfigsMenuItem
         , quitMenuItem
         );
     textTable = new TextTable(this
@@ -224,6 +224,10 @@ public class MainController {
     String text = textView.getText();
     textTable.setTexts(text);
   }//}}}
+
+  @FXML private void importConfigsMenuItemOnAction() {
+    System.out.println("import");
+  }
 
   // public methods
 
