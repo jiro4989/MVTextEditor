@@ -20,9 +20,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Window;
 import javax.xml.parsers.ParserConfigurationException;
-import javafx.stage.DirectoryChooser;
 
 public class MainController {
 
@@ -59,6 +59,24 @@ public class MainController {
   @FXML private MenuItem iconIndex6MenuItem;
   @FXML private MenuItem iconIndex7MenuItem;
   @FXML private MenuItem iconIndex8MenuItem;
+  
+  @FXML private ToggleGroup   tableFontGroup;
+  @FXML private RadioMenuItem tableFontSize8RadioMenuItem;
+  @FXML private RadioMenuItem tableFontSize9RadioMenuItem;
+  @FXML private RadioMenuItem tableFontSize10RadioMenuItem;
+  @FXML private RadioMenuItem tableFontSize11RadioMenuItem;
+  @FXML private RadioMenuItem tableFontSize12RadioMenuItem;
+
+  @FXML private ToggleGroup   editorFontGroup;
+  @FXML private RadioMenuItem editorFontSize8RadioMenuItem;
+  @FXML private RadioMenuItem editorFontSize9RadioMenuItem;
+  @FXML private RadioMenuItem editorFontSize10RadioMenuItem;
+  @FXML private RadioMenuItem editorFontSize11RadioMenuItem;
+  @FXML private RadioMenuItem editorFontSize12RadioMenuItem;
+
+  @FXML private ToggleGroup   langFontGroup;
+  @FXML private RadioMenuItem jaRadioMenuItem;
+  @FXML private RadioMenuItem enRadioMenuItem;
 
   // table
 

@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
@@ -17,6 +18,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
@@ -215,11 +217,58 @@
 
           </items>
         </Menu>
+
+        <Menu mnemonicParsing="false" text="FontSize(_C)">
+          <items>
+            <Menu mnemonicParsing="false" text="Table Font Size" >
+
+              <items>
+                <RadioMenuItem fx:id="tableFontSize8RadioMenuItem" mnemonicParsing="false" text="8">
+                  <toggleGroup>
+                    <ToggleGroup fx:id="tableFontGroup" />
+                  </toggleGroup>
+                </RadioMenuItem>
+                <RadioMenuItem fx:id="tableFontSize9RadioMenuItem" mnemonicParsing="false" text="9" toggleGroup="$tableFontGroup" />
+                <RadioMenuItem fx:id="tableFontSize10RadioMenuItem" mnemonicParsing="false" text="10" toggleGroup="$tableFontGroup" />
+                <RadioMenuItem fx:id="tableFontSize11RadioMenuItem" mnemonicParsing="false" text="11" toggleGroup="$tableFontGroup" />
+                <RadioMenuItem fx:id="tableFontSize12RadioMenuItem" mnemonicParsing="false" text="12" toggleGroup="$tableFontGroup" />
+              </items>
+
+            </Menu>
+            <Menu mnemonicParsing="false" text="Editor Font SIze" >
+              <items>
+                <RadioMenuItem fx:id="editorFontSize8RadioMenuItem" mnemonicParsing="false" text="8">
+                  <toggleGroup>
+                    <ToggleGroup fx:id="editorFontGroup" />
+                  </toggleGroup>
+                </RadioMenuItem>
+                <RadioMenuItem fx:id="editorFontSize9RadioMenuItem" mnemonicParsing="false" text="9" toggleGroup="$editorFontGroup" />
+                <RadioMenuItem fx:id="editorFontSize10RadioMenuItem" mnemonicParsing="false" text="10" toggleGroup="$editorFontGroup" />
+                <RadioMenuItem fx:id="editorFontSize11RadioMenuItem" mnemonicParsing="false" text="11" toggleGroup="$editorFontGroup" />
+                <RadioMenuItem fx:id="editorFontSize12RadioMenuItem" mnemonicParsing="false" text="12" toggleGroup="$editorFontGroup" />
+              </items>
+
+            </Menu>
+          </items>
+        </Menu>
+
+        <Menu mnemonicParsing="false" text="Lang(_L)">
+          <items>
+            <RadioMenuItem fx:id="jaRadioMenuItem" mnemonicParsing="false" text="JP">
+              <toggleGroup>
+                <ToggleGroup fx:id="langGroup" />
+              </toggleGroup>
+            </RadioMenuItem>
+            <RadioMenuItem fx:id="enRadioMenuItem" mnemonicParsing="false" text="EN" toggleGroup="$langGroup" />
+          </items>
+        </Menu>
+
         <Menu mnemonicParsing="false" text="Help(_H)">
           <items>
             <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
           </items>
         </Menu>
+
       </menus>
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">

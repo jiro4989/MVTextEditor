@@ -1,0 +1,22 @@
+5 05, 2017 12:15:21 午前 util.MyLogger log
+警告: FXMLロードエラー
+javafx.fxml.LoadException: ToggleGroup is not a valid type.
+/C:/Workspace/java/proj/MVTextEditor/classes/app/main.fxml:228
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2597)
+	at javafx.fxml.FXMLLoader.createElement(FXMLLoader.java:2774)
+	at javafx.fxml.FXMLLoader.processStartElement(FXMLLoader.java:2704)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2527)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
+	at app.Main.start(Main.java:57)
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$162(LauncherImpl.java:863)
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$175(PlatformImpl.java:326)
+	at com.sun.javafx.application.PlatformImpl.lambda$null$173(PlatformImpl.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$174(PlatformImpl.java:294)
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$148(WinApplication.java:191)
+	at java.lang.Thread.run(Thread.java:748)
+
