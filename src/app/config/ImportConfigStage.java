@@ -28,7 +28,7 @@ public class ImportConfigStage extends Stage {
     try {
       BorderPane root = (BorderPane) loader.load();
       controller = (ImportConfigController) loader.getController();
-      Scene scene = new Scene(root, 800, 500);
+      Scene scene = new Scene(root);
       scene.getStylesheets().add(getClass().getResource(BASIC_CSS).toExternalForm());
       setScene(scene);
 

@@ -6,12 +6,13 @@ import jiro.java.util.MyProperties;
 import jiro.javafx.stage.AboutStage;
 import jiro.javafx.stage.MyFileChooser;
 
+import app.config.ImportConfigStage;
 import app.manager.ActorDB;
-import app.manager.VarDB;
 import app.manager.EditManager;
+import app.manager.VarDB;
+import app.table.MapInfos;
 import app.table.TextDB;
 import app.table.TextTable;
-import app.table.MapInfos;
 
 import java.io.*;
 import java.util.*;
@@ -225,9 +226,10 @@ public class MainController {
     textTable.setTexts(text);
   }//}}}
 
-  @FXML private void importConfigsMenuItemOnAction() {
-    System.out.println("import");
-  }
+  @FXML private void importConfigsMenuItemOnAction() {//{{{
+    ImportConfigStage ics = new ImportConfigStage();
+    ics.showAndWait();
+  }//}}}
 
   // public methods
 
