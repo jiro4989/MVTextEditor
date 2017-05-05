@@ -381,6 +381,11 @@ public class TextTable {
     tableView.getSelectionModel().selectFirst();
   }//}}}
 
+  public void clear() {//{{{
+    tableView.getSelectionModel().clearSelection();
+    masterData.clear();
+  }//}}}
+
   // private methods
 
   private boolean existsMatchedText(TextDB db, String newVal) {//{{{

@@ -51,7 +51,7 @@
             </MenuItem>
             <Menu fx:id="recentMenu" mnemonicParsing="false" text="%recentMenu" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="closeMenu" mnemonicParsing="false" text="%closeMenuItem" />
+            <MenuItem fx:id="closeMenu" onAction="#closeMenuItemOnAction" mnemonicParsing="false" text="%closeMenuItem" />
             <MenuItem fx:id="saveMenuItem" disable="true" mnemonicParsing="false" text="%saveMenuItem">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
@@ -79,7 +79,7 @@
             <MenuItem fx:id="selectProjectMenuItem" mnemonicParsing="false" text="%selectProjectMenuItem" onAction="#selectProjectMenuItemOnAction"/>
 
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="quitMenuItem" onAction="#closeMenuItemOnAction" mnemonicParsing="false" text="%quitMenuItem" />
+            <MenuItem fx:id="quitMenuItem" onAction="#quitMenuItemOnAction" mnemonicParsing="false" text="%quitMenuItem" />
             <MenuItem fx:id="forcedTerminateMenuItem" mnemonicParsing="false" text="%forcedTerminateMenuItem" onAction="#forcedTerminateMenuItemOnAction"/>
           </items>
         </Menu><!--}}}-->

@@ -287,7 +287,12 @@ public class MainController {
     setLanguages(langs);
   }//}}}
 
-  @FXML private void closeMenuItemOnAction() { closeRequest(); }
+  @FXML private void closeMenuItemOnAction() { 
+    myMenubar.close();
+    textTable.clear();
+  }
+
+  @FXML private void quitMenuItemOnAction() { closeRequest(); }
 
   @FXML private void forcedTerminateMenuItemOnAction() {//{{{
     DialogUtils.showForcedTerminationDialog();

@@ -120,6 +120,11 @@ class MyMenuBar {
     });
   }//}}}
 
+  void close() {
+    saveFileOpt = Optional.empty();
+    saveMenuItem.setDisable(true);
+  }
+
   private void openXml() {//{{{
     xmlManager.openFile().ifPresent(file -> {
       try {
