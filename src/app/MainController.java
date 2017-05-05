@@ -293,6 +293,17 @@ public class MainController {
     DialogUtils.showForcedTerminationDialog();
   }//}}}
 
+  @FXML private void aboutMenuItemOnAction() {//{{{
+    AboutStage about = new AboutStage.Builder(TITLE, VERSION)
+      .author("次郎 (Jiro)")
+      .blog("次ログ")
+      .blogUrl("http://jiroron666.hatenablog.com/")
+      .css(BASIC_CSS)
+      .appIcon(APP_ICON)
+      .build();
+    about.showAndWait();
+  }//}}}
+
   // public methods
 
   public void closeRequest() {//{{{

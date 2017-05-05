@@ -267,7 +267,11 @@
 
         <Menu mnemonicParsing="false" text="%helpMenu"><!--{{{-->
           <items>
-            <MenuItem mnemonicParsing="false" text="%aboutMenuItem" />
+            <MenuItem mnemonicParsing="false" text="%aboutMenuItem" onAction="#aboutMenuItemOnAction" >
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="F1" control="UP" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
           </items>
         </Menu><!--}}}-->
 
