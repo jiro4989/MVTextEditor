@@ -68,12 +68,12 @@ public class Texts {
     return Main.resources.getString("position").split(",")[2];
   }//}}}
 
-  public static int len(String line) {
+  public static int len(String line) {//{{{
     int count = 0;
     for (String text : line.split("")) {
       count = HALF_CHARS.indexOf(text) != -1 ? ++count : count + 2;
     }
     return count;
-  }
+  }//}}}
 
 }

@@ -3,6 +3,7 @@ package app;
 import static util.Texts.*;
 
 import jiro.java.util.MyProperties;
+import jiro.java.util.RecentFilesUtils;
 import jiro.javafx.scene.control.DialogUtils;
 import jiro.javafx.stage.AboutStage;
 import jiro.javafx.stage.MyFileChooser;
@@ -30,6 +31,8 @@ public class MainController {
 
   public static MyProperties formatProperties = new MyProperties(FORMAT_PROPERTIES);
   public static MyProperties preferencesProperties = new MyProperties(PREFERENCES_PROPERTIES);
+  public static MyProperties logsProperties = new MyProperties(LOGS_PROPERTIES);
+
   private DirectoryChooser dc;
 
   private MyMenuBar myMenubar;
@@ -156,9 +159,10 @@ public class MainController {
     dc = new DirectoryChooser();
     dc.setInitialDirectory(new File("."));
 
-    formatProperties.load();
+    formatProperties      . load();
+    preferencesProperties . load();
+    logsProperties        . load();
 
-    preferencesProperties.load();
     preferencesProperties.changeLanguages();
 
     tableFontSize8RadioMenuItem   . setOnAction(e -> changeTableViewFontSize("8" ));
@@ -310,7 +314,9 @@ public class MainController {
   }//}}}
 
   @FXML private void newMenuItemOnAction() {//{{{
-    textTable.addInitRecord();
+    myMenubar.showAcceptDialog().ifPresent(r -> {
+      textTable.addInitRecord();
+    });
   }//}}}
 
   // public methods
@@ -320,7 +326,13 @@ public class MainController {
     Main.mainMp.store();
     formatProperties.store();
 
+    for (int i=0; i<recentMenu.getItems().size(); i++) {
+      logsProperties.setProperty("log" + i, recentMenu.getItems().get(i).getText());
+    }
+
     preferencesProperties.store();
+    logsProperties       .store();
+
     Platform.exit();
   }//}}}
 
@@ -374,6 +386,18 @@ public class MainController {
     String[] array = item.split(",");
     positionComboBox.getItems().addAll(array);
   }//}}}
+
+  void setRecentFiles() {//{{{
+    for (int i=1; i<=RecentFilesUtils.MAX; i++) {
+      logsProperties.getProperty("log" + i).ifPresent(path -> {
+        if (RecentFilesUtils.EMPTY.equals(path)) return;
+        File file = new File(path);
+        myMenubar.setRecentFile(file);
+      });
+    }
+  }//}}}
+
+  // private methods
 
   private void loadPreference() {//{{{
     preferencesProperties.getProperty(KEY_PROJECT).ifPresent(proj -> {

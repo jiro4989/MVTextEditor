@@ -147,42 +147,42 @@
             </MenuItem>
 
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="iconIndex1MenuItem" mnemonicParsing="false" text="1">
+            <MenuItem fx:id="iconIndex1MenuItem" mnemonicParsing="false" text="表情パネルの1に変更">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT1" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex2MenuItem" mnemonicParsing="false" text="2">
+            <MenuItem fx:id="iconIndex2MenuItem" mnemonicParsing="false" text="表情パネルの2に変更">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT2" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex3MenuItem" mnemonicParsing="false" text="3">
+            <MenuItem fx:id="iconIndex3MenuItem" mnemonicParsing="false" text="表情パネルの3に変更">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT3" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex4MenuItem" mnemonicParsing="false" text="4">
+            <MenuItem fx:id="iconIndex4MenuItem" mnemonicParsing="false" text="表情パネルの4に変更">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT4" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex5MenuItem" mnemonicParsing="false" text="5">
+            <MenuItem fx:id="iconIndex5MenuItem" mnemonicParsing="false" text="表情パネルの5に変更">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT5" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex6MenuItem" mnemonicParsing="false" text="6">
+            <MenuItem fx:id="iconIndex6MenuItem" mnemonicParsing="false" text="表情パネルの6に変更">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT6" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex7MenuItem" mnemonicParsing="false" text="7">
+            <MenuItem fx:id="iconIndex7MenuItem" mnemonicParsing="false" text="表情パネルの7に変更">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT7" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex8MenuItem" mnemonicParsing="false" text="8">
+            <MenuItem fx:id="iconIndex8MenuItem" mnemonicParsing="false" text="表情パネルの8に変更">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT8" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>

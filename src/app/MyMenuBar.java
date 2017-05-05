@@ -14,6 +14,7 @@ import util.Utils;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -24,7 +25,6 @@ import org.xml.sax.SAXException;
 class MyMenuBar {
 
   private Optional<File> saveFileOpt = Optional.empty();
-  private final Tooltip tooltip = new Tooltip();
 
   private final MainController mainController;
   private final MyFileChooser textFileManager;
@@ -86,6 +86,23 @@ class MyMenuBar {
 
   // package methods
 
+  Optional<ButtonType> showAcceptDialog() {//{{{
+    Alert alert = new Alert(AlertType.CONFIRMATION);
+
+    Locale locale = Locale.getDefault();
+    String header = locale.equals(Locale.JAPAN)
+      ? "新規データを作成します。"
+      : "Create New Data.";
+    alert.setHeaderText(header);
+
+    String content = locale.equals(Locale.JAPAN)
+      ? "編集後のデータを保存していなかった場合、そのデータは失われます。本当によろしいですか？"
+      : "Edited datas are lost if you didn't save one. Really continue ?";
+    alert.setContentText(content);
+
+    return alert.showAndWait().filter(r -> r == ButtonType.OK);
+  }//}}}
+
   void reloadXml() {//{{{
     xmlManager.getOpenedFile().ifPresent(file -> {
       Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -120,28 +137,15 @@ class MyMenuBar {
     });
   }//}}}
 
-  void close() {
+  void close() {//{{{
     saveFileOpt = Optional.empty();
     saveMenuItem.setDisable(true);
-  }
+  }//}}}
 
   private void openXml() {//{{{
     xmlManager.openFile().ifPresent(file -> {
-      try {
-        List<TextDB> dbs = SavingData.convertTextDB(file);
-        mainController.setTextDB(dbs);
-        Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
-        saveMenuItem.setDisable(false);
-        saveFileOpt = Optional.ofNullable(file);
-      } catch (SAXException e) {
-        util.MyLogger.log(e);
-      } catch (ParserConfigurationException e) {
-        util.MyLogger.log("XMLパースできませんでしたエラー", e);
-      } catch (IOException e) {
-        util.MyLogger.log("ファイル読み込みに失敗しましたエラー", e);
-      } catch (Exception e) {
-        util.MyLogger.log(e);
-      }
+      openXml(file);
+      setRecentFile(file);
     });
   }//}}}
 
@@ -236,13 +240,7 @@ class MyMenuBar {
     try {
       saveFileOpt = Optional.ofNullable(file);
       mainController.saveXml(file);
-
-      // TODO 表示すると表示され続けてしまう。
-      //tooltip.setText("Data is saved !");
-      //if (tooltip.isShowing()) {
-      //  tooltip.hide();
-      //}
-      //tooltip.show(mainController.getWindow());
+      setRecentFile(file);
     } catch (ParserConfigurationException pce) {
       util.MyLogger.log("XMLパースできませんでしたエラー", pce);
       showParsingErrorDialog();
@@ -256,6 +254,38 @@ class MyMenuBar {
     alert.setHeaderText("一時データ保存時のXML変換に失敗しました。");
     alert.setContentText("作者に報告してください。");
     alert.showAndWait();
+  }//}}}
+
+  void setRecentFile(File file) {//{{{
+    if (file.exists()) {
+      MenuItem item = new MenuItem(file.toString());
+      item.setOnAction(e -> {
+        openXml(file);
+      });
+
+      List<String> list = recentMenu.getItems().stream().map(i -> i.getText()).collect(Collectors.toList());
+      if (!list.contains(item.getText())) {
+        recentMenu.getItems().add(item);
+      }
+    }
+  }//}}}
+
+  private void openXml(File file) {//{{{
+    try {
+      List<TextDB> dbs = SavingData.convertTextDB(file);
+      mainController.setTextDB(dbs);
+      Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
+      saveMenuItem.setDisable(false);
+      saveFileOpt = Optional.ofNullable(file);
+    } catch (SAXException e) {
+      util.MyLogger.log(e);
+    } catch (ParserConfigurationException e) {
+      util.MyLogger.log("XMLパースできませんでしたエラー", e);
+    } catch (IOException e) {
+      util.MyLogger.log("ファイル読み込みに失敗しましたエラー", e);
+    } catch (Exception e) {
+      util.MyLogger.log(e);
+    }
   }//}}}
 
 }
