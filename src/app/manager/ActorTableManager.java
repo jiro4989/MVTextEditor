@@ -61,9 +61,17 @@ class ActorTableManager {
     });
 
     actorTableView.setOnKeyPressed(e -> {
-      if (KeyCode.J == e.getCode()) {
+      if (KeyCode.J == e.getCode()
+          && !e.isControlDown()
+          && !e.isShiftDown()
+         )
+      {
         actorTableView.getSelectionModel().selectNext();
-      } else if (KeyCode.K == e.getCode()) {
+      } else if (KeyCode.K == e.getCode()
+          && !e.isControlDown()
+          && !e.isShiftDown()
+          )
+      {
         actorTableView.getSelectionModel().selectPrevious();
       } else if (KeyCode.ENTER == e.getCode()) {
         insertActorId();

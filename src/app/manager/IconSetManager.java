@@ -39,13 +39,29 @@ class IconSetManager {
     iconSelectedLabel.setOnMouseClicked ( e -> { iconSelectedLabelOnMouseClicked ( e ) ; } ) ;
 
     iconGridPane.setOnKeyPressed(e -> {
-      if (KeyCode.H == e.getCode()) {
+      if (KeyCode.H == e.getCode()
+          && !e.isControlDown()
+          && !e.isShiftDown()
+         )
+      {
         moveFocusGridPane(0, -1);
-      } else if (KeyCode.J == e.getCode()) {
+      } else if (KeyCode.J == e.getCode()
+          && !e.isControlDown()
+          && !e.isShiftDown()
+          )
+      {
         moveFocusGridPane(1, 0);
-      } else if (KeyCode.K == e.getCode()) {
+      } else if (KeyCode.K == e.getCode()
+          && !e.isControlDown()
+          && !e.isShiftDown()
+          )
+      {
         moveFocusGridPane(-1, 0);
-      } else if (KeyCode.L == e.getCode()) {
+      } else if (KeyCode.L == e.getCode()
+          && !e.isControlDown()
+          && !e.isShiftDown()
+          )
+      {
         moveFocusGridPane(0, 1);
       } else if (KeyCode.ENTER == e.getCode()) {
         int x = (int) iconFocusLabel.getLayoutX();

@@ -61,9 +61,17 @@ class VarTableManager {
     });
 
     varTableView.setOnKeyPressed(e -> {
-      if (KeyCode.J == e.getCode()) {
+      if (KeyCode.J == e.getCode()
+          && !e.isControlDown()
+          && !e.isShiftDown()
+         )
+      {
         varTableView.getSelectionModel().selectNext();
-      } else if (KeyCode.K == e.getCode()) {
+      } else if (KeyCode.K == e.getCode()
+          && !e.isControlDown()
+          && !e.isShiftDown()
+          )
+      {
         varTableView.getSelectionModel().selectPrevious();
       } else if (KeyCode.ENTER == e.getCode()) {
         insertVarId();
