@@ -24,6 +24,13 @@ public final class InitUtils {
         Files.createDirectories(path);
         return true;
       }
+
+      Path errdir = Paths.get(".", "errors", JAR_NAME);
+      if (Files.notExists(errdir)) {
+        Files.createDirectories(errdir);
+        return true;
+      }
+
       return false;
     } catch (IOException e) {
       showExceptionDialog(e);

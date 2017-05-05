@@ -76,28 +76,6 @@ public class Main extends Application {
       String positionItem = resources.getString("position");
       controller.setPositionItem(positionItem);
 
-      /*
-       * // TODO 過去のソースの名残//{{{
-
-       * // フォントサイズの変更
-       * final MyProperties preferences = new MyProperties(PREFERENCES_FILE);
-       * preferences.load();
-       * String fontSize = preferences.getProperty(KEY_FONT_SIZE).orElse(DEFAULT_VALUE_FONT_SIZE);
-       * controller.setFontSize(fontSize);
-       * controller.setFontSizeOfMenuBar(fontSize);
-
-       * // プリセットの変更
-       * String walk     = preferences.getProperty(KEY_WALK_PRESET).orElse(WALK_PREST);
-       * String sideView = preferences.getProperty(KEY_SIDE_VIEW_PRESET).orElse(SIDE_VIEW_PREST);
-       * controller.setWalkStandard(new File(walk));
-       * controller.setSideViewStandard(new File(sideView));
-
-       * // 最近開いたファイルを更新
-       * controller.setRecentFiles();
-
-       * //}}}
-       */
-
       primaryStage.show();
       controller.changeFontSizes();
       controller.setRecentFiles();

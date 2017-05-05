@@ -11,6 +11,7 @@ import java.util.logging.SimpleFormatter;
 
 public class MyLogger {
   private static final Logger LOG = Logger.getLogger("Logs");
+  private static final String FS = File.separator;
 
   public static void log(Exception ex) {//{{{
     log("例外発生", ex);
@@ -24,11 +25,12 @@ public class MyLogger {
 
     try {
       // 第二引数をtrueにするとファイル末尾追加モードでエラーを出力する。
-      FileHandler fh = new FileHandler(today + ".log", true);
+      FileHandler fh = new FileHandler("errors" + FS + Texts.JAR_NAME + FS + today + ".log", true);
       fh.setFormatter(new SimpleFormatter());
       LOG.addHandler(fh);
 
       LOG.log(Level.WARNING, errorText, ex);
+      fh.close();
     } catch (IOException e) {
       e.printStackTrace();
     }
