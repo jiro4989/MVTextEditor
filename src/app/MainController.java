@@ -287,10 +287,10 @@ public class MainController {
     setLanguages(langs);
   }//}}}
 
-  @FXML private void closeMenuItemOnAction() { 
+  @FXML private void closeMenuItemOnAction() { //{{{
     myMenubar.close();
     textTable.clear();
-  }
+  }//}}}
 
   @FXML private void quitMenuItemOnAction() { closeRequest(); }
 
