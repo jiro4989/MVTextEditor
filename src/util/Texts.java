@@ -22,7 +22,9 @@ public class Texts {
   public static final String MAIN_PROPERTIES        = PROP_DIR + "/main.xml";
   public static final String PREFERENCES_PROPERTIES = PROP_DIR + "/preferences.xml";
 
-  public static final String KEY_LANGS        = "langs";
+  public static final String KEY_LANGS            = "langs";
+  public static final String TABLE_VIEW_FONT_SIZE = "tableViewFontSize";
+  public static final String EDITOR_FONT_SIZE     = "editorFontSize";
 
   public static final String KEY_PROJECT      = "project";
   public static final String IMG_DIR_PATH     = "img/faces";

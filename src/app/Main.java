@@ -99,6 +99,7 @@ public class Main extends Application {
        */
 
       primaryStage.show();
+      controller.changeFontSizes();
     } catch (IOException e) {
       util.MyLogger.log("FXMLロードエラー", e);
     } catch (Exception e) {

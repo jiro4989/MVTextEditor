@@ -17,6 +17,7 @@ import app.table.TextTable;
 
 import java.io.*;
 import java.util.*;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
@@ -61,7 +62,7 @@ public class MainController {
   @FXML private MenuItem iconIndex6MenuItem;
   @FXML private MenuItem iconIndex7MenuItem;
   @FXML private MenuItem iconIndex8MenuItem;
-  
+
   @FXML private ToggleGroup   tableFontGroup;
   @FXML private RadioMenuItem tableFontSize8RadioMenuItem;
   @FXML private RadioMenuItem tableFontSize9RadioMenuItem;
@@ -147,6 +148,11 @@ public class MainController {
   // initialize
 
   @FXML private void initialize() {//{{{
+    Locale locale = Locale.getDefault();
+    if (!Locale.JAPAN.equals(locale)) {
+      enRadioMenuItem.setSelected(true);
+    }
+
     dc = new DirectoryChooser();
     dc.setInitialDirectory(new File("."));
 
@@ -154,6 +160,18 @@ public class MainController {
 
     preferencesProperties.load();
     preferencesProperties.changeLanguages();
+
+    tableFontSize8RadioMenuItem   . setOnAction(e -> changeTableViewFontSize("8" ));
+    tableFontSize9RadioMenuItem   . setOnAction(e -> changeTableViewFontSize("9" ));
+    tableFontSize10RadioMenuItem  . setOnAction(e -> changeTableViewFontSize("10"));
+    tableFontSize11RadioMenuItem  . setOnAction(e -> changeTableViewFontSize("11"));
+    tableFontSize12RadioMenuItem  . setOnAction(e -> changeTableViewFontSize("12"));
+
+    editorFontSize8RadioMenuItem  . setOnAction(e -> changeEditorFontSize("8" ));
+    editorFontSize9RadioMenuItem  . setOnAction(e -> changeEditorFontSize("9" ));
+    editorFontSize10RadioMenuItem . setOnAction(e -> changeEditorFontSize("10"));
+    editorFontSize11RadioMenuItem . setOnAction(e -> changeEditorFontSize("11"));
+    editorFontSize12RadioMenuItem . setOnAction(e -> changeEditorFontSize("12"));
 
     myMenubar = new MyMenuBar(
         this
@@ -269,6 +287,8 @@ public class MainController {
     setLanguages(langs);
   }//}}}
 
+  @FXML private void closeMenuItemOnAction() { closeRequest(); }
+
   @FXML private void forcedTerminateMenuItemOnAction() {//{{{
     DialogUtils.showForcedTerminationDialog();
   }//}}}
@@ -280,11 +300,8 @@ public class MainController {
     Main.mainMp.store();
     formatProperties.store();
 
-    // TODO 一時的な設定
-    String langs = Locale.getDefault().getLanguage();
-    preferencesProperties.setProperty(KEY_LANGS, langs);
-
     preferencesProperties.store();
+    Platform.exit();
   }//}}}
 
   public void updateActorNameOfTable(  String value) { textTable.setActorName(value);  }
@@ -305,6 +322,20 @@ public class MainController {
   public void exportJson(File file) throws FileNotFoundException, IOException {
     textTable.exportJson(file);
   }
+
+  void changeFontSizes() {//{{{
+    preferencesProperties.getProperty(TABLE_VIEW_FONT_SIZE).map(s -> Integer.parseInt(s) - 8)
+      .ifPresent(index -> {
+        tableFontGroup.getToggles().get(index).setSelected(true);
+        changeTableViewFontSize("" + (index+8));
+      });
+
+    preferencesProperties.getProperty(EDITOR_FONT_SIZE).map(s -> Integer.parseInt(s) - 8)
+      .ifPresent(index -> {
+        editorFontGroup.getToggles().get(index).setSelected(true);
+        changeEditorFontSize("" + (index+8));
+      });
+  }//}}}
 
   public void focusTextView() { textView.focusEditor(); }
 
@@ -334,7 +365,19 @@ public class MainController {
   }//}}}
 
   private void setLanguages(String langs) {//{{{
-    preferencesProperties.setProperty(KEY_LANGS, langs);
+    preferencesProperties.setProperty(TABLE_VIEW_FONT_SIZE, langs);
+  }//}}}
+
+  private void changeTableViewFontSize(String fontSize) {//{{{
+    TableView target = (TableView) tableView.getScene().lookup("#tableView");
+    target.setStyle("-fx-font-size:" + fontSize + "pt;");
+    preferencesProperties.setProperty(TABLE_VIEW_FONT_SIZE, fontSize);
+  }//}}}
+
+  private void changeEditorFontSize(String fontSize) {//{{{
+    TextArea target = (TextArea) tableView.getScene().lookup("#editorTextArea");
+    target.setStyle("-fx-font-size:" + fontSize + "pt;");
+    preferencesProperties.setProperty(EDITOR_FONT_SIZE, fontSize);
   }//}}}
 
 }

@@ -79,7 +79,7 @@
             <MenuItem fx:id="selectProjectMenuItem" mnemonicParsing="false" text="%selectProjectMenuItem" onAction="#selectProjectMenuItemOnAction"/>
 
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="quitMenuItem" mnemonicParsing="false" text="%quitMenuItem" />
+            <MenuItem fx:id="quitMenuItem" onAction="#closeMenuItemOnAction" mnemonicParsing="false" text="%quitMenuItem" />
             <MenuItem fx:id="forcedTerminateMenuItem" mnemonicParsing="false" text="%forcedTerminateMenuItem" onAction="#forcedTerminateMenuItemOnAction"/>
           </items>
         </Menu><!--}}}-->
@@ -231,7 +231,7 @@
                   </toggleGroup>
                 </RadioMenuItem>
                 <RadioMenuItem fx:id="tableFontSize9RadioMenuItem" mnemonicParsing="false" text="9" toggleGroup="$tableFontGroup" />
-                <RadioMenuItem fx:id="tableFontSize10RadioMenuItem" mnemonicParsing="false" text="10" toggleGroup="$tableFontGroup" />
+                <RadioMenuItem fx:id="tableFontSize10RadioMenuItem" selected="true" mnemonicParsing="false" text="10" toggleGroup="$tableFontGroup" />
                 <RadioMenuItem fx:id="tableFontSize11RadioMenuItem" mnemonicParsing="false" text="11" toggleGroup="$tableFontGroup" />
                 <RadioMenuItem fx:id="tableFontSize12RadioMenuItem" mnemonicParsing="false" text="12" toggleGroup="$tableFontGroup" />
               </items>
@@ -245,7 +245,7 @@
                   </toggleGroup>
                 </RadioMenuItem>
                 <RadioMenuItem fx:id="editorFontSize9RadioMenuItem" mnemonicParsing="false" text="9" toggleGroup="$editorFontGroup" />
-                <RadioMenuItem fx:id="editorFontSize10RadioMenuItem" mnemonicParsing="false" text="10" toggleGroup="$editorFontGroup" />
+                <RadioMenuItem fx:id="editorFontSize10RadioMenuItem" selected="true" mnemonicParsing="false" text="10" toggleGroup="$editorFontGroup" />
                 <RadioMenuItem fx:id="editorFontSize11RadioMenuItem" mnemonicParsing="false" text="11" toggleGroup="$editorFontGroup" />
                 <RadioMenuItem fx:id="editorFontSize12RadioMenuItem" mnemonicParsing="false" text="12" toggleGroup="$editorFontGroup" />
               </items>
@@ -256,7 +256,7 @@
 
         <Menu mnemonicParsing="false" text="%langsMenu"><!--{{{-->
           <items>
-            <RadioMenuItem fx:id="jaRadioMenuItem" onAction="#jpRadioMenuItemOnAction" mnemonicParsing="false" text="%jpRadioMenuItem">
+            <RadioMenuItem fx:id="jaRadioMenuItem" selected="true" onAction="#jpRadioMenuItemOnAction" mnemonicParsing="false" text="%jpRadioMenuItem">
               <toggleGroup>
                 <ToggleGroup fx:id="langGroup" />
               </toggleGroup>
