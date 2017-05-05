@@ -39,7 +39,7 @@
 
         <Menu mnemonicParsing="false" text="%fileMenu"><!--{{{-->
           <items>
-            <MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="%newMenuItem">
+            <MenuItem fx:id="newMenuItem" onAction="#newMenuItemOnAction" mnemonicParsing="false" text="%newMenuItem">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
@@ -52,7 +52,7 @@
             <Menu fx:id="recentMenu" mnemonicParsing="false" text="%recentMenu" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem fx:id="closeMenu" mnemonicParsing="false" text="%closeMenuItem" />
-            <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" text="%saveMenuItem">
+            <MenuItem fx:id="saveMenuItem" disable="true" mnemonicParsing="false" text="%saveMenuItem">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
@@ -122,7 +122,7 @@
 
             <MenuItem mnemonicParsing="false" onAction="#addNewRecordMenuItemOnAction" text="%newRecordsMenuItem">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
 
@@ -195,25 +195,25 @@
 
             <MenuItem mnemonicParsing="false" text="%selectEditor" onAction="#focusTextView" >
               <accelerator>
-                <KeyCodeCombination alt="UP" code="Y" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="U" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
 
             <MenuItem mnemonicParsing="false" text="%selectVar" onAction="#focusVarPane" >
               <accelerator>
-                <KeyCodeCombination alt="UP" code="U" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="J" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
               </accelerator>
             </MenuItem>
 
             <MenuItem mnemonicParsing="false" text="%selectActor" onAction="#focusActorPane" >
               <accelerator>
-                <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="K" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
               </accelerator>
             </MenuItem>
 
             <MenuItem mnemonicParsing="false" text="%selectIconset" onAction="#focusIconsetPane" >
               <accelerator>
-                <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
               </accelerator>
             </MenuItem>
 

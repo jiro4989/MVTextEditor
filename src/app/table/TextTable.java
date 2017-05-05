@@ -93,7 +93,7 @@ public class TextTable {
     tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     //tableView.getSelectionModel().setCellSelectionEnabled(true);
 
-    masterData.add(createInitTextDB());
+    //masterData.add(createInitTextDB());
 
     // テーブルのフィルタリング
     FilteredList<TextDB> filteredData = new FilteredList<>(masterData, p -> true);
@@ -319,6 +319,7 @@ public class TextTable {
     dbs.stream().forEach(db -> {
       masterData.add(db);
     });
+    tableView.getSelectionModel().selectFirst();
   }//}}}
 
   public void setTextList(List<List<String>> listList) {//{{{
@@ -371,6 +372,13 @@ public class TextTable {
         item.setText(value);
       });
     });
+  }//}}}
+
+  public void addInitRecord() {//{{{
+    tableView.getSelectionModel().clearSelection();
+    masterData.clear();
+    masterData.add(createInitTextDB());
+    tableView.getSelectionModel().selectFirst();
   }//}}}
 
   // private methods

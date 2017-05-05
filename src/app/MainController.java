@@ -304,6 +304,10 @@ public class MainController {
     about.showAndWait();
   }//}}}
 
+  @FXML private void newMenuItemOnAction() {//{{{
+    textTable.addInitRecord();
+  }//}}}
+
   // public methods
 
   public void closeRequest() {//{{{

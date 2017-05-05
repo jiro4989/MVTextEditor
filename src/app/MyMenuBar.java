@@ -88,18 +88,17 @@ class MyMenuBar {
 
   void reloadXml() {//{{{
     xmlManager.getOpenedFile().ifPresent(file -> {
-
       Alert alert = new Alert(AlertType.CONFIRMATION);
 
       Locale locale = Locale.getDefault();
       String header = locale.equals(Locale.JAPAN)
         ? "ファイルを開き直します。"
-        : "Should do this operation when you couldn't stop this application";
+        : "Reopen File.";
       alert.setHeaderText(header);
 
       String content = locale.equals(Locale.JAPAN)
-        ? "編集前のデータを保存していなかった場合、そのデータは失われます。本当によろしいですか？"
-        : "Really execute ?";
+        ? "編集後のデータを保存していなかった場合、そのデータは失われます。本当によろしいですか？"
+        : "Edited datas are lost if you didn't save one. Really continue ?";
       alert.setContentText(content);
 
       alert.showAndWait()
@@ -127,6 +126,8 @@ class MyMenuBar {
         List<TextDB> dbs = SavingData.convertTextDB(file);
         mainController.setTextDB(dbs);
         Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
+        saveMenuItem.setDisable(false);
+        saveFileOpt = Optional.ofNullable(file);
       } catch (SAXException e) {
         util.MyLogger.log(e);
       } catch (ParserConfigurationException e) {
