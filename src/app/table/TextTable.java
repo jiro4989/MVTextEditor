@@ -251,21 +251,10 @@ public class TextTable {
       mp.getProperty("textReturnSize").ifPresent(sizeStr -> {
         int size = Integer.parseInt(sizeStr);
 
-        String textIndentStr = mp.getProperty("textIndent").get();
-        String braS          = mp.getProperty("textBracket").get();
-        String braStart      = mp.getProperty("bracketStart").get();
-
-        boolean textIndent = textIndentStr == null ? true  : Boolean.valueOf(textIndentStr);
-        boolean bra        = braS          == null ? false : Boolean.valueOf(braS);
-        int braLen         = braStart      == null ? 0     : len(braStart);
-
-        StringBuilder indentSb = new StringBuilder();
-        if (textIndent) {
-          for (int i=0; i<braLen; i++) {
-            indentSb.append(" ");
-          }
-        }
-        String indent = indentSb.toString();
+        boolean textIndent = mp.getProperty("textIndent").map(Boolean::valueOf).orElse(true);
+        boolean bra        = mp.getProperty("textBracket").map(Boolean::valueOf).orElse(false);
+        int braLen         = mp.getProperty("bracketStart").map(s -> len(s)).orElse(0);
+        String indent = String.format("%" + braLen + "s", "");
 
         items.stream().forEach(item -> {
           String icon = item.iconProperty().get().replaceAll("\\s", "");

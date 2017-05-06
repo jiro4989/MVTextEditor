@@ -32,7 +32,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="650.0" prefWidth="800.0" stylesheets="@/app/res/css/basic.css" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainController">
+<VBox prefHeight="650.0" prefWidth="800.0" stylesheets="@/app/res/css/basic.css" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainController" onDragOver="#rootOnDragOver" onDragDropped="#rootOnDragDropped" >
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -294,7 +294,7 @@
                 </ToolBar>
               </top>
               <center>
-                <TableView fx:id="tableView" BorderPane.alignment="CENTER">
+                <TableView fx:id="tableView" BorderPane.alignment="CENTER" >
                   <columns>
                     <TableColumn fx:id="iconColumn" prefWidth="75.0" text="%iconColumn" />
                     <TableColumn fx:id="nameColumn" prefWidth="75.0" text="%nameColumn" />

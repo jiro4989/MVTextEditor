@@ -18,10 +18,14 @@ import app.table.TextTable;
 
 import java.io.*;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
+import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Window;
@@ -317,6 +321,68 @@ public class MainController {
     myMenubar.showAcceptDialog().ifPresent(r -> {
       textTable.addInitRecord();
     });
+  }//}}}
+
+  // drag and drop
+
+  @FXML private void rootOnDragOver(DragEvent e) {//{{{
+    Dragboard board = e.getDragboard();
+    if (board.hasFiles()) {
+      e.acceptTransferModes(TransferMode.COPY);
+    }
+    e.consume();
+  }//}}}
+
+  @FXML private void rootOnDragDropped(DragEvent e) {//{{{
+    Dragboard board = e.getDragboard();
+    if (board.hasFiles()) {
+      // ディレクトリが渡された時、対象プロジェクトを更新する。
+      Optional<File> dirOpt = board.getFiles().stream().filter(f -> f.isDirectory()).findFirst();
+      if (dirOpt.isPresent()) {
+        File dir = dirOpt.get();
+        dc.setInitialDirectory(dir.getParentFile());
+        preferencesProperties.setProperty(KEY_PROJECT, dir.getAbsolutePath());
+        preferencesProperties.store();
+        loadPreference();
+
+        e.setDropCompleted(true);
+        e.consume();
+        return;
+      }
+
+      // テキストファイルが渡された場合、インポートする。
+      Optional<File> txtOpt = board.getFiles().stream().filter(f -> f.isFile()).findFirst();
+      if (txtOpt.isPresent()) {
+        Pattern p = Pattern.compile("^.*\\.((?i)txt)");
+        txtOpt.filter(f -> p.matcher(f.getName()).matches())
+          .ifPresent(file -> {
+            myMenubar.importFile(file);
+            myMenubar.setRecentFile(file);
+          });
+
+        e.setDropCompleted(true);
+        e.consume();
+        return;
+      }
+
+      // XMLファイルが渡された場合、開く
+      Optional<File> xmlOpt = board.getFiles().stream().filter(f -> f.isFile()).findFirst();
+      if (xmlOpt.isPresent()) {
+        Pattern p = Pattern.compile("^.*\\.((?i)xml)");
+        xmlOpt.filter(f -> p.matcher(f.getName()).matches())
+          .ifPresent(file -> {
+            myMenubar.openXml(file);
+            myMenubar.setRecentFile(file);
+          });
+
+        e.setDropCompleted(true);
+        e.consume();
+        return;
+      }
+    }
+
+    e.setDropCompleted(false);
+    e.consume();
   }//}}}
 
   // public methods

@@ -142,6 +142,77 @@ class MyMenuBar {
     saveMenuItem.setDisable(true);
   }//}}}
 
+  void setRecentFile(File file) {//{{{
+    if (file.exists()) {
+      MenuItem item = new MenuItem(file.toString());
+      item.setOnAction(e -> {
+        openXml(file);
+      });
+
+      List<String> list = recentMenu.getItems().stream().map(i -> i.getText()).collect(Collectors.toList());
+      if (!list.contains(item.getText())) {
+        recentMenu.getItems().add(item);
+      }
+    }
+  }//}}}
+
+  void openXml(File file) {//{{{
+    try {
+      List<TextDB> dbs = SavingData.convertTextDB(file);
+      mainController.setTextDB(dbs);
+      Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
+      saveMenuItem.setDisable(false);
+      saveFileOpt = Optional.ofNullable(file);
+    } catch (SAXException e) {
+      util.MyLogger.log(e);
+    } catch (ParserConfigurationException e) {
+      util.MyLogger.log("XMLパースできませんでしたエラー", e);
+    } catch (IOException e) {
+      util.MyLogger.log("ファイル読み込みに失敗しましたエラー", e);
+    } catch (Exception e) {
+      util.MyLogger.log(e);
+    }
+  }//}}}
+
+  void importFile(File file) {//{{{
+    MyProperties mp = MainController.formatProperties;
+    String textReturnStr     = mp.getProperty("textReturn").get();
+    String textReturnSizeStr = mp.getProperty("textReturnSize").get();
+    String textIndentStr     = mp.getProperty("textIndent").get();
+    String bracketStartStr   = mp.getProperty("bracketStart").get();
+    String wrappingStr       = mp.getProperty("wrapping").get();
+
+    boolean textReturn = textReturnStr     == null ? true : Boolean.valueOf(textReturnStr);
+    int textReturnSize = textReturnSizeStr == null ? 54   : Integer.parseInt(textReturnSizeStr);
+    boolean textIndent = textIndentStr     == null ? true : Boolean.valueOf(textIndentStr);
+    int bracketsIndex  = bracketStartStr   == null ? 0    : Integer.parseInt(bracketStartStr);
+    boolean wrapping   = wrappingStr       == null ? true : Boolean.valueOf(wrappingStr);
+    Brackets brackets  = Brackets.values()[bracketsIndex];
+    int indentSize     = len(brackets.START);
+
+    try {
+      FormattableText ft = new FormattableText.Builder(file)
+        .actorNameOption(true)
+        .returnOption(textReturn)
+        .returnSize(textReturnSize)
+        .indentOption(true)
+        .indentSize(indentSize)
+        .bracketsOption(wrapping)
+        .brackets(brackets)
+        .joiningOption(false)
+        .build();
+      mainController.setTextList(ft.format().getTextList());
+
+      // データの管理はxmlで行うため、
+      // importするtxtファイルをタイトルにセットするのは適当ではない？
+      //Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
+    } catch (IOException ioe) {
+      util.MyLogger.log("ファイル読み込みに失敗しましたエラー", ioe);
+    } catch (Exception e) {
+      util.MyLogger.log(e);
+    }
+  }//}}}
+
   private void openXml() {//{{{
     xmlManager.openFile().ifPresent(file -> {
       openXml(file);
@@ -165,43 +236,7 @@ class MyMenuBar {
 
   private void importTextFile() {//{{{
     textFileManager.openFile().ifPresent(file -> {
-
-      MyProperties mp = MainController.formatProperties;
-      String textReturnStr     = mp.getProperty("textReturn").get();
-      String textReturnSizeStr = mp.getProperty("textReturnSize").get();
-      String textIndentStr     = mp.getProperty("textIndent").get();
-      String bracketStartStr   = mp.getProperty("bracketStart").get();
-      String wrappingStr       = mp.getProperty("wrapping").get();
-
-      boolean textReturn = textReturnStr     == null ? true : Boolean.valueOf(textReturnStr);
-      int textReturnSize = textReturnSizeStr == null ? 54   : Integer.parseInt(textReturnSizeStr);
-      boolean textIndent = textIndentStr     == null ? true : Boolean.valueOf(textIndentStr);
-      int bracketsIndex  = bracketStartStr   == null ? 0    : Integer.parseInt(bracketStartStr);
-      boolean wrapping   = wrappingStr       == null ? true : Boolean.valueOf(wrappingStr);
-      Brackets brackets  = Brackets.values()[bracketsIndex];
-      int indentSize     = len(brackets.START);
-
-      try {
-        FormattableText ft = new FormattableText.Builder(file)
-          .actorNameOption(true)
-          .returnOption(textReturn)
-          .returnSize(textReturnSize)
-          .indentOption(true)
-          .indentSize(indentSize)
-          .bracketsOption(wrapping)
-          .brackets(brackets)
-          .joiningOption(false)
-          .build();
-        mainController.setTextList(ft.format().getTextList());
-
-        // データの管理はxmlで行うため、
-        // importするtxtファイルをタイトルにセットするのは適当ではない？
-        //Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
-      } catch (IOException ioe) {
-        util.MyLogger.log("ファイル読み込みに失敗しましたエラー", ioe);
-      } catch (Exception e) {
-        util.MyLogger.log(e);
-      }
+      importFile(file);
     });
   }//}}}
 
@@ -254,38 +289,6 @@ class MyMenuBar {
     alert.setHeaderText("一時データ保存時のXML変換に失敗しました。");
     alert.setContentText("作者に報告してください。");
     alert.showAndWait();
-  }//}}}
-
-  void setRecentFile(File file) {//{{{
-    if (file.exists()) {
-      MenuItem item = new MenuItem(file.toString());
-      item.setOnAction(e -> {
-        openXml(file);
-      });
-
-      List<String> list = recentMenu.getItems().stream().map(i -> i.getText()).collect(Collectors.toList());
-      if (!list.contains(item.getText())) {
-        recentMenu.getItems().add(item);
-      }
-    }
-  }//}}}
-
-  private void openXml(File file) {//{{{
-    try {
-      List<TextDB> dbs = SavingData.convertTextDB(file);
-      mainController.setTextDB(dbs);
-      Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
-      saveMenuItem.setDisable(false);
-      saveFileOpt = Optional.ofNullable(file);
-    } catch (SAXException e) {
-      util.MyLogger.log(e);
-    } catch (ParserConfigurationException e) {
-      util.MyLogger.log("XMLパースできませんでしたエラー", e);
-    } catch (IOException e) {
-      util.MyLogger.log("ファイル読み込みに失敗しましたエラー", e);
-    } catch (Exception e) {
-      util.MyLogger.log(e);
-    }
   }//}}}
 
 }
