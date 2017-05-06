@@ -117,6 +117,7 @@ class VarTableManager {
 
   public void setVariables(String path) {//{{{
     try {
+      masterVarDBs.clear();
       File file           = new File(path);
       ObjectMapper mapper = new ObjectMapper();
       JsonNode root       = mapper.readTree(file);

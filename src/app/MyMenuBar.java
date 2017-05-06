@@ -291,4 +291,9 @@ class MyMenuBar {
     alert.showAndWait();
   }//}}}
 
+  void initOpenedXml() {//{{{
+    saveFileOpt = Optional.empty();
+    saveMenuItem.setDisable(true);
+  }//}}}
+
 }

@@ -15,6 +15,7 @@ import app.manager.VarDB;
 import app.table.MapInfos;
 import app.table.TextDB;
 import app.table.TextTable;
+import util.Utils;
 
 import java.io.*;
 import java.util.*;
@@ -29,6 +30,7 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Window;
+import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class MainController {
@@ -319,7 +321,11 @@ public class MainController {
 
   @FXML private void newMenuItemOnAction() {//{{{
     myMenubar.showAcceptDialog().ifPresent(r -> {
+      String noname = Main.resources.getString("noname");
+      Stage stg = (Stage) getWindow();
+      stg.setTitle(noname + " - " +TITLE_VERSION);
       textTable.addInitRecord();
+      myMenubar.initOpenedXml();
     });
   }//}}}
 
@@ -340,11 +346,15 @@ public class MainController {
       Optional<File> dirOpt = board.getFiles().stream().filter(f -> f.isDirectory()).findFirst();
       if (dirOpt.isPresent()) {
         File dir = dirOpt.get();
-        dc.setInitialDirectory(dir.getParentFile());
-        preferencesProperties.setProperty(KEY_PROJECT, dir.getAbsolutePath());
-        preferencesProperties.store();
-        loadPreference();
-
+        String s = dir.getAbsolutePath() + File.separator + "Game.rpgproject";
+        if (new File(s).exists()) {
+          dc.setInitialDirectory(dir.getParentFile());
+          preferencesProperties.setProperty(KEY_PROJECT, dir.getAbsolutePath());
+          preferencesProperties.store();
+          loadPreference();
+        } else {
+          Utils.showErrorDialog();
+        }
         e.setDropCompleted(true);
         e.consume();
         return;
@@ -357,7 +367,6 @@ public class MainController {
         txtOpt.filter(f -> p.matcher(f.getName()).matches())
           .ifPresent(file -> {
             myMenubar.importFile(file);
-            myMenubar.setRecentFile(file);
           });
 
         e.setDropCompleted(true);

@@ -36,6 +36,7 @@ public class Main extends Application {
     if (Files.notExists(preferences)) {
       Utils.showSelectProjectDirDialog();
       DirectoryChooser dc = new DirectoryChooser();
+      dc.setInitialDirectory(new File("."));
       File file = dc.showDialog(primaryStage);
       if (file != null) {
         MainController.preferencesProperties.setProperty("project", file.getAbsolutePath());

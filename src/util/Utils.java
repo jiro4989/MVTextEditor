@@ -7,7 +7,7 @@ import javafx.scene.control.Alert.AlertType;
 public final class Utils {
   private Utils() {}
 
-  public static void showSelectProjectDirDialog() {
+  public static void showSelectProjectDirDialog() {//{{{
     Alert alert = new Alert(AlertType.CONFIRMATION);
 
     Locale locale = Locale.getDefault();
@@ -22,6 +22,18 @@ public final class Utils {
     alert.setContentText(content);
 
     alert.showAndWait();
-  }
+  }//}}}
+
+  public static void showErrorDialog() {//{{{
+    Alert alert = new Alert(AlertType.ERROR);
+
+    Locale locale = Locale.getDefault();
+    String header = locale.equals(Locale.JAPAN)
+      ? "フォルダはプロジェクトフォルダではありません。"
+      : "Folder is not Project Folder.";
+    alert.setHeaderText(header);
+
+    alert.showAndWait();
+  }//}}}
 
 }

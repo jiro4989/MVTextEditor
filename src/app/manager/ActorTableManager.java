@@ -117,6 +117,7 @@ class ActorTableManager {
 
   public void setActors(String path) {//{{{
     try {
+      masterActorDBs.clear();
       File file           = new File(path);
       ObjectMapper mapper = new ObjectMapper();
       JsonNode root       = mapper.readTree(file);

@@ -156,6 +156,8 @@ class IconSetManager {
   // setter
 
   void setImage(String path) {//{{{
+    iconImageView.setImage(null);
+
     Image src  = new Image("file:" + path);
     int width  = (int) src.getWidth();
     int height = (int) src.getHeight();
