@@ -496,6 +496,9 @@ public class MainController {
   private void changeEditorFontSize(String fontSize) {//{{{
     TextArea target = (TextArea) tableView.getScene().lookup("#editorTextArea");
     target.setStyle("-fx-font-size:" + fontSize + "pt;");
+    TextField tf = (TextField) tableView.getScene().lookup("#actorNameTextField");
+    tf.setStyle("-fx-font-size:" + fontSize + "pt;");
+
     preferencesProperties.setProperty(EDITOR_FONT_SIZE, fontSize);
   }//}}}
 

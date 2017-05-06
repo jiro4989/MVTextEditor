@@ -176,18 +176,13 @@ class MyMenuBar {
 
   void importFile(File file) {//{{{
     MyProperties mp = MainController.formatProperties;
-    String textReturnStr     = mp.getProperty("textReturn").get();
-    String textReturnSizeStr = mp.getProperty("textReturnSize").get();
-    String textIndentStr     = mp.getProperty("textIndent").get();
-    String bracketStartStr   = mp.getProperty("bracketStart").get();
-    String wrappingStr       = mp.getProperty("wrapping").get();
+    boolean textReturn = mp . getProperty("textReturn")     . map(Boolean::valueOf)  . orElse(true);
+    int textReturnSize = mp . getProperty("textReturnSize") . map(Integer::parseInt) . orElse(54);
+    boolean textIndent = mp . getProperty("textIndent")     . map(Boolean::valueOf)  . orElse(true);
+    int bracketStart   = mp . getProperty("bracketStart")   . map(Integer::parseInt) . orElse(0);
+    boolean wrapping   = mp . getProperty("wrapping")       . map(Boolean::valueOf)  . orElse(true);
 
-    boolean textReturn = textReturnStr     == null ? true : Boolean.valueOf(textReturnStr);
-    int textReturnSize = textReturnSizeStr == null ? 54   : Integer.parseInt(textReturnSizeStr);
-    boolean textIndent = textIndentStr     == null ? true : Boolean.valueOf(textIndentStr);
-    int bracketsIndex  = bracketStartStr   == null ? 0    : Integer.parseInt(bracketStartStr);
-    boolean wrapping   = wrappingStr       == null ? true : Boolean.valueOf(wrappingStr);
-    Brackets brackets  = Brackets.values()[bracketsIndex];
+    Brackets brackets  = Brackets.values()[bracketStart];
     int indentSize     = len(brackets.START);
 
     try {

@@ -1,6 +1,10 @@
 .root {
   -fx-font-size: 10.0pt;
-  -fx-font-family: "Meiryo";
+  -fx-font-family: "Myrica P", "Yu Gothic UI", Meiryo, "MS PGothic", sans-serif;
+}
+
+#editorTextArea, #tableView, #actorNameTextField {
+  -fx-font-family: "Myrica M", "MS Gothic", Meiryo;
 }
 
 /* 操作モード変更ラジオボタン {{{*/
