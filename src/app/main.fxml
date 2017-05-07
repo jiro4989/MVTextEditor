@@ -311,10 +311,10 @@
                 <TableView fx:id="tableView" BorderPane.alignment="CENTER" >
                   <columns>
                     <TableColumn fx:id="iconColumn" prefWidth="75.0" text="%iconColumn" />
-                    <TableColumn fx:id="nameColumn" prefWidth="75.0" text="%nameColumn" />
+                    <TableColumn fx:id="nameColumn" prefWidth="125.0" text="%nameColumn" />
                     <TableColumn fx:id="textColumn" prefWidth="450.0" text="%textColumn" />
-                    <TableColumn fx:id="backgroundColumn" prefWidth="75.0" text="%backgroundColumn" />
-                    <TableColumn fx:id="positionColumn" prefWidth="75.0" text="%positionColumn" />
+                    <TableColumn fx:id="backgroundColumn" prefWidth="125.0" text="%backgroundColumn" />
+                    <TableColumn fx:id="positionColumn" prefWidth="100.0" text="%positionColumn" />
                   </columns>
                 </TableView>
               </center>

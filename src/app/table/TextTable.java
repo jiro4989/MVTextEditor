@@ -246,29 +246,30 @@ public class TextTable {
   public void format() {//{{{
     getSelectedItems().ifPresent(items -> {
       MyProperties mp = MainController.formatProperties;
-      mp.getProperty("textReturnSize").ifPresent(sizeStr -> {
-        int size = Integer.parseInt(sizeStr);
+      String sizeStr = mp.getProperty("textReturnSize").orElse("54");
 
-        boolean textIndent = mp.getProperty("textIndent").map(Boolean::valueOf).orElse(true);
-        int braIndex       = mp.getProperty("bracketStart").map(s -> len(s)).orElse(0);
-        int braLen = len(Brackets.values()[braIndex].START);
-        String indent = String.format("%" + braLen + "s", "");
+      int size = Integer.parseInt(sizeStr);
 
-        items.stream().forEach(item -> {
-          String icon = item.iconProperty().get().replaceAll("\\s", "");
-          boolean facePathExists = !Objects.equals(icon, "");
-          String text = item.textProperty().get();
+      boolean textIndent = mp.getProperty("textIndent").map(Boolean::valueOf).orElse(true);
+      int braIndex       = mp.getProperty("bracketStart").map(s -> len(s)).orElse(0);
+      int braLen = len(Brackets.values()[braIndex].START);
+      String indent = String.format("%" + braLen + "s", "");
 
-          BufferedReader br = new BufferedReader(new StringReader(text));
-          List<String> lines = br.lines()
-            .map(l -> mkReturnedString(size, l, textIndent, indent, facePathExists))
-            .collect(Collectors.toList());
+      items.stream().forEach(item -> {
+        String icon = item.iconProperty().get().replaceAll("\\s", "");
+        boolean facePathExists = !Objects.equals(icon, "");
+        String text = item.textProperty().get();
 
-          String formattedText = String.join(CR, lines);
-          item.setText(formattedText);
-          updateTextView();
-        });
+        BufferedReader br = new BufferedReader(new StringReader(text));
+        List<String> lines = br.lines()
+          .map(l -> mkReturnedString(size, l, textIndent, indent, facePathExists))
+          .collect(Collectors.toList());
+
+        String formattedText = String.join(CR, lines);
+        item.setText(formattedText);
+        updateTextView();
       });
+
     });
   }//}}}
 
