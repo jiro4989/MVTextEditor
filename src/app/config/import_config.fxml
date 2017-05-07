@@ -25,8 +25,8 @@
         <Separator prefHeight="10.0" />
         <HBox alignment="CENTER_RIGHT" spacing="10.0">
           <children>
-            <Button fx:id="okButton" mnemonicParsing="false" prefWidth="100.0" text="OK" onAction="#okButtonOnAction" />
-            <Button fx:id="cancelButton" mnemonicParsing="false" prefWidth="100.0" text="CANCEL" cancelButton="true" onAction="#cancelButtonOnAction" />
+            <Button fx:id="okButton" mnemonicParsing="true" prefWidth="100.0" text="_OK" onAction="#okButtonOnAction" />
+            <Button fx:id="cancelButton" mnemonicParsing="true" prefWidth="100.0" text="_CANCEL" cancelButton="true" onAction="#cancelButtonOnAction" />
           </children>
         </HBox>
       </children>
@@ -51,15 +51,15 @@
           </rowConstraints>
 
           <children>
-            <CheckBox fx:id="crCheckBox" mnemonicParsing="false" prefWidth="294.0" text="%carriageReturn" />
+            <CheckBox fx:id="crCheckBox" selected="true" mnemonicParsing="true" prefWidth="294.0" text="%carriageReturn" />
 
             <Label text="%returnFontCount" GridPane.rowIndex="1" />
             <TextField fx:id="fontCountTextField" text="54" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-            <CheckBox fx:id="wrappingCheckBox" mnemonicParsing="false" text="%wrapping" GridPane.rowIndex="2" />
+            <CheckBox fx:id="wrappingCheckBox" selected="true" mnemonicParsing="true" text="%wrapping" GridPane.rowIndex="2" />
 
             <Label text="%brackets" GridPane.rowIndex="3" />
-            <ComboBox fx:id="bracketsComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" >
+            <ComboBox fx:id="bracketsComboBox" value="「 , 」" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" >
               <items>
                 <FXCollections fx:factory="observableArrayList">
                   <String fx:value="「 , 」"  />
@@ -77,7 +77,7 @@
               </items>
             </ComboBox>
 
-            <CheckBox fx:id="indentCheckBox" mnemonicParsing="false" text="%indent" GridPane.rowIndex="4" />
+            <CheckBox fx:id="indentCheckBox" selected="true" mnemonicParsing="true" text="%indent" GridPane.rowIndex="4" />
           </children>
         </GridPane>
       </children>

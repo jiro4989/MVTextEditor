@@ -1,6 +1,8 @@
 package app.table;
 
 import app.Main;
+import java.io.File;
+import java.util.Arrays;
 
 public class EventList {
   public final int code;
@@ -16,8 +18,10 @@ public class EventList {
     int index = 0;
 
     if (1 < array.length) {
-      fileName = array[0];
-      index = Integer.parseInt(array[1]);
+      String abspath = String.join(":", Arrays.copyOf(array, array.length - 1));
+      String name = new File(abspath).getName();
+      fileName = getPreffix(name);
+      index = Integer.parseInt(array[array.length - 1]);
     }
 
     String bg   = db.backgroundProperty().get();
@@ -47,6 +51,16 @@ public class EventList {
       index++;
     }
     return 0;
+  }//}}}
+
+  private static final String getPreffix(String fileName) {//{{{
+    if (fileName == null) return "";
+
+    int index = fileName.lastIndexOf(".");
+    if (index != -1)
+      return fileName.substring(0, index);
+
+    return fileName;
   }//}}}
 
 }

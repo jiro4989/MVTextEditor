@@ -37,152 +37,152 @@
     <MenuBar VBox.vgrow="NEVER">
       <menus>
 
-        <Menu mnemonicParsing="false" text="%fileMenu"><!--{{{-->
+        <Menu mnemonicParsing="true" text="%fileMenu"><!--{{{-->
           <items>
-            <MenuItem fx:id="newMenuItem" onAction="#newMenuItemOnAction" mnemonicParsing="false" text="%newMenuItem">
+            <MenuItem fx:id="newMenuItem" onAction="#newMenuItemOnAction" mnemonicParsing="true" text="%newMenuItem">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="N" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="openMenuItem" mnemonicParsing="false" text="%openMenuItem">
+            <MenuItem fx:id="openMenuItem" mnemonicParsing="true" text="%openMenuItem">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
-            <Menu fx:id="recentMenu" mnemonicParsing="false" text="%recentMenu" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="closeMenu" onAction="#closeMenuItemOnAction" mnemonicParsing="false" text="%closeMenuItem" />
-            <MenuItem fx:id="saveMenuItem" disable="true" mnemonicParsing="false" text="%saveMenuItem">
+            <Menu fx:id="recentMenu" mnemonicParsing="true" text="%recentMenu" />
+            <SeparatorMenuItem mnemonicParsing="true" />
+            <MenuItem fx:id="closeMenu" onAction="#closeMenuItemOnAction" mnemonicParsing="true" text="%closeMenuItem" />
+            <MenuItem fx:id="saveMenuItem" disable="true" mnemonicParsing="true" text="%saveMenuItem">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" text="%saveAsMenuItem">
+            <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="true" text="%saveAsMenuItem">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="importMenuItem" mnemonicParsing="false" text="%importMenuItem" >
+            <SeparatorMenuItem mnemonicParsing="true" />
+            <MenuItem fx:id="importMenuItem" mnemonicParsing="true" text="%importMenuItem" >
               <accelerator>
-                <KeyCodeCombination alt="DOWN" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="T" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="exportMenuItem" mnemonicParsing="false" text="%exportMenuItem" >
+            <MenuItem fx:id="exportMenuItem" mnemonicParsing="true" text="%exportMenuItem" >
               <accelerator>
-                <KeyCodeCombination alt="DOWN" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="M" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
-            <SeparatorMenuItem mnemonicParsing="false" />
+            <SeparatorMenuItem mnemonicParsing="true" />
 
-            <MenuItem fx:id="importConfigsMenuItem" mnemonicParsing="false" text="%importConfigsMenuItem" onAction="#importConfigsMenuItemOnAction"/>
-            <MenuItem fx:id="selectProjectMenuItem" mnemonicParsing="false" text="%selectProjectMenuItem" onAction="#selectProjectMenuItemOnAction"/>
+            <MenuItem fx:id="importConfigsMenuItem" mnemonicParsing="true" text="%importConfigsMenuItem" onAction="#importConfigsMenuItemOnAction"/>
+            <MenuItem fx:id="selectProjectMenuItem" mnemonicParsing="true" text="%selectProjectMenuItem" onAction="#selectProjectMenuItemOnAction"/>
 
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="quitMenuItem" onAction="#quitMenuItemOnAction" mnemonicParsing="false" text="%quitMenuItem" />
-            <MenuItem fx:id="forcedTerminateMenuItem" mnemonicParsing="false" text="%forcedTerminateMenuItem" onAction="#forcedTerminateMenuItemOnAction"/>
+            <SeparatorMenuItem mnemonicParsing="true" />
+            <MenuItem fx:id="quitMenuItem" onAction="#quitMenuItemOnAction" mnemonicParsing="true" text="%quitMenuItem" />
+            <MenuItem fx:id="forcedTerminateMenuItem" mnemonicParsing="true" text="%forcedTerminateMenuItem" onAction="#forcedTerminateMenuItemOnAction"/>
           </items>
         </Menu><!--}}}-->
 
-        <Menu mnemonicParsing="false" text="%editMenu"><!--{{{-->
+        <Menu mnemonicParsing="true" text="%editMenu"><!--{{{-->
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#reloadMenuItemOnAction" text="%reloadMenuItem">
+            <MenuItem mnemonicParsing="true" onAction="#reloadMenuItemOnAction" text="%reloadMenuItem">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="R" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="R" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
-            <MenuItem mnemonicParsing="false" onAction="#cutRecordsMenuItemOnAction" text="%cutRecordsMenuItem">
+            <MenuItem mnemonicParsing="true" onAction="#cutRecordsMenuItemOnAction" text="%cutRecordsMenuItem">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="X" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
-            <MenuItem mnemonicParsing="false" onAction="#copyRecordsMenuItemOnAction" text="%copyRecordsMenuItem">
+            <MenuItem mnemonicParsing="true" onAction="#copyRecordsMenuItemOnAction" text="%copyRecordsMenuItem">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="C" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
-            <MenuItem mnemonicParsing="false" onAction="#pasteRecordsMenuItemOnAction" text="%pasteRecordsMenuItem">
+            <MenuItem mnemonicParsing="true" onAction="#pasteRecordsMenuItemOnAction" text="%pasteRecordsMenuItem">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="V" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
-            <MenuItem mnemonicParsing="false" onAction="#deleteRecordsMenuItemOnAction" text="%deleteRecordsMenuItem">
+            <MenuItem mnemonicParsing="true" onAction="#deleteRecordsMenuItemOnAction" text="%deleteRecordsMenuItem">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="D" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-              </accelerator>
-            </MenuItem>
-
-            <SeparatorMenuItem mnemonicParsing="false" />
-
-            <MenuItem mnemonicParsing="false" onAction="#updateSelectedRecordsMenuItemOnAction" text="%updateSelectedRecordsMenuItem">
-              <accelerator>
-                <KeyCodeCombination alt="UP" code="G" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="D" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
 
-            <MenuItem mnemonicParsing="false" onAction="#addNewRecordMenuItemOnAction" text="%newRecordsMenuItem">
+            <SeparatorMenuItem mnemonicParsing="true" />
+
+            <MenuItem mnemonicParsing="true" onAction="#updateSelectedRecordsMenuItemOnAction" text="%updateSelectedRecordsMenuItem">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="G" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
 
-            <SeparatorMenuItem mnemonicParsing="false" />
-
-            <MenuItem mnemonicParsing="false" onAction="#selectPreviousMenuItemOnAction" text="%selectPreviousMenuItem">
+            <MenuItem mnemonicParsing="true" onAction="#addNewRecordMenuItemOnAction" text="%newRecordsMenuItem">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="K" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="I" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
 
-            <MenuItem mnemonicParsing="false" onAction="#selectNextMenuItemOnAction" text="%selectNextMenuItem">
+            <SeparatorMenuItem mnemonicParsing="true" />
+
+            <MenuItem mnemonicParsing="true" onAction="#selectPreviousMenuItemOnAction" text="%selectPreviousMenuItem">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="J" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="K" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
 
-            <MenuItem mnemonicParsing="false" onAction="#formatMenuItemOnAction" text="%formatMenuItem">
+            <MenuItem mnemonicParsing="true" onAction="#selectNextMenuItemOnAction" text="%selectNextMenuItem">
               <accelerator>
-                <KeyCodeCombination alt="UP" code="F" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="J" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
 
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="iconIndex1MenuItem" mnemonicParsing="false" text="表情パネルの1に変更">
+            <MenuItem mnemonicParsing="true" onAction="#formatMenuItemOnAction" text="%formatMenuItem">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="F" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+              </accelerator>
+            </MenuItem>
+
+            <SeparatorMenuItem mnemonicParsing="true" />
+            <MenuItem fx:id="iconIndex1MenuItem" mnemonicParsing="true" text="%changeFace1">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT1" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex2MenuItem" mnemonicParsing="false" text="表情パネルの2に変更">
+            <MenuItem fx:id="iconIndex2MenuItem" mnemonicParsing="true" text="%changeFace2">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT2" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex3MenuItem" mnemonicParsing="false" text="表情パネルの3に変更">
+            <MenuItem fx:id="iconIndex3MenuItem" mnemonicParsing="true" text="%changeFace3">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT3" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex4MenuItem" mnemonicParsing="false" text="表情パネルの4に変更">
+            <MenuItem fx:id="iconIndex4MenuItem" mnemonicParsing="true" text="%changeFace4">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT4" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex5MenuItem" mnemonicParsing="false" text="表情パネルの5に変更">
+            <MenuItem fx:id="iconIndex5MenuItem" mnemonicParsing="true" text="%changeFace5">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT5" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex6MenuItem" mnemonicParsing="false" text="表情パネルの6に変更">
+            <MenuItem fx:id="iconIndex6MenuItem" mnemonicParsing="true" text="%changeFace6">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT6" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex7MenuItem" mnemonicParsing="false" text="表情パネルの7に変更">
+            <MenuItem fx:id="iconIndex7MenuItem" mnemonicParsing="true" text="%changeFace7">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT7" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
-            <MenuItem fx:id="iconIndex8MenuItem" mnemonicParsing="false" text="表情パネルの8に変更">
+            <MenuItem fx:id="iconIndex8MenuItem" mnemonicParsing="true" text="%changeFace8">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT8" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
@@ -190,84 +190,98 @@
           </items>
         </Menu><!--}}}-->
 
-        <Menu mnemonicParsing="false" text="%selectMenu"><!--{{{-->
+        <Menu mnemonicParsing="true" text="%selectMenu"><!--{{{-->
           <items>
 
-            <MenuItem mnemonicParsing="false" text="%selectEditor" onAction="#focusTextView" >
+            <MenuItem mnemonicParsing="true" text="%selectEditor" onAction="#focusTextView" >
               <accelerator>
-                <KeyCodeCombination alt="UP" code="U" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="U" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
 
-            <MenuItem mnemonicParsing="false" text="%selectVar" onAction="#focusVarPane" >
+            <MenuItem mnemonicParsing="true" text="%selectVar" onAction="#focusVarPane" >
               <accelerator>
-                <KeyCodeCombination alt="UP" code="J" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="J" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
 
-            <MenuItem mnemonicParsing="false" text="%selectActor" onAction="#focusActorPane" >
+            <MenuItem mnemonicParsing="true" text="%selectActor" onAction="#focusActorPane" >
               <accelerator>
-                <KeyCodeCombination alt="UP" code="K" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="K" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
 
-            <MenuItem mnemonicParsing="false" text="%selectIconset" onAction="#focusIconsetPane" >
+            <MenuItem mnemonicParsing="true" text="%selectIconset" onAction="#focusIconsetPane" >
               <accelerator>
-                <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="L" control="UP" meta="UP" shift="DOWN" shortcut="DOWN" />
               </accelerator>
             </MenuItem>
 
           </items>
         </Menu><!--}}}-->
 
-        <Menu mnemonicParsing="false" text="%fontMenu"><!--{{{-->
+        <Menu mnemonicParsing="true" text="%fontMenu"><!--{{{-->
           <items>
-            <Menu mnemonicParsing="false" text="%tableFontMenu" >
 
+            <Menu mnemonicParsing="true" text="%generalFontMenu" >
               <items>
-                <RadioMenuItem fx:id="tableFontSize8RadioMenuItem" mnemonicParsing="false" text="8">
+                <RadioMenuItem fx:id="generalFontSize8RadioMenuItem" mnemonicParsing="true" text="_8">
+                  <toggleGroup>
+                    <ToggleGroup fx:id="generalFontGroup" />
+                  </toggleGroup>
+                </RadioMenuItem>
+                <RadioMenuItem fx:id="generalFontSize9RadioMenuItem" mnemonicParsing="true" text="_9" toggleGroup="$generalFontGroup" />
+                <RadioMenuItem fx:id="generalFontSize10RadioMenuItem" selected="true" mnemonicParsing="true" text="1_0" toggleGroup="$generalFontGroup" />
+                <RadioMenuItem fx:id="generalFontSize11RadioMenuItem" mnemonicParsing="true" text="1_1" toggleGroup="$generalFontGroup" />
+                <RadioMenuItem fx:id="generalFontSize12RadioMenuItem" mnemonicParsing="true" text="1_2" toggleGroup="$generalFontGroup" />
+              </items>
+            </Menu>
+
+            <Menu mnemonicParsing="true" text="%tableFontMenu" >
+              <items>
+                <RadioMenuItem fx:id="tableFontSize8RadioMenuItem" mnemonicParsing="true" text="_8">
                   <toggleGroup>
                     <ToggleGroup fx:id="tableFontGroup" />
                   </toggleGroup>
                 </RadioMenuItem>
-                <RadioMenuItem fx:id="tableFontSize9RadioMenuItem" mnemonicParsing="false" text="9" toggleGroup="$tableFontGroup" />
-                <RadioMenuItem fx:id="tableFontSize10RadioMenuItem" selected="true" mnemonicParsing="false" text="10" toggleGroup="$tableFontGroup" />
-                <RadioMenuItem fx:id="tableFontSize11RadioMenuItem" mnemonicParsing="false" text="11" toggleGroup="$tableFontGroup" />
-                <RadioMenuItem fx:id="tableFontSize12RadioMenuItem" mnemonicParsing="false" text="12" toggleGroup="$tableFontGroup" />
+                <RadioMenuItem fx:id="tableFontSize9RadioMenuItem" mnemonicParsing="true" text="_9" toggleGroup="$tableFontGroup" />
+                <RadioMenuItem fx:id="tableFontSize10RadioMenuItem" selected="true" mnemonicParsing="true" text="1_0" toggleGroup="$tableFontGroup" />
+                <RadioMenuItem fx:id="tableFontSize11RadioMenuItem" mnemonicParsing="true" text="1_1" toggleGroup="$tableFontGroup" />
+                <RadioMenuItem fx:id="tableFontSize12RadioMenuItem" mnemonicParsing="true" text="1_2" toggleGroup="$tableFontGroup" />
               </items>
-
             </Menu>
-            <Menu mnemonicParsing="false" text="%editorMenu" >
+
+            <Menu mnemonicParsing="true" text="%editorMenu" >
               <items>
-                <RadioMenuItem fx:id="editorFontSize8RadioMenuItem" mnemonicParsing="false" text="8">
+                <RadioMenuItem fx:id="editorFontSize8RadioMenuItem" mnemonicParsing="true" text="_8">
                   <toggleGroup>
                     <ToggleGroup fx:id="editorFontGroup" />
                   </toggleGroup>
                 </RadioMenuItem>
-                <RadioMenuItem fx:id="editorFontSize9RadioMenuItem" mnemonicParsing="false" text="9" toggleGroup="$editorFontGroup" />
-                <RadioMenuItem fx:id="editorFontSize10RadioMenuItem" selected="true" mnemonicParsing="false" text="10" toggleGroup="$editorFontGroup" />
-                <RadioMenuItem fx:id="editorFontSize11RadioMenuItem" mnemonicParsing="false" text="11" toggleGroup="$editorFontGroup" />
-                <RadioMenuItem fx:id="editorFontSize12RadioMenuItem" mnemonicParsing="false" text="12" toggleGroup="$editorFontGroup" />
+                <RadioMenuItem fx:id="editorFontSize9RadioMenuItem" mnemonicParsing="true" text="_9" toggleGroup="$editorFontGroup" />
+                <RadioMenuItem fx:id="editorFontSize10RadioMenuItem" selected="true" mnemonicParsing="true" text="1_0" toggleGroup="$editorFontGroup" />
+                <RadioMenuItem fx:id="editorFontSize11RadioMenuItem" mnemonicParsing="true" text="1_1" toggleGroup="$editorFontGroup" />
+                <RadioMenuItem fx:id="editorFontSize12RadioMenuItem" mnemonicParsing="true" text="1_2" toggleGroup="$editorFontGroup" />
               </items>
 
             </Menu>
           </items>
         </Menu><!--}}}-->
 
-        <Menu mnemonicParsing="false" text="%langsMenu"><!--{{{-->
+        <Menu mnemonicParsing="true" text="%langsMenu"><!--{{{-->
           <items>
-            <RadioMenuItem fx:id="jaRadioMenuItem" selected="true" onAction="#jpRadioMenuItemOnAction" mnemonicParsing="false" text="%jpRadioMenuItem">
+            <RadioMenuItem fx:id="jaRadioMenuItem" selected="true" onAction="#jpRadioMenuItemOnAction" mnemonicParsing="true" text="%jpRadioMenuItem">
               <toggleGroup>
                 <ToggleGroup fx:id="langGroup" />
               </toggleGroup>
             </RadioMenuItem>
-            <RadioMenuItem fx:id="enRadioMenuItem" onAction="#enRadioMenuItemOnAction" mnemonicParsing="false" text="%enRadioMenuItem" toggleGroup="$langGroup" />
+            <RadioMenuItem fx:id="enRadioMenuItem" onAction="#enRadioMenuItemOnAction" mnemonicParsing="true" text="%enRadioMenuItem" toggleGroup="$langGroup" />
           </items>
         </Menu><!--}}}-->
 
-        <Menu mnemonicParsing="false" text="%helpMenu"><!--{{{-->
+        <Menu mnemonicParsing="true" text="%helpMenu"><!--{{{-->
           <items>
-            <MenuItem mnemonicParsing="false" text="%aboutMenuItem" onAction="#aboutMenuItemOnAction" >
+            <MenuItem mnemonicParsing="true" text="%aboutMenuItem" onAction="#aboutMenuItemOnAction" >
               <accelerator>
                 <KeyCodeCombination alt="UP" code="F1" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
@@ -324,7 +338,7 @@
                       <children>
                         <HBox alignment="BOTTOM_LEFT" spacing="5.0">
                           <children>
-                            <TextField fx:id="actorNameTextField" minWidth="-Infinity" prefWidth="200.0" promptText="actor name" />
+                            <TextField fx:id="actorNameTextField" minWidth="-Infinity" prefWidth="200.0" promptText="%enterName" />
                             <Button mnemonicParsing="false" text="update" onAction="#updateActorNames" />
                             <GridPane fx:id="colorPickerGridPane" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="384.0">
                               <columnConstraints>
@@ -336,10 +350,11 @@
                               <children>
                                 <ImageView fx:id="colorPickerImageView" fitHeight="48.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" />
                               </children>
+
                             </GridPane>
                           </children>
                         </HBox>
-                        <TextArea fx:id="editorTextArea" promptText="show sentences here" />
+                        <TextArea fx:id="editorTextArea" promptText="%enterText" />
                         <ButtonBar buttonMinWidth="26.0">
                           <buttons>
                             <Button mnemonicParsing="false" prefHeight="26.0" text="update" onAction="#updateTexts" />

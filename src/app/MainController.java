@@ -72,6 +72,13 @@ public class MainController {
   @FXML private MenuItem iconIndex7MenuItem;
   @FXML private MenuItem iconIndex8MenuItem;
 
+  @FXML private ToggleGroup   generalFontGroup;
+  @FXML private RadioMenuItem generalFontSize8RadioMenuItem;
+  @FXML private RadioMenuItem generalFontSize9RadioMenuItem;
+  @FXML private RadioMenuItem generalFontSize10RadioMenuItem;
+  @FXML private RadioMenuItem generalFontSize11RadioMenuItem;
+  @FXML private RadioMenuItem generalFontSize12RadioMenuItem;
+
   @FXML private ToggleGroup   tableFontGroup;
   @FXML private RadioMenuItem tableFontSize8RadioMenuItem;
   @FXML private RadioMenuItem tableFontSize9RadioMenuItem;
@@ -170,6 +177,12 @@ public class MainController {
     logsProperties        . load();
 
     preferencesProperties.changeLanguages();
+
+    generalFontSize8RadioMenuItem   . setOnAction(e -> changeGeneralFontSize("8" ));
+    generalFontSize9RadioMenuItem   . setOnAction(e -> changeGeneralFontSize("9" ));
+    generalFontSize10RadioMenuItem  . setOnAction(e -> changeGeneralFontSize("10"));
+    generalFontSize11RadioMenuItem  . setOnAction(e -> changeGeneralFontSize("11"));
+    generalFontSize12RadioMenuItem  . setOnAction(e -> changeGeneralFontSize("12"));
 
     tableFontSize8RadioMenuItem   . setOnAction(e -> changeTableViewFontSize("8" ));
     tableFontSize9RadioMenuItem   . setOnAction(e -> changeTableViewFontSize("9" ));
@@ -431,6 +444,13 @@ public class MainController {
   }
 
   void changeFontSizes() {//{{{
+
+    preferencesProperties.getProperty(GENERAL_FONT_SIZE).map(s -> Integer.parseInt(s) - 8)
+      .ifPresent(index -> {
+        generalFontGroup.getToggles().get(index).setSelected(true);
+        changeGeneralFontSize("" + (index+8));
+      });
+
     preferencesProperties.getProperty(TABLE_VIEW_FONT_SIZE).map(s -> Integer.parseInt(s) - 8)
       .ifPresent(index -> {
         tableFontGroup.getToggles().get(index).setSelected(true);
@@ -484,7 +504,13 @@ public class MainController {
   }//}}}
 
   private void setLanguages(String langs) {//{{{
-    preferencesProperties.setProperty(TABLE_VIEW_FONT_SIZE, langs);
+    preferencesProperties.setProperty("langs", langs);
+  }//}}}
+
+  private void changeGeneralFontSize(String fontSize) {//{{{
+    VBox root = (VBox) tableView.getScene().lookup(".root");
+    root.setStyle("-fx-font-size:" + fontSize + "pt;");
+    preferencesProperties.setProperty(GENERAL_FONT_SIZE, fontSize);
   }//}}}
 
   private void changeTableViewFontSize(String fontSize) {//{{{
