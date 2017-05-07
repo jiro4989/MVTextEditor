@@ -4,6 +4,7 @@ import static util.Texts.*;
 
 import app.selector.ImageSelector;
 import jiro.java.util.MyProperties;
+import jiro.java.lang.Brackets;
 
 import app.Main;
 import app.MainController;
@@ -211,20 +212,16 @@ public class TextTable {
     });
   }//}}}
 
-  private String mkReturnedString(int size, String text, boolean bra, String indent, boolean facePathExists) {//{{{
+  private String mkReturnedString(int size, String text, boolean textIndent, String indent, boolean facePathExists) {//{{{
     int len = len(text);
+
+    // FIXME
+    // 改行時にインデントする。
+    if (facePathExists) size -= FACE_FONT_SIZE;
+
     if (len <= size) {
       return text;
     }
-
-    // FIXME
-    // 文章の折り返しが正常に行われない。
-    // 画像がない段階で折り返されていた時、
-    // 後から画像を追加してフォーマットしようとしても
-    // 折り返しが実行されない
-    // 後から文章を追加して上限を超えるようにすると
-    // 上限が減少して整形が実行される。
-    if (facePathExists) size -= FACE_FONT_SIZE;
 
     int cnt = 0;
     StringBuilder sb = new StringBuilder();
@@ -232,11 +229,12 @@ public class TextTable {
       int a = len(s);
       cnt += a;
       sb.append(s);
+
       if (size < cnt) {
         sb.append(CR);
         cnt = 0;
 
-        if (bra) {
+        if (textIndent) {
           sb.append(indent);
           cnt += len(indent);
         }
@@ -252,8 +250,8 @@ public class TextTable {
         int size = Integer.parseInt(sizeStr);
 
         boolean textIndent = mp.getProperty("textIndent").map(Boolean::valueOf).orElse(true);
-        boolean bra        = mp.getProperty("textBracket").map(Boolean::valueOf).orElse(false);
-        int braLen         = mp.getProperty("bracketStart").map(s -> len(s)).orElse(0);
+        int braIndex       = mp.getProperty("bracketStart").map(s -> len(s)).orElse(0);
+        int braLen = len(Brackets.values()[braIndex].START);
         String indent = String.format("%" + braLen + "s", "");
 
         items.stream().forEach(item -> {
@@ -263,7 +261,7 @@ public class TextTable {
 
           BufferedReader br = new BufferedReader(new StringReader(text));
           List<String> lines = br.lines()
-            .map(l -> mkReturnedString(size, l, bra, indent, facePathExists))
+            .map(l -> mkReturnedString(size, l, textIndent, indent, facePathExists))
             .collect(Collectors.toList());
 
           String formattedText = String.join(CR, lines);
