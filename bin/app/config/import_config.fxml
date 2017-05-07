@@ -51,14 +51,14 @@
           </rowConstraints>
 
           <children>
-            <CheckBox fx:id="crCheckBox" selected="true" mnemonicParsing="true" prefWidth="294.0" text="%carriageReturn" />
+            <CheckBox fx:id="crCheckBox" selected="true" onAction="#crCheckBoxOnAction" mnemonicParsing="true" prefWidth="294.0" text="%carriageReturn" />
 
-            <Label text="%returnFontCount" GridPane.rowIndex="1" />
+            <Label fx:id="returnFontLabel" text="%returnFontCount" GridPane.rowIndex="1" />
             <TextField fx:id="fontCountTextField" text="54" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-            <CheckBox fx:id="wrappingCheckBox" selected="true" mnemonicParsing="true" text="%wrapping" GridPane.rowIndex="2" />
+            <CheckBox fx:id="wrappingCheckBox" selected="true" onAction="#wrappingCheckBoxOnAction" mnemonicParsing="true" text="%wrapping" GridPane.rowIndex="2" />
 
-            <Label text="%brackets" GridPane.rowIndex="3" />
+            <Label fx:id="bracketsLabel" text="%brackets" GridPane.rowIndex="3" />
             <ComboBox fx:id="bracketsComboBox" value="「 , 」" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" >
               <items>
                 <FXCollections fx:factory="observableArrayList">
