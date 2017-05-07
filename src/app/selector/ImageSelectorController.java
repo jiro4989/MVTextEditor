@@ -58,8 +58,7 @@ public class ImageSelectorController {
           });
 
           try {
-            FileVisitor<Path> visitor = new MyFileVisitor(this);
-            Files.walkFileTree(path, visitor);
+            Files.list(path).forEach(this::setFilePath);
           } catch (IOException e) {
             util.MyLogger.log("画像ファイル読み込みエラー", e);
           } catch (Exception e) {
@@ -95,10 +94,11 @@ public class ImageSelectorController {
     listView.getSelectionModel().selectFirst();
   }//}}}
 
-  void setFilePath(Path path) {//{{{
+  private void setFilePath(Path path) {//{{{
     String p = path.toString();
-    if (p.endsWith(".png") || p.endsWith(".PNG"))
-      listView.getItems().add(new ImgPath(path));
+    if (!Files.isDirectory(path))
+      if (p.endsWith(".png") || p.endsWith(".PNG"))
+        listView.getItems().add(new ImgPath(path));
   }//}}}
 
   // fxml event
