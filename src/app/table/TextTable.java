@@ -273,6 +273,48 @@ public class TextTable {
     });
   }//}}}
 
+  /**
+   * 複数のレコードの文字列を連結する。<br>
+   * 連結を行う際の挙動は、以下の仕様を満たす必要がある。
+   *
+   * <ol>
+   * <li>連結する際、インデント文字を自動で削除する。</li>
+   * <li>文字列を折り返す際、インデントを自動で付与する。</li>
+   * </ol>
+   */
+  public void join() {//{{{
+    getSelectedItems().ifPresent(items -> {
+      MyProperties mp = MainController.formatProperties;
+
+      int size      = mp.getProperty("textReturnSize").map(Integer::parseInt).orElse(54);
+      int braIndex  = mp.getProperty("bracketStart")  .map(s -> len(s))      .orElse(0);
+      int braLen    = len(Brackets.values()[braIndex].START);
+      String indent = String.format("%" + braLen + "s", "");
+
+      String joinedString = items.stream()
+        .map(i -> i.textProperty().get())
+        .collect(Collectors.joining(CR));
+      BufferedReader br = new BufferedReader(new StringReader(joinedString));
+      final String REG = "^.*[^(,\\.!\\?、。！？)]$";
+      String newJoinedString = br.lines()
+        .map(s -> {
+          if (s.matches(REG)) {
+            if (s.matches(".*[a-zA-Z0-9]$")) {
+              return s + " ";
+            }
+            return s;
+          }
+          return s + CR + indent;
+        })
+      .map(s -> s.replaceAll("^ +", ""))
+        .collect(Collectors.joining());
+
+      items.get(0).textProperty().set(newJoinedString);
+      masterData.removeAll(items.subList(1, items.size()));
+      format();
+    });
+  }//}}}
+
   // private methods
 
   private Optional<TextDB> getSelectedItem() {//{{{

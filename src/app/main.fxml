@@ -146,6 +146,12 @@
               </accelerator>
             </MenuItem>
 
+            <MenuItem mnemonicParsing="true" onAction="#joinMenuItemOnAction" text="%joinMenuItem">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="M" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+              </accelerator>
+            </MenuItem>
+
             <SeparatorMenuItem mnemonicParsing="true" />
             <MenuItem fx:id="iconIndex1MenuItem" mnemonicParsing="true" text="%changeFace1">
               <accelerator>

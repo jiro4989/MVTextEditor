@@ -258,6 +258,7 @@ public class MainController {
   @FXML private void updateSelectedRecordsMenuItemOnAction() { textTable.updateSelectedRecords(); }
   @FXML private void addNewRecordMenuItemOnAction() { textTable.addNewRecord(); }
   @FXML private void formatMenuItemOnAction() { textTable.format(); }
+  @FXML private void joinMenuItemOnAction() { textTable.join(); }
 
   @FXML private void selectProjectMenuItemOnAction() {//{{{
     File dir = dc.showDialog(getWindow());
