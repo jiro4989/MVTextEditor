@@ -1,6 +1,6 @@
 package app;
 
-import static util.Texts.len;
+import static util.Texts.*;
 
 import jiro.java.lang.Brackets;
 import jiro.java.lang.FormattableText;
@@ -246,6 +246,8 @@ class MyMenuBar {
       }
       try {
         mainController.exportJson(file);
+
+        Utils.showSuccessDialog();
       } catch (FileNotFoundException e) {
         util.MyLogger.log("ファイルが見つかりませんでしたエラー", e);
 
@@ -273,17 +275,10 @@ class MyMenuBar {
       setRecentFile(file);
     } catch (ParserConfigurationException pce) {
       util.MyLogger.log("XMLパースできませんでしたエラー", pce);
-      showParsingErrorDialog();
+      Utils.showParsingErrorDialog();
     } catch (Exception e) {
       util.MyLogger.log(e);
     }
-  }//}}}
-
-  private static final void showParsingErrorDialog() {//{{{
-    Alert alert = new Alert(AlertType.ERROR);
-    alert.setHeaderText("一時データ保存時のXML変換に失敗しました。");
-    alert.setContentText("作者に報告してください。");
-    alert.showAndWait();
   }//}}}
 
   void initOpenedXml() {//{{{
