@@ -215,8 +215,6 @@ public class TextTable {
   private String mkReturnedString(int size, String text, boolean textIndent, String indent, boolean facePathExists) {//{{{
     int len = len(text);
 
-    // FIXME
-    // 改行時にインデントする。
     if (facePathExists) size -= FACE_FONT_SIZE;
 
     if (len <= size) {
@@ -230,7 +228,7 @@ public class TextTable {
       cnt += a;
       sb.append(s);
 
-      if (size < cnt) {
+      if (size <= cnt) {
         sb.append(CR);
         cnt = 0;
 

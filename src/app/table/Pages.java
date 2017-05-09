@@ -78,16 +78,16 @@ public class Pages {
       // 本文の追加
       String text = db.textProperty().get();
       BufferedReader br = new BufferedReader(new StringReader(text));
-      br.lines().forEach(line -> {
-        // TODO
-        // 何故かアクター名しか表示されていないデータが追加されている
-        list.add(new EventList(401, 0, line));
-        if (4 <= atom.incrementAndGet()) {
-          list.add(new EventList(101, 0, db));
-          list.add(new EventList(401, 0, sb.toString()));
-          atom.set(1);
-        }
-      });
+      br.lines()
+        .filter(s -> !s.matches("^ *$"))
+        .forEach(line -> {
+          if (5 <= atom.incrementAndGet()) {
+            list.add(new EventList(101, 0, db));
+            list.add(new EventList(401, 0, sb.toString()));
+            atom.set(1);
+          }
+          list.add(new EventList(401, 0, line));
+        });
     });
     list.add(new EventList(0, 0, ""));
 
