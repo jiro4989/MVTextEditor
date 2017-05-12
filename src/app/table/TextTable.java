@@ -313,6 +313,15 @@ public class TextTable {
     });
   }//}}}
 
+  public void deleteFaceImages() {//{{{
+    getSelectedItems().ifPresent(items -> {
+      items.stream().forEach(item -> {
+        item.setIcon("");
+      });
+    });
+    updateTextView();
+  }//}}}
+
   // private methods
 
   private Optional<TextDB> getSelectedItem() {//{{{

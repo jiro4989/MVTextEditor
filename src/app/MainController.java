@@ -71,6 +71,8 @@ public class MainController {
   @FXML private MenuItem iconIndex6MenuItem;
   @FXML private MenuItem iconIndex7MenuItem;
   @FXML private MenuItem iconIndex8MenuItem;
+  @FXML private MenuItem iconIndex0MenuItem;
+
 
   @FXML private ToggleGroup   generalFontGroup;
   @FXML private RadioMenuItem generalFontSize8RadioMenuItem;
@@ -238,6 +240,7 @@ public class MainController {
     iconIndex6MenuItem.setOnAction(e -> textTable.changeIconIndex(5));
     iconIndex7MenuItem.setOnAction(e -> textTable.changeIconIndex(6));
     iconIndex8MenuItem.setOnAction(e -> textTable.changeIconIndex(7));
+    iconIndex0MenuItem.setOnAction(e -> deleteFaceMenuItemOnAction());
 
     loadPreference();
 
@@ -407,6 +410,8 @@ public class MainController {
     e.setDropCompleted(false);
     e.consume();
   }//}}}
+
+  @FXML private void deleteFaceMenuItemOnAction() { textTable.deleteFaceImages(); }
 
   // public methods
 

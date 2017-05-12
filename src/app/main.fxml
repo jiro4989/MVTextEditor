@@ -21,6 +21,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.input.KeyCodeCombination?>
@@ -188,11 +189,19 @@
                 <KeyCodeCombination alt="UP" code="DIGIT7" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
+
             <MenuItem fx:id="iconIndex8MenuItem" mnemonicParsing="true" text="%changeFace8">
               <accelerator>
                 <KeyCodeCombination alt="UP" code="DIGIT8" control="UP" meta="UP" shift="UP" shortcut="UP" />
               </accelerator>
             </MenuItem>
+
+            <MenuItem fx:id="iconIndex0MenuItem" mnemonicParsing="true" text="%deleteFace">
+              <accelerator>
+                <KeyCodeCombination alt="UP" code="DIGIT0" control="UP" meta="UP" shift="UP" shortcut="UP" />
+              </accelerator>
+            </MenuItem>
+
           </items>
         </Menu><!--}}}-->
 
@@ -322,6 +331,24 @@
                     <TableColumn fx:id="backgroundColumn" prefWidth="125.0" text="%backgroundColumn" />
                     <TableColumn fx:id="positionColumn" prefWidth="100.0" text="%positionColumn" />
                   </columns>
+
+                  <contextMenu>
+                    <ContextMenu>
+                      <items>
+                        <MenuItem text="%cutRecordsMenuItem" onAction="#cutRecordsMenuItemOnAction"/>
+                        <MenuItem text="%copyRecordsMenuItem" onAction="#copyRecordsMenuItemOnAction"/>
+                        <MenuItem text="%pasteRecordsMenuItem" onAction="#pasteRecordsMenuItemOnAction"/>
+                        <MenuItem text="%deleteRecordsMenuItem" onAction="#deleteRecordsMenuItemOnAction"/>
+                        <MenuItem text="%updateSelectedRecordsMenuItem" onAction="#updateSelectedRecordsMenuItemOnAction"/>
+                        <MenuItem text="%newRecordsMenuItem" onAction="#addNewRecordMenuItemOnAction"/>
+                        <MenuItem text="%formatMenuItem" onAction="#formatMenuItemOnAction"/>
+                        <MenuItem text="%joinMenuItem" onAction="#joinMenuItemOnAction"/>
+
+                        <MenuItem text="%deleteFace" onAction="#deleteFaceMenuItemOnAction"/>
+                      </items>
+                    </ContextMenu>
+                  </contextMenu>
+
                 </TableView>
               </center>
               <bottom>
