@@ -1,9 +1,14 @@
 package util;
 
+import jiro.java.util.MyProperties;
+
 import app.Main;
 
+import java.io.File;
 import java.nio.IntBuffer;
 import javafx.scene.image.WritablePixelFormat;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
 
 public class Texts {
 
@@ -75,6 +80,16 @@ public class Texts {
       count = HALF_CHARS.indexOf(text) != -1 ? ++count : count + 2;
     }
     return count;
+  }//}}}
+
+  public static final void resetProjectFolderProperty(MyProperties mp, Stage stage) {//{{{
+    DirectoryChooser dc = new DirectoryChooser();
+    dc.setInitialDirectory(new File("."));
+    File file = dc.showDialog(stage);
+    if (file != null) {
+      mp.setProperty(KEY_PROJECT, file.getAbsolutePath());
+      mp.store();
+    }
   }//}}}
 
 }

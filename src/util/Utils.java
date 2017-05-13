@@ -24,6 +24,23 @@ public final class Utils {
     alert.showAndWait();
   }//}}}
 
+  public static void showResetProjectDirDialog() {//{{{
+    Alert alert = new Alert(AlertType.CONFIRMATION);
+
+    Locale locale = Locale.getDefault();
+    String header = locale.equals(Locale.JAPAN)
+      ? "ツクールMVのプロジェクトフォルダが存在しません。"
+      : "Project Folder of RPG Maker MV doesn't exist.";
+    alert.setHeaderText(header);
+
+    String content = locale.equals(Locale.JAPAN)
+      ? "お手数ですが、再設定してください。"
+      : "Please reset one.";
+    alert.setContentText(content);
+
+    alert.showAndWait();
+  }//}}}
+
   public static void showErrorDialog() {//{{{
     Alert alert = new Alert(AlertType.ERROR);
 

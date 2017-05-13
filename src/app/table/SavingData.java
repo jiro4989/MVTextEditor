@@ -46,9 +46,11 @@ public class SavingData {
    * @return TextDBのデータリスト
    */
   public static List<TextDB> convertTextDB(File xmlFile) throws SAXException, ParserConfigurationException, IOException {//{{{
-    Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlFile);
+    InputStream is = new FileInputStream(xmlFile);
+    Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(is);
     Element root = document.getDocumentElement();
     NodeList children = root.getChildNodes();
+    is.close();
 
     List<TextDB> dbList = new ArrayList<>();
     for (int i=0; i<children.getLength(); i++) {

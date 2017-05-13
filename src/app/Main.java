@@ -6,6 +6,7 @@ import jiro.java.util.MyProperties;
 import util.ResourceBundleWithUtf8;
 
 import util.InitUtils;
+import util.Texts;
 import util.Utils;
 
 import java.io.*;
@@ -35,13 +36,8 @@ public class Main extends Application {
     Path preferences = Paths.get(".", "properties", "mvte", "preferences.xml");
     if (Files.notExists(preferences)) {
       Utils.showSelectProjectDirDialog();
-      DirectoryChooser dc = new DirectoryChooser();
-      dc.setInitialDirectory(new File("."));
-      File file = dc.showDialog(primaryStage);
-      if (file != null) {
-        MainController.preferencesProperties.setProperty("project", file.getAbsolutePath());
-        MainController.preferencesProperties.store();
-      }
+
+      Texts.resetProjectFolderProperty(MainController.preferencesProperties, primaryStage);
     }
 
     changeLanguages();
@@ -57,7 +53,7 @@ public class Main extends Application {
     try {
       VBox root   = (VBox) loader.load();
       controller  = (MainController) loader.getController();
-      Scene scene = new Scene(root, 800, 600);
+      Scene scene = new Scene(root, 1280, 720);
 
       String noname = resources.getString("noname");
       primaryStage.setScene(scene);

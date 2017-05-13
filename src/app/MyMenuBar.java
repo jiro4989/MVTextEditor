@@ -144,6 +144,7 @@ class MyMenuBar {
 
   void setRecentFile(File file) {//{{{
     if (file.exists()) {
+      recentMenu.setDisable(false);
       MenuItem item = new MenuItem(file.toString());
       item.setOnAction(e -> {
         openXml(file);
@@ -157,20 +158,24 @@ class MyMenuBar {
   }//}}}
 
   void openXml(File file) {//{{{
-    try {
-      List<TextDB> dbs = SavingData.convertTextDB(file);
-      mainController.setTextDB(dbs);
-      Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
-      saveMenuItem.setDisable(false);
-      saveFileOpt = Optional.ofNullable(file);
-    } catch (SAXException e) {
-      util.MyLogger.log(e);
-    } catch (ParserConfigurationException e) {
-      util.MyLogger.log("XMLパースできませんでしたエラー", e);
-    } catch (IOException e) {
-      util.MyLogger.log("ファイル読み込みに失敗しましたエラー", e);
-    } catch (Exception e) {
-      util.MyLogger.log(e);
+    if (file.exists()) {
+      try {
+        List<TextDB> dbs = SavingData.convertTextDB(file);
+        mainController.setTextDB(dbs);
+        Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
+        saveMenuItem.setDisable(false);
+        saveFileOpt = Optional.ofNullable(file);
+      } catch (FileNotFoundException e) {
+        util.MyLogger.log("ファイルが見つかりませんでしたエラー", e);
+      } catch (SAXException e) {
+        util.MyLogger.log(e);
+      } catch (ParserConfigurationException e) {
+        util.MyLogger.log("XMLパースできませんでしたエラー", e);
+      } catch (IOException e) {
+        util.MyLogger.log("ファイル読み込みに失敗しましたエラー", e);
+      } catch (Exception e) {
+        util.MyLogger.log(e);
+      }
     }
   }//}}}
 
@@ -274,8 +279,10 @@ class MyMenuBar {
   private void save(File file) {//{{{
     try {
       saveFileOpt = Optional.ofNullable(file);
-      mainController.saveXml(file);
-      setRecentFile(file);
+      if (file.exists()) {
+        mainController.saveXml(file);
+        setRecentFile(file);
+      }
     } catch (ParserConfigurationException pce) {
       util.MyLogger.log("XMLパースできませんでしたエラー", pce);
       Utils.showParsingErrorDialog();

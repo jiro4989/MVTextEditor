@@ -178,6 +178,15 @@ public class MainController {
     preferencesProperties . load();
     logsProperties        . load();
 
+    preferencesProperties.getProperty(KEY_PROJECT).ifPresent(proj -> {
+      File f = new File(proj);
+      if (!f.exists()) {
+        Utils.showResetProjectDirDialog();
+
+        resetProjectFolderProperty(preferencesProperties, Main.mainStage);
+      }
+    });
+
     preferencesProperties.changeLanguages();
 
     generalFontSize8RadioMenuItem   . setOnAction(e -> changeGeneralFontSize("8" ));
@@ -489,7 +498,7 @@ public class MainController {
   }//}}}
 
   void setRecentFiles() {//{{{
-    for (int i=1; i<=RecentFilesUtils.MAX; i++) {
+    for (int i=0; i<=RecentFilesUtils.MAX; i++) {
       logsProperties.getProperty("log" + i).ifPresent(path -> {
         if (RecentFilesUtils.EMPTY.equals(path)) return;
         File file = new File(path);
