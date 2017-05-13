@@ -7,6 +7,10 @@
   -fx-font-family: "Myrica M", "MS Gothic", Meiryo;
 }
 
+#editorTextArea {
+  -fx-min-height: 85px;
+}
+
 /* 操作モード変更ラジオボタン {{{*/
 
 .radio-button {
@@ -93,3 +97,4 @@
   -fx-font-family: bold;
   -fx-pref-width: 60px;
 }
+
