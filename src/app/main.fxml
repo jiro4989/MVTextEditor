@@ -536,9 +536,9 @@
                         </ButtonBar>
                         <HBox alignment="CENTER_RIGHT" spacing="5.0">
                           <children>
-                            <Label text="Win:" />
+                            <Label text="%backgroundLabel" />
                             <ComboBox fx:id="backgroundComboBox" prefWidth="150.0" />
-                            <Label text="Pos:" />
+                            <Label text="%positionLabel" />
                             <ComboBox fx:id="positionComboBox" prefWidth="150.0" />
                           </children>
                         </HBox>
