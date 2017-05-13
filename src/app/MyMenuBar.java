@@ -225,8 +225,11 @@ class MyMenuBar {
 
   private void saveXml() {//{{{
     saveFileOpt.ifPresent(file -> {
-      save(file);
-      Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
+      if (file.exists()) {
+        save(file);
+        Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
+      } else {
+      }
     });
   }//}}}
 

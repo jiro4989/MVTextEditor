@@ -53,6 +53,22 @@ public final class Utils {
     alert.showAndWait();
   }//}}}
 
+  public static void showFileNotFoundDialog() {//{{{
+    Alert alert = new Alert(AlertType.ERROR);
+
+    Locale locale = Locale.getDefault();
+    String header = locale.equals(Locale.JAPAN)
+      ? "ファイルが見つかりませんでした。"
+      : "File is not found.";
+    alert.setHeaderText(header);
+    if (locale.equals(Locale.JAPAN))
+      alert.setContentText("データを保存できませんでした。別名保存を実行してください。");
+    else
+      alert.setContentText("Please save as other file name.");
+
+    alert.showAndWait();
+  }//}}}
+
   public static void showSuccessDialog() {//{{{
     Alert alert = new Alert(AlertType.INFORMATION);
     Locale locale = Locale.getDefault();
