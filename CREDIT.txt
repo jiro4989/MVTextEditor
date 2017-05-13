@@ -1,0 +1,10 @@
+## 画像提供
+
+- ボタンアイコン  
+  [icooon-mono](http://icooon-mono.com)
+  [WebIconSet.com](http://www.webiconset.com/)
+
+## jarライブラリ提供
+
+- Jackson - Javaオブジェクト←→JSONオブジェクト相互変換  
+  [FasterXML](https://github.com/FasterXML/jackson-core/wiki)

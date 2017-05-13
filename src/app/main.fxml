@@ -372,7 +372,17 @@
                         <HBox alignment="BOTTOM_LEFT" spacing="5.0">
                           <children>
                             <TextField fx:id="actorNameTextField" minWidth="-Infinity" prefWidth="200.0" promptText="%enterName" />
-                            <Button mnemonicParsing="false" text="update" onAction="#updateActorNames" />
+
+                            <Button mnemonicParsing="false" onAction="#updateActorNames" >
+                              <graphic>
+                                <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                  <image>
+                                    <Image url="@res/img/undo.png" />
+                                  </image>
+                                </ImageView>
+                              </graphic>
+                            </Button>
+
                             <GridPane fx:id="colorPickerGridPane" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="48.0" prefWidth="384.0">
                               <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" />
@@ -390,50 +400,47 @@
                         <TextArea fx:id="editorTextArea" promptText="%enterText" />
                         <ButtonBar buttonMinWidth="26.0">
                           <buttons>
-                            <Button mnemonicParsing="false" prefHeight="26.0" text="update" onAction="#updateTexts" />
-                            <Button fx:id="partyButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;"> <!--{{{-->
+                            <Button mnemonicParsing="false" prefHeight="26.0" onAction="#updateTexts" >
                               <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/back.png" />
+                                    <Image url="@res/img/undo.png" />
                                   </image>
                                 </ImageView>
                               </graphic>
-                              <tooltip>
-                                <Tooltip text="%partyButton" />
-                              </tooltip>
-                            </Button><!--}}}-->
+                            </Button>
+                            <!--  -->
+                            <!-- <Button fx:id="partyButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="&#45;fx&#45;background&#45;radius: 15;"> <!&#45;&#45;{{{&#45;&#45;> -->
+                              <!--   <graphic> -->
+                                <!--     <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true"> -->
+                                  <!--       <image> -->
+                                    <!--         <Image url="@res/img/back.png" /> -->
+                                    <!--       </image> -->
+                                  <!--     </ImageView> -->
+                                <!--   </graphic> -->
+                              <!--   <tooltip> -->
+                                <!--     <Tooltip text="%partyButton" /> -->
+                                <!--   </tooltip> -->
+                              <!-- </Button><!&#45;&#45;}}}&#45;&#45;> -->
+                            <!--  -->
 
-                            <Button fx:id="backslashButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;"> <!--{{{-->
-                              <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                  <image>
-                                    <Image url="@res/img/back.png" />
-                                  </image>
-                                </ImageView>
-                              </graphic>
+                            <Button fx:id="backslashButton" text="\\" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" > <!--{{{-->
                               <tooltip>
                                 <Tooltip text="%backslashButton" />
                               </tooltip>
                             </Button><!--}}}-->
 
-                            <Button fx:id="goldButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;"> <!--{{{-->
-                              <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                  <image>
-                                    <Image url="@res/img/back.png" />
-                                  </image>
-                                </ImageView>
-                              </graphic>
+                            <Button fx:id="goldButton" text="G" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" > <!--{{{-->
                               <tooltip>
                                 <Tooltip text="%goldButton" />
                               </tooltip>
                             </Button><!--}}}-->
-                            <Button fx:id="showGoldButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;"> <!--{{{-->
+
+                            <Button fx:id="showGoldButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" > <!--{{{-->
                               <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/back.png" />
+                                    <Image url="@res/img/gold.png" />
                                   </image>
                                 </ImageView>
                               </graphic>
@@ -442,11 +449,11 @@
                               </tooltip>
                             </Button><!--}}}-->
 
-                            <Button fx:id="fontUpButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;"> <!--{{{-->
+                            <Button fx:id="fontUpButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" > <!--{{{-->
                               <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/back.png" />
+                                    <Image url="@res/img/fontup.png" />
                                   </image>
                                 </ImageView>
                               </graphic>
@@ -454,11 +461,12 @@
                                 <Tooltip text="%fontUpButton" />
                               </tooltip>
                             </Button><!--}}}-->
-                            <Button fx:id="fontDownButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;"> <!--{{{-->
+
+                            <Button fx:id="fontDownButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" > <!--{{{-->
                               <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/back.png" />
+                                    <Image url="@res/img/fontdown.png" />
                                   </image>
                                 </ImageView>
                               </graphic>
@@ -467,36 +475,23 @@
                               </tooltip>
                             </Button><!--}}}-->
 
-                            <Button fx:id="wait1_4Button" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;"> <!--{{{-->
-                              <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                  <image>
-                                    <Image url="@res/img/back.png" />
-                                  </image>
-                                </ImageView>
-                              </graphic>
+                            <Button fx:id="wait1_4Button" text="1/4s" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" > <!--{{{-->
                               <tooltip>
                                 <Tooltip text="%wait1_4Button" />
                               </tooltip>
                             </Button><!--}}}-->
-                            <Button fx:id="wait1Button" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;"> <!--{{{-->
-                              <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                  <image>
-                                    <Image url="@res/img/back.png" />
-                                  </image>
-                                </ImageView>
-                              </graphic>
+
+                            <Button fx:id="wait1Button" text="１s" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" > <!--{{{-->
                               <tooltip>
                                 <Tooltip text="%wait1Button" />
                               </tooltip>
                             </Button><!--}}}-->
 
-                            <Button fx:id="showAllButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;"> <!--{{{-->
+                            <Button fx:id="showAllButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" > <!--{{{-->
                               <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/back.png" />
+                                    <Image url="@res/img/start.png" />
                                   </image>
                                 </ImageView>
                               </graphic>
@@ -504,11 +499,12 @@
                                 <Tooltip text="%showAllButton" />
                               </tooltip>
                             </Button><!--}}}-->
-                            <Button fx:id="showStopButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;"> <!--{{{-->
+
+                            <Button fx:id="showStopButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" > <!--{{{-->
                               <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/back.png" />
+                                    <Image url="@res/img/stop.png" />
                                   </image>
                                 </ImageView>
                               </graphic>
@@ -517,11 +513,11 @@
                               </tooltip>
                             </Button><!--}}}-->
 
-                            <Button fx:id="waitInputButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;"> <!--{{{-->
+                            <Button fx:id="waitInputButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" > <!--{{{-->
                               <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/back.png" />
+                                    <Image url="@res/img/keyboard.png" />
                                   </image>
                                 </ImageView>
                               </graphic>
@@ -529,14 +525,8 @@
                                 <Tooltip text="%waitInputButton" />
                               </tooltip>
                             </Button><!--}}}-->
-                            <Button fx:id="nonWaitButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 15;"> <!--{{{-->
-                              <graphic>
-                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                  <image>
-                                    <Image url="@res/img/back.png" />
-                                  </image>
-                                </ImageView>
-                              </graphic>
+
+                            <Button fx:id="nonWaitButton" text="⬇" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" > <!--{{{-->
                               <tooltip>
                                 <Tooltip text="%nonWaitButton" />
                               </tooltip>

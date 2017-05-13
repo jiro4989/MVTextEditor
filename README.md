@@ -3,15 +3,15 @@
 
 - バージョン       : 1.0.0
 - 作者             : 次郎 (Jiro)
-- 作成日           : 2017/05/10
-- 最終更新日       : 2017/05/10
+- 作成日           : TODO
+- 最終更新日       : TODO
 - 連絡先           : [次ログ](http://jiroron666.hatenablog.com/)
 - 実行ファイル名   : mvte.jar
 - 動作確認・開発環境
   - OS             : Windows 10 Home
   - プロセッサ     : 3.50GHz Intel Core i7-4770K
   - メモリ         : 8GB RAM
-  - Javaバージョン : 1.8.0-121
+  - Javaバージョン : 1.8.0-131
 
 ![mvteデモ](./gif/mvte_demo01.gif)
 

@@ -83,3 +83,13 @@
 .titled-pane .title {
   -fx-font-weight: bold;
 }
+
+#wait1_4Button, #wait1Button {
+  -fx-min-width: 60px;
+}
+
+.button-bar .button {
+  -fx-font-size: 16px;
+  -fx-font-family: bold;
+  -fx-pref-width: 60px;
+}
