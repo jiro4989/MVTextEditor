@@ -50,6 +50,23 @@ public final class Utils {
     alert.showAndWait();
   }//}}}
 
+  public static void showFileEncodingDialog() {//{{{
+    Alert alert = new Alert(AlertType.INFORMATION);
+    Locale locale = Locale.getDefault();
+
+    String header = locale.equals(Locale.JAPAN)
+      ? "文字コードが対応していません。"
+      : "UnsupportedEncodingException.";
+    alert.setHeaderText(header);
+
+    if (locale.equals(Locale.JAPAN)) {
+      alert.setContentText("ファイルの文字コードにUTF-8を指定してください。");
+    } else {
+      alert.setContentText("Please set Encoding UTF-8 of Text File.");
+    }
+    alert.showAndWait();
+  }//}}}
+
   public static final void showParsingErrorDialog() {//{{{
     Alert alert = new Alert(AlertType.ERROR);
 

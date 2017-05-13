@@ -56,6 +56,10 @@ public class Pages {
 
       String actorName = db.actorNameProperty().get();
       StringBuilder sb = new StringBuilder(actorName);
+      if (0 < sb.toString().length()) {
+        sb.insert(0, "\\>");
+      }
+
       formatProperties.getProperty("actorBracket")
         .map(Boolean::valueOf)
         .filter(b -> b)

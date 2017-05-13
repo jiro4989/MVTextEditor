@@ -201,6 +201,9 @@ class MyMenuBar {
       // データの管理はxmlで行うため、
       // importするtxtファイルをタイトルにセットするのは適当ではない？
       //Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
+    } catch (UnsupportedEncodingException uee) {
+      util.MyLogger.log("ファイルのエンコードがUTF-8でもSJISでもなかったよエラー", uee);
+      Utils.showFileEncodingDialog();
     } catch (IOException ioe) {
       util.MyLogger.log("ファイル読み込みに失敗しましたエラー", ioe);
     } catch (Exception e) {
