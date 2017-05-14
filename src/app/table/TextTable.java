@@ -242,7 +242,7 @@ public class TextTable {
     return sb.toString();
   }//}}}
 
-  public void format() {//{{{
+  private void textFormat() {//{{{
     getSelectedItems().ifPresent(items -> {
       MyProperties mp = MainController.formatProperties;
       String sizeStr = mp.getProperty("textReturnSize").orElse("54");
@@ -269,6 +269,40 @@ public class TextTable {
         updateTextView();
       });
 
+    });
+  }//}}}
+
+  /**
+   * 複数レコードの連結をしないタイプのjoin
+   */
+  public void format() {//{{{
+    MyProperties mp = MainController.formatProperties;
+    int size      = mp.getProperty("textReturnSize").map(Integer::parseInt).orElse(54);
+    int braIndex  = mp.getProperty("bracketStart")  .map(s -> len(s))      .orElse(0);
+    int braLen    = len(Brackets.values()[braIndex].START);
+    String indent = String.format("%" + braLen + "s", "");
+
+    getSelectedItems().ifPresent(items -> {
+      items.stream().forEach(item -> {
+        String joinedString = item.textProperty().get();
+        BufferedReader br = new BufferedReader(new StringReader(joinedString));
+        final String REG = "^.*[^(,\\.!\\?、。！？)]$";
+        String newJoinedString = br.lines()
+          .map(s -> {
+            if (s.matches(REG)) {
+              if (s.matches(".*[a-zA-Z0-9]$")) {
+                return s + " ";
+              }
+              return s;
+            }
+            return s + CR + indent;
+          })
+        .map(s -> s.replaceAll("^ +", ""))
+          .collect(Collectors.joining());
+
+        item.textProperty().set(newJoinedString);
+      });
+      textFormat();
     });
   }//}}}
 
@@ -310,7 +344,7 @@ public class TextTable {
 
       items.get(0).textProperty().set(newJoinedString);
       masterData.removeAll(items.subList(1, items.size()));
-      format();
+      textFormat();
     });
   }//}}}
 

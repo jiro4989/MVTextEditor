@@ -5,6 +5,7 @@ import static app.MainController.formatProperties;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Pages {
@@ -81,17 +82,23 @@ public class Pages {
 
       // 本文の追加
       String text = db.textProperty().get();
-      BufferedReader br = new BufferedReader(new StringReader(text));
-      br.lines()
-        .filter(s -> !s.matches("^ *$"))
-        .forEach(line -> {
-          if (5 <= atom.incrementAndGet()) {
-            list.add(new EventList(101, 0, db));
-            list.add(new EventList(401, 0, sb.toString()));
-            atom.set(1);
-          }
-          list.add(new EventList(401, 0, line));
-        });
+      if (text.length() <= 0) {
+        list.add(new EventList(401, 0, ""));
+      } else {
+        BufferedReader br = new BufferedReader(new StringReader(text));
+
+        br.lines()
+          .filter(s -> !s.matches("^ *$"))
+          .forEach(line -> {
+            if (5 <= atom.incrementAndGet()) {
+              list.add(new EventList(101, 0, db));
+              list.add(new EventList(401, 0, sb.toString()));
+              atom.set(1);
+            }
+            list.add(new EventList(401, 0, line));
+          });
+      }
+
     });
     list.add(new EventList(0, 0, ""));
 
