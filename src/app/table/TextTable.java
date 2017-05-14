@@ -1,6 +1,7 @@
 package app.table;
 
 import static util.Texts.*;
+import static util.Utils.r;
 
 import app.selector.ImageSelector;
 import jiro.java.util.MyProperties;
@@ -430,22 +431,16 @@ public class TextTable {
       return true;
     }
 
-    String lowerCaseFilter = newVal.toLowerCase();
-
     String actorName = db . actorNameProperty()  . get();
     String text      = db . textProperty()       . get();
     String bg        = db . backgroundProperty() . get();
     String pos       = db . positionProperty()   . get();
 
-    if (
-        actorName. toLowerCase() . contains(lowerCaseFilter)
-        || text  . toLowerCase() . contains(lowerCaseFilter)
-        || bg    . toLowerCase() . contains(lowerCaseFilter)
-        || pos   . toLowerCase() . contains(lowerCaseFilter)
-       ) {
-      return true;
-       }
-    return false;
+    return ( r(actorName , newVal)
+        ||   r(text      , newVal)
+        ||   r(bg        , newVal)
+        ||   r(pos       , newVal)
+        );
   }//}}}
 
   private TextDB createInitTextDB() {//{{{

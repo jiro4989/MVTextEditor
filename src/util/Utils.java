@@ -1,8 +1,11 @@
 package util;
 
 import java.util.Locale;
-import javafx.scene.control.Alert;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 
 public final class Utils {
   private Utils() {}
@@ -127,6 +130,16 @@ public final class Utils {
     alert.setHeaderText(header);
 
     alert.showAndWait();
+  }//}}}
+
+  public static final boolean r(String target, String regex) {//{{{
+    try {
+      Pattern p = Pattern.compile(regex);
+      Matcher m = p.matcher(target);
+      return m.find();
+    } catch (PatternSyntaxException ignore) {
+    }
+    return false;
   }//}}}
 
 }
