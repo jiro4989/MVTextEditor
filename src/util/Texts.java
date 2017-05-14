@@ -87,8 +87,14 @@ public class Texts {
     dc.setInitialDirectory(new File("."));
     File file = dc.showDialog(stage);
     if (file != null) {
-      mp.setProperty(KEY_PROJECT, file.getAbsolutePath());
-      mp.store();
+      String s = file.getAbsolutePath() + File.separator + "Game.rpgproject";
+      File projFile = new File(s);
+      if (projFile.exists()) {
+        mp.setProperty(KEY_PROJECT, file.getAbsolutePath());
+        mp.store();
+      } else {
+        Utils.showFailedToLoadProjectDialog();
+      }
     }
   }//}}}
 

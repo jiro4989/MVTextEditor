@@ -84,6 +84,7 @@ public class SavingData {
       StreamResult result  = new StreamResult(fos);
 
       transformer.transform(src, result);
+      fos.close();
     } catch (TransformerConfigurationException e) {
       util.MyLogger.log(e);
     } catch (FileNotFoundException e) {

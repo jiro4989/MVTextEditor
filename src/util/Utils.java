@@ -24,6 +24,23 @@ public final class Utils {
     alert.showAndWait();
   }//}}}
 
+  public static void showFailedToLoadProjectDialog() {//{{{
+    Alert alert = new Alert(AlertType.CONFIRMATION);
+
+    Locale locale = Locale.getDefault();
+    String header = locale.equals(Locale.JAPAN)
+      ? "ツクールMVのプロジェクトフォルダではありません。"
+      : "Folder is not Project Folder of RPG Maker MV.";
+    alert.setHeaderText(header);
+
+    String content = locale.equals(Locale.JAPAN)
+      ? "必要データの読み込みに失敗しました。"
+      : "Failed to load datas.";
+    alert.setContentText(content);
+
+    alert.showAndWait();
+  }//}}}
+
   public static void showResetProjectDirDialog() {//{{{
     Alert alert = new Alert(AlertType.CONFIRMATION);
 

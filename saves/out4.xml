@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><root>
+<node actorName="ほげ太郎" background="ウィンドウ" icon="" position="下" text="「発言者名は行の先頭に # 井桁(いげた)、ハッシュ記号を&#10;  付与してください。&#10;  ハッシュ記号から行末まで続く先頭の半角スペースを除い"/>
+<node actorName="負が太郎" background="ウィンドウ" icon="" position="下" text="  たテキストが&#10;  名前と解釈されます。」"/>
+<node actorName="キャラクターの名前" background="ウィンドウ" icon="" position="下" text="「名前は、新しくハッシュで名前を定義したセリフの直前ま&#10;  で自動で割り振られます。」"/>
+<node actorName="新キャラ" background="ウィンドウ" icon="" position="下" text="「このように、新しくハッシュを定義したため、発言者名が&#10;  切り替わりました。」"/>
+<node actorName="新キャラ" background="ウィンドウ" icon="" position="下" text="「新たにハッシュを定義していませんが、現在も新しい名前&#13;&#10;  が引き継がれています。」"/>
+<node actorName="新キャラ" background="ウィンドウ" icon="" position="下" text="「名前は出力時に自動で先頭に\&gt;記号が割り振られます。&#13;&#10;  つまり、ソフト側で先頭に\&gt;記号を振らずとも、名前は常&#13;&#10;  に一瞬で表示されます。」"/>
+<node actorName="" background="ウィンドウ" icon="" position="下" text="「ちなみに、発言者をなしにしたい場合は # のみを記述し&#13;&#10;  、発言者名を空にすることで意図的に発言者をなしにでき&#13;&#10;  ます。」"/>
+<node actorName="" background="ウィンドウ" icon="" position="下" text="「今、私の発言は先頭行が表示されていないはずです。」"/>
+<node actorName="　" background="ウィンドウ" icon="" position="下" text="「この時、文章は４行すべて使いますが、１行目を空行にし&#13;&#10;  たい場合は、# の後に全角空白を入れてください。」"/>
+<node actorName="　" background="ウィンドウ" icon="" position="下" text="「文章は空白行(何も文章を記述していない行)までを１つの&#13;&#10;  段落と解釈します。」"/>
+<node actorName="アットマーク" background="ウィンドウ" icon="" position="下" text="「ちなみに、インポート時に自動で発言者名に変換すること&#13;&#10;  が可能です。&#13;&#10;  アットマークと記述していると、その部分の発言者名にイ"/>
+<node actorName="" background="ウィンドウ" icon="" position="下" text="  ンポート時に変換されます。」"/>
+<node actorName="キャラクター名" background="ウィンドウ" icon="" position="下" text="「オプションで段落の先頭と末尾を括弧で括る事が可能にな&#13;&#10;  っています。&#13;&#10;  これはインポート時の設定に依存します。」"/>
+<node actorName="キャラクター名" background="ウィンドウ" icon="" position="下" text="「つまり、テキストファイルの方では括弧を記述せずとも、&#13;&#10;  必要だと感じた時にオプションを有効にしてインポートす&#13;&#10;  ることで"/>
+<node actorName="" background="ウィンドウ" icon="" position="下" text="  文章を段落単位で自動で括弧で括るということです。」"/>
+<node actorName="キャラクター名" background="ウィンドウ" icon="" position="下" text="「括弧は数種類用意しています。&#13;&#10;  その中から選択してください。」"/>
+<node actorName="キャラクター名" background="ウィンドウ" icon="" position="下" text="「インポートを実行すると、ツクールの文章ウィンドウに収&#13;&#10;  まりきる&#13;&#10;  文字数と行数で分解して本ソフトに取り込みます。」"/>
+<node actorName="キャラクター名" background="ウィンドウ" icon="" position="下" text="「この時、入力されていた文章が４行をオーバーしそうな場&#13;&#10;  合、&#13;&#10;  自動で次のレコードが追加されます。」"/>
+<node actorName="キャラクター名" background="ウィンドウ" icon="" position="下" text="「また、文字数がウィンドウ幅に収まりきらない場合は、&#13;&#10;  自動で文章を折り返します。&#13;&#10;  この機能は任意で有効、無効にできます。」"/>
+<node actorName="キャラクター名" background="ウィンドウ" icon="" position="下" text="「また、文章を何文字で折り返すかを指定することが可能で&#13;&#10;  す。」"/>
+<node actorName="注意点" background="ウィンドウ" icon="" position="下" text="「ただし、文字数は日本語文字ではなく、半角アルファベッ&#13;&#10;  トを基準に数えています。」"/>
+<node actorName="注意点" background="ウィンドウ" icon="" position="下" text="「日本語だと１行に表示できる全角文字は約27文字程度です&#13;&#10;  。&#13;&#10;  半角アルファベットでは約53.5文字ほど表示可能です。」"/>
+<node actorName="注意点" background="ウィンドウ" icon="" position="下" text="「以上の理由から、設定画面では54という数値をデフォルト&#13;&#10;  値として設定しています。&#13;&#10;  ウィンドウ幅をプラグインなどで変更した場合は、折り返"/>
+<node actorName="" background="ウィンドウ" icon="" position="下" text="  し文字数を変更してください。」"/>
+<node actorName="注意点" background="ウィンドウ" icon="" position="下" text="「参考までに文章の折り返しのサンプルを用意しました、ツ&#13;&#10;  クール側で&#13;&#10;  折り返す様子を確認してみてください。」"/>
+<node actorName="全角数字" background="ウィンドウ" icon="" position="下" text="「１２３４５６７８９０１２３４５６７８９０１２３４５６&#13;&#10;  ７&#13;&#10;  １２３４５６７８９０１２３４５６７８９０１２３４５６"/>
+<node actorName="" background="ウィンドウ" icon="" position="下" text="  ７８９０」"/>
+<node actorName="半角数字" background="ウィンドウ" icon="" position="下" text="「１２３４５６７８９０１２３４５６７８９０１２３４５６&#13;&#10;  ７&#13;&#10;  123456789 123456789 123456789 123456789 123456789 "/>
+<node actorName="" background="ウィンドウ" icon="" position="下" text="  123456789 」"/>
+<node actorName="半角アルファベット" background="ウィンドウ" icon="" position="下" text="「１２３４５６７８９０１２３４５６７８９０１２３４５６&#13;&#10;  ７&#13;&#10;  abcd ABCD abcd ABCD abcd ABCD abcd ABCD abcd ABCD "/>
+<node actorName="" background="ウィンドウ" icon="" position="下" text="  abcd ABCD 」"/>
+<node actorName="" background="ウィンドウ" icon="" position="下" text="「これらのインポート・エクスポート設定はファイルメニュ&#13;&#10;  ーから変更可能です。」"/>
+<node actorName="まとめ" background="ウィンドウ" icon="" position="下" text="「いかがでしたでしょうか？」"/>
+<node actorName="まとめ" background="ウィンドウ" icon="" position="下" text="「作者・次郎の拙いソフトですが、便利そうと少しでも感じ&#13;&#10;  ていただけましたでしょうか？」"/>
+<node actorName="まとめ" background="ウィンドウ" icon="" position="下" text="「今回の説明で伝えきれていないこともあるかと思います。&#13;&#10;  もし何かわからないことがありましたら、同封のREADME.&#13;&#10;  htmlから"/>
+<node actorName="" background="ウィンドウ" icon="" position="下" text="  オンラインドキュメントを参照してください。」"/>
+<node actorName="まとめ" background="ウィンドウ" icon="" position="下" text="「また、ソレを読んでなおわからないことがありましたら、&#13;&#10;  遠慮せず作者に相談してください。」"/>
+<node actorName="まとめ" background="ウィンドウ" icon="" position="下" text="「以上で、本ソフトの使い方一例の紹介を終わります。&#13;&#10;  お疲れ様でした。&#13;&#10;  それでは、良いツクールライフを。」"/>
+</root>

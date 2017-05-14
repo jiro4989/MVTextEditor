@@ -229,6 +229,7 @@ class MyMenuBar {
         save(file);
         Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
       } else {
+        Utils.showFileNotFoundDialog();
       }
     });
   }//}}}
@@ -282,10 +283,8 @@ class MyMenuBar {
   private void save(File file) {//{{{
     try {
       saveFileOpt = Optional.ofNullable(file);
-      if (file.exists()) {
-        mainController.saveXml(file);
-        setRecentFile(file);
-      }
+      mainController.saveXml(file);
+      setRecentFile(file);
     } catch (ParserConfigurationException pce) {
       util.MyLogger.log("XMLパースできませんでしたエラー", pce);
       Utils.showParsingErrorDialog();

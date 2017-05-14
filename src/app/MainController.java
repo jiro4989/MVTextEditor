@@ -273,11 +273,9 @@ public class MainController {
   @FXML private void joinMenuItemOnAction() { textTable.join(); }
 
   @FXML private void selectProjectMenuItemOnAction() {//{{{
-    File dir = dc.showDialog(getWindow());
-    if (dir != null) {
-      dc.setInitialDirectory(dir.getParentFile());
-      loadPreference();
-    }
+    Stage stage = (Stage) getWindow();
+    resetProjectFolderProperty(preferencesProperties, stage);
+    loadPreference();
   }//}}}
 
   @FXML private void focusVarPane() {//{{{
