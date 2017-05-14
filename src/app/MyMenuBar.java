@@ -257,7 +257,7 @@ class MyMenuBar {
         file = new File(String.format(dir + File.separator + "data" + File.separator + "Map%03d.json", ++count));
       }
       try {
-        mainController.exportJson(file);
+        mainController.exportJson(file, count);
 
         Utils.showSuccessDialog();
       } catch (FileNotFoundException e) {

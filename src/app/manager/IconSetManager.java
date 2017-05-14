@@ -16,6 +16,9 @@ class IconSetManager {
 
   private final MainController mainController;
 
+  private int colCount = 0;
+  private int rowCount = 0;
+
   // component
   private final GridPane  iconGridPane;
   private final ImageView iconImageView;
@@ -89,8 +92,8 @@ class IconSetManager {
 
     int w = (int) iconImageView.getFitWidth();
     int h = (int) iconImageView.getFitHeight();
-    x = Math.min(w - ICONSET_SIZE, x);
-    y = Math.min(h - ICONSET_SIZE, y);
+    x = Math.min((colCount - 1) * ICONSET_SIZE, x);
+    y = Math.min((rowCount - 1) * ICONSET_SIZE, y);
 
     iconSelectedLabel.setLayoutX(x);
     iconSelectedLabel.setLayoutY(y);
@@ -157,10 +160,17 @@ class IconSetManager {
 
   void setImage(String path) {//{{{
     iconImageView.setImage(null);
+    iconSelectedLabel.setLayoutX(0);
+    iconSelectedLabel.setLayoutY(0);
+    iconFocusLabel.setLayoutX(0);
+    iconFocusLabel.setLayoutY(0);
 
     Image src  = new Image("file:" + path);
     int width  = (int) src.getWidth();
     int height = (int) src.getHeight();
+
+    colCount = width / ICONSET_SIZE;
+    rowCount = height / ICONSET_SIZE;
 
     iconGridPane.setPrefWidth(width);
     iconGridPane.setPrefHeight(height);

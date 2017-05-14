@@ -114,14 +114,14 @@ public class TextTable {
     data.saveXml(file);
   }//}}}
 
-  public void exportJson(File file) throws FileNotFoundException, IOException {//{{{
+  public void exportJson(File file, int id) throws FileNotFoundException, IOException {//{{{
     JsonMap data = new JsonMap(1, new ArrayList<>(masterData));
     JsonUtils.writeValue(file, data);
 
     MainController.preferencesProperties.getProperty("project").ifPresent(dir -> {
       try {
         final String SP = File.separator;
-        JsonUtils.updateMapInfos(new File(dir + SP + "data" + SP + "MapInfos.json"), file.getName());
+        JsonUtils.updateMapInfos(new File(dir + SP + "data" + SP + "MapInfos.json"), file.getName(), id);
       } catch (IOException e) {
         util.MyLogger.log("ファイル出力に失敗しましたエラー", e);
       } catch (Exception e) {

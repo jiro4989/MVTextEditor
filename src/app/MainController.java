@@ -452,8 +452,8 @@ public class MainController {
   public void insertActorId(   int id) { textView.insertActorId(   id) ; }
   public void insertIconSetId( int id) { textView.insertIconSetId( id) ; }
 
-  public void exportJson(File file) throws FileNotFoundException, IOException {
-    textTable.exportJson(file);
+  public void exportJson(File file, int id) throws FileNotFoundException, IOException {
+    textTable.exportJson(file, id);
   }
 
   void changeFontSizes() {//{{{
