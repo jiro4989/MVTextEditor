@@ -249,12 +249,13 @@ class MyMenuBar {
 
   private void exportJson() {//{{{
     MainController.preferencesProperties.getProperty("project").ifPresent(dir -> {
-      String fileName = dir + File.separator + "Map001.json";
+      final String SEP = File.separator;
+      String fileName = dir + SEP + "data" + SEP + "Map001.json";
       File file = new File(fileName);
       int count = 0;
       while (true) {
         if (!file.exists()) break;
-        file = new File(String.format(dir + File.separator + "data" + File.separator + "Map%03d.json", ++count));
+        file = new File(String.format(dir + SEP + "data" + SEP + "Map%03d.json", ++count));
       }
       try {
         mainController.exportJson(file, count);
