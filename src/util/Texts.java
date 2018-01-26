@@ -37,6 +37,8 @@ public class Texts {
   public static final String IMG_WINDOW_PATH  = "img/system/Window.png";
   public static final String IMG_ICONSET_PATH = "img/system/IconSet.png";
 
+  public static final String KEY_ACTOR_NAME_BRACKETS_INDEX = "actorNameBracketsIndex";
+
   public static final String VAR_FILE_PATH      = "data/System.json";
   public static final String ACTORS_FILE_PATH   = "data/Actors.json";
   public static final String MAPINFOS_FILE_PATH = "data/MapInfos.json";

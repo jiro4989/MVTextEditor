@@ -192,6 +192,10 @@ class TextView {
   void insertActorIdToActor(  int id) {}
   void insertIconSetIdToActor(int id) {}
 
+  void insertActorIdToActorNameTextField(int id, String[] bra) {
+    insertTextToActorNameTextField(bra[0] + String.format("\\n[%d]", id) + bra[1]);
+  }
+
   // private methods
 
   private void changeComboBoxItemWithMouseScroll(ScrollEvent e, ComboBox<? extends Object> comboBox) {//{{{
@@ -219,6 +223,13 @@ class TextView {
     IndexRange range = editorTextArea.getSelection();
     int start = range.getStart();
     editorTextArea.insertText(start, text);
+  }//}}}
+
+  private void insertTextToActorNameTextField(String text) {//{{{
+    //IndexRange range = editorTextArea.getSelection();
+    //int start = range.getStart();
+    //actorNameTextField.insertText(start, text);
+    actorNameTextField.setText(text);
   }//}}}
 
   private int[] getTrimmedPixels(Image src, int x, int y , int w, int h) {//{{{

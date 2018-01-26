@@ -75,6 +75,8 @@ class ActorTableManager {
         actorTableView.getSelectionModel().selectPrevious();
       } else if (KeyCode.ENTER == e.getCode()) {
         insertActorId();
+      } else if (KeyCode.SPACE == e.getCode()) {
+        insertActorIdToActorNameTextField();
       }
     });
   }//}}}
@@ -112,6 +114,15 @@ class ActorTableManager {
       mainController.insertActorId(actorId);
     }
   }//}}}
+
+  private void insertActorIdToActorNameTextField() {
+    SelectionModel<ActorDB> model = actorTableView.getSelectionModel();
+    if (!model.isEmpty()) {
+      ActorDB selectedItem = model.getSelectedItem();
+      int actorId = selectedItem.getId();
+      mainController.insertActorIdToActorNameTextField(actorId);
+    }
+  }
 
   // setter
 

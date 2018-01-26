@@ -294,6 +294,28 @@
           </items>
         </Menu><!--}}}-->
 
+        <Menu mnemonicParsing="true" text="アクター名修飾(_A)"><!--{{{-->
+          <items>
+            <RadioMenuItem selected="true" mnemonicParsing="true" text="なし">
+              <toggleGroup>
+                <ToggleGroup fx:id="actorGroup" />
+              </toggleGroup>
+            </RadioMenuItem>
+            <RadioMenuItem mnemonicParsing="true" text="「,」" toggleGroup="$actorGroup" />
+            <RadioMenuItem mnemonicParsing="true" text="『,』" toggleGroup="$actorGroup" />
+            <RadioMenuItem mnemonicParsing="true" text="（,）" toggleGroup="$actorGroup" />
+            <RadioMenuItem mnemonicParsing="true" text="【,】" toggleGroup="$actorGroup" />
+            <RadioMenuItem mnemonicParsing="true" text="〈,〉" toggleGroup="$actorGroup" />
+            <RadioMenuItem mnemonicParsing="true" text="《,》" toggleGroup="$actorGroup" />
+            <RadioMenuItem mnemonicParsing="true" text="[,]" toggleGroup="$actorGroup" />
+            <RadioMenuItem mnemonicParsing="true" text="«,»" toggleGroup="$actorGroup" />
+            <RadioMenuItem mnemonicParsing="true" text="{,}" toggleGroup="$actorGroup" />
+            <RadioMenuItem mnemonicParsing="true" text="&quot;,&quot;" toggleGroup="$actorGroup" />
+            <RadioMenuItem mnemonicParsing="true" text="','" toggleGroup="$actorGroup" />
+            <RadioMenuItem mnemonicParsing="true" text="\\n&lt;,&gt;" toggleGroup="$actorGroup" />
+          </items>
+        </Menu><!--}}}-->
+
         <Menu mnemonicParsing="true" text="%helpMenu"><!--{{{-->
           <items>
             <MenuItem mnemonicParsing="true" text="%aboutMenuItem" onAction="#aboutMenuItemOnAction" >

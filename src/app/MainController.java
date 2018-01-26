@@ -73,6 +73,7 @@ public class MainController {
   @FXML private MenuItem iconIndex8MenuItem;
   @FXML private MenuItem iconIndex0MenuItem;
 
+  @FXML private ToggleGroup   actorGroup;
 
   @FXML private ToggleGroup   generalFontGroup;
   @FXML private RadioMenuItem generalFontSize8RadioMenuItem;
@@ -185,6 +186,10 @@ public class MainController {
 
         resetProjectFolderProperty(preferencesProperties, Main.mainStage);
       }
+    });
+
+    preferencesProperties.getProperty(KEY_ACTOR_NAME_BRACKETS_INDEX).ifPresent(index -> {
+      actorGroup.getToggles().get(Integer.parseInt(index)).setSelected(true);
     });
 
     preferencesProperties.changeLanguages();
@@ -431,6 +436,12 @@ public class MainController {
       logsProperties.setProperty("log" + i, recentMenu.getItems().get(i).getText());
     }
 
+    int selectedActorGroupIndex = 0;
+    for (Toggle t : actorGroup.getToggles()) {
+      if (t.isSelected()) break;
+      selectedActorGroupIndex++;
+    }
+    preferencesProperties.setProperty(KEY_ACTOR_NAME_BRACKETS_INDEX, "" + selectedActorGroupIndex);
     preferencesProperties.store();
     logsProperties       .store();
 
@@ -451,6 +462,13 @@ public class MainController {
   public void insertVarId(     int id) { textView.insertVarId(     id) ; }
   public void insertActorId(   int id) { textView.insertActorId(   id) ; }
   public void insertIconSetId( int id) { textView.insertIconSetId( id) ; }
+
+  public void insertActorIdToActorNameTextField(int id) {
+    String text = ((MenuItem) actorGroup.getSelectedToggle()).getText();
+    String[] emptyBra = {"", ""};
+    String[] bra = "なし".equals(text) ? emptyBra : text.split(",");
+    textView.insertActorIdToActorNameTextField(id, bra);
+  }
 
   public void exportJson(File file, int id) throws FileNotFoundException, IOException {
     textTable.exportJson(file, id);

@@ -61,27 +61,30 @@ public class Pages {
         sb.insert(0, "\\>");
       }
 
-      formatProperties.getProperty("actorBracket")
-        .map(Boolean::valueOf)
-        .filter(b -> b)
-        .ifPresent(b -> {
-          formatProperties.getProperty("actorBracketStart").ifPresent(start -> {
-            formatProperties.getProperty("actorBracketEnd").ifPresent(end -> {
-              // カッコで括る処理
-              sb.insert(0, start);
-              sb.append(end);
+      String text = db.textProperty().get();
+      AtomicInteger atom = new AtomicInteger(0);
+      if (!actorName.matches("^\\\\n<[^>]+>$")) {
+        formatProperties.getProperty("actorBracket")
+          .map(Boolean::valueOf)
+          .filter(b -> b)
+          .ifPresent(b -> {
+            formatProperties.getProperty("actorBracketStart").ifPresent(start -> {
+              formatProperties.getProperty("actorBracketEnd").ifPresent(end -> {
+                // カッコで括る処理
+                sb.insert(0, start);
+                sb.append(end);
+              });
             });
           });
-        });
-
-      AtomicInteger atom = new AtomicInteger(0);
-      if (actorName != null && actorName.length() != 0) {
-        list.add(new EventList(401, 0, sb.toString()));
-        atom.getAndIncrement();
+        if (actorName != null && actorName.length() != 0) {
+          list.add(new EventList(401, 0, sb.toString()));
+          atom.getAndIncrement();
+        }
+      } else {
+        text = actorName + text;
       }
 
       // 本文の追加
-      String text = db.textProperty().get();
       if (text.length() <= 0) {
         list.add(new EventList(401, 0, ""));
       } else {

@@ -1,0 +1,53 @@
+1 25, 2018 8:57:53 午後 util.MyLogger log
+警告: FXMLロードエラー
+javafx.fxml.LoadException: 
+/C:/Users/jiror/workspace/github/repos/MVTextEditor/bin/app/main.fxml:315
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2601)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2543)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
+	at app.Main.start(Main.java:54)
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
+	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$173(PlatformImpl.java:294)
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: javax.xml.stream.XMLStreamException: ParseError at [row,col]:[315,59]
+Message: 要素タイプ"RadioMenuItem"に関連付けられている属性"text"の値には、'<'文字を含めることはできません。
+	at com.sun.org.apache.xerces.internal.impl.XMLStreamReaderImpl.next(XMLStreamReaderImpl.java:604)
+	at javax.xml.stream.util.StreamReaderDelegate.next(StreamReaderDelegate.java:88)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2513)
+	... 12 more
+
+1 25, 2018 8:59:16 午後 util.MyLogger log
+警告: FXMLロードエラー
+javafx.fxml.LoadException: Invalid escape sequence.
+/C:/Users/jiror/workspace/github/repos/MVTextEditor/bin/app/main.fxml:315
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2597)
+	at javafx.fxml.FXMLLoader.access$100(FXMLLoader.java:103)
+	at javafx.fxml.FXMLLoader$Element.resolvePrefixedValue(FXMLLoader.java:382)
+	at javafx.fxml.FXMLLoader$Element.processValue(FXMLLoader.java:363)
+	at javafx.fxml.FXMLLoader$Element.processPropertyAttribute(FXMLLoader.java:325)
+	at javafx.fxml.FXMLLoader$Element.processInstancePropertyAttributes(FXMLLoader.java:235)
+	at javafx.fxml.FXMLLoader$ValueElement.processEndElement(FXMLLoader.java:767)
+	at javafx.fxml.FXMLLoader.processEndElement(FXMLLoader.java:2823)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2532)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
+	at app.Main.start(Main.java:54)
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
+	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$173(PlatformImpl.java:294)
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+

@@ -10,10 +10,10 @@ distdir=~/Dropbox/tools/
 ant || { echo failed build jar; exit 1; }
 
 : ZIPファイルにパッケージング
-zip $out_zip -r ./mvte.jar ./README.html ./usage.txt ./java_download.html
+7z a -tzip $out_zip -r ./mvte.jar ./README.html ./usage.txt ./java_download.html
 
 : ZIPファイルをDropboxにアップ
-mv $out_zip $distdir
+#mv $out_zip $distdir
 
 : スクリプトは正常に終了しました
 
