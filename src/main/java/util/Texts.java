@@ -19,8 +19,8 @@ public class Texts {
   public static final String TITLE         = "MV Text Editor";
   public static final String VERSION       = " ver 1.0.0";
   public static final String TITLE_VERSION = TITLE + VERSION;
-  public static final String BASIC_CSS     = "/app/res/css/basic.css";
-  public static final String APP_ICON      = "/app/res/img/app_icon.png";
+  public static final String BASIC_CSS     = "/css/basic.css";
+  public static final String APP_ICON      = "/img/app_icon.png";
 
   public static final String FORMAT_PROPERTIES      = PROP_DIR + "/format.xml";
   public static final String LOGS_PROPERTIES        = PROP_DIR + "/logs.xml";
