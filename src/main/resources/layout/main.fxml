@@ -33,7 +33,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="1280.0" prefWidth="720.0" stylesheets="@/app/res/css/basic.css" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainController" onDragOver="#rootOnDragOver" onDragDropped="#rootOnDragDropped" >
+<VBox prefHeight="1280.0" prefWidth="720.0" stylesheets="@/css/basic.css" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.MainController" onDragOver="#rootOnDragOver" onDragDropped="#rootOnDragDropped" >
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -399,7 +399,7 @@
                               <graphic>
                                 <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/undo.png" />
+                                    <Image url="@../img/undo.png" />
                                   </image>
                                 </ImageView>
                               </graphic>
@@ -426,7 +426,7 @@
                               <graphic>
                                 <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/undo.png" />
+                                    <Image url="@../img/undo.png" />
                                   </image>
                                 </ImageView>
                               </graphic>
@@ -462,7 +462,7 @@
                               <graphic>
                                 <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/gold.png" />
+                                    <Image url="@../img/gold.png" />
                                   </image>
                                 </ImageView>
                               </graphic>
@@ -475,7 +475,7 @@
                               <graphic>
                                 <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/fontup.png" />
+                                    <Image url="@../img/fontup.png" />
                                   </image>
                                 </ImageView>
                               </graphic>
@@ -488,7 +488,7 @@
                               <graphic>
                                 <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/fontdown.png" />
+                                    <Image url="@../img/fontdown.png" />
                                   </image>
                                 </ImageView>
                               </graphic>
@@ -513,7 +513,7 @@
                               <graphic>
                                 <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/start.png" />
+                                    <Image url="@../img/start.png" />
                                   </image>
                                 </ImageView>
                               </graphic>
@@ -526,7 +526,7 @@
                               <graphic>
                                 <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/stop.png" />
+                                    <Image url="@../img/stop.png" />
                                   </image>
                                 </ImageView>
                               </graphic>
@@ -539,7 +539,7 @@
                               <graphic>
                                 <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                   <image>
-                                    <Image url="@res/img/keyboard.png" />
+                                    <Image url="@../img/keyboard.png" />
                                   </image>
                                 </ImageView>
                               </graphic>

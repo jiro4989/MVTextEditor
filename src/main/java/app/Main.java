@@ -42,7 +42,7 @@ public class Main extends Application {
 
     changeLanguages();
 
-    URL location = getClass().getResource("main.fxml");
+    URL location = getClass().getResource("/layout/main.fxml");
     resources = ResourceBundle.getBundle(
         "app.dict"
         , Locale.getDefault()
