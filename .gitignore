@@ -4,3 +4,7 @@
 /doc/
 /input/
 /dist
+/out/
+/build/
+/.gradle/
+/.idea/
