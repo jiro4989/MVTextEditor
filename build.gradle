@@ -61,6 +61,9 @@ dependencies {
     implementation "org.openjfx:javafx-controls:$javafx_version"
     implementation "org.openjfx:javafx-graphics:$javafx_version"
     implementation "org.openjfx:javafx-swing:$javafx_version"
+
+    // 一旦ローカルのjarを指定
+    compile fileTree(dir: 'lib.bk', include: '*.jar')
 }
 
 sourceCompatibility = 14

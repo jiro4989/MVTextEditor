@@ -1,7 +1,7 @@
 package com.jiro4989.mvte.table;
 
 import static util.Texts.*;
-import static app.MainController.formatProperties;
+import static com.jiro4989.mvte.MainController.formatProperties;
 
 import java.io.*;
 import java.util.*;
