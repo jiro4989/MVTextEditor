@@ -79,24 +79,24 @@ jobs:
           unzip jmods.zip
           popd
           ORG_GRADLE_PROJECT_CI_JMODS_DIR="jmods/${os_name}/javafx-jmods-${{ env.JAVAFX_VERSION }}" ./gradlew jlink
-          mkdir tkfm_${os_name}
-          cp -r .github/dist/* LICENSE build/libs/tkfm-*.jar jre tkfm_${os_name}/
+          mkdir mvte_${os_name}
+          cp -r .github/dist/* LICENSE build/libs/mvte-*.jar jre mvte_${os_name}/
           mkdir dist
           case "$os_name" in
             windows)
-              sed -i "s/{tag}/${GITHUB_REF##*/}/g" tkfm_${os_name}/tkfm.bat
-              7z a tkfm_${os_name}.zip tkfm_${os_name}
-              mv tkfm_${os_name}.zip dist/
+              sed -i "s/{tag}/${GITHUB_REF##*/}/g" mvte_${os_name}/mvte.bat
+              7z a mvte_${os_name}.zip mvte_${os_name}
+              mv mvte_${os_name}.zip dist/
               ;;
             osx)
-              sed -i '' "s/{tag}/${GITHUB_REF##*/}/g" tkfm_${os_name}/tkfm
-              tar czf tkfm_${os_name}.tar.gz tkfm_${os_name}
-              mv tkfm_${os_name}.tar.gz dist/
+              sed -i '' "s/{tag}/${GITHUB_REF##*/}/g" mvte_${os_name}/mvte
+              tar czf mvte_${os_name}.tar.gz mvte_${os_name}
+              mv mvte_${os_name}.tar.gz dist/
               ;;
             linux)
-              sed -i "s/{tag}/${GITHUB_REF##*/}/g" tkfm_${os_name}/tkfm
-              tar czf tkfm_${os_name}.tar.gz tkfm_${os_name}
-              mv tkfm_${os_name}.tar.gz dist/
+              sed -i "s/{tag}/${GITHUB_REF##*/}/g" mvte_${os_name}/mvte
+              tar czf mvte_${os_name}.tar.gz mvte_${os_name}
+              mv mvte_${os_name}.tar.gz dist/
               ;;
           esac
         shell: bash
@@ -104,7 +104,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
         with:
-          files: 'dist/tkfm_*.*'
+          files: 'dist/mvte_*.*'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
