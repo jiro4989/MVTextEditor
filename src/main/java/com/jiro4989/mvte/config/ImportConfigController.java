@@ -4,7 +4,7 @@ import jiro.javafx.scene.control.JavaFXCustomizeUtils;
 
 import jiro.java.util.MyProperties;
 
-import app.MainController;
+import com.jiro4989.mvte.MainController;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;

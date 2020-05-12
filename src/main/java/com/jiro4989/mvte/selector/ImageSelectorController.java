@@ -5,7 +5,7 @@ import static util.Texts.*;
 import jiro.javafx.scene.layout.ImageSelectorPane;
 import jiro.javafx.scene.layout.DoubleClickInterface;
 
-import app.MainController;
+import com.jiro4989.mvte.MainController;
 
 import java.util.Optional;
 import java.io.IOException;

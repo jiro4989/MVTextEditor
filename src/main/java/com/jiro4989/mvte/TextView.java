@@ -3,8 +3,8 @@ package com.jiro4989.mvte;
 import static util.Texts.*;
 import static java.util.stream.IntStream.range;
 
-import app.MainController;
-import app.table.TextDB;
+import com.jiro4989.mvte.MainController;
+import com.jiro4989.mvte.table.TextDB;
 
 import java.nio.file.*;
 import javafx.scene.control.*;

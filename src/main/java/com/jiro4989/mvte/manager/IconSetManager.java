@@ -2,7 +2,7 @@ package com.jiro4989.mvte.manager;
 
 import static util.Texts.*;
 
-import app.MainController;
+import com.jiro4989.mvte.MainController;
 
 import java.util.Optional;
 import javafx.collections.*;

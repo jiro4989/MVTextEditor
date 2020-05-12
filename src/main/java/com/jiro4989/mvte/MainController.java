@@ -8,13 +8,13 @@ import jiro.javafx.scene.control.DialogUtils;
 import jiro.javafx.stage.AboutStage;
 import jiro.javafx.stage.MyFileChooser;
 
-import app.config.ImportConfigStage;
-import app.manager.ActorDB;
-import app.manager.EditManager;
-import app.manager.VarDB;
-import app.table.MapInfos;
-import app.table.TextDB;
-import app.table.TextTable;
+import com.jiro4989.mvte.config.ImportConfigStage;
+import com.jiro4989.mvte.manager.ActorDB;
+import com.jiro4989.mvte.manager.EditManager;
+import com.jiro4989.mvte.manager.VarDB;
+import com.jiro4989.mvte.table.MapInfos;
+import com.jiro4989.mvte.table.TextDB;
+import com.jiro4989.mvte.table.TextTable;
 import util.Utils;
 
 import java.io.*;

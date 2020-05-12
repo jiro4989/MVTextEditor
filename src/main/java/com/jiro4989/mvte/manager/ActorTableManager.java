@@ -5,8 +5,8 @@ import static util.Texts.*;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import app.MainController;
-import app.manager.ActorDB;
+import com.jiro4989.mvte.MainController;
+import com.jiro4989.mvte.manager.ActorDB;
 
 import java.io.*;
 import java.util.stream.*;

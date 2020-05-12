@@ -3,12 +3,12 @@ package com.jiro4989.mvte.table;
 import static util.Texts.*;
 import static util.Utils.r;
 
-import app.selector.ImageSelector;
+import com.jiro4989.mvte.selector.ImageSelector;
 import jiro.java.util.MyProperties;
 import jiro.java.lang.Brackets;
 
-import app.Main;
-import app.MainController;
+import com.jiro4989.mvte.Main;
+import com.jiro4989.mvte.MainController;
 import util.JsonUtils;
 
 import java.io.*;

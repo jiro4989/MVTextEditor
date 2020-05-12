@@ -7,8 +7,8 @@ import jiro.java.lang.FormattableText;
 import jiro.java.util.MyProperties;
 import jiro.javafx.stage.MyFileChooser;
 
-import app.table.SavingData;
-import app.table.TextDB;
+import com.jiro4989.mvte.table.SavingData;
+import com.jiro4989.mvte.table.TextDB;
 import util.Texts;
 import util.Utils;
 
