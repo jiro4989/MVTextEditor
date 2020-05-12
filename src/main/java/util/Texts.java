@@ -2,7 +2,7 @@ package util;
 
 import jiro.java.util.MyProperties;
 
-import app.Main;
+import com.jiro4989.mvte.Main;
 
 import java.io.File;
 import java.nio.IntBuffer;

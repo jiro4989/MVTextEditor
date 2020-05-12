@@ -2,7 +2,7 @@ package util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import app.table.*;
+import com.jiro4989.mvte.table.*;
 import java.io.*;
 import java.util.*;
 
