@@ -5,7 +5,6 @@
  * For more details take a look at the Java Quickstart chapter in the Gradle
  * User Manual available at https://docs.gradle.org/6.3/userguide/tutorial_java_projects.html
  */
-
 buildscript {
     ext.javafx_version = '14'
 
@@ -63,7 +62,20 @@ dependencies {
     implementation "org.openjfx:javafx-swing:$javafx_version"
 
     // 一旦ローカルのjarを指定
-    compile fileTree(dir: 'lib.bk', include: '*.jar')
+    // implementation fileTree(dir: 'lib_bk', include: '*.jar')
+
+    implementation files('lib_bk/about-stage-1.0.2.jar')
+    implementation files('lib_bk/dialog-utils-1.0.0.jar')
+    implementation files('lib_bk/formattable-text-1.1.2.jar')
+    implementation files('lib_bk/image-selector-pane-1.0.0.jar')
+    implementation files('lib_bk/jackson-annotations-2.7.1.jar')
+    implementation files('lib_bk/jackson-core-2.7.1.jar')
+    implementation files('lib_bk/jackson-databind-2.7.0.jar')
+    implementation files('lib_bk/javafx-customize-utils-1.0.0.jar')
+    implementation files('lib_bk/my-file-chooser-1.1.1.jar')
+    implementation files('lib_bk/my-properties-1.2.0.jar')
+    implementation files('lib_bk/recent-files-utils-1.0.0.jar')
+    implementation files('lib_bk/resource-bundle-with-utf8-1.0.0.jar')
 }
 
 sourceCompatibility = 14
