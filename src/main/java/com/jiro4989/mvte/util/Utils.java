@@ -1,4 +1,4 @@
-package util;
+package com.jiro4989.mvte.util;
 
 import java.util.Locale;
 import java.util.regex.Matcher;
