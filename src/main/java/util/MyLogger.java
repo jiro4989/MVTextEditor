@@ -13,11 +13,11 @@ public class MyLogger {
   private static final Logger LOG = Logger.getLogger("Logs");
   private static final String FS = File.separator;
 
-  public static void log(Exception ex) {//{{{
+  public static void log(Exception ex) { // {{{
     log("例外発生", ex);
-  }//}}}
+  } // }}}
 
-  public static void log(String errorText, Exception ex) {//{{{
+  public static void log(String errorText, Exception ex) { // {{{
     // エラー発生時の日付のファイル名で保存する。
     LocalDateTime date = LocalDateTime.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy_MM_dd");
@@ -34,6 +34,5 @@ public class MyLogger {
     } catch (IOException e) {
       e.printStackTrace();
     }
-  }//}}}
-
+  } // }}}
 }

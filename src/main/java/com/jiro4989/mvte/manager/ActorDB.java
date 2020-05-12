@@ -6,11 +6,7 @@ public class ActorDB {
   private final IntegerProperty id;
   private final StringProperty name;
 
-  public ActorDB(
-    int id,
-    String name
-    )
-  {
+  public ActorDB(int id, String name) {
     this.id = new SimpleIntegerProperty(id);
     this.name = new SimpleStringProperty(name);
   }

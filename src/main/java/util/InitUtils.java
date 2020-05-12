@@ -15,9 +15,10 @@ public final class InitUtils {
   /**
    * 初期設定フォルダを生成する。<br>
    * 生成した場合はtrueを、すでに存在していた場合はfalseを返す。
+   *
    * @return 生成した or not
    */
-  public static boolean mkPropDirs() {//{{{
+  public static boolean mkPropDirs() { // {{{
     try {
       Path path = Paths.get(".", "properties", JAR_NAME);
       if (Files.notExists(path)) {
@@ -37,19 +38,19 @@ public final class InitUtils {
       Platform.exit();
     }
     return true;
-  }//}}}
+  } // }}}
 
-  public static final void showExceptionDialog(Exception ex) {//{{{
+  public static final void showExceptionDialog(Exception ex) { // {{{
     Alert alert = new Alert(AlertType.ERROR);
     alert.setTitle("Exception Dialog");
     alert.setHeaderText("Look, an Exception Dialog");
     alert.setContentText("Could not find file blabla.txt!");
 
     // Create expandable Exception.
-    //StringWriter sw = new StringWriter();
-    //PrintWriter pw = new PrintWriter(sw);
-    //ex.printStackTrace(pw);
-    //String exceptionText = sw.toString();
+    // StringWriter sw = new StringWriter();
+    // PrintWriter pw = new PrintWriter(sw);
+    // ex.printStackTrace(pw);
+    // String exceptionText = sw.toString();
     String exceptionText = ex.getLocalizedMessage();
 
     Label label = new Label("The exception stacktrace was:");
@@ -73,6 +74,5 @@ public final class InitUtils {
 
     alert.showAndWait();
     Platform.exit();
-  }//}}}
-
+  } // }}}
 }

@@ -2,27 +2,24 @@ package com.jiro4989.mvte.selector;
 
 import static util.Texts.*;
 
-import util.ResourceBundleWithUtf8;
-
 import java.io.*;
 import java.net.URL;
 import java.util.*;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.*;
 import javafx.scene.Scene;
+import javafx.scene.layout.*;
 import javafx.stage.*;
+import util.ResourceBundleWithUtf8;
 
 public class ImageSelector extends Stage {
 
   private ImageSelectorController controller;
 
-  public ImageSelector(String path) {//{{{
+  public ImageSelector(String path) { // {{{
     URL location = getClass().getResource("image_selector.fxml");
-    ResourceBundle resources = ResourceBundle.getBundle(
-        "app.selector.dict"
-        , Locale.getDefault()
-        , ResourceBundleWithUtf8.UTF8_ENCODING_CONTROL
-        );
+    ResourceBundle resources =
+        ResourceBundle.getBundle(
+            "app.selector.dict", Locale.getDefault(), ResourceBundleWithUtf8.UTF8_ENCODING_CONTROL);
     FXMLLoader loader = new FXMLLoader(location, resources);
 
     try {
@@ -42,11 +39,13 @@ public class ImageSelector extends Stage {
     } catch (Exception e) {
       util.MyLogger.log(e);
     }
+  } // }}}
 
-  }//}}}
+  public Optional<String> getSelectedTileString() {
+    return controller.getSelectedTileString();
+  }
 
-  public Optional<String> getSelectedTileString() { return controller.getSelectedTileString(); }
-
-  public boolean isSelected() { return controller.isSelected(); }
-
+  public boolean isSelected() {
+    return controller.isSelected();
+  }
 }

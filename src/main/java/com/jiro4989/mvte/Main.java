@@ -2,13 +2,6 @@ package com.jiro4989.mvte;
 
 import static util.Texts.*;
 
-import jiro.java.util.MyProperties;
-import util.ResourceBundleWithUtf8;
-
-import util.InitUtils;
-import util.Texts;
-import util.Utils;
-
 import java.io.*;
 import java.net.URL;
 import java.nio.file.*;
@@ -19,6 +12,11 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.*;
+import jiro.java.util.MyProperties;
+import util.InitUtils;
+import util.ResourceBundleWithUtf8;
+import util.Texts;
+import util.Utils;
 
 public class Main extends Application {
 
@@ -28,7 +26,7 @@ public class Main extends Application {
   public static ResourceBundle resources;
 
   @Override
-  public void start(Stage primaryStage) {//{{{
+  public void start(Stage primaryStage) { // {{{
     mainStage = primaryStage;
     mainMp = new MyProperties(MAIN_PROPERTIES);
     InitUtils.mkPropDirs();
@@ -43,29 +41,26 @@ public class Main extends Application {
     changeLanguages();
 
     URL location = getClass().getResource("main.fxml");
-    resources = ResourceBundle.getBundle(
-        "app.dict"
-        , Locale.getDefault()
-        , ResourceBundleWithUtf8.UTF8_ENCODING_CONTROL
-        );
+    resources =
+        ResourceBundle.getBundle(
+            "app.dict", Locale.getDefault(), ResourceBundleWithUtf8.UTF8_ENCODING_CONTROL);
     FXMLLoader loader = new FXMLLoader(location, resources);
 
     try {
-      VBox root   = (VBox) loader.load();
-      controller  = (MainController) loader.getController();
+      VBox root = (VBox) loader.load();
+      controller = (MainController) loader.getController();
       Scene scene = new Scene(root, 1280, 720);
 
       String noname = resources.getString("noname");
       primaryStage.setScene(scene);
-      primaryStage.setTitle(noname + " - " +TITLE_VERSION);
+      primaryStage.setTitle(noname + " - " + TITLE_VERSION);
       primaryStage.getIcons().add(new Image(APP_ICON));
       primaryStage.setMinWidth(80.0);
       primaryStage.setMinHeight(140.0);
 
       primaryStage.setOnCloseRequest(e -> controller.closeRequest());
 
-      if (mainMp.load())
-        mainMp.customStage(primaryStage);
+      if (mainMp.load()) mainMp.customStage(primaryStage);
 
       String backgroundItem = resources.getString("background");
       controller.setBackgroundItem(backgroundItem);
@@ -81,11 +76,13 @@ public class Main extends Application {
     } catch (Exception e) {
       util.MyLogger.log(e);
     }
-  }//}}}
+  } // }}}
 
-  public static void main(String... args) { launch(args); }
+  public static void main(String... args) {
+    launch(args);
+  }
 
-  private void changeLanguages() {//{{{
+  private void changeLanguages() { // {{{
     MyProperties preferences = new MyProperties(PREFERENCES_PROPERTIES);
     if (preferences.load()) {
       String ja = Locale.JAPAN.getLanguage();
@@ -94,6 +91,5 @@ public class Main extends Application {
         Locale.setDefault(Locale.ENGLISH);
       }
     }
-  }//}}}
-
+  } // }}}
 }

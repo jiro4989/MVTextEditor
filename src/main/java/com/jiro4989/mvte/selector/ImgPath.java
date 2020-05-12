@@ -8,7 +8,7 @@ class ImgPath {
 
   ImgPath(Path path) {
     this.absPath = path.toString();
-    fileName     = path.getFileName().toString();
+    fileName = path.getFileName().toString();
   }
 
   @Override

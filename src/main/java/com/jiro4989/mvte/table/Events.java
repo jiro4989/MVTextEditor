@@ -11,11 +11,10 @@ public class Events {
   public final int x = 0;
   public final int y = 0;
 
-  public Events(int id, List<TextDB> dbList) {//{{{
+  public Events(int id, List<TextDB> dbList) { // {{{
     this.id = id;
     this.name = String.format("EV%03d", id);
     this.pages = new ArrayList<>();
     this.pages.add(new Pages(dbList));
-  }//}}}
-
+  } // }}}
 }

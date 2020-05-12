@@ -1,13 +1,10 @@
 package com.jiro4989.mvte.config;
 
-import jiro.javafx.scene.control.JavaFXCustomizeUtils;
-
-import jiro.java.util.MyProperties;
-
 import com.jiro4989.mvte.MainController;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import jiro.java.util.MyProperties;
+import jiro.javafx.scene.control.JavaFXCustomizeUtils;
 
 public class ImportConfigController {
 
@@ -27,57 +24,69 @@ public class ImportConfigController {
   @FXML private Button cancelButton;
 
   @FXML
-  private void initialize() {//{{{
+  private void initialize() { // {{{
     JavaFXCustomizeUtils.setIntegerOnlyOption(fontCountTextField);
     MyProperties mp = MainController.formatProperties;
     mp.getProperty("textReturn").map(Boolean::valueOf).ifPresent(this::setCrCheckBox);
-    mp.getProperty("wrapping")  .map(Boolean::valueOf).ifPresent(this::setWrappingCheckBox);
+    mp.getProperty("wrapping").map(Boolean::valueOf).ifPresent(this::setWrappingCheckBox);
     mp.getProperty("textIndent").map(Boolean::valueOf).ifPresent(indentCheckBox::setSelected);
-    mp.getProperty("textReturnSize").map(Integer::parseInt).ifPresent(f -> fontCountTextField.setText("" + f));
-    mp.getProperty("bracketStart").map(Integer::parseInt).ifPresent(i -> bracketsComboBox.getSelectionModel().select(i));
-  }//}}}
+    mp.getProperty("textReturnSize")
+        .map(Integer::parseInt)
+        .ifPresent(f -> fontCountTextField.setText("" + f));
+    mp.getProperty("bracketStart")
+        .map(Integer::parseInt)
+        .ifPresent(i -> bracketsComboBox.getSelectionModel().select(i));
+  } // }}}
 
-  @FXML private void crCheckBoxOnAction()       { setCrCheckBox(crCheckBox.isSelected()); }
-  @FXML private void wrappingCheckBoxOnAction() { setWrappingCheckBox(wrappingCheckBox.isSelected()); }
+  @FXML
+  private void crCheckBoxOnAction() {
+    setCrCheckBox(crCheckBox.isSelected());
+  }
 
-  private void setCrCheckBox(boolean b) {//{{{
+  @FXML
+  private void wrappingCheckBoxOnAction() {
+    setWrappingCheckBox(wrappingCheckBox.isSelected());
+  }
+
+  private void setCrCheckBox(boolean b) { // {{{
     crCheckBox.setSelected(b);
     returnFontLabel.setDisable(!b);
     fontCountTextField.setDisable(!b);
 
     boolean disable = !(crCheckBox.isSelected() && wrappingCheckBox.isSelected());
     indentCheckBox.setDisable(disable);
-  }//}}}
+  } // }}}
 
-  private void setWrappingCheckBox(boolean b) {//{{{
+  private void setWrappingCheckBox(boolean b) { // {{{
     wrappingCheckBox.setSelected(b);
     bracketsLabel.setDisable(!b);
     bracketsComboBox.setDisable(!b);
 
     boolean disable = !(crCheckBox.isSelected() && wrappingCheckBox.isSelected());
     indentCheckBox.setDisable(disable);
-  }//}}}
+  } // }}}
 
-  @FXML private void okButtonOnAction() {
+  @FXML
+  private void okButtonOnAction() {
     propWrite();
     okButton.getScene().getWindow().hide();
   }
 
-  @FXML private void cancelButtonOnAction() {
+  @FXML
+  private void cancelButtonOnAction() {
     okButton.getScene().getWindow().hide();
   }
 
-  private void propWrite() {//{{{
+  private void propWrite() { // {{{
     MyProperties mp = MainController.formatProperties;
-    mp . setProperty("textReturn" , "" + crCheckBox       . isSelected());
-    mp . setProperty("wrapping"   , "" + wrappingCheckBox . isSelected());
-    mp . setProperty("textIndent" , "" + indentCheckBox   . isSelected());
-    mp . setProperty("textReturnSize" , "" + fontCountTextField.getText());
+    mp.setProperty("textReturn", "" + crCheckBox.isSelected());
+    mp.setProperty("wrapping", "" + wrappingCheckBox.isSelected());
+    mp.setProperty("textIndent", "" + indentCheckBox.isSelected());
+    mp.setProperty("textReturnSize", "" + fontCountTextField.getText());
 
     int selectedIndex = bracketsComboBox.getSelectionModel().getSelectedIndex();
-    mp . setProperty("bracketStart" , "" + selectedIndex);
+    mp.setProperty("bracketStart", "" + selectedIndex);
 
     mp.store();
-  }//}}}
-
+  } // }}}
 }

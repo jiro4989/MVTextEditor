@@ -12,21 +12,21 @@ class ImageTableCell extends TableCell<TextDB, String> {
   private final ImageView imageView;
   private static Map<String, Image[]> imageMap;
 
-  ImageTableCell() {//{{{
+  ImageTableCell() { // {{{
     super();
     imageView = new ImageView();
-    vBox      = new VBox();
-    imageMap  = new HashMap<>();
+    vBox = new VBox();
+    imageMap = new HashMap<>();
 
     double s = 60;
     imageView.setFitWidth(s);
     imageView.setFitHeight(s);
     vBox.setSpacing(10);
     vBox.getChildren().add(imageView);
-  }//}}}
+  } // }}}
 
   @Override
-  protected void updateItem(String item, boolean empty) {//{{{
+  protected void updateItem(String item, boolean empty) { // {{{
     super.updateItem(item, empty);
     if (item != null && item.length() != 0) {
       Image[] imgs = imageMap.get(item);
@@ -46,16 +46,16 @@ class ImageTableCell extends TableCell<TextDB, String> {
       return;
     }
     setGraphic(null);
-  }//}}}
+  } // }}}
 
-  private Image[] createTrimmedImages(String path) {//{{{
+  private Image[] createTrimmedImages(String path) { // {{{
     Image img = new Image("file:" + path);
     int imgHeight = (int) img.getHeight();
     int rowMax = imgHeight / HEIGHT;
     int max = rowMax * 4;
 
     Image[] imgs = new Image[max];
-    for (int i=0; i<max; i++) {
+    for (int i = 0; i < max; i++) {
       int x = i % 4 * WIDTH;
       int y = i / 4 * HEIGHT;
       PixelReader reader = img.getPixelReader();
@@ -63,10 +63,9 @@ class ImageTableCell extends TableCell<TextDB, String> {
     }
 
     return imgs;
-  }//}}}
+  } // }}}
 
-  void clear() {//{{{
+  void clear() { // {{{
     imageMap.clear();
-  }//}}}
-
+  } // }}}
 }

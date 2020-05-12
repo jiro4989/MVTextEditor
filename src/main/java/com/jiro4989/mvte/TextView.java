@@ -1,11 +1,9 @@
 package com.jiro4989.mvte;
 
-import static util.Texts.*;
 import static java.util.stream.IntStream.range;
+import static util.Texts.*;
 
-import com.jiro4989.mvte.MainController;
 import com.jiro4989.mvte.table.TextDB;
-
 import java.nio.file.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
@@ -37,127 +35,147 @@ class TextView {
   private final Button nonWaitButton;
 
   TextView(
-      MainController mainController
-      , ImageView faceImageView
-      , TextField actorNameTextField
-      , GridPane colorPickerGridPane
-      , ImageView colorPickerImageView
-      , TextArea editorTextArea
-      , ComboBox<String> backgroundComboBox
-      , ComboBox<String> positionComboBox
-      , Button partyButton     , Button backslashButton
-      , Button goldButton      , Button showGoldButton
-      , Button fontUpButton    , Button fontDownButton
-      , Button wait1_4Button   , Button wait1Button
-      , Button showAllButton   , Button showStopButton
-      , Button waitInputButton , Button nonWaitButton
-      )
-  {//{{{
+      MainController mainController,
+      ImageView faceImageView,
+      TextField actorNameTextField,
+      GridPane colorPickerGridPane,
+      ImageView colorPickerImageView,
+      TextArea editorTextArea,
+      ComboBox<String> backgroundComboBox,
+      ComboBox<String> positionComboBox,
+      Button partyButton,
+      Button backslashButton,
+      Button goldButton,
+      Button showGoldButton,
+      Button fontUpButton,
+      Button fontDownButton,
+      Button wait1_4Button,
+      Button wait1Button,
+      Button showAllButton,
+      Button showStopButton,
+      Button waitInputButton,
+      Button nonWaitButton) { // {{{
 
-    this.mainController       = mainController       ;
-    this.faceImageView        = faceImageView        ;
-    this.actorNameTextField   = actorNameTextField   ;
-    this.colorPickerGridPane  = colorPickerGridPane  ;
-    this.colorPickerImageView = colorPickerImageView ;
-    this.editorTextArea       = editorTextArea       ;
-    this.backgroundComboBox   = backgroundComboBox   ;
-    this.positionComboBox     = positionComboBox     ;
+    this.mainController = mainController;
+    this.faceImageView = faceImageView;
+    this.actorNameTextField = actorNameTextField;
+    this.colorPickerGridPane = colorPickerGridPane;
+    this.colorPickerImageView = colorPickerImageView;
+    this.editorTextArea = editorTextArea;
+    this.backgroundComboBox = backgroundComboBox;
+    this.positionComboBox = positionComboBox;
 
-    this.partyButton     = partyButton     ;
-    this.backslashButton = backslashButton ;
-    this.goldButton      = goldButton      ;
-    this.showGoldButton  = showGoldButton  ;
-    this.fontUpButton    = fontUpButton    ;
-    this.fontDownButton  = fontDownButton  ;
-    this.wait1_4Button   = wait1_4Button   ;
-    this.wait1Button     = wait1Button     ;
-    this.showAllButton   = showAllButton   ;
-    this.showStopButton  = showStopButton  ;
-    this.waitInputButton = waitInputButton ;
-    this.nonWaitButton   = nonWaitButton   ;
+    this.partyButton = partyButton;
+    this.backslashButton = backslashButton;
+    this.goldButton = goldButton;
+    this.showGoldButton = showGoldButton;
+    this.fontUpButton = fontUpButton;
+    this.fontDownButton = fontDownButton;
+    this.wait1_4Button = wait1_4Button;
+    this.wait1Button = wait1Button;
+    this.showAllButton = showAllButton;
+    this.showStopButton = showStopButton;
+    this.waitInputButton = waitInputButton;
+    this.nonWaitButton = nonWaitButton;
 
     // カラーピッカーをダブルクリックして選択範囲を色文字列でくくる
-    colorPickerImageView.setOnMouseClicked(e -> {//{{{
-      if (e.getClickCount() == 2) {
-        int colorIndex = calcColorIndex(e);
-        String startText = String.format("\\c[%d]", colorIndex);
-        insertWrappingText(startText, DEFAULT_COLOR);
-      }
-    });//}}}
+    colorPickerImageView.setOnMouseClicked(
+        e -> { // {{{
+          if (e.getClickCount() == 2) {
+            int colorIndex = calcColorIndex(e);
+            String startText = String.format("\\c[%d]", colorIndex);
+            insertWrappingText(startText, DEFAULT_COLOR);
+          }
+        }); // }}}
 
-    actorNameTextField.textProperty().addListener((obs, oldVal, newVal) -> {
-      mainController.updateActorNameOfTable(newVal);
-    });
+    actorNameTextField
+        .textProperty()
+        .addListener(
+            (obs, oldVal, newVal) -> {
+              mainController.updateActorNameOfTable(newVal);
+            });
 
-    editorTextArea.textProperty().addListener((obs, oldVal, newVal) -> {
-      mainController.updateTextOfTable(newVal);
-    });
+    editorTextArea
+        .textProperty()
+        .addListener(
+            (obs, oldVal, newVal) -> {
+              mainController.updateTextOfTable(newVal);
+            });
 
-    backgroundComboBox.valueProperty().addListener((obs, oldVal, newVal) -> {
-      mainController.updateBackgroundOfTable(newVal);
-    });
+    backgroundComboBox
+        .valueProperty()
+        .addListener(
+            (obs, oldVal, newVal) -> {
+              mainController.updateBackgroundOfTable(newVal);
+            });
 
-    positionComboBox.valueProperty().addListener((obs, oldVal, newVal) -> {
-      mainController.updatePositionOfTable(newVal);
-    });
+    positionComboBox
+        .valueProperty()
+        .addListener(
+            (obs, oldVal, newVal) -> {
+              mainController.updatePositionOfTable(newVal);
+            });
 
-    backgroundComboBox.setOnScroll(e -> {
-      changeComboBoxItemWithMouseScroll(e, backgroundComboBox);
-    });
+    backgroundComboBox.setOnScroll(
+        e -> {
+          changeComboBoxItemWithMouseScroll(e, backgroundComboBox);
+        });
 
-    positionComboBox.setOnScroll(e -> {
-      changeComboBoxItemWithMouseScroll(e, positionComboBox);
-    });
+    positionComboBox.setOnScroll(
+        e -> {
+          changeComboBoxItemWithMouseScroll(e, positionComboBox);
+        });
 
-    //partyButton     . setOnAction(e -> insertText("\\"));
+    // partyButton     . setOnAction(e -> insertText("\\"));
 
-    backslashButton . setOnAction(e -> insertText("\\\\"               ) ) ;
-    goldButton      . setOnAction(e -> insertText("\\G"                ) ) ;
-    showGoldButton  . setOnAction(e -> insertText("\\$"                ) ) ;
-    fontUpButton    . setOnAction(e -> insertWrappingText("\\{", "\\}" ) ) ;
-    fontDownButton  . setOnAction(e -> insertText("\\}"                ) ) ;
-    wait1_4Button   . setOnAction(e -> insertText("\\."                ) ) ;
-    wait1Button     . setOnAction(e -> insertText("\\|"                ) ) ;
-    showAllButton   . setOnAction(e -> insertWrappingText("\\>", "\\<" ) ) ;
-    showStopButton  . setOnAction(e -> insertText("\\<"                ) ) ;
-    waitInputButton . setOnAction(e -> insertText("\\!"                ) ) ;
-    nonWaitButton   . setOnAction(e -> insertText("\\^"                ) ) ;
-
-  }//}}}
+    backslashButton.setOnAction(e -> insertText("\\\\"));
+    goldButton.setOnAction(e -> insertText("\\G"));
+    showGoldButton.setOnAction(e -> insertText("\\$"));
+    fontUpButton.setOnAction(e -> insertWrappingText("\\{", "\\}"));
+    fontDownButton.setOnAction(e -> insertText("\\}"));
+    wait1_4Button.setOnAction(e -> insertText("\\."));
+    wait1Button.setOnAction(e -> insertText("\\|"));
+    showAllButton.setOnAction(e -> insertWrappingText("\\>", "\\<"));
+    showStopButton.setOnAction(e -> insertText("\\<"));
+    waitInputButton.setOnAction(e -> insertText("\\!"));
+    nonWaitButton.setOnAction(e -> insertText("\\^"));
+  } // }}}
 
   // package methods
 
-  void focusEditor() { editorTextArea.requestFocus(); }
+  void focusEditor() {
+    editorTextArea.requestFocus();
+  }
 
-  void update(TextDB db) {//{{{
-    String icon      = db.iconProperty().get();
+  void update(TextDB db) { // {{{
+    String icon = db.iconProperty().get();
     String actorName = db.actorNameProperty().get();
-    String text      = db.textProperty().get();
-    String bg        = db.backgroundProperty().get();
-    String pos       = db.positionProperty().get();
+    String text = db.textProperty().get();
+    String bg = db.backgroundProperty().get();
+    String pos = db.positionProperty().get();
 
     actorNameTextField.setText(actorName);
     editorTextArea.setText(text);
     backgroundComboBox.setValue(bg);
     positionComboBox.setValue(pos);
 
-    if (icon != null && icon.length() != 0) {//{{{
-      String[] array      = icon.split(":");
-      String path         = createFilePath(array);
+    if (icon != null && icon.length() != 0) { // {{{
+      String[] array = icon.split(":");
+      String path = createFilePath(array);
 
       if (Files.exists(Paths.get(path))) {
         Image originalImage = new Image("file:" + path);
-        int index           = Integer.parseInt(array[array.length - 1]);
-        Image newImage      = createTrimmedImage(originalImage, index);
+        int index = Integer.parseInt(array[array.length - 1]);
+        Image newImage = createTrimmedImage(originalImage, index);
         faceImageView.setImage(newImage);
         return;
       }
-    }//}}}
+    } // }}}
 
     faceImageView.setImage(null);
-  }//}}}
+  } // }}}
 
-  void setColorPickerImage(String path) {//{{{
+  void setColorPickerImage(String path) { // {{{
     Image src = new Image("file:" + path);
     PixelReader r = src.getPixelReader();
     int std = (int) src.getWidth();
@@ -173,23 +191,35 @@ class TextView {
     PixelWriter writer = wImage.getPixelWriter();
 
     final int H = std / 16;
-    range(0, 4).forEach(i -> {
-      int y2 = i * H;
-      int[] pixels = getTrimmedPixels(trimmedImg, 0, y2, w, H);
-      int tmpX = i % 2 * w;
-      int tmpY = i / 2 * H;
-      writer.setPixels(tmpX, tmpY, w, H, FORMAT, pixels, 0, w);
-    });
+    range(0, 4)
+        .forEach(
+            i -> {
+              int y2 = i * H;
+              int[] pixels = getTrimmedPixels(trimmedImg, 0, y2, w, H);
+              int tmpX = i % 2 * w;
+              int tmpY = i / 2 * H;
+              writer.setPixels(tmpX, tmpY, w, H, FORMAT, pixels, 0, w);
+            });
 
     colorPickerImageView.setImage(wImage);
-  }//}}}
+  } // }}}
 
-  void insertVarId(    int id) { insertText(String.format("\\v[%d]", id)); }
-  void insertActorId(  int id) { insertText(String.format("\\n[%d]", id)); }
-  void insertIconSetId(int id) { insertText(String.format("\\i[%d]", id)); }
+  void insertVarId(int id) {
+    insertText(String.format("\\v[%d]", id));
+  }
 
-  void insertVarIdToActor(    int id) {}
-  void insertActorIdToActor(  int id) {}
+  void insertActorId(int id) {
+    insertText(String.format("\\n[%d]", id));
+  }
+
+  void insertIconSetId(int id) {
+    insertText(String.format("\\i[%d]", id));
+  }
+
+  void insertVarIdToActor(int id) {}
+
+  void insertActorIdToActor(int id) {}
+
   void insertIconSetIdToActor(int id) {}
 
   void insertActorIdToActorNameTextField(int id, String[] bra) {
@@ -198,18 +228,19 @@ class TextView {
 
   // private methods
 
-  private void changeComboBoxItemWithMouseScroll(ScrollEvent e, ComboBox<? extends Object> comboBox) {//{{{
+  private void changeComboBoxItemWithMouseScroll(
+      ScrollEvent e, ComboBox<? extends Object> comboBox) { // {{{
     if (0 < e.getDeltaY()) {
       comboBox.getSelectionModel().selectPrevious();
     } else {
       comboBox.getSelectionModel().selectNext();
     }
-  }//}}}
+  } // }}}
 
-  private void insertWrappingText(String startText, String endText) {//{{{
+  private void insertWrappingText(String startText, String endText) { // {{{
     IndexRange range = editorTextArea.getSelection();
     int start = range.getStart();
-    int end   = range.getEnd();
+    int end = range.getEnd();
 
     if (start != end) {
       editorTextArea.insertText(end, endText);
@@ -217,53 +248,55 @@ class TextView {
       return;
     }
     editorTextArea.insertText(start, startText);
-  }//}}}
+  } // }}}
 
-  private void insertText(String text) {//{{{
+  private void insertText(String text) { // {{{
     IndexRange range = editorTextArea.getSelection();
     int start = range.getStart();
     editorTextArea.insertText(start, text);
-  }//}}}
+  } // }}}
 
-  private void insertTextToActorNameTextField(String text) {//{{{
-    //IndexRange range = editorTextArea.getSelection();
-    //int start = range.getStart();
-    //actorNameTextField.insertText(start, text);
+  private void insertTextToActorNameTextField(String text) { // {{{
+    // IndexRange range = editorTextArea.getSelection();
+    // int start = range.getStart();
+    // actorNameTextField.insertText(start, text);
     actorNameTextField.setText(text);
-  }//}}}
+  } // }}}
 
-  private int[] getTrimmedPixels(Image src, int x, int y , int w, int h) {//{{{
+  private int[] getTrimmedPixels(Image src, int x, int y, int w, int h) { // {{{
     PixelReader r = src.getPixelReader();
     Image newImg = new WritableImage(r, x, y, w, h);
 
     int[] pixels = new int[w * h];
     PixelReader rr = newImg.getPixelReader();
-    rr.getPixels(0, 0, w, h , FORMAT, pixels, 0, w);
+    rr.getPixels(0, 0, w, h, FORMAT, pixels, 0, w);
     return pixels;
-  }//}}}
+  } // }}}
 
-  private int calcColorIndex(MouseEvent e) {//{{{
-    int x  = (int) e.getX();
-    int y  = (int) e.getY();
+  private int calcColorIndex(MouseEvent e) { // {{{
+    int x = (int) e.getX();
+    int y = (int) e.getY();
     int xx = x / COLOR_TILE_SIZE;
     int yy = y / COLOR_TILE_SIZE;
     return xx + yy * COLOR_PICKER_COLUMN_SIZE;
-  }//}}}
+  } // }}}
 
   // getter
 
-  String getActorName() { return actorNameTextField.getText(); }
-  String getText()      { return editorTextArea.getText(); }
+  String getActorName() {
+    return actorNameTextField.getText();
+  }
 
-  /**
-   * 元になる画像から番号でトリミングした位置の画像を返す。
-   */
-  private Image createTrimmedImage(Image originalImage, int index) {//{{{
+  String getText() {
+    return editorTextArea.getText();
+  }
+
+  /** 元になる画像から番号でトリミングした位置の画像を返す。 */
+  private Image createTrimmedImage(Image originalImage, int index) { // {{{
     PixelReader reader = originalImage.getPixelReader();
     int x = index % COLUMN * WIDTH;
     int y = index / COLUMN * HEIGHT;
     Image newImage = new WritableImage(reader, x, y, WIDTH, HEIGHT);
     return newImage;
-  }//}}}
-
+  } // }}}
 }

@@ -6,11 +6,7 @@ public class VarDB {
   private IntegerProperty id;
   private StringProperty name;
 
-  public VarDB(
-      int id,
-      String name
-      )
-  {
+  public VarDB(int id, String name) {
     this.id = new SimpleIntegerProperty(id);
     this.name = new SimpleStringProperty(name);
   }
@@ -25,6 +21,7 @@ public class VarDB {
   public IntegerProperty idProperty() {
     return id;
   }
+
   public StringProperty nameProperty() {
     return name;
   }
@@ -35,6 +32,7 @@ public class VarDB {
   public void setId(int id) {
     idProperty().set(id);
   }
+
   public void setName(String name) {
     nameProperty().set(name);
   }

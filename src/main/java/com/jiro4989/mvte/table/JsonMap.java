@@ -8,18 +8,24 @@ public class JsonMap {
   public final boolean autoplayBgs = false;
   public final String battleback1Name = "";
   public final String battleback2Name = "";
-  public final Map<String, Object> bgm = new HashMap<String, Object>() {{
-    put("name"   , "");
-    put("pan"    , 0);
-    put("pitch"  , 100);
-    put("volume" , 90);
-  }};
-  public final Map<String, Object> bgs = new HashMap<String, Object>() {{
-    put("name"   , "");
-    put("pan"    , 0);
-    put("pitch"  , 100);
-    put("volume" , 90);
-  }};
+  public final Map<String, Object> bgm =
+      new HashMap<String, Object>() {
+        {
+          put("name", "");
+          put("pan", 0);
+          put("pitch", 100);
+          put("volume", 90);
+        }
+      };
+  public final Map<String, Object> bgs =
+      new HashMap<String, Object>() {
+        {
+          put("name", "");
+          put("pan", 0);
+          put("pitch", 100);
+          put("volume", 90);
+        }
+      };
   public final boolean disableDashing = false;
   public final String displayName = "";
   public final List<String> encounterList = new ArrayList<>();
@@ -44,6 +50,4 @@ public class JsonMap {
     events.add(null);
     events.add(new Events(id, dbList));
   }
-
 }
-
