@@ -68,7 +68,7 @@ targetCompatibility = 14
 
 application {
     // Define the main class for the application.
-    mainClassName = 'com.jiro4989.tkfm.Main'
+    mainClassName = 'com.jiro4989.mvte.Main'
 }
 
 compileJava {
@@ -81,10 +81,10 @@ javafx {
 
 jar {
   manifest {
-    attributes 'Main-Class': 'com.jiro4989.tkfm.Main'
+    attributes 'Main-Class': 'com.jiro4989.mvte.Main'
   }
 
-  archiveBaseName = 'tkfm'
+  archiveBaseName = 'mvte'
 
   from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
 }
@@ -127,7 +127,7 @@ if (project.hasProperty('CI_COMMIT_HASH')) {
 def VERSION_JAVA_FILE = 'Version.java'
 def SRC_FILE = 'template/' + VERSION_JAVA_FILE
 
-def DST_DIR = 'src/main/java/com/jiro4989/tkfm'
+def DST_DIR = 'src/main/java/com/jiro4989/mvte'
 def DST_FILE = DST_DIR + '/' + VERSION_JAVA_FILE
 
 // Version.javaにバージョン番号とコミットハッシュを埋め込んでコピーする。
@@ -179,7 +179,7 @@ task runApp(type: Exec, dependsOn: dumpDependencies) {
   commandLine 'java',
     '--module-path', libDir,
     '--add-modules', appMods.join(','),
-    '-jar', 'build/libs/tkfm-dev.jar'
+    '-jar', 'build/libs/mvte-dev.jar'
 }
 
 def jmodsDir = './jmods/javafx-jmods-11.0.2'
