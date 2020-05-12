@@ -121,13 +121,13 @@ class MyMenuBar {
                           List<TextDB> dbs = SavingData.convertTextDB(file);
                           mainController.setTextDB(dbs);
                         } catch (SAXException e) {
-                          util.MyLogger.log(e);
+                          com.jiro4989.mvte.util.MyLogger.log(e);
                         } catch (ParserConfigurationException e) {
-                          util.MyLogger.log("XMLパースできませんでしたエラー", e);
+                          com.jiro4989.mvte.util.MyLogger.log("XMLパースできませんでしたエラー", e);
                         } catch (IOException e) {
-                          util.MyLogger.log("ファイル読み込みに失敗しましたエラー", e);
+                          com.jiro4989.mvte.util.MyLogger.log("ファイル読み込みに失敗しましたエラー", e);
                         } catch (Exception e) {
-                          util.MyLogger.log(e);
+                          com.jiro4989.mvte.util.MyLogger.log(e);
                         }
                       });
             });
@@ -164,15 +164,15 @@ class MyMenuBar {
         saveMenuItem.setDisable(false);
         saveFileOpt = Optional.ofNullable(file);
       } catch (FileNotFoundException e) {
-        util.MyLogger.log("ファイルが見つかりませんでしたエラー", e);
+        com.jiro4989.mvte.util.MyLogger.log("ファイルが見つかりませんでしたエラー", e);
       } catch (SAXException e) {
-        util.MyLogger.log(e);
+        com.jiro4989.mvte.util.MyLogger.log(e);
       } catch (ParserConfigurationException e) {
-        util.MyLogger.log("XMLパースできませんでしたエラー", e);
+        com.jiro4989.mvte.util.MyLogger.log("XMLパースできませんでしたエラー", e);
       } catch (IOException e) {
-        util.MyLogger.log("ファイル読み込みに失敗しましたエラー", e);
+        com.jiro4989.mvte.util.MyLogger.log("ファイル読み込みに失敗しましたエラー", e);
       } catch (Exception e) {
-        util.MyLogger.log(e);
+        com.jiro4989.mvte.util.MyLogger.log(e);
       }
     }
   } // }}}
@@ -206,12 +206,12 @@ class MyMenuBar {
       // importするtxtファイルをタイトルにセットするのは適当ではない？
       // Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
     } catch (UnsupportedEncodingException uee) {
-      util.MyLogger.log("ファイルのエンコードがUTF-8でもSJISでもなかったよエラー", uee);
+      com.jiro4989.mvte.util.MyLogger.log("ファイルのエンコードがUTF-8でもSJISでもなかったよエラー", uee);
       Utils.showFileEncodingDialog();
     } catch (IOException ioe) {
-      util.MyLogger.log("ファイル読み込みに失敗しましたエラー", ioe);
+      com.jiro4989.mvte.util.MyLogger.log("ファイル読み込みに失敗しましたエラー", ioe);
     } catch (Exception e) {
-      util.MyLogger.log(e);
+      com.jiro4989.mvte.util.MyLogger.log(e);
     }
   } // }}}
 
@@ -274,21 +274,21 @@ class MyMenuBar {
 
                 Utils.showSuccessDialog();
               } catch (FileNotFoundException e) {
-                util.MyLogger.log("ファイルが見つかりませんでしたエラー", e);
+                com.jiro4989.mvte.util.MyLogger.log("ファイルが見つかりませんでしたエラー", e);
 
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText("ファイルが見つかりませんでした。");
                 alert.setContentText("作者に報告してください。");
                 alert.showAndWait();
               } catch (IOException e) {
-                util.MyLogger.log("ファイル出力に失敗しましたエラー", e);
+                com.jiro4989.mvte.util.MyLogger.log("ファイル出力に失敗しましたエラー", e);
 
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText("ファイル出力エラー。");
                 alert.setContentText("ファイルを生成する権限があるか、あるいはファイル出力先を正常に指定できているか確認してください。");
                 alert.showAndWait();
               } catch (Exception e) {
-                util.MyLogger.log(e);
+                com.jiro4989.mvte.util.MyLogger.log(e);
               }
             });
   } // }}}
@@ -299,10 +299,10 @@ class MyMenuBar {
       mainController.saveXml(file);
       setRecentFile(file);
     } catch (ParserConfigurationException pce) {
-      util.MyLogger.log("XMLパースできませんでしたエラー", pce);
+      com.jiro4989.mvte.util.MyLogger.log("XMLパースできませんでしたエラー", pce);
       Utils.showParsingErrorDialog();
     } catch (Exception e) {
-      util.MyLogger.log(e);
+      com.jiro4989.mvte.util.MyLogger.log(e);
     }
   } // }}}
 

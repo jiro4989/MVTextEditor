@@ -35,9 +35,9 @@ public class ImageSelector extends Stage {
 
       controller.setImage(path);
     } catch (IOException e) {
-      util.MyLogger.log("レイアウトファイル読み込みに失敗しましたエラー", e);
+      com.jiro4989.mvte.util.MyLogger.log("レイアウトファイル読み込みに失敗しましたエラー", e);
     } catch (Exception e) {
-      util.MyLogger.log(e);
+      com.jiro4989.mvte.util.MyLogger.log(e);
     }
   } // }}}
 

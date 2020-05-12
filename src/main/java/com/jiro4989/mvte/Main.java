@@ -72,9 +72,9 @@ public class Main extends Application {
       controller.changeFontSizes();
       controller.setRecentFiles();
     } catch (IOException e) {
-      util.MyLogger.log("FXMLロードエラー", e);
+      com.jiro4989.mvte.util.MyLogger.log("FXMLロードエラー", e);
     } catch (Exception e) {
-      util.MyLogger.log(e);
+      com.jiro4989.mvte.util.MyLogger.log(e);
     }
   } // }}}
 

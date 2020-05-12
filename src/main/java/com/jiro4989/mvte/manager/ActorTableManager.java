@@ -135,7 +135,7 @@ class ActorTableManager {
                 masterActorDBs.add(new ActorDB(i, name));
               });
     } catch (IOException e) {
-      util.MyLogger.log(e);
+      com.jiro4989.mvte.util.MyLogger.log(e);
     }
   } // }}}
 }

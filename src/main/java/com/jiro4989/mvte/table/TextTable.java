@@ -131,9 +131,9 @@ public class TextTable {
                 JsonUtils.updateMapInfos(
                     new File(dir + SP + "data" + SP + "MapInfos.json"), file.getName(), id);
               } catch (IOException e) {
-                util.MyLogger.log("ファイル出力に失敗しましたエラー", e);
+                com.jiro4989.mvte.util.MyLogger.log("ファイル出力に失敗しましたエラー", e);
               } catch (Exception e) {
-                util.MyLogger.log(e);
+                com.jiro4989.mvte.util.MyLogger.log(e);
               }
             });
   } // }}}
