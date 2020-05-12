@@ -1,6 +1,6 @@
-package util;
+package com.jiro4989.mvte.util;
 
-import static util.Texts.*;
+import static com.jiro4989.mvte.util.Texts.*;
 
 import java.io.*;
 import java.nio.file.*;

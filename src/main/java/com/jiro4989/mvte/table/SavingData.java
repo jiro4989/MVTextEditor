@@ -91,13 +91,13 @@ public class SavingData {
       transformer.transform(src, result);
       fos.close();
     } catch (TransformerConfigurationException e) {
-      util.MyLogger.log(e);
+      com.jiro4989.mvte.util.MyLogger.log(e);
     } catch (FileNotFoundException e) {
-      util.MyLogger.log("ファイルが見つかりませんでしたエラー", e);
+      com.jiro4989.mvte.util.MyLogger.log("ファイルが見つかりませんでしたエラー", e);
     } catch (TransformerException e) {
-      util.MyLogger.log(e);
+      com.jiro4989.mvte.util.MyLogger.log(e);
     } catch (Exception e) {
-      util.MyLogger.log(e);
+      com.jiro4989.mvte.util.MyLogger.log(e);
     }
   } // }}}
 }

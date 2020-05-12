@@ -1,7 +1,8 @@
 package com.jiro4989.mvte.config;
 
-import static util.Texts.*;
+import static com.jiro4989.mvte.util.Texts.*;
 
+import com.jiro4989.mvte.util.ResourceBundleWithUtf8;
 import java.io.*;
 import java.net.URL;
 import java.util.*;
@@ -9,7 +10,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.stage.*;
-import util.ResourceBundleWithUtf8;
 
 public class ImportConfigStage extends Stage {
 
@@ -36,7 +36,7 @@ public class ImportConfigStage extends Stage {
 
       sizeToScene();
     } catch (IOException e) {
-      util.MyLogger.log(e);
+      com.jiro4989.mvte.util.MyLogger.log(e);
     }
   } // }}}
 }

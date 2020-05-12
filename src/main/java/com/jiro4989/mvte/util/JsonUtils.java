@@ -1,4 +1,4 @@
-package util;
+package com.jiro4989.mvte.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jiro4989.mvte.table.*;

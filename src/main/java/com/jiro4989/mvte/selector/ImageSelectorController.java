@@ -1,6 +1,6 @@
 package com.jiro4989.mvte.selector;
 
-import static util.Texts.*;
+import static com.jiro4989.mvte.util.Texts.*;
 
 import com.jiro4989.mvte.MainController;
 import java.io.IOException;
@@ -64,9 +64,9 @@ public class ImageSelectorController {
                 try {
                   Files.list(path).forEach(this::setFilePath);
                 } catch (IOException e) {
-                  util.MyLogger.log("画像ファイル読み込みエラー", e);
+                  com.jiro4989.mvte.util.MyLogger.log("画像ファイル読み込みエラー", e);
                 } catch (Exception e) {
-                  util.MyLogger.log(e);
+                  com.jiro4989.mvte.util.MyLogger.log(e);
                 }
               }
 

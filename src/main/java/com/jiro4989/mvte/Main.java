@@ -1,7 +1,11 @@
 package com.jiro4989.mvte;
 
-import static util.Texts.*;
+import static com.jiro4989.mvte.util.Texts.*;
 
+import com.jiro4989.mvte.util.InitUtils;
+import com.jiro4989.mvte.util.ResourceBundleWithUtf8;
+import com.jiro4989.mvte.util.Texts;
+import com.jiro4989.mvte.util.Utils;
 import java.io.*;
 import java.net.URL;
 import java.nio.file.*;
@@ -13,10 +17,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.*;
 import jiro.java.util.MyProperties;
-import util.InitUtils;
-import util.ResourceBundleWithUtf8;
-import util.Texts;
-import util.Utils;
 
 public class Main extends Application {
 
@@ -72,9 +72,9 @@ public class Main extends Application {
       controller.changeFontSizes();
       controller.setRecentFiles();
     } catch (IOException e) {
-      util.MyLogger.log("FXMLロードエラー", e);
+      com.jiro4989.mvte.util.MyLogger.log("FXMLロードエラー", e);
     } catch (Exception e) {
-      util.MyLogger.log(e);
+      com.jiro4989.mvte.util.MyLogger.log(e);
     }
   } // }}}
 

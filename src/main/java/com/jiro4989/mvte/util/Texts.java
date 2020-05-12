@@ -1,4 +1,4 @@
-package util;
+package com.jiro4989.mvte.util;
 
 import com.jiro4989.mvte.Main;
 import java.io.File;

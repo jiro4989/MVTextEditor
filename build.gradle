@@ -75,7 +75,6 @@ dependencies {
     implementation files('lib_bk/my-file-chooser-1.1.1.jar')
     implementation files('lib_bk/my-properties-1.2.0.jar')
     implementation files('lib_bk/recent-files-utils-1.0.0.jar')
-    implementation files('lib_bk/resource-bundle-with-utf8-1.0.0.jar')
 }
 
 sourceCompatibility = 14

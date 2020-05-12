@@ -1,10 +1,11 @@
 package com.jiro4989.mvte.table;
 
-import static util.Texts.*;
-import static util.Utils.r;
+import static com.jiro4989.mvte.util.Texts.*;
+import static com.jiro4989.mvte.util.Utils.r;
 
 import com.jiro4989.mvte.MainController;
 import com.jiro4989.mvte.selector.ImageSelector;
+import com.jiro4989.mvte.util.JsonUtils;
 import java.io.*;
 import java.util.*;
 import java.util.stream.*;
@@ -17,7 +18,6 @@ import javafx.scene.input.*;
 import javax.xml.parsers.ParserConfigurationException;
 import jiro.java.lang.Brackets;
 import jiro.java.util.MyProperties;
-import util.JsonUtils;
 
 public class TextTable {
 
@@ -131,9 +131,9 @@ public class TextTable {
                 JsonUtils.updateMapInfos(
                     new File(dir + SP + "data" + SP + "MapInfos.json"), file.getName(), id);
               } catch (IOException e) {
-                util.MyLogger.log("ファイル出力に失敗しましたエラー", e);
+                com.jiro4989.mvte.util.MyLogger.log("ファイル出力に失敗しましたエラー", e);
               } catch (Exception e) {
-                util.MyLogger.log(e);
+                com.jiro4989.mvte.util.MyLogger.log(e);
               }
             });
   } // }}}
