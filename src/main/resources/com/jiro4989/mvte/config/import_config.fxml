@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<BorderPane fx:controller="app.config.ImportConfigController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="com.jiro4989.mvte.config.ImportConfigController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1">
   <bottom>
     <VBox BorderPane.alignment="CENTER">
       <children>

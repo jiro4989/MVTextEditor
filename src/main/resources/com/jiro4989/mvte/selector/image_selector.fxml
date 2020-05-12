@@ -18,7 +18,7 @@
 
 <?import jiro.javafx.scene.layout.ImageSelectorPane?>
 
-<BorderPane fx:controller="app.selector.ImageSelectorController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="com.jiro4989.mvte.selector.ImageSelectorController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
   <center>
     <SplitPane fx:id="splitPane" dividerPositions="0.29797979797979796" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
       <items>
