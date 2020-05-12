@@ -1,4 +1,4 @@
-package app.table;
+package com.jiro4989.mvte.table;
 
 import java.util.*;
 

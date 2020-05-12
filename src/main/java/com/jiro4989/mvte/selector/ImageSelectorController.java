@@ -1,4 +1,4 @@
-package app.selector;
+package com.jiro4989.mvte.selector;
 
 import static util.Texts.*;
 

@@ -1,4 +1,4 @@
-package app;
+package com.jiro4989.mvte;
 
 import jiro.java.lang.Brackets;
 import jiro.java.lang.FormattableText;

@@ -1,4 +1,4 @@
-package app.manager;
+package com.jiro4989.mvte.manager;
 
 import javafx.beans.property.*;
 

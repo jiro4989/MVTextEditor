@@ -1,4 +1,4 @@
-package app.config;
+package com.jiro4989.mvte.config;
 
 import jiro.javafx.scene.control.JavaFXCustomizeUtils;
 
