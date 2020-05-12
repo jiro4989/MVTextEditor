@@ -1,6 +1,6 @@
 package com.jiro4989.mvte.manager;
 
-import static util.Texts.*;
+import static com.jiro4989.mvte.util.Texts.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

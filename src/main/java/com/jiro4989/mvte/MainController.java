@@ -1,6 +1,6 @@
 package com.jiro4989.mvte;
 
-import static util.Texts.*;
+import static com.jiro4989.mvte.util.Texts.*;
 
 import com.jiro4989.mvte.config.ImportConfigStage;
 import com.jiro4989.mvte.manager.ActorDB;
@@ -26,7 +26,7 @@ import jiro.java.util.MyProperties;
 import jiro.java.util.RecentFilesUtils;
 import jiro.javafx.scene.control.DialogUtils;
 import jiro.javafx.stage.AboutStage;
-import util.Utils;
+import com.jiro4989.mvte.util.Utils;
 
 public class MainController {
 

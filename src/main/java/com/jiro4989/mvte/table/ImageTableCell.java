@@ -1,6 +1,6 @@
 package com.jiro4989.mvte.table;
 
-import static util.Texts.*;
+import static com.jiro4989.mvte.util.Texts.*;
 
 import java.util.*;
 import javafx.scene.control.*;

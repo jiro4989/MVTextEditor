@@ -1,6 +1,6 @@
 package com.jiro4989.mvte.selector;
 
-import static util.Texts.*;
+import static com.jiro4989.mvte.util.Texts.*;
 
 import com.jiro4989.mvte.MainController;
 import java.io.IOException;

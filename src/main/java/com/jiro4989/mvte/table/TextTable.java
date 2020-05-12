@@ -1,7 +1,7 @@
 package com.jiro4989.mvte.table;
 
-import static util.Texts.*;
-import static util.Utils.r;
+import static com.jiro4989.mvte.util.Texts.*;
+import static com.jiro4989.mvte.util.Utils.r;
 
 import com.jiro4989.mvte.MainController;
 import com.jiro4989.mvte.selector.ImageSelector;
@@ -17,7 +17,7 @@ import javafx.scene.input.*;
 import javax.xml.parsers.ParserConfigurationException;
 import jiro.java.lang.Brackets;
 import jiro.java.util.MyProperties;
-import util.JsonUtils;
+import com.jiro4989.mvte.util.JsonUtils;
 
 public class TextTable {
 
