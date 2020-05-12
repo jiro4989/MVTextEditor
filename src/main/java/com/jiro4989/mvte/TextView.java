@@ -1,7 +1,7 @@
 package com.jiro4989.mvte;
 
-import static java.util.stream.IntStream.range;
 import static com.jiro4989.mvte.util.Texts.*;
+import static java.util.stream.IntStream.range;
 
 import com.jiro4989.mvte.table.TextDB;
 import java.nio.file.*;

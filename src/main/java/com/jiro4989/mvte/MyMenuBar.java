@@ -4,6 +4,8 @@ import static com.jiro4989.mvte.util.Texts.*;
 
 import com.jiro4989.mvte.table.SavingData;
 import com.jiro4989.mvte.table.TextDB;
+import com.jiro4989.mvte.util.Texts;
+import com.jiro4989.mvte.util.Utils;
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -15,8 +17,6 @@ import jiro.java.lang.FormattableText;
 import jiro.java.util.MyProperties;
 import jiro.javafx.stage.MyFileChooser;
 import org.xml.sax.SAXException;
-import com.jiro4989.mvte.util.Texts;
-import com.jiro4989.mvte.util.Utils;
 
 class MyMenuBar {
 
