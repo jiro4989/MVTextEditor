@@ -1,4 +1,4 @@
-package jiro.javafx.stage;
+package com.jiro4989.mvte.stage;
 
 import java.io.File;
 import java.util.List;
