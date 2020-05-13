@@ -6,6 +6,8 @@ import com.jiro4989.mvte.config.ImportConfigStage;
 import com.jiro4989.mvte.manager.ActorDB;
 import com.jiro4989.mvte.manager.EditManager;
 import com.jiro4989.mvte.manager.VarDB;
+import com.jiro4989.mvte.stage.scene.control.DialogUtils;
+import com.jiro4989.mvte.stage.stage.AboutStage;
 import com.jiro4989.mvte.table.TextDB;
 import com.jiro4989.mvte.table.TextTable;
 import com.jiro4989.mvte.util.Utils;
@@ -25,8 +27,6 @@ import javafx.stage.Window;
 import javax.xml.parsers.ParserConfigurationException;
 import jiro.java.util.MyProperties;
 import jiro.java.util.RecentFilesUtils;
-import jiro.javafx.scene.control.DialogUtils;
-import jiro.javafx.stage.AboutStage;
 
 public class MainController {
 

@@ -1,4 +1,4 @@
-package jiro.javafx.stage;
+package com.jiro4989.mvte.stage.stage;
 
 enum Langs {
   JP("バージョン情報", "ソフト名 :", "作者 :", "作者ブログ :", "閉じる"),

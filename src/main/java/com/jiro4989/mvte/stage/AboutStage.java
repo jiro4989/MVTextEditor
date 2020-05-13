@@ -1,4 +1,4 @@
-package jiro.javafx.stage;
+package com.jiro4989.mvte.stage.stage;
 
 import java.io.IOException;
 import java.util.Locale;
