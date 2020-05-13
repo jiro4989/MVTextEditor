@@ -1,4 +1,4 @@
-package jiro.javafx.scene.control;
+package com.jiro4989.mvte.util;
 
 import javafx.scene.control.*;
 import javafx.scene.input.*;
