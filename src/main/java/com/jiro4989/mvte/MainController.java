@@ -11,6 +11,7 @@ import com.jiro4989.mvte.table.TextDB;
 import com.jiro4989.mvte.table.TextTable;
 import com.jiro4989.mvte.util.DialogUtils;
 import com.jiro4989.mvte.util.MyProperties;
+import com.jiro4989.mvte.util.RecentFilesUtils;
 import com.jiro4989.mvte.util.Utils;
 import java.io.*;
 import java.util.*;
@@ -26,7 +27,6 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javax.xml.parsers.ParserConfigurationException;
-import jiro.java.util.RecentFilesUtils;
 
 public class MainController {
 

@@ -1,4 +1,4 @@
-package jiro.java.util;
+package com.jiro4989.mvte.util;
 
 import java.util.*;
 import java.util.stream.*;
