@@ -8,7 +8,7 @@
 buildscript {
     ext.javafx_version = '14'
     ext.jackson_version = '2.11.0'
-    ext.junit_jupiter = '5.6.2'
+    ext.junit_jupiter_version = '5.6.2'
 
     repositories {
         mavenCentral()
@@ -73,9 +73,9 @@ dependencies {
     implementation files('lib_bk/recent-files-utils-1.0.0.jar')
 
     // Test framework
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junit_jupiter
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junit_jupiter
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: junit_jupiter
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junit_jupiter_version
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junit_jupiter_version
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: junit_jupiter_version
     testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.6.2'
     testCompile group: 'org.testfx', name: 'testfx-junit5', version: '4.0.16-alpha'
 }
