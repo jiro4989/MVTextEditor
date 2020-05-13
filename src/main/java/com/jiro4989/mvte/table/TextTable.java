@@ -5,7 +5,9 @@ import static com.jiro4989.mvte.util.Utils.r;
 
 import com.jiro4989.mvte.MainController;
 import com.jiro4989.mvte.selector.ImageSelector;
+import com.jiro4989.mvte.util.Brackets;
 import com.jiro4989.mvte.util.JsonUtils;
+import com.jiro4989.mvte.util.MyProperties;
 import java.io.*;
 import java.util.*;
 import java.util.stream.*;
@@ -16,8 +18,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
 import javafx.scene.input.*;
 import javax.xml.parsers.ParserConfigurationException;
-import jiro.java.lang.Brackets;
-import jiro.java.util.MyProperties;
 
 public class TextTable {
 
