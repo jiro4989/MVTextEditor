@@ -7,6 +7,7 @@
  */
 buildscript {
     ext.javafx_version = '14'
+    ext.jackson_version = '2.11.0'
 
     repositories {
         mavenCentral()
@@ -61,6 +62,11 @@ dependencies {
     implementation "org.openjfx:javafx-graphics:$javafx_version"
     implementation "org.openjfx:javafx-swing:$javafx_version"
 
+    // Jackson
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: jackson_version
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: jackson_version
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jackson_version
+
     // 一旦ローカルのjarを指定
     // implementation fileTree(dir: 'lib_bk', include: '*.jar')
 
@@ -68,9 +74,6 @@ dependencies {
     implementation files('lib_bk/dialog-utils-1.0.0.jar')
     implementation files('lib_bk/formattable-text-1.1.2.jar')
     implementation files('lib_bk/image-selector-pane-1.0.0.jar')
-    implementation files('lib_bk/jackson-annotations-2.7.1.jar')
-    implementation files('lib_bk/jackson-core-2.7.1.jar')
-    implementation files('lib_bk/jackson-databind-2.7.0.jar')
     implementation files('lib_bk/javafx-customize-utils-1.0.0.jar')
     implementation files('lib_bk/my-file-chooser-1.1.1.jar')
     implementation files('lib_bk/my-properties-1.2.0.jar')
