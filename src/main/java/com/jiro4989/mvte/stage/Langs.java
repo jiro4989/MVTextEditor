@@ -1,4 +1,4 @@
-package com.jiro4989.mvte.stage.stage;
+package com.jiro4989.mvte.stage;
 
 enum Langs {
   JP("バージョン情報", "ソフト名 :", "作者 :", "作者ブログ :", "閉じる"),

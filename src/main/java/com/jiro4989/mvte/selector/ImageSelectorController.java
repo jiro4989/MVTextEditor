@@ -3,7 +3,6 @@ package com.jiro4989.mvte.selector;
 import static com.jiro4989.mvte.util.Texts.*;
 
 import com.jiro4989.mvte.MainController;
-import com.jiro4989.mvte.stage.scene.layout.ImageSelectorPane;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.Optional;
@@ -13,6 +12,7 @@ import javafx.scene.image.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import jiro.javafx.scene.layout.ImageSelectorPane;
 
 public class ImageSelectorController {
 

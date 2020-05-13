@@ -1,4 +1,4 @@
-package com.jiro4989.mvte.stage.stage;
+package com.jiro4989.mvte.stage;
 
 import java.io.IOException;
 import java.util.Locale;

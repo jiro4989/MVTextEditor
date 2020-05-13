@@ -2,7 +2,6 @@ package com.jiro4989.mvte;
 
 import static com.jiro4989.mvte.util.Texts.*;
 
-import com.jiro4989.mvte.stage.stage.MyFileChooser;
 import com.jiro4989.mvte.table.SavingData;
 import com.jiro4989.mvte.table.TextDB;
 import com.jiro4989.mvte.util.Brackets;
@@ -16,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javax.xml.parsers.ParserConfigurationException;
 import jiro.java.util.MyProperties;
+import jiro.javafx.stage.MyFileChooser;
 import org.xml.sax.SAXException;
 
 class MyMenuBar {

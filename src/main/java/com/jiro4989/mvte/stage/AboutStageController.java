@@ -1,4 +1,4 @@
-package com.jiro4989.mvte.stage.stage;
+package com.jiro4989.mvte.stage;
 
 import java.awt.Desktop;
 import java.io.IOException;
