@@ -60,11 +60,6 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: jackson_version
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jackson_version
 
-    // 一旦ローカルのjarを指定
-    // implementation fileTree(dir: 'lib_bk', include: '*.jar')
-
-    implementation files('lib_bk/recent-files-utils-1.0.0.jar')
-
     // Test framework
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junit_jupiter_version
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junit_jupiter_version
