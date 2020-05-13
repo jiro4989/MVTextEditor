@@ -45,22 +45,21 @@ repositories {
 }
 
 dependencies {
-    // This dependency is used by the application.
-    implementation 'com.google.guava:guava:28.2-jre'
+    implementation group: 'com.google.guava', name: 'guava', version: '28.2-jre'
 
-    // Use JUnit test framework
+    // Test framework
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.2'
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.6.2'
     testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.6.2'
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.6.2'
-    testCompile "org.testfx:testfx-junit5:4.0.16-alpha"
+    testCompile group: 'org.testfx', name: 'testfx-junit5', version: '4.0.16-alpha'
 
     // JavaFX
-    implementation "org.openjfx:javafx-fxml:$javafx_version"
-    implementation "org.openjfx:javafx-base:$javafx_version"
-    implementation "org.openjfx:javafx-controls:$javafx_version"
-    implementation "org.openjfx:javafx-graphics:$javafx_version"
-    implementation "org.openjfx:javafx-swing:$javafx_version"
+    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javafx_version
+    implementation group: 'org.openjfx', name: 'javafx-base', version: javafx_version
+    implementation group: 'org.openjfx', name: 'javafx-controls', version: javafx_version
+    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javafx_version
+    implementation group: 'org.openjfx', name: 'javafx-swing', version: javafx_version
 
     // Jackson
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: jackson_version
