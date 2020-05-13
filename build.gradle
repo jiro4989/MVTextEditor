@@ -63,7 +63,6 @@ dependencies {
     // 一旦ローカルのjarを指定
     // implementation fileTree(dir: 'lib_bk', include: '*.jar')
 
-    implementation files('lib_bk/my-properties-1.2.0.jar')
     implementation files('lib_bk/recent-files-utils-1.0.0.jar')
 
     // Test framework
