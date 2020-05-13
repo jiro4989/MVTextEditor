@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jiro.javafx.stage.AboutStageController">
+   <bottom>
+      <VBox spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <Separator />
+            <HBox alignment="CENTER_RIGHT" spacing="10.0">
+               <children>
+                  <Button fx:id="closeButton" cancelButton="true" minWidth="80.0" mnemonicParsing="false" onAction="#closeButtonOnAction" text="CLOSE" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
+   <center>
+      <GridPane hgap="20.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="251.0" minWidth="10.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="475.0" minWidth="10.0" prefWidth="392.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <children>
+            <VBox alignment="TOP_CENTER">
+               <children>
+                  <ImageView fx:id="appIconImageView" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+            <GridPane fx:id="gridPane" hgap="10.0" vgap="5.0" GridPane.columnIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="Infinity" minWidth="10.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="appDescLabel" minWidth="-Infinity" text="App Name :" />
+                  <Label fx:id="authorDescLabel" minWidth="-Infinity" text="Author :" GridPane.rowIndex="1" />
+                  <Label fx:id="blogDescLabel" minWidth="-Infinity" text="Blog :" GridPane.rowIndex="2" />
+                  <Label fx:id="appLabel" text="Label" GridPane.columnIndex="1" />
+                  <HBox fx:id="authorHBox" alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label fx:id="authorLabel" text="Author" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ImageView fx:id="authorIconImageView" fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="blogHBox" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Label fx:id="blogLabel" minWidth="100.0" text="Blog" />
+                        <Hyperlink fx:id="blogHyperlink" onAction="#blogHyperlinkOnAction" prefWidth="1000.0" text="Blog URL" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

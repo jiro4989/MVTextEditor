@@ -63,7 +63,6 @@ dependencies {
     // 一旦ローカルのjarを指定
     // implementation fileTree(dir: 'lib_bk', include: '*.jar')
 
-    implementation files('lib_bk/about-stage-1.0.2.jar')
     implementation files('lib_bk/dialog-utils-1.0.0.jar')
     implementation files('lib_bk/image-selector-pane-1.0.0.jar')
     implementation files('lib_bk/javafx-customize-utils-1.0.0.jar')
