@@ -65,7 +65,6 @@ dependencies {
 
     implementation files('lib_bk/about-stage-1.0.2.jar')
     implementation files('lib_bk/dialog-utils-1.0.0.jar')
-    implementation files('lib_bk/formattable-text-1.1.2.jar')
     implementation files('lib_bk/image-selector-pane-1.0.0.jar')
     implementation files('lib_bk/javafx-customize-utils-1.0.0.jar')
     implementation files('lib_bk/my-file-chooser-1.1.1.jar')
