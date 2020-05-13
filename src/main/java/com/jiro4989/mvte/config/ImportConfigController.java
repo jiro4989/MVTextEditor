@@ -2,9 +2,9 @@ package com.jiro4989.mvte.config;
 
 import com.jiro4989.mvte.MainController;
 import com.jiro4989.mvte.util.JavaFXCustomizeUtils;
+import com.jiro4989.mvte.util.MyProperties;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import jiro.java.util.MyProperties;
 
 public class ImportConfigController {
 

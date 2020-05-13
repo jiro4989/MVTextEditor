@@ -7,6 +7,7 @@ import com.jiro4989.mvte.table.SavingData;
 import com.jiro4989.mvte.table.TextDB;
 import com.jiro4989.mvte.util.Brackets;
 import com.jiro4989.mvte.util.FormattableText;
+import com.jiro4989.mvte.util.MyProperties;
 import com.jiro4989.mvte.util.Texts;
 import com.jiro4989.mvte.util.Utils;
 import java.io.*;
@@ -15,7 +16,6 @@ import java.util.stream.Collectors;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javax.xml.parsers.ParserConfigurationException;
-import jiro.java.util.MyProperties;
 import org.xml.sax.SAXException;
 
 class MyMenuBar {

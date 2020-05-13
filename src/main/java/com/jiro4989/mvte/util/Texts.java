@@ -6,7 +6,6 @@ import java.nio.IntBuffer;
 import javafx.scene.image.WritablePixelFormat;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
-import jiro.java.util.MyProperties;
 
 public class Texts {
 
