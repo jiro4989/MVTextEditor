@@ -1,7 +1,7 @@
-package jiro.java.lang;
+package com.jiro4989.mvte.util;
 
+import static com.jiro4989.mvte.util.UtilsString.*;
 import static java.util.stream.IntStream.range;
-import static jiro.java.lang.UtilsString.*;
 
 import java.io.BufferedReader;
 import java.io.File;

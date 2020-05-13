@@ -1,4 +1,4 @@
-package jiro.java.lang;
+package com.jiro4989.mvte.util;
 
 import java.util.regex.*;
 

@@ -1,6 +1,6 @@
-package jiro.java.lang;
+package com.jiro4989.mvte.util;
 
-import static jiro.java.lang.UtilsChar.*;
+import static com.jiro4989.mvte.util.UtilsChar.*;
 
 import java.io.*;
 import java.nio.charset.Charset;

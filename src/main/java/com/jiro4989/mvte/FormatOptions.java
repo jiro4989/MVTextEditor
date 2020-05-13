@@ -1,8 +1,8 @@
 package com.jiro4989.mvte;
 
+import com.jiro4989.mvte.util.Brackets;
+import com.jiro4989.mvte.util.FormattableText;
 import java.io.File;
-import jiro.java.lang.Brackets;
-import jiro.java.lang.FormattableText;
 import jiro.java.util.MyProperties;
 
 public class FormatOptions {

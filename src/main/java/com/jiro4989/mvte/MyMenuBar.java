@@ -4,6 +4,8 @@ import static com.jiro4989.mvte.util.Texts.*;
 
 import com.jiro4989.mvte.table.SavingData;
 import com.jiro4989.mvte.table.TextDB;
+import com.jiro4989.mvte.util.Brackets;
+import com.jiro4989.mvte.util.FormattableText;
 import com.jiro4989.mvte.util.Texts;
 import com.jiro4989.mvte.util.Utils;
 import java.io.*;
@@ -12,8 +14,6 @@ import java.util.stream.Collectors;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javax.xml.parsers.ParserConfigurationException;
-import jiro.java.lang.Brackets;
-import jiro.java.lang.FormattableText;
 import jiro.java.util.MyProperties;
 import jiro.javafx.stage.MyFileChooser;
 import org.xml.sax.SAXException;
