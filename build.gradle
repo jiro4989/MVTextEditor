@@ -48,13 +48,6 @@ repositories {
 dependencies {
     implementation group: 'com.google.guava', name: 'guava', version: '28.2-jre'
 
-    // Test framework
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junit_jupiter
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junit_jupiter
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: junit_jupiter
-    testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.6.2'
-    testCompile group: 'org.testfx', name: 'testfx-junit5', version: '4.0.16-alpha'
-
     // JavaFX
     implementation group: 'org.openjfx', name: 'javafx-fxml', version: javafx_version
     implementation group: 'org.openjfx', name: 'javafx-base', version: javafx_version
@@ -78,6 +71,13 @@ dependencies {
     implementation files('lib_bk/my-file-chooser-1.1.1.jar')
     implementation files('lib_bk/my-properties-1.2.0.jar')
     implementation files('lib_bk/recent-files-utils-1.0.0.jar')
+
+    // Test framework
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junit_jupiter
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junit_jupiter
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: junit_jupiter
+    testCompile group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.6.2'
+    testCompile group: 'org.testfx', name: 'testfx-junit5', version: '4.0.16-alpha'
 }
 
 sourceCompatibility = 14
