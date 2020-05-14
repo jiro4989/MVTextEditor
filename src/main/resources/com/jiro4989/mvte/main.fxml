@@ -316,16 +316,6 @@
           </items>
         </Menu><!--}}}-->
 
-        <Menu mnemonicParsing="true" text="%helpMenu"><!--{{{-->
-          <items>
-            <MenuItem mnemonicParsing="true" text="%aboutMenuItem" onAction="#aboutMenuItemOnAction" >
-              <accelerator>
-                <KeyCodeCombination alt="UP" code="F1" control="UP" meta="UP" shift="UP" shortcut="UP" />
-              </accelerator>
-            </MenuItem>
-          </items>
-        </Menu><!--}}}-->
-
       </menus>
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">

@@ -6,7 +6,6 @@ import com.jiro4989.mvte.config.ImportConfigStage;
 import com.jiro4989.mvte.manager.ActorDB;
 import com.jiro4989.mvte.manager.EditManager;
 import com.jiro4989.mvte.manager.VarDB;
-import com.jiro4989.mvte.stage.AboutStage;
 import com.jiro4989.mvte.table.TextDB;
 import com.jiro4989.mvte.table.TextTable;
 import com.jiro4989.mvte.util.DialogUtils;
@@ -420,19 +419,6 @@ public class MainController {
   } // }}}
 
   @FXML
-  private void aboutMenuItemOnAction() { // {{{
-    AboutStage about =
-        new AboutStage.Builder(TITLE, VERSION)
-            .author("次郎 (Jiro)")
-            .blog("次ログ")
-            .blogUrl("http://jiroron666.hatenablog.com/")
-            .css(BASIC_CSS)
-            .appIcon(APP_ICON)
-            .build();
-    about.showAndWait();
-  } // }}}
-
-  @FXML
   private void newMenuItemOnAction() { // {{{
     myMenubar
         .showAcceptDialog()
@@ -440,7 +426,7 @@ public class MainController {
             r -> {
               String noname = Main.resources.getString("noname");
               Stage stg = (Stage) getWindow();
-              stg.setTitle(noname + " - " + TITLE_VERSION);
+              stg.setTitle(noname + " - " + TITLE);
               textTable.addInitRecord();
               myMenubar.initOpenedXml();
             });
