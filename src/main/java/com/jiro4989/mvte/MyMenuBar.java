@@ -160,7 +160,7 @@ class MyMenuBar {
       try {
         List<TextDB> dbs = SavingData.convertTextDB(file);
         mainController.setTextDB(dbs);
-        Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
+        Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE);
         saveMenuItem.setDisable(false);
         saveFileOpt = Optional.ofNullable(file);
       } catch (FileNotFoundException e) {
@@ -230,7 +230,7 @@ class MyMenuBar {
         file -> {
           if (file.exists()) {
             save(file);
-            Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
+            Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE);
           } else {
             Utils.showFileNotFoundDialog();
           }
@@ -243,7 +243,7 @@ class MyMenuBar {
         .ifPresent(
             file -> {
               save(file);
-              Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE_VERSION);
+              Main.mainStage.setTitle(file.getName() + " - " + Texts.TITLE);
             });
   } // }}}
 

@@ -16,3 +16,5 @@ build
 .settings/org.eclipse.jdt.core.prefs
 /lib/
 /errors/
+/jmods/
+/jre/

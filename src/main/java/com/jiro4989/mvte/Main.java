@@ -55,7 +55,7 @@ public class Main extends Application {
 
       String noname = resources.getString("noname");
       primaryStage.setScene(scene);
-      primaryStage.setTitle(noname + " - " + TITLE_VERSION);
+      primaryStage.setTitle(noname + " - " + TITLE);
       primaryStage.getIcons().add(new Image(APP_ICON));
       primaryStage.setMinWidth(80.0);
       primaryStage.setMinHeight(140.0);
@@ -81,6 +81,14 @@ public class Main extends Application {
   } // }}}
 
   public static void main(String... args) {
+    System.out.println("--------------------------------------------");
+    System.out.println("application_name: " + TITLE);
+    System.out.println("version: " + Version.version);
+    System.out.println("commit_hash: " + Version.commitHash);
+    System.out.println("document: README.txt");
+    System.out.println("author: 次郎 (jiro)");
+    System.out.println("contact: https://twitter.com/jiro_saburomaru");
+    System.out.println("--------------------------------------------");
     launch(args);
   }
 
