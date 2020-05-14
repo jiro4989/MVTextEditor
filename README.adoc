@@ -27,11 +27,11 @@ https://github.com/jiro4989/MVTextEditor/releases[Releases]から各プラッ
 
 == 起動手順
 
-. (Windows) tkfm.batをダブルクリックする
+. (Windows) mvte.batをダブルクリックする
 .. このとき警告が出る場合があるけれど、許可する
 .. 黒いウィンドウが表示されるが、閉じないで待つ
 .. GUIの画面が表示される
-. (Mac/Linux) tkfmを実行する
+. (Mac/Linux) mvteを実行する
 
 == 使い方
 
@@ -372,7 +372,7 @@ https://gluonhq.com/products/javafx/[JavaFXのサイト]
 
 [source,bash]
 ----
-./jre/bin/java -jar build/libs/tkfm-dev.jar com.jiro4989.tkfm.Main
+./jre/bin/java -jar build/libs/mvte-dev.jar com.jiro4989.mvte.Main
 ----
 
 これで起動しなければ何かがおかしい。
