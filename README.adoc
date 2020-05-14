@@ -71,7 +71,7 @@ usage.txtというファイルを用意しました。
 これは複数選択したデータに対しても変更を適用します。  
 つまり、複数のデータを一括で変更できます。
 
-image::./gif/select_face_img01.gif[表情画像選択]
+image::./docs/select_face_img01.gif[表情画像選択]
 
 ==== アイコンをキーボードから変更
 
@@ -80,7 +80,7 @@ image::./gif/select_face_img01.gif[表情画像選択]
 
 データを選択して1 ~ 8のいずれかのキーを押すと、アイコンを変更します。
 
-image::./gif/change_face_img01.gif[表情パネル変更]
+image::./docs/change_face_img01.gif[表情パネル変更]
 
 ==== データの一括変更
 
@@ -94,7 +94,7 @@ image::./gif/change_face_img01.gif[表情パネル変更]
 この時、複数のデータを変更する時は、テキスト入力欄に隣接するボタンを押下しない
 と、一括変更が適用されません。
 
-image::./gif/change_text01.gif[テキスト変更]
+image::./docs/change_text01.gif[テキスト変更]
 
 ==== データの切り取り-コピー-削除
 
@@ -110,7 +110,7 @@ image::./gif/change_text01.gif[テキスト変更]
 す。  
 その場合、制御文字の閉じる部分は\i[0]が挿入されます。
 
-image::./gif/change_color01.gif[色変更]
+image::./docs/change_color01.gif[色変更]
 
 ==== 制御文字の支援
 
@@ -129,7 +129,7 @@ image::./gif/change_color01.gif[色変更]
 それぞれダブルクリック、あるいはEnterキーでカーソル位置に文章の挿入を可能としま
 す。
 
-image::./gif/var_actor_icon01.gif[表情パネル変更]
+image::./docs/var_actor_icon01.gif[表情パネル変更]
 
 また、アクター名については、アクター名を選択した状態でSpaceをタイプすることで発
 言者のテキスト入力欄にアクター名を入力できます。アクター名の入力の際に前後に幾つ
@@ -146,11 +146,11 @@ image::./gif/var_actor_icon01.gif[表情パネル変更]
 半角英数字を幅1として、全角文字を幅2として計算しています。
 なので、全て全角文字の場合は27文字入力された時点で文章が折り返されます。
 
-image::./gif/return01.gif[表情パネル変更]
+image::./docs/return01.gif[表情パネル変更]
 
-image::./gif/return02.gif[表情パネル変更]
+image::./docs/return02.gif[表情パネル変更]
 
-image::./gif/return03.gif[表情パネル変更]
+image::./docs/return03.gif[表情パネル変更]
 
 ==== 複数レコードの連結
 
@@ -161,7 +161,7 @@ image::./gif/return03.gif[表情パネル変更]
 レコードの編集はリアルタイムで変更が適用されますが、複数のレコードを対象とした場
 合、手動で適用する必要があります。
 
-image::./gif/joining01.gif[表情パネル変更]
+image::./docs/joining01.gif[表情パネル変更]
 
 === MVに出力する
 
