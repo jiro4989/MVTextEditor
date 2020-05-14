@@ -43,7 +43,9 @@ public class Main extends Application {
     URL location = getClass().getResource("main.fxml");
     resources =
         ResourceBundle.getBundle(
-            "app.dict", Locale.getDefault(), ResourceBundleWithUtf8.UTF8_ENCODING_CONTROL);
+            "com.jiro4989.mvte.dict",
+            Locale.getDefault(),
+            ResourceBundleWithUtf8.UTF8_ENCODING_CONTROL);
     FXMLLoader loader = new FXMLLoader(location, resources);
 
     try {

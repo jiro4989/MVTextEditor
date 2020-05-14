@@ -19,7 +19,9 @@ public class ImageSelector extends Stage {
     URL location = getClass().getResource("image_selector.fxml");
     ResourceBundle resources =
         ResourceBundle.getBundle(
-            "app.selector.dict", Locale.getDefault(), ResourceBundleWithUtf8.UTF8_ENCODING_CONTROL);
+            "com.jiro4989.mvte.selector.dict",
+            Locale.getDefault(),
+            ResourceBundleWithUtf8.UTF8_ENCODING_CONTROL);
     FXMLLoader loader = new FXMLLoader(location, resources);
 
     try {

@@ -19,7 +19,9 @@ public class ImportConfigStage extends Stage {
     URL location = getClass().getResource("import_config.fxml");
     ResourceBundle resources =
         ResourceBundle.getBundle(
-            "app.config.dict", Locale.getDefault(), ResourceBundleWithUtf8.UTF8_ENCODING_CONTROL);
+            "com.jiro4989.mvte.config.dict",
+            Locale.getDefault(),
+            ResourceBundleWithUtf8.UTF8_ENCODING_CONTROL);
     FXMLLoader loader = new FXMLLoader(location, resources);
 
     try {
