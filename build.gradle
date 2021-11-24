@@ -71,8 +71,7 @@ sourceCompatibility = 16
 targetCompatibility = 16
 
 application {
-    // Define the main class for the application.
-    mainClassName = 'com.jiro4989.mvte.Main'
+    getMainClass().set('com.jiro4989.mvte.Main')
 }
 
 compileJava {
