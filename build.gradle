@@ -158,10 +158,10 @@ spotless {
     removeUnusedImports()
   }
 
-  // groovyGradle {
-  //   target '*.gradle'
-  //   greclipse().configFile("$rootDir/greclipse.properties")
-  // }
+  groovyGradle {
+    target '*.gradle'
+    greclipse().configFile("$rootDir/greclipse.properties")
+  }
 }
 
 // 実行順序の明示
