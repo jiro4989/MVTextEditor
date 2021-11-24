@@ -6,7 +6,7 @@
  * User Manual available at https://docs.gradle.org/6.3/userguide/tutorial_java_projects.html
  */
 buildscript {
-    ext.javafx_version = '14'
+    ext.javafx_version = '16'
     ext.jackson_version = '2.11.0'
     ext.junit_jupiter_version = '5.6.2'
 
@@ -68,8 +68,8 @@ dependencies {
     testCompile group: 'org.testfx', name: 'testfx-junit5', version: '4.0.16-alpha'
 }
 
-sourceCompatibility = 14
-targetCompatibility = 14
+sourceCompatibility = 16
+targetCompatibility = 16
 
 application {
     // Define the main class for the application.
