@@ -146,6 +146,21 @@ task versionSet(type: Copy) {
   expand(version: version, commitHash: commitHash)
 }
 
+spotless {
+  java {
+    googleJavaFormat('1.13.0')
+
+    trimTrailingWhitespace()
+    endWithNewline()
+    removeUnusedImports()
+  }
+
+  // groovyGradle {
+  //   target '*.gradle'
+  //   greclipse().configFile("$rootDir/greclipse.properties")
+  // }
+}
+
 // 実行順序の明示
 // clean -> spotlessApply (code format) -> [ versionSet -> compileJava | test ]
 spotlessApply.dependsOn(['clean'])
