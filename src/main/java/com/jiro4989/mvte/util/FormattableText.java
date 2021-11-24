@@ -191,8 +191,7 @@ public class FormattableText {
   public FormattableText splitToParagraph() { // {{{
     List<List<String>> newListList = new ArrayList<>();
 
-    textList
-        .stream()
+    textList.stream()
         .forEach(
             l -> {
               if (l.size() <= 4) {
@@ -257,8 +256,7 @@ public class FormattableText {
   public FormattableText formatCarriageReturn() { // {{{
     if (returnOption) {
       List<List<String>> formedList =
-          textList
-              .stream()
+          textList.stream()
               .map(
                   list -> {
                     List<String> newList = new ArrayList<>();
@@ -301,8 +299,7 @@ public class FormattableText {
 
   public void show() { // {{{
     AtomicInteger atom = new AtomicInteger(0);
-    textList
-        .stream()
+    textList.stream()
         .forEach(
             l -> {
               atom.getAndIncrement();
@@ -462,8 +459,7 @@ public class FormattableText {
   @Override
   public String toString() { // {{{
     AtomicInteger atom = new AtomicInteger(0);
-    return textList
-        .stream()
+    return textList.stream()
         .map(
             l -> {
               int paragraphNumber = atom.incrementAndGet();

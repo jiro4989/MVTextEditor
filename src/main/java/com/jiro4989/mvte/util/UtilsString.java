@@ -111,8 +111,7 @@ public class UtilsString {
     list.stream()
         .forEach(
             str -> {
-              splitToWord(str)
-                  .stream()
+              splitToWord(str).stream()
                   .forEach(
                       s -> {
                         newList.add(s);

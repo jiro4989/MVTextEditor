@@ -142,8 +142,7 @@ public class TextTable {
     getSelectedItems()
         .ifPresent(
             selectedItems -> {
-              selectedItems
-                  .stream()
+              selectedItems.stream()
                   .forEach(
                       selectedItem -> {
                         selectedItem.setIconIndex(index);
@@ -216,8 +215,7 @@ public class TextTable {
                   .ifPresent(
                       si -> {
                         TextDB db = si;
-                        items
-                            .stream()
+                        items.stream()
                             .forEach(
                                 item -> {
                                   TextDB newDb = new TextDB(db);
@@ -284,8 +282,7 @@ public class TextTable {
               int braLen = len(Brackets.values()[braIndex].START);
               String indent = String.format("%" + braLen + "s", "");
 
-              items
-                  .stream()
+              items.stream()
                   .forEach(
                       item -> {
                         String icon = item.iconProperty().get().replaceAll("\\s", "");
@@ -319,8 +316,7 @@ public class TextTable {
     getSelectedItems()
         .ifPresent(
             items -> {
-              items
-                  .stream()
+              items.stream()
                   .forEach(
                       item -> {
                         String joinedString = item.textProperty().get();
@@ -396,8 +392,7 @@ public class TextTable {
     getSelectedItems()
         .ifPresent(
             items -> {
-              items
-                  .stream()
+              items.stream()
                   .forEach(
                       item -> {
                         item.setIcon("");
@@ -450,8 +445,7 @@ public class TextTable {
   public void setTextList(List<List<String>> listList) { // {{{
     tableView.getSelectionModel().clearSelection();
     masterData.clear();
-    listList
-        .stream()
+    listList.stream()
         .forEach(
             list -> {
               String bg = getBackgroundInitText();
@@ -498,8 +492,7 @@ public class TextTable {
     getSelectedItems()
         .ifPresent(
             items -> {
-              items
-                  .stream()
+              items.stream()
                   .forEach(
                       item -> {
                         item.setActorName(value);
@@ -511,8 +504,7 @@ public class TextTable {
     getSelectedItems()
         .ifPresent(
             items -> {
-              items
-                  .stream()
+              items.stream()
                   .forEach(
                       item -> {
                         item.setText(value);
@@ -570,8 +562,7 @@ public class TextTable {
                       .getSelectedTileString()
                       .ifPresent(
                           s -> {
-                            items
-                                .stream()
+                            items.stream()
                                 .forEach(
                                     item -> {
                                       item.setIcon(s);
