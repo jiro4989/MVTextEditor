@@ -51,8 +51,7 @@ public class Pages {
     // }}}
 
     list = new ArrayList<>();
-    dbList
-        .stream()
+    dbList.stream()
         .forEach(
             db -> {
               list.add(new EventList(101, 0, db));

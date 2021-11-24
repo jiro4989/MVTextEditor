@@ -29,8 +29,7 @@ public class SavingData {
     root = doc.createElement(ROOT);
     doc.appendChild(root);
 
-    dbList
-        .stream()
+    dbList.stream()
         .forEach(
             db -> {
               Element node = doc.createElement(NODE);
