@@ -3,7 +3,6 @@
 :sectnums:
 
 image:https://github.com/jiro4989/MVTextEditor/workflows/build/badge.svg[build, link=https://github.com/jiro4989/MVTextEditor/actions]
-image:https://codecov.io/gh/jiro4989/MVTextEditor/branch/master/graph/badge.svg[codecov, link=https://codecov.io/gh/jiro4989/MVTextEditor]
 
 image::./docs/demo.gif[]
 
