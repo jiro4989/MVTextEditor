@@ -8,7 +8,7 @@ name: release
       - 'v*.*.*'
 
 env:
-  APP_NAME: 'tkfm'
+  APP_NAME: 'mvte'
   JAVA_VERSION: '16'
   JAVAFX_VERSION: '16'
 
