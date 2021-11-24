@@ -304,22 +304,17 @@ GPL-2.0
 
 === 前提条件
 
-* Java 14
+* Java 16
+* Ubuntu 20.04
 
-環境変数JAVA_HOMEも設定すること。
-以下のコマンドでUbuntuでは環境が整う。
+以下のインストールスクリプトを実行すると環境が整う。
 
 [source,bash]
 ----
-curl -O https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_linux-x64_bin.tar.gz
-tar xvf openjdk-14_linux-x64_bin.tar.gz
-
-mkdir -p /opt/java
-mv jdk-14 /opt/java/
-ln -sfn /opt/java/jdk-14 /opt/java/current
-
-export JAVA_HOME=/opt/java/current
+./script/install_java.sh
 ----
+
+実行したら環境変数 `JAVA_HOME` を設定すること。
 
 === ビルド手順
 
