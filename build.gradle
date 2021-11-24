@@ -6,33 +6,33 @@
  * User Manual available at https://docs.gradle.org/6.3/userguide/tutorial_java_projects.html
  */
 buildscript {
-    ext.javafx_version = '16'
-    ext.jackson_version = '2.11.0'
-    ext.junit_jupiter_version = '5.6.2'
+  ext.javafx_version = '16'
+  ext.jackson_version = '2.11.0'
+  ext.junit_jupiter_version = '5.6.2'
 
-    repositories {
-        mavenCentral()
-        maven {
-            setUrl("https://plugins.gradle.org/m2/")
-        }
+  repositories {
+    mavenCentral()
+    maven {
+      setUrl("https://plugins.gradle.org/m2/")
     }
-    dependencies {
-        classpath "org.openjfx:javafx-plugin:0.0.8"
-        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0'
+  }
+  dependencies {
+    classpath "org.openjfx:javafx-plugin:0.0.8"
+    classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0'
 
-        // Code Format
-        classpath "com.diffplug.spotless:spotless-plugin-gradle:6.0.0"
-    }
+    // Code Format
+    classpath "com.diffplug.spotless:spotless-plugin-gradle:6.0.0"
+  }
 }
 
 plugins {
-    // Apply the java plugin to add support for Java
-    id 'java'
+  // Apply the java plugin to add support for Java
+  id 'java'
 
-    // Apply the application plugin to add support for building a CLI application.
-    id 'application'
+  // Apply the application plugin to add support for building a CLI application.
+  id 'application'
 
-    id 'jacoco'
+  id 'jacoco'
 }
 
 apply plugin: 'org.openjfx.javafxplugin'
@@ -41,45 +41,49 @@ apply plugin: "com.diffplug.spotless"
 apply plugin: "groovy"
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    implementation group: 'com.google.guava', name: 'guava', version: '28.2-jre'
+  implementation group: 'com.google.guava', name: 'guava', version: '28.2-jre'
 
-    // JavaFX
-    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javafx_version
-    implementation group: 'org.openjfx', name: 'javafx-base', version: javafx_version
-    implementation group: 'org.openjfx', name: 'javafx-controls', version: javafx_version
-    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javafx_version
-    implementation group: 'org.openjfx', name: 'javafx-swing', version: javafx_version
+  // JavaFX
+  implementation group: 'org.openjfx', name: 'javafx-fxml', version: javafx_version
+  implementation group: 'org.openjfx', name: 'javafx-base', version: javafx_version
+  implementation group: 'org.openjfx', name: 'javafx-controls', version: javafx_version
+  implementation group: 'org.openjfx', name: 'javafx-graphics', version: javafx_version
+  implementation group: 'org.openjfx', name: 'javafx-swing', version: javafx_version
 
-    // Jackson
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: jackson_version
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: jackson_version
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jackson_version
+  // Jackson
+  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: jackson_version
+  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: jackson_version
+  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jackson_version
 
-    // Test framework
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junit_jupiter_version
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junit_jupiter_version
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: junit_jupiter_version
-    testImplementation group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.6.2'
-    testImplementation group: 'org.testfx', name: 'testfx-junit5', version: '4.0.16-alpha'
+  // Test framework
+  testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junit_jupiter_version
+  testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junit_jupiter_version
+  testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: junit_jupiter_version
+  testImplementation group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.6.2'
+  testImplementation group: 'org.testfx', name: 'testfx-junit5', version: '4.0.16-alpha'
 }
 
 sourceCompatibility = 16
 targetCompatibility = 16
 
 application {
-    getMainClass().set('com.jiro4989.mvte.Main')
+  getMainClass().set('com.jiro4989.mvte.Main')
 }
 
 compileJava {
-    options.encoding = 'UTF-8'
+  options.encoding = 'UTF-8'
 }
 
 javafx {
-    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.swing' ]
+  modules = [
+    'javafx.controls',
+    'javafx.fxml',
+    'javafx.swing'
+  ]
 }
 
 jar {
@@ -89,7 +93,11 @@ jar {
 
   archiveBaseName = 'mvte'
 
-  from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+  from {
+    configurations.compileClasspath.collect {
+      it.isDirectory() ? it : zipTree(it)
+    }
+  }
 
   duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
@@ -189,8 +197,8 @@ task dumpDependencies(dependsOn: clearDependencies) {
         into libDir
       }
     }
-  } 
-} 
+  }
+}
 
 def appMods = [
   'javafx.base',
@@ -198,7 +206,7 @@ def appMods = [
   'javafx.swing',
   'javafx.graphics',
   'javafx.fxml',
-  ]
+]
 
 task runApp(type: Exec, dependsOn: dumpDependencies) {
   commandLine 'java',
