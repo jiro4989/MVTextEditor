@@ -39,9 +39,6 @@ apply plugin: 'org.openjfx.javafxplugin'
 apply plugin: 'org.junit.platform.gradle.plugin'
 
 repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
     mavenCentral()
 }
 
