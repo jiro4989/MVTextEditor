@@ -18,7 +18,7 @@ buildscript {
   }
   dependencies {
     classpath "org.openjfx:javafx-plugin:0.0.8"
-    classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0'
+    classpath 'org.junit.platform:junit-platform-gradle-plugin:1.2.0'
 
     // Code Format
     classpath "com.diffplug.spotless:spotless-plugin-gradle:6.1.0"
