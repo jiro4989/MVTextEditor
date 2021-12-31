@@ -45,7 +45,7 @@ repositories {
 }
 
 dependencies {
-  implementation group: 'com.google.guava', name: 'guava', version: '28.2-jre'
+  implementation group: 'com.google.guava', name: 'guava', version: '31.0.1-jre'
 
   // JavaFX
   implementation group: 'org.openjfx', name: 'javafx-fxml', version: javafx_version
