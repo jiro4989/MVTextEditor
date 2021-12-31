@@ -18,7 +18,6 @@ buildscript {
   }
   dependencies {
     classpath "org.openjfx:javafx-plugin:0.0.8"
-    classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0'
 
     // Code Format
     classpath "com.diffplug.spotless:spotless-plugin-gradle:6.1.0"
@@ -36,7 +35,6 @@ plugins {
 }
 
 apply plugin: 'org.openjfx.javafxplugin'
-apply plugin: 'org.junit.platform.gradle.plugin'
 apply plugin: "com.diffplug.spotless"
 apply plugin: "groovy"
 
@@ -103,22 +101,16 @@ jar {
 }
 
 test {
+  useJUnitPlatform()
+  jacoco {
+    destinationFile = file("${buildDir}/jacoco/test.exec")
+  }
   finalizedBy jacocoTestReport
-}
-
-jacoco {
-  applyTo junitPlatformTest
 }
 
 task junitPlatformJacocoReport(type: JacocoReport) {
   sourceSets sourceSets.main
-  executionData junitPlatformTest
-}
-
-junitPlatformTest {
-  jacoco {
-    destinationFile = file("${buildDir}/jacoco/test.exec")
-  }
+  executionData test
 }
 
 jacocoTestReport {
