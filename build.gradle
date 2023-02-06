@@ -20,7 +20,7 @@ buildscript {
     classpath "org.openjfx:javafx-plugin:0.0.8"
 
     // Code Format
-    classpath "com.diffplug.spotless:spotless-plugin-gradle:6.14.0"
+    classpath "com.diffplug.spotless:spotless-plugin-gradle:6.14.1"
   }
 }
 
