@@ -62,7 +62,7 @@ dependencies {
   testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junit_jupiter_version
   testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: junit_jupiter_version
   testImplementation group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.10.0'
-  testImplementation group: 'org.testfx', name: 'testfx-junit5', version: '4.0.16-alpha'
+  testImplementation group: 'org.testfx', name: 'testfx-junit5', version: '4.0.17'
 }
 
 sourceCompatibility = 16
