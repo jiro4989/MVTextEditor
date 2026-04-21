@@ -29,8 +29,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4.7.1
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
         with:
           distribution: 'zulu'
           java-version: ${{ env.JAVA_VERSION }}
@@ -68,8 +68,8 @@ jobs:
             artifact_ext: .tar.gz
             entrypoint_script_ext: ''
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4.7.1
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
         with:
           distribution: 'zulu'
           java-version: ${{ env.JAVA_VERSION }}
@@ -89,7 +89,7 @@ jobs:
           ENTRYPOINT_SCRIPT_EXT="${{ matrix.entrypoint_script_ext }}"
           ./script/create_artifact.sh
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@ff15f0306b3f739f7b6fd43fb5d26cd321bd4de5 # v3.2.1
         with:
           name: artifact
           path: |
